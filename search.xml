@@ -45,14 +45,6 @@
       </tags>
   </entry>
   <entry>
-    <title>GitHub + Hexo搭建自己的博客(二) Next主题配置</title>
-    <url>/uncategorized/Next%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[]]></content>
-      <tags>
-        <tag>hexo hothub</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hello World</title>
     <url>/uncategorized/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
@@ -65,6 +57,14 @@
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>GitHub + Hexo搭建自己的博客(二) Next主题配置</title>
+    <url>/uncategorized/Next%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[]]></content>
+      <tags>
+        <tag>hexo hothub</tag>
+      </tags>
   </entry>
   <entry>
     <title>利用github搭建个人博客</title>
