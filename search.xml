@@ -67,12 +67,6 @@
       </tags>
   </entry>
   <entry>
-    <title>利用github搭建个人博客</title>
-    <url>/uncategorized/test/</url>
-    <content><![CDATA[<h2 id="测试mathjax"><a href="#测试mathjax" class="headerlink" title="测试mathjax"></a>测试mathjax</h2><script type="math/tex; mode=display">
-    \frac{\partial f(\mathbf{x})}{\partial\mathbf{x}}</script>]]></content>
-  </entry>
-  <entry>
     <title>Linux vim常用配置</title>
     <url>/vim/linux%E9%85%8D%E7%BD%AEvim/</url>
     <content><![CDATA[<h1 id="vim新建文件时-按F4既可以添加作者信息"><a href="#vim新建文件时-按F4既可以添加作者信息" class="headerlink" title="vim新建文件时, 按F4既可以添加作者信息"></a>vim新建文件时, 按F4既可以添加作者信息</h1><p>~/.vimrc中追加如下内容</p>
@@ -89,5 +83,11 @@
         <tag>Linux</tag>
         <tag>vim</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>利用github搭建个人博客</title>
+    <url>/uncategorized/test/</url>
+    <content><![CDATA[<h2 id="测试mathjax"><a href="#测试mathjax" class="headerlink" title="测试mathjax"></a>测试mathjax</h2><script type="math/tex; mode=display">
+    \frac{\partial f(\mathbf{x})}{\partial\mathbf{x}}</script>]]></content>
   </entry>
 </search>
