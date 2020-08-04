@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>JT博客</title>
+  <title>daydayup863</title>
   
   <subtitle>笔记丶足迹丶日记</subtitle>
   <link href="/atom.xml" rel="self"/>
@@ -10,7 +10,7 @@
   <id>http://yoursite.com/</id>
   
   <author>
-    <name>JT</name>
+    <name>daydayup</name>
     
   </author>
   
