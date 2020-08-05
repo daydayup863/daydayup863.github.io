@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Python小技巧</title>
+    <url>/python/Python%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
+    <content><![CDATA[<h1 id="list中dict按某一列排序"><a href="#list中dict按某一列排序" class="headerlink" title="list中dict按某一列排序"></a>list中dict按某一列排序</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">from operator import itemgetter</span><br><span class="line"></span><br><span class="line">sorted(result, key&#x3D;itemgetter(&#39;b&#39;), reverse&#x3D;True)</span><br><span class="line">[&#123;&#39;c&#39;: 1, &#39;a&#39;: 2, &#39;b&#39;: 5&#125;, &#123;&#39;c&#39;: 5, &#39;a&#39;: 3, &#39;b&#39;: 4&#125;, &#123;&#39;c&#39;: 1, &#39;a&#39;: 1, &#39;b&#39;: 1&#125;, &#123;&#39;c&#39;: 5, &#39;a&#39;: 9, &#39;b&#39;: 0&#125;]</span><br><span class="line">sorted(result, key&#x3D;itemgetter(&#39;b&#39;))</span><br><span class="line">[&#123;&#39;c&#39;: 5, &#39;a&#39;: 9, &#39;b&#39;: 0&#125;, &#123;&#39;c&#39;: 1, &#39;a&#39;: 1, &#39;b&#39;: 1&#125;, &#123;&#39;c&#39;: 5, &#39;a&#39;: 3, &#39;b&#39;: 4&#125;, &#123;&#39;c&#39;: 1, &#39;a&#39;: 2, &#39;b&#39;: 5&#125;]</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>内核Softdog测试</title>
     <url>/Linux/softdog/</url>
     <content><![CDATA[<h1 id="Watchdog的功能"><a href="#Watchdog的功能" class="headerlink" title="Watchdog的功能"></a>Watchdog的功能</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Linux内核watchdog于监视系统是否正在运行。由于存在不可恢复的软件错误，应该自动重新启动挂起的系统。</span><br><span class="line">看门狗模块特依赖所使用的硬件或芯片。个人计算机用户通常不需要看门狗，因为他们可以手动重置系统。但是，watchdog对于任务关键型系统和需要无需人工干预即可自行重启的系统很有用。</span><br><span class="line">例如，需要自动硬件重置功能的远程位置的服务器。</span><br></pre></td></tr></table></figure>
