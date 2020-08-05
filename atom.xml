@@ -117,4 +117,27 @@
     
   </entry>
   
+  <entry>
+    <title>两阶段提交事物</title>
+    <link href="http://yoursite.com/PostgreSQL/PostgreSQL%E4%B8%A4%E9%98%B6%E6%AE%B5%E4%BA%8B%E7%89%A9%E6%8F%90%E4%BA%A4/"/>
+    <id>http://yoursite.com/PostgreSQL/PostgreSQL%E4%B8%A4%E9%98%B6%E6%AE%B5%E4%BA%8B%E7%89%A9%E6%8F%90%E4%BA%A4/</id>
+    <published>1970-01-01T05:36:40.805Z</published>
+    <updated>2020-08-05T03:13:52.020Z</updated>
+    
+    <summary type="html">
+    
+      两阶段提交协议的目标在于为分布式系统保证数据的一致性，许多分布式系统采用该协议提供对分布式事务的支持。 顾名思义，该协议将一个分布式的事务过程拆分成两个阶段： 准备和事务提交
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://yoursite.com/categories/PostgreSQL/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://yoursite.com/tags/PostgreSQL/"/>
+    
+      <category term="2pc" scheme="http://yoursite.com/tags/2pc/"/>
+    
+  </entry>
+  
 </feed>

@@ -45,6 +45,28 @@
       </tags>
   </entry>
   <entry>
+    <title>两阶段提交事物</title>
+    <url>/PostgreSQL/PostgreSQL%E4%B8%A4%E9%98%B6%E6%AE%B5%E4%BA%8B%E7%89%A9%E6%8F%90%E4%BA%A4/</url>
+    <content><![CDATA[<h1 id="什么是两阶段提交事物"><a href="#什么是两阶段提交事物" class="headerlink" title="什么是两阶段提交事物"></a>什么是两阶段提交事物</h1><p>两阶段提交协议的目标在于为分布式系统保证数据的一致性，许多分布式系统采用该协议提供对分布式事务的支持。 顾名思义，该协议将一个分布式的事务过程拆分成两个阶段： 准备和事务提交</p>
+<h1 id="PostgreSQL两阶段提交协议"><a href="#PostgreSQL两阶段提交协议" class="headerlink" title="PostgreSQL两阶段提交协议"></a>PostgreSQL两阶段提交协议</h1><p>两阶段提交协议有五个步骤，如下：</p>
+<ol>
+<li>应用程序先调用各台机数据库做一些操作，但不提交事务。然后应用程序调用事务协调器（这个协调器可能也是由应用自己实现）中的提交方法。</li>
+<li>事务协调器将联络事务中涉及的每台数据库，并通知它们准备提交事务，这是第一阶段的开始。在PostgreSQL一般是调用“PREPARE TRANSACTION”命令。</li>
+<li>各台数据库接收到“PREPARE TRANSACTION”命令后，如果要返回成功，则数据库必须将自己置于以下状态：确保能在被要求提交事务时提交事务，或在被要求回滚事务时回滚事务。所以PostgreSQL会将已准备好提交的信息写入持久存储区中。如果数据库无法完成此事务，它会直接返回失败给事务协调器。</li>
+<li>事务协调器接收到了所有数据库的响应。</li>
+<li>在第二阶段，如果任一数据库在第一阶段返回失败，则事务协调器会将发一个回滚命令（ROLLBACK PREPARED）给各台数据库。如果所有数据库的响应都是成功的，则向各台数据库发送“COMMIT PREPARED”命令，通知各台数据库事务成功。</li>
+</ol>
+<h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mydb&#x3D;# create table t1(id int, crt_time timestamptz);</span><br><span class="line">CREATE TABLE</span><br><span class="line">mydb&#x3D;# begin;                                              -- 开启事务</span><br><span class="line">BEGIN</span><br><span class="line">mydb&#x3D;*# insert into t1 select 1, now();    -- 插入一条数据</span><br><span class="line">INSERT 0 1</span><br><span class="line">mydb&#x3D;*# prepare transaction &#39;p1&#39;;            -- 准备事务</span><br><span class="line">PREPARE TRANSACTION</span><br><span class="line">mydb&#x3D;# \q</span><br><span class="line">jintao@jintao-ThinkPad-L490:~$ sudo -iu jintao &#x2F;opt&#x2F;pg-master&#x2F;bin&#x2F;pg_ctl -D &#x2F;export&#x2F;pgdata-master&#x2F; restart -l &#x2F;tmp&#x2F;start.log     -- 重启数据库</span><br><span class="line">waiting for server to shut down.... done</span><br><span class="line">server stopped</span><br><span class="line">waiting for server to start.... done</span><br><span class="line">server started</span><br><span class="line">jintao@jintao-ThinkPad-L490:~$ psql</span><br><span class="line">psql (14devel)</span><br><span class="line">Type &quot;help&quot; for help.</span><br><span class="line"></span><br><span class="line">mydb&#x3D;# select * from pg_prepared_xacts ;          -- 查看两阶段事务系统表</span><br><span class="line"> transaction | gid |           prepared            | owner  | database</span><br><span class="line">-------------+-----+-------------------------------+--------+----------</span><br><span class="line">        1045 | p1  | 2020-07-15 17:02:07.180102+08 | jintao | mydb</span><br><span class="line">(1 row)</span><br><span class="line"></span><br><span class="line">mydb&#x3D;# select * from t1;</span><br><span class="line"> id | crt_time</span><br><span class="line">----+----------</span><br><span class="line">(0 rows)</span><br><span class="line"></span><br><span class="line">mydb&#x3D;# commit prepared &#39;p1&#39;;                            -- 提交</span><br><span class="line">COMMIT PREPARED</span><br><span class="line">mydb&#x3D;# select * from t1;</span><br><span class="line"> id |           crt_time</span><br><span class="line">----+-------------------------------</span><br><span class="line">  1 | 2020-07-15 17:01:59.163772+08</span><br><span class="line">(1 row)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>PostgreSQL</category>
+      </categories>
+      <tags>
+        <tag>PostgreSQL</tag>
+        <tag>2pc</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/uncategorized/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
