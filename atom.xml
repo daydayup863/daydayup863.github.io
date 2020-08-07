@@ -135,31 +135,6 @@
   </entry>
   
   <entry>
-    <title>内核Softdog测试</title>
-    <link href="http://daydayup863.github.io/Linux/softdog/"/>
-    <id>http://daydayup863.github.io/Linux/softdog/</id>
-    <published>2020-08-04T16:00:00.000Z</published>
-    <updated>2020-08-07T12:14:29.600Z</updated>
-    
-    <summary type="html">
-    
-      Linux内核watchdog于监视系统是否正在运行。由于存在不可恢复的软件错误，应该自动重新启动挂起的系统
-    
-    </summary>
-    
-    
-      <category term="Linux" scheme="http://daydayup863.github.io/categories/Linux/"/>
-    
-    
-      <category term="Linux" scheme="http://daydayup863.github.io/tags/Linux/"/>
-    
-      <category term="softdog" scheme="http://daydayup863.github.io/tags/softdog/"/>
-    
-      <category term="watchdog" scheme="http://daydayup863.github.io/tags/watchdog/"/>
-    
-  </entry>
-  
-  <entry>
     <title>微信聊天自动回复机器人代码</title>
     <link href="http://daydayup863.github.io/python/%E5%BE%AE%E4%BF%A1%E8%81%8A%E5%A4%A9%E8%87%AA%E5%8A%A8%E5%9B%9E%E5%A4%8D%E6%9C%BA%E5%99%A8%E4%BA%BA/"/>
     <id>http://daydayup863.github.io/python/%E5%BE%AE%E4%BF%A1%E8%81%8A%E5%A4%A9%E8%87%AA%E5%8A%A8%E5%9B%9E%E5%A4%8D%E6%9C%BA%E5%99%A8%E4%BA%BA/</id>
@@ -181,6 +156,31 @@
       <category term="robot" scheme="http://daydayup863.github.io/tags/robot/"/>
     
       <category term="微信自动回复" scheme="http://daydayup863.github.io/tags/%E5%BE%AE%E4%BF%A1%E8%87%AA%E5%8A%A8%E5%9B%9E%E5%A4%8D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>内核Softdog测试</title>
+    <link href="http://daydayup863.github.io/Linux/softdog/"/>
+    <id>http://daydayup863.github.io/Linux/softdog/</id>
+    <published>2020-08-04T16:00:00.000Z</published>
+    <updated>2020-08-07T12:14:29.600Z</updated>
+    
+    <summary type="html">
+    
+      Linux内核watchdog于监视系统是否正在运行。由于存在不可恢复的软件错误，应该自动重新启动挂起的系统
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="http://daydayup863.github.io/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://daydayup863.github.io/tags/Linux/"/>
+    
+      <category term="softdog" scheme="http://daydayup863.github.io/tags/softdog/"/>
+    
+      <category term="watchdog" scheme="http://daydayup863.github.io/tags/watchdog/"/>
     
   </entry>
   
