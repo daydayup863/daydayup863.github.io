@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://daydayup863.github.io/"/>
-  <updated>2020-08-05T10:06:33.637Z</updated>
+  <updated>2020-08-11T11:24:25.051Z</updated>
   <id>http://daydayup863.github.io/</id>
   
   <author>
@@ -15,6 +15,119 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PostgreSQL Postgis 源码安装</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/unbutu_PostgreSQL_postgis_install/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/unbutu_PostgreSQL_postgis_install/</id>
+    <published>2020-08-11T06:56:15.000Z</published>
+    <updated>2020-08-11T11:24:25.051Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;为PostgreSQL 12.3 安装Postgis 2.5.4&lt;/p&gt;
+&lt;h1 id=&quot;postgis-源码下载&quot;&gt;&lt;a href=&quot;#postgis-源码下载&quot; class=&quot;headerlink&quot; title=&quot;postgis 源码下载&quot;&gt;&lt;/a&gt;postgis 源码下载&lt;/h1&gt;&lt;p&gt;巨慢, 耐心等待吧&lt;br&gt;&lt;figure class=&quot;highlight angelscript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs angelscript&quot;&gt;&lt;span class=&quot;hljs-symbol&quot;&gt;postgres@&lt;/span&gt;jintao-ThinkPad-L490:~/download$ wget https:&lt;span class=&quot;hljs-comment&quot;&gt;//download.osgeo.org/postgis/source/postgis-2.5.4.tar.gz&lt;/span&gt;&lt;br&gt;-&lt;span class=&quot;hljs-number&quot;&gt;-2020&lt;/span&gt;&lt;span class=&quot;hljs-number&quot;&gt;-08&lt;/span&gt;&lt;span class=&quot;hljs-number&quot;&gt;-11&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;14&lt;/span&gt;:&lt;span class=&quot;hljs-number&quot;&gt;57&lt;/span&gt;:&lt;span class=&quot;hljs-number&quot;&gt;46&lt;/span&gt;--  https:&lt;span class=&quot;hljs-comment&quot;&gt;//download.osgeo.org/postgis/source/postgis-2.5.4.tar.gz&lt;/span&gt;&lt;br&gt;Resolving download.osgeo.org (download.osgeo.org)... &lt;span class=&quot;hljs-number&quot;&gt;140.211&lt;/span&gt;&lt;span class=&quot;hljs-number&quot;&gt;.15&lt;/span&gt;&lt;span class=&quot;hljs-number&quot;&gt;.30&lt;/span&gt;&lt;br&gt;Connecting to download.osgeo.org (download.osgeo.org)|&lt;span class=&quot;hljs-number&quot;&gt;140.211&lt;/span&gt;&lt;span class=&quot;hljs-number&quot;&gt;.15&lt;/span&gt;&lt;span class=&quot;hljs-number&quot;&gt;.30&lt;/span&gt;|:&lt;span class=&quot;hljs-number&quot;&gt;443.&lt;/span&gt;.. connected.&lt;br&gt;HTTP request sent, awaiting response... &lt;span class=&quot;hljs-number&quot;&gt;200&lt;/span&gt; OK&lt;br&gt;Length: &lt;span class=&quot;hljs-number&quot;&gt;16041872&lt;/span&gt; (&lt;span class=&quot;hljs-number&quot;&gt;15&lt;/span&gt;M) [application/octet-stream]&lt;br&gt;Saving to: ‘postgis&lt;span class=&quot;hljs-number&quot;&gt;-2.5&lt;/span&gt;&lt;span class=&quot;hljs-number&quot;&gt;.4&lt;/span&gt;.tar.gz’&lt;br&gt;&lt;br&gt;postgis&lt;span class=&quot;hljs-number&quot;&gt;-2.5&lt;/span&gt;&lt;span class=&quot;hljs-number&quot;&gt;.4&lt;/span&gt;.tar.gz       &lt;span class=&quot;hljs-number&quot;&gt;6&lt;/span&gt;%[======&amp;gt;                                                    ]   &lt;span class=&quot;hljs-number&quot;&gt;1016&lt;/span&gt;K  &lt;span class=&quot;hljs-number&quot;&gt;5.72&lt;/span&gt;KB/s    eta &lt;span class=&quot;hljs-number&quot;&gt;43&lt;/span&gt;m &lt;span class=&quot;hljs-number&quot;&gt;7&lt;/span&gt;s&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;br&gt;&lt;a href=&quot;https://git.osgeo.org/gitea/postgis/postgis/branches/&quot;&gt;其他版本下载地址&lt;/a&gt;&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="postgres" scheme="http://daydayup863.github.io/tags/postgres/"/>
+    
+      <category term="pg" scheme="http://daydayup863.github.io/tags/pg/"/>
+    
+      <category term="postgresql" scheme="http://daydayup863.github.io/tags/postgresql/"/>
+    
+      <category term="postgis" scheme="http://daydayup863.github.io/tags/postgis/"/>
+    
+      <category term="geo" scheme="http://daydayup863.github.io/tags/geo/"/>
+    
+      <category term="gis" scheme="http://daydayup863.github.io/tags/gis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux ubuntu postgresql 源码安装</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/PostgreSQL_install_from_source/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/PostgreSQL_install_from_source/</id>
+    <published>2020-08-11T04:04:03.000Z</published>
+    <updated>2020-08-11T06:54:03.921Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;下载&quot;&gt;&lt;a href=&quot;#下载&quot; class=&quot;headerlink&quot; title=&quot;下载&quot;&gt;&lt;/a&gt;下载&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://www.postgresql.org/ftp/source/v12.3/&quot;&gt;官网下载地址&lt;/a&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight awk&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs awk&quot;&gt;wget https:&lt;span class=&quot;hljs-regexp&quot;&gt;//&lt;/span&gt;ftp.postgresql.org&lt;span class=&quot;hljs-regexp&quot;&gt;/pub/&lt;/span&gt;source&lt;span class=&quot;hljs-regexp&quot;&gt;/v12.3/&lt;/span&gt;postgresql-&lt;span class=&quot;hljs-number&quot;&gt;12.3&lt;/span&gt;.tar.gz&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="postgres" scheme="http://daydayup863.github.io/tags/postgres/"/>
+    
+      <category term="pg" scheme="http://daydayup863.github.io/tags/pg/"/>
+    
+      <category term="install" scheme="http://daydayup863.github.io/tags/install/"/>
+    
+      <category term="source" scheme="http://daydayup863.github.io/tags/source/"/>
+    
+      <category term="postgresql" scheme="http://daydayup863.github.io/tags/postgresql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>有用的连接</title>
+    <link href="http://daydayup863.github.io/%E4%B8%AA%E4%BA%BA%E8%AE%B0%E5%BD%95/%E9%BA%BB%E9%9B%80/"/>
+    <id>http://daydayup863.github.io/%E4%B8%AA%E4%BA%BA%E8%AE%B0%E5%BD%95/%E9%BA%BB%E9%9B%80/</id>
+    <published>2020-08-11T03:39:59.000Z</published>
+    <updated>2020-08-11T06:52:54.465Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;生成随即背景图片&quot;&gt;&lt;a href=&quot;#生成随即背景图片&quot; class=&quot;headerlink&quot; title=&quot;生成随即背景图片&quot;&gt;&lt;/a&gt;生成随即背景图片&lt;/h2&gt;&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs vim&quot;&gt;http&lt;span class=&quot;hljs-variable&quot;&gt;s:&lt;/span&gt;//&lt;span class=&quot;hljs-keyword&quot;&gt;source&lt;/span&gt;.unsplash.&lt;span class=&quot;hljs-keyword&quot;&gt;com&lt;/span&gt;/&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;SQL格式化&quot;&gt;&lt;a href=&quot;#SQL格式化&quot; class=&quot;headerlink&quot; title=&quot;SQL格式化&quot;&gt;&lt;/a&gt;SQL格式化&lt;/h2&gt;&lt;figure class=&quot;highlight awk&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs awk&quot;&gt;http:&lt;span class=&quot;hljs-regexp&quot;&gt;//&lt;/span&gt;sqlformat.darold.net/&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="个人记录" scheme="http://daydayup863.github.io/categories/%E4%B8%AA%E4%BA%BA%E8%AE%B0%E5%BD%95/"/>
+    
+    
+      <category term="python" scheme="http://daydayup863.github.io/tags/python/"/>
+    
+      <category term="Linux" scheme="http://daydayup863.github.io/tags/Linux/"/>
+    
+      <category term="personal" scheme="http://daydayup863.github.io/tags/personal/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Zabbix编译安装</title>
+    <link href="http://daydayup863.github.io/zabbix/zabbix%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/"/>
+    <id>http://daydayup863.github.io/zabbix/zabbix%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/</id>
+    <published>2020-08-11T03:16:08.000Z</published>
+    <updated>2020-08-11T03:33:57.716Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;新建帐号&quot;&gt;&lt;a href=&quot;#新建帐号&quot; class=&quot;headerlink&quot; title=&quot;新建帐号&quot;&gt;&lt;/a&gt;新建帐号&lt;/h1&gt;&lt;figure class=&quot;highlight properties&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs properties&quot;&gt;&lt;span class=&quot;hljs-attr&quot;&gt;groupadd&lt;/span&gt; &lt;span class=&quot;hljs-string&quot;&gt;zabbix&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-attr&quot;&gt;useradd&lt;/span&gt; &lt;span class=&quot;hljs-string&quot;&gt;-g zabbix zabbix&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="zabbix" scheme="http://daydayup863.github.io/categories/zabbix/"/>
+    
+    
+      <category term="zabbix" scheme="http://daydayup863.github.io/tags/zabbix/"/>
+    
+  </entry>
   
   <entry>
     <title>psql显示风格设置</title>
@@ -87,75 +200,26 @@
   </entry>
   
   <entry>
-    <title>利用PostgreSQL LATERAL完成行列转换</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/PostgreSQL%E8%A1%8C%E5%88%97%E8%BD%AC%E6%8D%A2/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/PostgreSQL%E8%A1%8C%E5%88%97%E8%BD%AC%E6%8D%A2/</id>
+    <title>利用Github分支备份Hexo博客源文件</title>
+    <link href="http://daydayup863.github.io/hexo/%E5%88%A9%E7%94%A8Github%E5%88%86%E6%94%AF%E5%A4%87%E4%BB%BDHexo%E5%8D%9A%E5%AE%A2%E6%BA%90%E6%96%87%E4%BB%B6/"/>
+    <id>http://daydayup863.github.io/hexo/%E5%88%A9%E7%94%A8Github%E5%88%86%E6%94%AF%E5%A4%87%E4%BB%BDHexo%E5%8D%9A%E5%AE%A2%E6%BA%90%E6%96%87%E4%BB%B6/</id>
     <published>2020-08-04T16:00:00.000Z</published>
-    <updated>2020-08-07T12:04:52.707Z</updated>
+    <updated>2020-08-07T12:24:41.324Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;利用PostgreSQL LATERAL完成行列转换.&lt;/p&gt;
+      &lt;h1 id=&quot;场景&quot;&gt;&lt;a href=&quot;#场景&quot; class=&quot;headerlink&quot; title=&quot;场景&quot;&gt;&lt;/a&gt;场景&lt;/h1&gt;&lt;p&gt;Hexo 部署博客很方便，我的这个博客也是用 Hexo 部署在 GitHub Pages 上的，有得人可能在多台电脑上写博客，这个时候需要把博客&lt;br&gt;的源文件备份在一个地方，这样只需把博客源文件复制下来就可以在另一个地方写博客并部署到 GitHub Pages上了.&lt;/p&gt;
+&lt;p&gt;本篇介绍的就是利用博客的 repo 分支（ master 分支的必须用来存放你博客网站文件）托管 Hexo 源文件和配置达到备份的目的，&lt;br&gt;下面开始正题.&lt;/p&gt;
     
     </summary>
     
     
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+      <category term="hexo" scheme="http://daydayup863.github.io/categories/hexo/"/>
     
     
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+      <category term="hexo" scheme="http://daydayup863.github.io/tags/hexo/"/>
     
-      <category term="行列转换" scheme="http://daydayup863.github.io/tags/%E8%A1%8C%E5%88%97%E8%BD%AC%E6%8D%A2/"/>
-    
-      <category term="LATERAL" scheme="http://daydayup863.github.io/tags/LATERAL/"/>
-    
-      <category term="自连接" scheme="http://daydayup863.github.io/tags/%E8%87%AA%E8%BF%9E%E6%8E%A5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python小技巧</title>
-    <link href="http://daydayup863.github.io/python/Python%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
-    <id>http://daydayup863.github.io/python/Python%E5%B0%8F%E6%8A%80%E5%B7%A7/</id>
-    <published>2020-08-04T16:00:00.000Z</published>
-    <updated>2020-08-10T09:24:38.142Z</updated>
-    
-    <summary type="html">
-    
-      列举一些python使用过程中用到的小技巧.
-    
-    </summary>
-    
-    
-      <category term="python" scheme="http://daydayup863.github.io/categories/python/"/>
-    
-    
-      <category term="python" scheme="http://daydayup863.github.io/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>内核Softdog测试</title>
-    <link href="http://daydayup863.github.io/Linux/softdog/"/>
-    <id>http://daydayup863.github.io/Linux/softdog/</id>
-    <published>2020-08-04T16:00:00.000Z</published>
-    <updated>2020-08-07T12:14:29.600Z</updated>
-    
-    <summary type="html">
-    
-      Linux内核watchdog于监视系统是否正在运行。由于存在不可恢复的软件错误，应该自动重新启动挂起的系统
-    
-    </summary>
-    
-    
-      <category term="Linux" scheme="http://daydayup863.github.io/categories/Linux/"/>
-    
-    
-      <category term="Linux" scheme="http://daydayup863.github.io/tags/Linux/"/>
-    
-      <category term="softdog" scheme="http://daydayup863.github.io/tags/softdog/"/>
-    
-      <category term="watchdog" scheme="http://daydayup863.github.io/tags/watchdog/"/>
+      <category term="github" scheme="http://daydayup863.github.io/tags/github/"/>
     
   </entry>
   
@@ -185,26 +249,75 @@
   </entry>
   
   <entry>
-    <title>利用Github分支备份Hexo博客源文件</title>
-    <link href="http://daydayup863.github.io/hexo/%E5%88%A9%E7%94%A8Github%E5%88%86%E6%94%AF%E5%A4%87%E4%BB%BDHexo%E5%8D%9A%E5%AE%A2%E6%BA%90%E6%96%87%E4%BB%B6/"/>
-    <id>http://daydayup863.github.io/hexo/%E5%88%A9%E7%94%A8Github%E5%88%86%E6%94%AF%E5%A4%87%E4%BB%BDHexo%E5%8D%9A%E5%AE%A2%E6%BA%90%E6%96%87%E4%BB%B6/</id>
+    <title>Python小技巧</title>
+    <link href="http://daydayup863.github.io/python/Python%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
+    <id>http://daydayup863.github.io/python/Python%E5%B0%8F%E6%8A%80%E5%B7%A7/</id>
     <published>2020-08-04T16:00:00.000Z</published>
-    <updated>2020-08-07T12:24:41.324Z</updated>
+    <updated>2020-08-10T09:24:38.142Z</updated>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;场景&quot;&gt;&lt;a href=&quot;#场景&quot; class=&quot;headerlink&quot; title=&quot;场景&quot;&gt;&lt;/a&gt;场景&lt;/h1&gt;&lt;p&gt;Hexo 部署博客很方便，我的这个博客也是用 Hexo 部署在 GitHub Pages 上的，有得人可能在多台电脑上写博客，这个时候需要把博客&lt;br&gt;的源文件备份在一个地方，这样只需把博客源文件复制下来就可以在另一个地方写博客并部署到 GitHub Pages上了.&lt;/p&gt;
-&lt;p&gt;本篇介绍的就是利用博客的 repo 分支（ master 分支的必须用来存放你博客网站文件）托管 Hexo 源文件和配置达到备份的目的，&lt;br&gt;下面开始正题.&lt;/p&gt;
+      列举一些python使用过程中用到的小技巧.
     
     </summary>
     
     
-      <category term="hexo" scheme="http://daydayup863.github.io/categories/hexo/"/>
+      <category term="python" scheme="http://daydayup863.github.io/categories/python/"/>
     
     
-      <category term="hexo" scheme="http://daydayup863.github.io/tags/hexo/"/>
+      <category term="python" scheme="http://daydayup863.github.io/tags/python/"/>
     
-      <category term="github" scheme="http://daydayup863.github.io/tags/github/"/>
+  </entry>
+  
+  <entry>
+    <title>利用PostgreSQL LATERAL完成行列转换</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/PostgreSQL%E8%A1%8C%E5%88%97%E8%BD%AC%E6%8D%A2/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/PostgreSQL%E8%A1%8C%E5%88%97%E8%BD%AC%E6%8D%A2/</id>
+    <published>2020-08-04T16:00:00.000Z</published>
+    <updated>2020-08-07T12:04:52.707Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;利用PostgreSQL LATERAL完成行列转换.&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="行列转换" scheme="http://daydayup863.github.io/tags/%E8%A1%8C%E5%88%97%E8%BD%AC%E6%8D%A2/"/>
+    
+      <category term="LATERAL" scheme="http://daydayup863.github.io/tags/LATERAL/"/>
+    
+      <category term="自连接" scheme="http://daydayup863.github.io/tags/%E8%87%AA%E8%BF%9E%E6%8E%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>内核Softdog测试</title>
+    <link href="http://daydayup863.github.io/Linux/softdog/"/>
+    <id>http://daydayup863.github.io/Linux/softdog/</id>
+    <published>2020-08-04T16:00:00.000Z</published>
+    <updated>2020-08-07T12:14:29.600Z</updated>
+    
+    <summary type="html">
+    
+      Linux内核watchdog于监视系统是否正在运行。由于存在不可恢复的软件错误，应该自动重新启动挂起的系统
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="http://daydayup863.github.io/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://daydayup863.github.io/tags/Linux/"/>
+    
+      <category term="softdog" scheme="http://daydayup863.github.io/tags/softdog/"/>
+    
+      <category term="watchdog" scheme="http://daydayup863.github.io/tags/watchdog/"/>
     
   </entry>
   
@@ -226,34 +339,15 @@
   </entry>
   
   <entry>
-    <title>GitHub + Hexo搭建自己的博客(二) Next主题配置</title>
-    <link href="http://daydayup863.github.io/uncategorized/Next%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/"/>
-    <id>http://daydayup863.github.io/uncategorized/Next%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/</id>
-    <published>2020-08-03T07:42:00.000Z</published>
-    <updated>2020-08-04T03:05:35.150Z</updated>
-    
-    <summary type="html">
-    
-       
-    
-    </summary>
-    
-    
-    
-      <category term="hexo hothub" scheme="http://daydayup863.github.io/tags/hexo-hothub/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PostgreSQL常用SQL</title>
+    <title>PostgreSQL有用的SQL</title>
     <link href="http://daydayup863.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93/PostgreSQL%E6%9C%89%E7%94%A8%E7%9A%84SQL/"/>
     <id>http://daydayup863.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93/PostgreSQL%E6%9C%89%E7%94%A8%E7%9A%84SQL/</id>
     <published>2020-07-31T10:19:15.000Z</published>
-    <updated>2020-08-07T12:11:47.495Z</updated>
+    <updated>2020-08-11T02:54:26.413Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;记录工作中常用到的PostgreSQL常用SQL.&lt;/p&gt;
+      &lt;p&gt;记录工作中常用到的PostgreSQL常用SQL， tps, qps 等等.&lt;/p&gt;
     
     </summary>
     
@@ -266,23 +360,6 @@
       <category term="DBA" scheme="http://daydayup863.github.io/tags/DBA/"/>
     
       <category term="SQL" scheme="http://daydayup863.github.io/tags/SQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>利用github搭建个人博客</title>
-    <link href="http://daydayup863.github.io/uncategorized/test/"/>
-    <id>http://daydayup863.github.io/uncategorized/test/</id>
-    <published>2019-04-12T12:42:06.000Z</published>
-    <updated>2020-08-04T03:05:47.918Z</updated>
-    
-    <summary type="html">
-    
-       
-    
-    </summary>
-    
-    
     
   </entry>
   
