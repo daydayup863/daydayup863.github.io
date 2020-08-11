@@ -34,13 +34,13 @@
       <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
     
     
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
       <category term="postgres" scheme="http://daydayup863.github.io/tags/postgres/"/>
     
       <category term="pg" scheme="http://daydayup863.github.io/tags/pg/"/>
     
       <category term="postgresql" scheme="http://daydayup863.github.io/tags/postgresql/"/>
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
     
       <category term="postgis" scheme="http://daydayup863.github.io/tags/postgis/"/>
     
@@ -68,8 +68,6 @@
       <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
     
     
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
       <category term="postgres" scheme="http://daydayup863.github.io/tags/postgres/"/>
     
       <category term="pg" scheme="http://daydayup863.github.io/tags/pg/"/>
@@ -79,6 +77,8 @@
       <category term="source" scheme="http://daydayup863.github.io/tags/source/"/>
     
       <category term="postgresql" scheme="http://daydayup863.github.io/tags/postgresql/"/>
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
     
   </entry>
   
@@ -200,51 +200,27 @@
   </entry>
   
   <entry>
-    <title>利用Github分支备份Hexo博客源文件</title>
-    <link href="http://daydayup863.github.io/hexo/%E5%88%A9%E7%94%A8Github%E5%88%86%E6%94%AF%E5%A4%87%E4%BB%BDHexo%E5%8D%9A%E5%AE%A2%E6%BA%90%E6%96%87%E4%BB%B6/"/>
-    <id>http://daydayup863.github.io/hexo/%E5%88%A9%E7%94%A8Github%E5%88%86%E6%94%AF%E5%A4%87%E4%BB%BDHexo%E5%8D%9A%E5%AE%A2%E6%BA%90%E6%96%87%E4%BB%B6/</id>
+    <title>内核Softdog测试</title>
+    <link href="http://daydayup863.github.io/Linux/softdog/"/>
+    <id>http://daydayup863.github.io/Linux/softdog/</id>
     <published>2020-08-04T16:00:00.000Z</published>
-    <updated>2020-08-07T12:24:41.324Z</updated>
+    <updated>2020-08-07T12:14:29.600Z</updated>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;场景&quot;&gt;&lt;a href=&quot;#场景&quot; class=&quot;headerlink&quot; title=&quot;场景&quot;&gt;&lt;/a&gt;场景&lt;/h1&gt;&lt;p&gt;Hexo 部署博客很方便，我的这个博客也是用 Hexo 部署在 GitHub Pages 上的，有得人可能在多台电脑上写博客，这个时候需要把博客&lt;br&gt;的源文件备份在一个地方，这样只需把博客源文件复制下来就可以在另一个地方写博客并部署到 GitHub Pages上了.&lt;/p&gt;
-&lt;p&gt;本篇介绍的就是利用博客的 repo 分支（ master 分支的必须用来存放你博客网站文件）托管 Hexo 源文件和配置达到备份的目的，&lt;br&gt;下面开始正题.&lt;/p&gt;
+      Linux内核watchdog于监视系统是否正在运行。由于存在不可恢复的软件错误，应该自动重新启动挂起的系统
     
     </summary>
     
     
-      <category term="hexo" scheme="http://daydayup863.github.io/categories/hexo/"/>
+      <category term="Linux" scheme="http://daydayup863.github.io/categories/Linux/"/>
     
     
-      <category term="hexo" scheme="http://daydayup863.github.io/tags/hexo/"/>
+      <category term="Linux" scheme="http://daydayup863.github.io/tags/Linux/"/>
     
-      <category term="github" scheme="http://daydayup863.github.io/tags/github/"/>
+      <category term="softdog" scheme="http://daydayup863.github.io/tags/softdog/"/>
     
-  </entry>
-  
-  <entry>
-    <title>微信聊天自动回复机器人代码</title>
-    <link href="http://daydayup863.github.io/python/%E5%BE%AE%E4%BF%A1%E8%81%8A%E5%A4%A9%E8%87%AA%E5%8A%A8%E5%9B%9E%E5%A4%8D%E6%9C%BA%E5%99%A8%E4%BA%BA/"/>
-    <id>http://daydayup863.github.io/python/%E5%BE%AE%E4%BF%A1%E8%81%8A%E5%A4%A9%E8%87%AA%E5%8A%A8%E5%9B%9E%E5%A4%8D%E6%9C%BA%E5%99%A8%E4%BA%BA/</id>
-    <published>2020-08-04T16:00:00.000Z</published>
-    <updated>2020-08-07T12:26:19.430Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;微信聊天自动回复小程序, 输入指定内容控制开关，以及添加附加内容等小功能,&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="python" scheme="http://daydayup863.github.io/categories/python/"/>
-    
-    
-      <category term="python" scheme="http://daydayup863.github.io/tags/python/"/>
-    
-      <category term="robot" scheme="http://daydayup863.github.io/tags/robot/"/>
-    
-      <category term="微信自动回复" scheme="http://daydayup863.github.io/tags/%E5%BE%AE%E4%BF%A1%E8%87%AA%E5%8A%A8%E5%9B%9E%E5%A4%8D/"/>
+      <category term="watchdog" scheme="http://daydayup863.github.io/tags/watchdog/"/>
     
   </entry>
   
@@ -297,27 +273,51 @@
   </entry>
   
   <entry>
-    <title>内核Softdog测试</title>
-    <link href="http://daydayup863.github.io/Linux/softdog/"/>
-    <id>http://daydayup863.github.io/Linux/softdog/</id>
+    <title>利用Github分支备份Hexo博客源文件</title>
+    <link href="http://daydayup863.github.io/hexo/%E5%88%A9%E7%94%A8Github%E5%88%86%E6%94%AF%E5%A4%87%E4%BB%BDHexo%E5%8D%9A%E5%AE%A2%E6%BA%90%E6%96%87%E4%BB%B6/"/>
+    <id>http://daydayup863.github.io/hexo/%E5%88%A9%E7%94%A8Github%E5%88%86%E6%94%AF%E5%A4%87%E4%BB%BDHexo%E5%8D%9A%E5%AE%A2%E6%BA%90%E6%96%87%E4%BB%B6/</id>
     <published>2020-08-04T16:00:00.000Z</published>
-    <updated>2020-08-07T12:14:29.600Z</updated>
+    <updated>2020-08-07T12:24:41.324Z</updated>
     
     <summary type="html">
     
-      Linux内核watchdog于监视系统是否正在运行。由于存在不可恢复的软件错误，应该自动重新启动挂起的系统
+      &lt;h1 id=&quot;场景&quot;&gt;&lt;a href=&quot;#场景&quot; class=&quot;headerlink&quot; title=&quot;场景&quot;&gt;&lt;/a&gt;场景&lt;/h1&gt;&lt;p&gt;Hexo 部署博客很方便，我的这个博客也是用 Hexo 部署在 GitHub Pages 上的，有得人可能在多台电脑上写博客，这个时候需要把博客&lt;br&gt;的源文件备份在一个地方，这样只需把博客源文件复制下来就可以在另一个地方写博客并部署到 GitHub Pages上了.&lt;/p&gt;
+&lt;p&gt;本篇介绍的就是利用博客的 repo 分支（ master 分支的必须用来存放你博客网站文件）托管 Hexo 源文件和配置达到备份的目的，&lt;br&gt;下面开始正题.&lt;/p&gt;
     
     </summary>
     
     
-      <category term="Linux" scheme="http://daydayup863.github.io/categories/Linux/"/>
+      <category term="hexo" scheme="http://daydayup863.github.io/categories/hexo/"/>
     
     
-      <category term="Linux" scheme="http://daydayup863.github.io/tags/Linux/"/>
+      <category term="hexo" scheme="http://daydayup863.github.io/tags/hexo/"/>
     
-      <category term="softdog" scheme="http://daydayup863.github.io/tags/softdog/"/>
+      <category term="github" scheme="http://daydayup863.github.io/tags/github/"/>
     
-      <category term="watchdog" scheme="http://daydayup863.github.io/tags/watchdog/"/>
+  </entry>
+  
+  <entry>
+    <title>微信聊天自动回复机器人代码</title>
+    <link href="http://daydayup863.github.io/python/%E5%BE%AE%E4%BF%A1%E8%81%8A%E5%A4%A9%E8%87%AA%E5%8A%A8%E5%9B%9E%E5%A4%8D%E6%9C%BA%E5%99%A8%E4%BA%BA/"/>
+    <id>http://daydayup863.github.io/python/%E5%BE%AE%E4%BF%A1%E8%81%8A%E5%A4%A9%E8%87%AA%E5%8A%A8%E5%9B%9E%E5%A4%8D%E6%9C%BA%E5%99%A8%E4%BA%BA/</id>
+    <published>2020-08-04T16:00:00.000Z</published>
+    <updated>2020-08-07T12:26:19.430Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;微信聊天自动回复小程序, 输入指定内容控制开关，以及添加附加内容等小功能,&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="python" scheme="http://daydayup863.github.io/categories/python/"/>
+    
+    
+      <category term="python" scheme="http://daydayup863.github.io/tags/python/"/>
+    
+      <category term="robot" scheme="http://daydayup863.github.io/tags/robot/"/>
+    
+      <category term="微信自动回复" scheme="http://daydayup863.github.io/tags/%E5%BE%AE%E4%BF%A1%E8%87%AA%E5%8A%A8%E5%9B%9E%E5%A4%8D/"/>
     
   </entry>
   

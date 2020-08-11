@@ -22,10 +22,10 @@
         <category>PostgreSQL</category>
       </categories>
       <tags>
-        <tag>PostgreSQL</tag>
         <tag>postgres</tag>
         <tag>pg</tag>
         <tag>postgresql</tag>
+        <tag>PostgreSQL</tag>
         <tag>postgis</tag>
         <tag>geo</tag>
         <tag>gis</tag>
@@ -48,12 +48,12 @@
         <category>PostgreSQL</category>
       </categories>
       <tags>
-        <tag>PostgreSQL</tag>
         <tag>postgres</tag>
         <tag>pg</tag>
         <tag>install</tag>
         <tag>source</tag>
         <tag>postgresql</tag>
+        <tag>PostgreSQL</tag>
       </tags>
   </entry>
   <entry>
