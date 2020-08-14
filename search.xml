@@ -22,10 +22,10 @@
         <category>PostgreSQL</category>
       </categories>
       <tags>
-        <tag>PostgreSQL</tag>
         <tag>postgres</tag>
         <tag>pg</tag>
         <tag>postgresql</tag>
+        <tag>PostgreSQL</tag>
         <tag>postgis</tag>
         <tag>geo</tag>
         <tag>gis</tag>
@@ -59,12 +59,12 @@
         <category>PostgreSQL</category>
       </categories>
       <tags>
-        <tag>PostgreSQL</tag>
         <tag>postgres</tag>
         <tag>pg</tag>
         <tag>install</tag>
         <tag>source</tag>
         <tag>postgresql</tag>
+        <tag>PostgreSQL</tag>
       </tags>
   </entry>
   <entry>
@@ -76,6 +76,7 @@
 <h2 id="PG11中文手册"><a href="#PG11中文手册" class="headerlink" title="PG11中文手册"></a>PG11中文手册</h2><figure class="highlight awk"><table><tr><td class="code"><pre><code class="hljs awk">https:<span class="hljs-regexp">//</span>www.docs4dev.com<span class="hljs-regexp">/docs/</span>zh<span class="hljs-regexp">/postgre-sql/</span><span class="hljs-number">11.2</span><span class="hljs-regexp">/reference/</span>release-<span class="hljs-number">11</span>-<span class="hljs-number">2</span>.html<br></code></pre></td></tr></table></figure>
 <h2 id="JSON格式化"><a href="#JSON格式化" class="headerlink" title="JSON格式化"></a>JSON格式化</h2><figure class="highlight awk"><table><tr><td class="code"><pre><code class="hljs awk">https:<span class="hljs-regexp">//</span>www.json.cn/<br></code></pre></td></tr></table></figure>
 <h2 id="PostgreSQL特性矩阵"><a href="#PostgreSQL特性矩阵" class="headerlink" title="PostgreSQL特性矩阵"></a>PostgreSQL特性矩阵</h2><figure class="highlight awk"><table><tr><td class="code"><pre><code class="hljs awk">https:<span class="hljs-regexp">//</span>www.postgresql.org<span class="hljs-regexp">/about/</span>featurematrix/<br></code></pre></td></tr></table></figure>
+<h2 id="Converting-from-other-Databases-to-PostgreSQL"><a href="#Converting-from-other-Databases-to-PostgreSQL" class="headerlink" title="Converting from other Databases to PostgreSQL"></a>Converting from other Databases to PostgreSQL</h2><figure class="highlight awk"><table><tr><td class="code"><pre><code class="hljs awk">https:<span class="hljs-regexp">//</span>wiki.postgresql.org<span class="hljs-regexp">/wiki/</span>Converting_from_other_Databases_to_PostgreSQL<span class="hljs-comment">#Utilities.2C_tools.2C_scripts_etc</span><br></code></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>个人记录</category>
