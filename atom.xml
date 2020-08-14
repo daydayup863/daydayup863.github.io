@@ -55,12 +55,12 @@
     <link href="http://daydayup863.github.io/PostgreSQL/PostgreSQL_install_from_source/"/>
     <id>http://daydayup863.github.io/PostgreSQL/PostgreSQL_install_from_source/</id>
     <published>2020-08-11T04:04:03.000Z</published>
-    <updated>2020-08-14T07:23:39.746Z</updated>
+    <updated>2020-08-14T07:27:33.917Z</updated>
     
     <summary type="html">
     
       &lt;h1 id=&quot;搭建主节点PostgreSQL实例&quot;&gt;&lt;a href=&quot;#搭建主节点PostgreSQL实例&quot; class=&quot;headerlink&quot; title=&quot;搭建主节点PostgreSQL实例&quot;&gt;&lt;/a&gt;搭建主节点PostgreSQL实例&lt;/h1&gt;&lt;h2 id=&quot;下载&quot;&gt;&lt;a href=&quot;#下载&quot; class=&quot;headerlink&quot; title=&quot;下载&quot;&gt;&lt;/a&gt;下载&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://www.postgresql.org/ftp/source/v12.3/&quot;&gt;官网下载地址&lt;/a&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight awk&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs awk&quot;&gt;wget https:&lt;span class=&quot;hljs-regexp&quot;&gt;//&lt;/span&gt;ftp.postgresql.org&lt;span class=&quot;hljs-regexp&quot;&gt;/pub/&lt;/span&gt;source&lt;span class=&quot;hljs-regexp&quot;&gt;/v12.3/&lt;/span&gt;postgresql-&lt;span class=&quot;hljs-number&quot;&gt;12.3&lt;/span&gt;.tar.gz&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight awk&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs awk&quot;&gt;sudo groupadd postgres&lt;br&gt;sudo useradd -a -G postgres postgres&lt;br&gt;su - postgres&lt;br&gt;wget https:&lt;span class=&quot;hljs-regexp&quot;&gt;//&lt;/span&gt;ftp.postgresql.org&lt;span class=&quot;hljs-regexp&quot;&gt;/pub/&lt;/span&gt;source&lt;span class=&quot;hljs-regexp&quot;&gt;/v12.3/&lt;/span&gt;postgresql-&lt;span class=&quot;hljs-number&quot;&gt;12.3&lt;/span&gt;.tar.gz&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
