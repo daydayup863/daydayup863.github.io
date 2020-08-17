@@ -1,6 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>PostgreSQL的两种统计信息</title>
+    <url>/PostgreSQL/The_two_kinds_of_stats_in_PostgreSQL/</url>
+    <content><![CDATA[<p>时不时地，有人对重置PostgreSQL中的统计信息, 以及重置统计信息对执行计划和数据库其他部分的影响感到困惑。也许文档对此描述的会更清晰一些，但是对于那些以前从未在PostgreSQL中处理过统计信息的人来说无疑是令人困惑的。但这不仅是关于新手的问题-我在9.3中为该区域编写了一个补丁，而且我有时也会感到困惑。对于大多数用户而言，最令人惊讶的事实是“统计信息”实际上可能意味着两件事, 描述数据分布的统计信息，以及监视统计信息，跟踪有关数据库系统本身操作的计数器。每种都有不同的用途，存储方式也不同，丢失数据时的影响也大不相同。因此，让我们看看这两种统计数据的目的是什么，常见的问题是什么，当数据由于某种原因丢失时会发生什么。<br><a id="more"></a></p>
+<h1 id="数据分布统计信息"><a href="#数据分布统计信息" class="headerlink" title="数据分布统计信息"></a>数据分布统计信息</h1><p>第一种统计信息跟踪数据的分布-不同值的数量，列中最常见的值，数据的直方图等。<br>这是规划查询时使用的信息, 用来解决以下问题:</p>
+<pre><code>- 有多少行符合条件？ （选择性估计）
+- 联接产生多少行？ （选择性估计）
+- 聚合需要多少内存？
+</code></pre><p>本质上，这些统计信息，决定了planner/optimizer使用了那一种最好的方式去执行。这种统计信息是由ANALYZE（或autovacuum）收集的，并存储在“常规”表中，并像常规数据一样受事务日志保护。检查pg_statistic系统目录，或者查看pg_stats，它是pg_statistic之上的视图，使统计信息更易于阅读。很多情况下会引发统计信息不准确，导致选择了较差的计划和糟糕的查询性能。发生这种情况的原因有多种（错误的统计信息，复杂的条件，相关的列…）</p>
+<p>据我所知，没有命令/函数可以重置此类统计信息，因为完全没有必要，不觉得可以通过删除此类统计信息来解决该任何问题。当然尝试使用简单的DELETE从目录中删除数据（但我从未尝试过）。</p>
+<h1 id="监控统计信息"><a href="#监控统计信息" class="headerlink" title="监控统计信息"></a>监控统计信息</h1><p>另一种统计信息是被statistics collector进程收集的，文档中的第一段<br><figure class="highlight applescript"><table><tr><td class="code"><pre><code class="hljs applescript">    PostgreSQL&#x27;s statistics collector <span class="hljs-keyword">is</span> a subsystem <span class="hljs-keyword">that</span> supports collection <span class="hljs-keyword">and</span> reporting <span class="hljs-keyword">of</span> information <span class="hljs-keyword">about</span> server activity. <br>Presently, <span class="hljs-keyword">the</span> collector can <span class="hljs-built_in">count</span> accesses <span class="hljs-keyword">to</span> tables <span class="hljs-keyword">and</span> indexes <span class="hljs-keyword">in</span> both disk-block <span class="hljs-keyword">and</span> individual-row terms. It also tracks <span class="hljs-keyword">the</span> <br>total <span class="hljs-built_in">number</span> <span class="hljs-keyword">of</span> rows <span class="hljs-keyword">in</span> each table, <span class="hljs-keyword">and</span> information <span class="hljs-keyword">about</span> vacuum <span class="hljs-keyword">and</span> analyze actions <span class="hljs-keyword">for</span> each table. It can also <span class="hljs-built_in">count</span> calls <span class="hljs-keyword">to</span> <br>user-defined functions <span class="hljs-keyword">and</span> <span class="hljs-keyword">the</span> total <span class="hljs-built_in">time</span> spent <span class="hljs-keyword">in</span> each one.<br></code></pre></td></tr></table></figure></p>
+<p>因此，当您需要了解特定表的访问频率，是顺序读取表还是使用索引访问表等时，这就是统计信息收集器收集的统计信息。如果要查看此类统计信息，则有很多系统视图：</p>
+<figure class="highlight python-repl"><table><tr><td class="code"><pre><code class="hljs python-repl">pg_stat_activity<br>pg_stat_archiver<br>pg_stat_bgwriter<br>pg_stat_database<br>pg_stat_all_tables<br>pg_stat_sys_tables<br><span class="hljs-meta">...</span><br>pg_statio_all_tables<br>pg_statio_sys_tables<br>pg_statio_user_tables<br>pg_statio_all_indexes<br>pg_statio_sys_indexes<br><span class="hljs-meta">...</span><br></code></pre></td></tr></table></figure>
+<p>命名方案很明显（以pg_stat_或pg_statio_开头），其名称很不言而喻。例如，当您需要有关当前用户拥有的表的信息时，您可以转到pg_stat_user_tables或pg_statio_user_tables，这取决于您是否需要简单的统计信息（seq扫描，索引扫描的数量…）还是与IO相关的统计信息（数量读取的块数，点击率等）。对于与复制和数据库系统其他部分有关的其他对象（索引，函数等）和统计信息，也是如此。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="数据分布统计信息-1"><a href="#数据分布统计信息-1" class="headerlink" title="数据分布统计信息"></a>数据分布统计信息</h2><ul>
+<li>描述数据分布的统计数据，由ANALYZE / autovacuum收集</li>
+<li>planner/optimizer在规划查询时使用</li>
+<li>存储在数据库中，受WAL保护的常规表</li>
+<li>没有官方方法可以重置此类统计信息</li>
+<li>这些问题通常会导致选择错误的查询计划</li>
+</ul>
+<h2 id="监控统计信息-1"><a href="#监控统计信息-1" class="headerlink" title="监控统计信息"></a>监控统计信息</h2><ul>
+<li>统计信息跟踪数据库系统本身的运行情况</li>
+<li>用于监视目的和autovacuum（以识别需要维护的对象)</li>
+<li>存储在数据库外部，二进制文件（pgstat.stat）或每个数据库文件的集合中（从9.3开始）</li>
+<li>这就是使用pg_stat_reset()重置的统计信息</li>
+<li>最常见的问题是pgstat.stat文件变大时（由于跟踪许多数据库对象), I/O负载较高</li>
+<li>重置统计信息不是解决方案-不会解决问题，并且会对autovacuum产生负面影响</li>
+<li>9.3之前的解决方案：将pgstat.stat文件移动到tmpfs文件系统，考虑升级到9.3</li>
+</ul>
+]]></content>
+      <categories>
+        <category>PostgreSQL</category>
+      </categories>
+      <tags>
+        <tag>PostgreSQL</tag>
+        <tag>stat</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>PostgreSQL Postgis 源码安装</title>
     <url>/PostgreSQL/unbutu_PostgreSQL_postgis_install/</url>
     <content><![CDATA[<p>为PostgreSQL 12.3 安装Postgis 2.5.4</p>
@@ -126,6 +165,29 @@
       </tags>
   </entry>
   <entry>
+    <title>内核Softdog测试</title>
+    <url>/Linux/softdog/</url>
+    <content><![CDATA[<h1 id="Watchdog的功能"><a href="#Watchdog的功能" class="headerlink" title="Watchdog的功能"></a>Watchdog的功能</h1><pre><code>Linux内核watchdog于监视系统是否正在运行。由于存在不可恢复的软件错误，应该自动重新启动挂起的系统。
+
+看门狗模块特依赖所使用的硬件或芯片。个人计算机用户通常不需要看门狗，因为他们可以手动重置系统。但是，watchdog对于任务关键型系统和需要无需人工干预即可自行重启的系统很有用。
+</code></pre><p>例如，需要自动硬件重置功能的远程位置的服务器。</p>
+<a id="more"></a>
+<h1 id="Watchdog的实现"><a href="#Watchdog的实现" class="headerlink" title="Watchdog的实现"></a>Watchdog的实现</h1><pre><code>看门狗功能设置了一个计时器在预定时间后超时。然后看门狗软件定期喂狗(刷新硬件计时器)。如果停止喂狗，到达设定时间后，将会出现狗咬人(执行设备的硬件重置)。
+</code></pre><p>可以分为hardware watchdog 和 software watchdog。<br>    hardware watchdog 是主板芯片的功能。不同的芯片使用不同的模块，例如：Intel 主板使用 “iTCO_wdt”， HP 通常使用 “hpwdt”，IBM 使用 “vmwatchdog”，Xen VM 使用 “xen_wdt”。<br>    software watchdog 是Linux内核提供使用内核计时器实现的软件监视程序。</p>
+<h1 id="测试Linux自带watchdog"><a href="#测试Linux自带watchdog" class="headerlink" title="测试Linux自带watchdog"></a>测试Linux自带watchdog</h1><figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros">[root@server6 ~]# ls /dev/watchdog*              #查看watchdog设备文件<br>/dev<span class="hljs-built_in">/watchdog </span> /dev/watchdog0<br>[root@server6 ~]# lsmod |grep -i soft            #查看softdog是否加载<br>[root@server6 ~]# modinfo softdog                #查看softdog模块信息<br>filename:       /lib/modules/3.10.0-957.10.1.el7.x86_64/kernel/drivers/watchdog/softdog.ko.xz<br>alias:          char-major-10-130<br>license:        GPL<br>description:    Software<span class="hljs-built_in"> Watchdog </span>Device Driver<br>author:         Alan Cox<br>retpoline:      Y<br>rhelversion:    7.6<br>srcversion:     250C077ED39E75BF25AD8D1<br>depends:<br>intree:         Y<br>vermagic:       3.10.0-957.10.1.el7.x86_64 SMP mod_unload modversions<br>signer:         CentOS Linux kernel signing key<br>sig_key:        17:EA:5F:B9:16:4B:C2:26:55:5C:00:43:FA:D4:E5:86:CC:E8:A2:05<br>sig_hashalgo:   sha256<br>parm:           soft_margin:Watchdog soft_margin <span class="hljs-keyword">in</span> seconds. (0 &lt; soft_margin &lt; 65536, <span class="hljs-attribute">default</span>=60) (uint)<br>parm:           nowayout:Watchdog cannot be stopped once started (<span class="hljs-attribute">default</span>=0) (bool)<br>parm:           soft_noboot:Softdog action, <span class="hljs-builtin-name">set</span> <span class="hljs-keyword">to</span> 1 <span class="hljs-keyword">to</span> ignore reboots, 0 <span class="hljs-keyword">to</span> reboot (<span class="hljs-attribute">default</span>=0) (int)<br>parm:           soft_panic:Softdog action, <span class="hljs-builtin-name">set</span> <span class="hljs-keyword">to</span> 1 <span class="hljs-keyword">to</span> panic, 0 <span class="hljs-keyword">to</span> reboot (<span class="hljs-attribute">default</span>=0) (int)<br><br>[root@server6 ~]# modprobe softdog               #加载softdog 可以设置 soft_margin soft_noboot   soft_panic   nowayout等参数<br>[root@server6 ~]# ls /dev/watchdog*              #查看watchdog设备文件<br>/dev<span class="hljs-built_in">/watchdog </span> /dev/watchdog0  /dev/watchdog1<br>[root@server6 ~]# wdctl /dev/watchdog1           #查看softdog设备文件信息<br>Device:        /dev/watchdog1<br>Identity:      Software<span class="hljs-built_in"> Watchdog </span>[version 0]<br>Timeout:       60 seconds<br>Pre-timeout:    0 seconds<br>FLAG           DESCRIPTION               STATUS BOOT-STATUS<br>KEEPALIVEPING  Keep alive<span class="hljs-built_in"> ping </span>reply          1           0<br>MAGICCLOSE     Supports magic close char      0           0<br>SETTIMEOUT     <span class="hljs-builtin-name">Set</span> timeout (<span class="hljs-keyword">in</span> seconds)       0           0<br>[root@server6 ~]# ehco a &gt;/dev<span class="hljs-built_in">/watchdog </span>         #追加除V以外任意字符到softdog  60秒后系统将重启<br>watchdog   watchdog0  watchdog1<br>[root@server6 ~]# echo V &gt;/dev/watchdog1         #取消测试<br></code></pre></td></tr></table></figure>
+<h1 id="警告"><a href="#警告" class="headerlink" title="警告"></a>警告</h1><figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">错误的watchdog配置可能导致以下情形<br>    无限重启<br>    硬重置导致文件损坏<br>    不可预测的重启<br>线上服务器慎用。<br></code></pre></td></tr></table></figure>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><figure class="highlight awk"><table><tr><td class="code"><pre><code class="hljs awk">https:<span class="hljs-regexp">//</span>linuxhint.com<span class="hljs-regexp">/linux-kernel-watchdog-explained/</span><br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>softdog</tag>
+        <tag>watchdog</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>利用Github分支备份Hexo博客源文件</title>
     <url>/hexo/%E5%88%A9%E7%94%A8Github%E5%88%86%E6%94%AF%E5%A4%87%E4%BB%BDHexo%E5%8D%9A%E5%AE%A2%E6%BA%90%E6%96%87%E4%BB%B6/</url>
     <content><![CDATA[<h1 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h1><p>Hexo 部署博客很方便，我的这个博客也是用 Hexo 部署在 GitHub Pages 上的，有得人可能在多台电脑上写博客，这个时候需要把博客<br>的源文件备份在一个地方，这样只需把博客源文件复制下来就可以在另一个地方写博客并部署到 GitHub Pages上了.</p>
@@ -153,29 +215,6 @@
       <tags>
         <tag>hexo</tag>
         <tag>github</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>内核Softdog测试</title>
-    <url>/Linux/softdog/</url>
-    <content><![CDATA[<h1 id="Watchdog的功能"><a href="#Watchdog的功能" class="headerlink" title="Watchdog的功能"></a>Watchdog的功能</h1><pre><code>Linux内核watchdog于监视系统是否正在运行。由于存在不可恢复的软件错误，应该自动重新启动挂起的系统。
-
-看门狗模块特依赖所使用的硬件或芯片。个人计算机用户通常不需要看门狗，因为他们可以手动重置系统。但是，watchdog对于任务关键型系统和需要无需人工干预即可自行重启的系统很有用。
-</code></pre><p>例如，需要自动硬件重置功能的远程位置的服务器。</p>
-<a id="more"></a>
-<h1 id="Watchdog的实现"><a href="#Watchdog的实现" class="headerlink" title="Watchdog的实现"></a>Watchdog的实现</h1><pre><code>看门狗功能设置了一个计时器在预定时间后超时。然后看门狗软件定期喂狗(刷新硬件计时器)。如果停止喂狗，到达设定时间后，将会出现狗咬人(执行设备的硬件重置)。
-</code></pre><p>可以分为hardware watchdog 和 software watchdog。<br>    hardware watchdog 是主板芯片的功能。不同的芯片使用不同的模块，例如：Intel 主板使用 “iTCO_wdt”， HP 通常使用 “hpwdt”，IBM 使用 “vmwatchdog”，Xen VM 使用 “xen_wdt”。<br>    software watchdog 是Linux内核提供使用内核计时器实现的软件监视程序。</p>
-<h1 id="测试Linux自带watchdog"><a href="#测试Linux自带watchdog" class="headerlink" title="测试Linux自带watchdog"></a>测试Linux自带watchdog</h1><figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros">[root@server6 ~]# ls /dev/watchdog*              #查看watchdog设备文件<br>/dev<span class="hljs-built_in">/watchdog </span> /dev/watchdog0<br>[root@server6 ~]# lsmod |grep -i soft            #查看softdog是否加载<br>[root@server6 ~]# modinfo softdog                #查看softdog模块信息<br>filename:       /lib/modules/3.10.0-957.10.1.el7.x86_64/kernel/drivers/watchdog/softdog.ko.xz<br>alias:          char-major-10-130<br>license:        GPL<br>description:    Software<span class="hljs-built_in"> Watchdog </span>Device Driver<br>author:         Alan Cox<br>retpoline:      Y<br>rhelversion:    7.6<br>srcversion:     250C077ED39E75BF25AD8D1<br>depends:<br>intree:         Y<br>vermagic:       3.10.0-957.10.1.el7.x86_64 SMP mod_unload modversions<br>signer:         CentOS Linux kernel signing key<br>sig_key:        17:EA:5F:B9:16:4B:C2:26:55:5C:00:43:FA:D4:E5:86:CC:E8:A2:05<br>sig_hashalgo:   sha256<br>parm:           soft_margin:Watchdog soft_margin <span class="hljs-keyword">in</span> seconds. (0 &lt; soft_margin &lt; 65536, <span class="hljs-attribute">default</span>=60) (uint)<br>parm:           nowayout:Watchdog cannot be stopped once started (<span class="hljs-attribute">default</span>=0) (bool)<br>parm:           soft_noboot:Softdog action, <span class="hljs-builtin-name">set</span> <span class="hljs-keyword">to</span> 1 <span class="hljs-keyword">to</span> ignore reboots, 0 <span class="hljs-keyword">to</span> reboot (<span class="hljs-attribute">default</span>=0) (int)<br>parm:           soft_panic:Softdog action, <span class="hljs-builtin-name">set</span> <span class="hljs-keyword">to</span> 1 <span class="hljs-keyword">to</span> panic, 0 <span class="hljs-keyword">to</span> reboot (<span class="hljs-attribute">default</span>=0) (int)<br><br>[root@server6 ~]# modprobe softdog               #加载softdog 可以设置 soft_margin soft_noboot   soft_panic   nowayout等参数<br>[root@server6 ~]# ls /dev/watchdog*              #查看watchdog设备文件<br>/dev<span class="hljs-built_in">/watchdog </span> /dev/watchdog0  /dev/watchdog1<br>[root@server6 ~]# wdctl /dev/watchdog1           #查看softdog设备文件信息<br>Device:        /dev/watchdog1<br>Identity:      Software<span class="hljs-built_in"> Watchdog </span>[version 0]<br>Timeout:       60 seconds<br>Pre-timeout:    0 seconds<br>FLAG           DESCRIPTION               STATUS BOOT-STATUS<br>KEEPALIVEPING  Keep alive<span class="hljs-built_in"> ping </span>reply          1           0<br>MAGICCLOSE     Supports magic close char      0           0<br>SETTIMEOUT     <span class="hljs-builtin-name">Set</span> timeout (<span class="hljs-keyword">in</span> seconds)       0           0<br>[root@server6 ~]# ehco a &gt;/dev<span class="hljs-built_in">/watchdog </span>         #追加除V以外任意字符到softdog  60秒后系统将重启<br>watchdog   watchdog0  watchdog1<br>[root@server6 ~]# echo V &gt;/dev/watchdog1         #取消测试<br></code></pre></td></tr></table></figure>
-<h1 id="警告"><a href="#警告" class="headerlink" title="警告"></a>警告</h1><figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">错误的watchdog配置可能导致以下情形<br>    无限重启<br>    硬重置导致文件损坏<br>    不可预测的重启<br>线上服务器慎用。<br></code></pre></td></tr></table></figure>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><figure class="highlight awk"><table><tr><td class="code"><pre><code class="hljs awk">https:<span class="hljs-regexp">//</span>linuxhint.com<span class="hljs-regexp">/linux-kernel-watchdog-explained/</span><br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>softdog</tag>
-        <tag>watchdog</tag>
       </tags>
   </entry>
   <entry>
