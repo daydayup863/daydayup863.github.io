@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://daydayup863.github.io/"/>
-  <updated>2020-08-17T07:18:42.987Z</updated>
+  <updated>2020-08-18T06:53:32.853Z</updated>
   <id>http://daydayup863.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>pg_hint_plan</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/pg_hint_plan/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/pg_hint_plan/</id>
+    <published>2020-08-18T06:25:34.000Z</published>
+    <updated>2020-08-18T06:53:32.853Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;名字&quot;&gt;&lt;a href=&quot;#名字&quot; class=&quot;headerlink&quot; title=&quot;名字&quot;&gt;&lt;/a&gt;名字&lt;/h1&gt;&lt;p&gt;pg_hint_plan – 在注释中使用特殊格式的 hint 语句来控制查询计划.&lt;/p&gt;
+&lt;h1 id=&quot;语法&quot;&gt;&lt;a href=&quot;#语法&quot; class=&quot;headerlink&quot; title=&quot;语法&quot;&gt;&lt;/a&gt;语法&lt;/h1&gt;&lt;p&gt;PostgresQL 使用查询规划器计算开销，查询规划器是基于数据统计的而不是静态的规则。对于一个 SQL 语句查询规划器估计每一种可能执行方法的开销，然后使用开销最低的执行方法。查询规划器使用它认为最好的执行计划，而并非真正最优的，因为它不考虑一些数据的属性，例如，列之间的关系。&lt;/p&gt;
+&lt;p&gt;pg_hint_plan 使用所谓的 “hint” 来调整执行计划，它可以在 SQL 注释中使用特殊的格式来简单的描述。&lt;/p&gt;
+&lt;h1 id=&quot;描述&quot;&gt;&lt;a href=&quot;#描述&quot; class=&quot;headerlink&quot; title=&quot;描述&quot;&gt;&lt;/a&gt;描述&lt;/h1&gt;&lt;h2 id=&quot;基本用法&quot;&gt;&lt;a href=&quot;#基本用法&quot; class=&quot;headerlink&quot; title=&quot;基本用法&quot;&gt;&lt;/a&gt;基本用法&lt;/h2&gt;&lt;p&gt;pg_hint 在 SQL 注释的特殊格式中读取 hint 语句。特殊格式以 “/+” 开头以 “/“ 结尾。hint 语句由名字和跟在后面的括号中的参数组成，参数以空格分隔。为了可读性每一个 hint 语句使用换行来分隔。&lt;/p&gt;
+&lt;p&gt;在下面的例子中，哈希 join 被作为 join 的方法，使用顺数扫描作为扫描的方法。&lt;/p&gt;
+&lt;figure class=&quot;highlight jboss-cli&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs jboss-cli&quot;&gt;postgres=&lt;span class=&quot;hljs-comment&quot;&gt;# /*+&lt;/span&gt;&lt;br&gt;postgres*&lt;span class=&quot;hljs-comment&quot;&gt;#    HashJoin(a b)&lt;/span&gt;&lt;br&gt;postgres*&lt;span class=&quot;hljs-comment&quot;&gt;#    SeqScan(a)&lt;/span&gt;&lt;br&gt;postgres*&lt;span class=&quot;hljs-comment&quot;&gt;#  */&lt;/span&gt;&lt;br&gt;postgres-&lt;span class=&quot;hljs-comment&quot;&gt;# EXPLAIN SELECT *&lt;/span&gt;&lt;br&gt;postgres-&lt;span class=&quot;hljs-comment&quot;&gt;#    FROM pgbench_branches b&lt;/span&gt;&lt;br&gt;postgres-&lt;span class=&quot;hljs-comment&quot;&gt;#    JOIN pgbench_accounts a ON b.bid = a.bid&lt;/span&gt;&lt;br&gt;postgres-&lt;span class=&quot;hljs-comment&quot;&gt;#   ORDER BY a.aid;&lt;/span&gt;&lt;br&gt;                                      QUERY PLAN&lt;br&gt;&lt;span class=&quot;hljs-params&quot;&gt;---------------------------------------------------------------------------------------&lt;/span&gt;&lt;br&gt; Sort  &lt;span class=&quot;hljs-params&quot;&gt;(&lt;span class=&quot;hljs-attr&quot;&gt;cost&lt;/span&gt;=31465.84..31715.84 &lt;span class=&quot;hljs-attr&quot;&gt;rows&lt;/span&gt;=100000 &lt;span class=&quot;hljs-attr&quot;&gt;width&lt;/span&gt;=197)&lt;/span&gt;&lt;br&gt;   Sort Key: a.aid&lt;br&gt;   -&amp;gt;  Hash Join  &lt;span class=&quot;hljs-params&quot;&gt;(&lt;span class=&quot;hljs-attr&quot;&gt;cost&lt;/span&gt;=1.02..4016.02 &lt;span class=&quot;hljs-attr&quot;&gt;rows&lt;/span&gt;=100000 &lt;span class=&quot;hljs-attr&quot;&gt;width&lt;/span&gt;=197)&lt;/span&gt;&lt;br&gt;         Hash Cond: &lt;span class=&quot;hljs-params&quot;&gt;(a.&lt;span class=&quot;hljs-attr&quot;&gt;bid&lt;/span&gt; = b.bid)&lt;/span&gt;&lt;br&gt;         -&amp;gt;  Seq Scan on pgbench_accounts a  &lt;span class=&quot;hljs-params&quot;&gt;(&lt;span class=&quot;hljs-attr&quot;&gt;cost&lt;/span&gt;=0.00..2640.00 &lt;span class=&quot;hljs-attr&quot;&gt;rows&lt;/span&gt;=100000 &lt;span class=&quot;hljs-attr&quot;&gt;width&lt;/span&gt;=97)&lt;/span&gt;&lt;br&gt;         -&amp;gt;  Hash  &lt;span class=&quot;hljs-params&quot;&gt;(&lt;span class=&quot;hljs-attr&quot;&gt;cost&lt;/span&gt;=1.01..1.01 &lt;span class=&quot;hljs-attr&quot;&gt;rows&lt;/span&gt;=1 &lt;span class=&quot;hljs-attr&quot;&gt;width&lt;/span&gt;=100)&lt;/span&gt;&lt;br&gt;               -&amp;gt;  Seq Scan on pgbench_branches b  &lt;span class=&quot;hljs-params&quot;&gt;(&lt;span class=&quot;hljs-attr&quot;&gt;cost&lt;/span&gt;=0.00..1.01 &lt;span class=&quot;hljs-attr&quot;&gt;rows&lt;/span&gt;=1 &lt;span class=&quot;hljs-attr&quot;&gt;width&lt;/span&gt;=100)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-params&quot;&gt;(7 rows)&lt;/span&gt;&lt;br&gt;&lt;br&gt;postgres=&lt;span class=&quot;hljs-comment&quot;&gt;#&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="pg_hint_plan" scheme="http://daydayup863.github.io/tags/pg-hint-plan/"/>
+    
+  </entry>
   
   <entry>
     <title>PostgreSQL的两种统计信息</title>
@@ -248,31 +276,6 @@
   </entry>
   
   <entry>
-    <title>内核Softdog测试</title>
-    <link href="http://daydayup863.github.io/Linux/softdog/"/>
-    <id>http://daydayup863.github.io/Linux/softdog/</id>
-    <published>2020-08-04T16:00:00.000Z</published>
-    <updated>2020-08-07T12:14:29.600Z</updated>
-    
-    <summary type="html">
-    
-      Linux内核watchdog于监视系统是否正在运行。由于存在不可恢复的软件错误，应该自动重新启动挂起的系统
-    
-    </summary>
-    
-    
-      <category term="Linux" scheme="http://daydayup863.github.io/categories/Linux/"/>
-    
-    
-      <category term="Linux" scheme="http://daydayup863.github.io/tags/Linux/"/>
-    
-      <category term="softdog" scheme="http://daydayup863.github.io/tags/softdog/"/>
-    
-      <category term="watchdog" scheme="http://daydayup863.github.io/tags/watchdog/"/>
-    
-  </entry>
-  
-  <entry>
     <title>利用PostgreSQL LATERAL完成行列转换</title>
     <link href="http://daydayup863.github.io/PostgreSQL/PostgreSQL%E8%A1%8C%E5%88%97%E8%BD%AC%E6%8D%A2/"/>
     <id>http://daydayup863.github.io/PostgreSQL/PostgreSQL%E8%A1%8C%E5%88%97%E8%BD%AC%E6%8D%A2/</id>
@@ -296,6 +299,31 @@
       <category term="LATERAL" scheme="http://daydayup863.github.io/tags/LATERAL/"/>
     
       <category term="自连接" scheme="http://daydayup863.github.io/tags/%E8%87%AA%E8%BF%9E%E6%8E%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>内核Softdog测试</title>
+    <link href="http://daydayup863.github.io/Linux/softdog/"/>
+    <id>http://daydayup863.github.io/Linux/softdog/</id>
+    <published>2020-08-04T16:00:00.000Z</published>
+    <updated>2020-08-07T12:14:29.600Z</updated>
+    
+    <summary type="html">
+    
+      Linux内核watchdog于监视系统是否正在运行。由于存在不可恢复的软件错误，应该自动重新启动挂起的系统
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="http://daydayup863.github.io/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://daydayup863.github.io/tags/Linux/"/>
+    
+      <category term="softdog" scheme="http://daydayup863.github.io/tags/softdog/"/>
+    
+      <category term="watchdog" scheme="http://daydayup863.github.io/tags/watchdog/"/>
     
   </entry>
   
