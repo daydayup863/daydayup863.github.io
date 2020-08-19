@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://daydayup863.github.io/"/>
-  <updated>2020-08-18T07:15:06.547Z</updated>
+  <updated>2020-08-19T07:52:05.651Z</updated>
   <id>http://daydayup863.github.io/</id>
   
   <author>
@@ -15,6 +15,76 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux 命令记录</title>
+    <link href="http://daydayup863.github.io/uncategorized/Linux_cmd_summary/"/>
+    <id>http://daydayup863.github.io/uncategorized/Linux_cmd_summary/</id>
+    <published>2020-08-19T03:15:42.000Z</published>
+    <updated>2020-08-19T07:52:05.651Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;磁盘读写测试&quot;&gt;&lt;a href=&quot;#磁盘读写测试&quot; class=&quot;headerlink&quot; title=&quot;磁盘读写测试&quot;&gt;&lt;/a&gt;磁盘读写测试&lt;/h1&gt;&lt;figure class=&quot;highlight angelscript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs angelscript&quot;&gt;$ sudo hdparm -tT --direct /dev/nvme0n1p2&lt;br&gt;&lt;br&gt;/dev/nvme0n1p2:&lt;br&gt; Timing O_DIRECT cached reads:   &lt;span class=&quot;hljs-number&quot;&gt;2284&lt;/span&gt; MB &lt;span class=&quot;hljs-keyword&quot;&gt;in&lt;/span&gt;  &lt;span class=&quot;hljs-number&quot;&gt;2.00&lt;/span&gt; seconds = &lt;span class=&quot;hljs-number&quot;&gt;1142.33&lt;/span&gt; MB/sec&lt;br&gt; Timing O_DIRECT disk reads: &lt;span class=&quot;hljs-number&quot;&gt;100&lt;/span&gt; MB &lt;span class=&quot;hljs-keyword&quot;&gt;in&lt;/span&gt;  &lt;span class=&quot;hljs-number&quot;&gt;0.08&lt;/span&gt; seconds = &lt;span class=&quot;hljs-number&quot;&gt;1226.93&lt;/span&gt; MB/sec&lt;br&gt;&lt;br&gt;# 顺序同步写入&lt;br&gt;$ time dd &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;=/dev/zero of=test bs=&lt;span class=&quot;hljs-number&quot;&gt;8&lt;/span&gt;k count=&lt;span class=&quot;hljs-number&quot;&gt;5120&lt;/span&gt; oflag=dsync&lt;br&gt;&lt;span class=&quot;hljs-number&quot;&gt;5120&lt;/span&gt;+&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt; records &lt;span class=&quot;hljs-keyword&quot;&gt;in&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-number&quot;&gt;5120&lt;/span&gt;+&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt; records &lt;span class=&quot;hljs-keyword&quot;&gt;out&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-number&quot;&gt;41943040&lt;/span&gt; bytes (&lt;span class=&quot;hljs-number&quot;&gt;42&lt;/span&gt; MB, &lt;span class=&quot;hljs-number&quot;&gt;40&lt;/span&gt; MiB) copied, &lt;span class=&quot;hljs-number&quot;&gt;4.98705&lt;/span&gt; s, &lt;span class=&quot;hljs-number&quot;&gt;8.4&lt;/span&gt; MB/s&lt;br&gt;&lt;br&gt;real    &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;m4&lt;span class=&quot;hljs-number&quot;&gt;.993&lt;/span&gt;s&lt;br&gt;user    &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;m0&lt;span class=&quot;hljs-number&quot;&gt;.019&lt;/span&gt;s&lt;br&gt;sys    &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;m0&lt;span class=&quot;hljs-number&quot;&gt;.872&lt;/span&gt;s&lt;br&gt;&lt;br&gt;# 顺序写入 &lt;br&gt;$ time dd &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;=/dev/zero of=test bs=&lt;span class=&quot;hljs-number&quot;&gt;8&lt;/span&gt;k count=&lt;span class=&quot;hljs-number&quot;&gt;1000000&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-number&quot;&gt;1000000&lt;/span&gt;+&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt; records &lt;span class=&quot;hljs-keyword&quot;&gt;in&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-number&quot;&gt;1000000&lt;/span&gt;+&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt; records &lt;span class=&quot;hljs-keyword&quot;&gt;out&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-number&quot;&gt;8192000000&lt;/span&gt; bytes (&lt;span class=&quot;hljs-number&quot;&gt;8.2&lt;/span&gt; GB, &lt;span class=&quot;hljs-number&quot;&gt;7.6&lt;/span&gt; GiB) copied, &lt;span class=&quot;hljs-number&quot;&gt;10.7331&lt;/span&gt; s, &lt;span class=&quot;hljs-number&quot;&gt;763&lt;/span&gt; MB/s&lt;br&gt;&lt;br&gt;real    &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;m10&lt;span class=&quot;hljs-number&quot;&gt;.743&lt;/span&gt;s&lt;br&gt;user    &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;m0&lt;span class=&quot;hljs-number&quot;&gt;.189&lt;/span&gt;s&lt;br&gt;sys    &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;m6&lt;span class=&quot;hljs-number&quot;&gt;.423&lt;/span&gt;s&lt;br&gt;&lt;br&gt;# 顺序读取&lt;br&gt;$ time dd &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;=test of=/dev/&lt;span class=&quot;hljs-literal&quot;&gt;null&lt;/span&gt; bs=&lt;span class=&quot;hljs-number&quot;&gt;8&lt;/span&gt;k&lt;br&gt;&lt;span class=&quot;hljs-number&quot;&gt;1000000&lt;/span&gt;+&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt; records &lt;span class=&quot;hljs-keyword&quot;&gt;in&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-number&quot;&gt;1000000&lt;/span&gt;+&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt; records &lt;span class=&quot;hljs-keyword&quot;&gt;out&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-number&quot;&gt;8192000000&lt;/span&gt; bytes (&lt;span class=&quot;hljs-number&quot;&gt;8.2&lt;/span&gt; GB, &lt;span class=&quot;hljs-number&quot;&gt;7.6&lt;/span&gt; GiB) copied, &lt;span class=&quot;hljs-number&quot;&gt;10.7331&lt;/span&gt; s, &lt;span class=&quot;hljs-number&quot;&gt;763&lt;/span&gt; MB/s&lt;br&gt;&lt;br&gt;real    &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;m10&lt;span class=&quot;hljs-number&quot;&gt;.743&lt;/span&gt;s&lt;br&gt;user    &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;m0&lt;span class=&quot;hljs-number&quot;&gt;.189&lt;/span&gt;s&lt;br&gt;sys    &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;m6&lt;span class=&quot;hljs-number&quot;&gt;.423&lt;/span&gt;s&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h1 id=&quot;启用-禁用CPU&quot;&gt;&lt;a href=&quot;#启用-禁用CPU&quot; class=&quot;headerlink&quot; title=&quot;启用/禁用CPU&quot;&gt;&lt;/a&gt;启用/禁用CPU&lt;/h1&gt;&lt;figure class=&quot;highlight angelscript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs angelscript&quot;&gt;$ sudo chcpu -d &lt;span class=&quot;hljs-number&quot;&gt;3&lt;/span&gt;&lt;br&gt;CPU &lt;span class=&quot;hljs-number&quot;&gt;3&lt;/span&gt; disabled&lt;br&gt;$ sudo chcpu -e &lt;span class=&quot;hljs-number&quot;&gt;3&lt;/span&gt;&lt;br&gt;CPU &lt;span class=&quot;hljs-number&quot;&gt;3&lt;/span&gt; enabled&lt;br&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>PostgreSQL后端进程</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/PostgreSQL_backend_process/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/PostgreSQL_backend_process/</id>
+    <published>2020-08-19T03:12:29.000Z</published>
+    <updated>2020-08-19T03:30:52.544Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;checkpoint&quot;&gt;&lt;a href=&quot;#checkpoint&quot; class=&quot;headerlink&quot; title=&quot;checkpoint&quot;&gt;&lt;/a&gt;checkpoint&lt;/h1&gt;&lt;h2 id=&quot;功能描述&quot;&gt;&lt;a href=&quot;#功能描述&quot; class=&quot;headerlink&quot; title=&quot;功能描述&quot;&gt;&lt;/a&gt;功能描述&lt;/h2&gt;&lt;p&gt;其保证了数据库的一致性状态，定期执行检查点是很重要的，确保数据变化持久保存到磁盘中并且数据库的状态是一致的。&lt;/p&gt;
+&lt;h2 id=&quot;参数&quot;&gt;&lt;a href=&quot;#参数&quot; class=&quot;headerlink&quot; title=&quot;参数&quot;&gt;&lt;/a&gt;参数&lt;/h2&gt;&lt;p&gt;checkpoint_timeout&lt;br&gt;系统自动执行checkpoint之间的最大时间间隔。系统默认值是5分钟，这个值可以在压测过程中调大，尽量避免执行checkpoint争抢IO&lt;/p&gt;
+&lt;p&gt;max_wal_size&lt;br&gt;写满多少个WAL时执行checkpoint，也是同理，这个值可以在压测过程中调大，尽量避免执行checkpoint争抢IO&lt;/p&gt;
+&lt;p&gt;min_wal_size&lt;br&gt;只要wal日志目录使用空间小于该值，那么旧的wal日志就会循环使用而不是进行删除。这个参数是为了确保足够的wal空间预留给突发情况，比如大的跑批操作。&lt;/p&gt;
+&lt;p&gt;checkpoint_completion_target&lt;br&gt;分散检查点，默认为0.5，即表示每个checkpoint需要在checkpoints间隔时间的50%内完成，然后立马进行fsync，fsync执行是很快的(为了平滑fsync，以防尖锐的IO请求，PostgreSQL9.6以后加了checkpoint_flush_after、wal_writer_flush_after、bgwriter_flush_after和backend_flush_after这些参数来缓解)看如下一个场景。&lt;/p&gt;
+&lt;div class=&quot;table-container&quot;&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;场景&lt;/th&gt;
+&lt;th&gt;数据量&lt;/th&gt;
+&lt;th&gt;数据写入速度( 1gb/ s )&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;checkpoint_completion_target=0.5&lt;/td&gt;
+&lt;td&gt;100G&lt;/td&gt;
+&lt;td&gt;100/ ( 0.53060 ) 1024 ≈ 114 M/s&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;checkpoint_timeout = 30min&lt;/td&gt;
+&lt;td&gt;100G&lt;/td&gt;
+&lt;td&gt;100/ ( 0.8 3060 ) 1024 ≈ 71 M/s&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;p&gt;full_page_writes&lt;br&gt;PostgreSQL服务器在检查点之后对页面的第一次写入时将整个页面写到WAL里面。如果checkpoint发生太频繁，会导致写放大，默认为on，假如调为off，需要确保数据库在压测期间不要崩溃，不然重启后可能发生数据块部分写，导致重启失败。full_page_writes就是为了确保数据页一致性，不发生块折断。而在MySQL中，则是通过double write来预防partial write的。如果你的块设备对齐，并支持原子写(原子写大于或等于一个DATA FILE数据页的大小)，那可以关闭这个参数&lt;/p&gt;
+&lt;h1 id=&quot;background-writer&quot;&gt;&lt;a href=&quot;#background-writer&quot; class=&quot;headerlink&quot; title=&quot;background writer&quot;&gt;&lt;/a&gt;background writer&lt;/h1&gt;&lt;h2 id=&quot;功能描述-1&quot;&gt;&lt;a href=&quot;#功能描述-1&quot; class=&quot;headerlink&quot; title=&quot;功能描述&quot;&gt;&lt;/a&gt;功能描述&lt;/h2&gt;&lt;p&gt;1、数据库在进行查询处理时若发现要读取的数据不在缓冲区中时要先从磁盘中读入需要的页面，此时如果缓冲区已满，则需要遵从类似于LRU算法先选择部分缓冲区中的页面置换出去。如果被替换的页面没有被修改过，则可以直接丢弃；但如果已经被修改过，则需要先将这些页面写出到磁盘后才能置换，通过使用BgWriter定期写出缓冲区中的部分脏页，为缓冲区腾出空间，就可以降低查询处理被阻塞的可能性；&lt;/p&gt;
+&lt;p&gt;2、PostgreSQL在定期做检查点时需要把所有脏页写出到磁盘，通过BgWriter预先写出一些脏页，可以减少检查点时要进行的IO动作，使系统的IO更加平稳。通过BgWriter对共享缓冲区写操作的管理，避免了其他服务进程在需要读入新的页面到缓冲区时，不得不先进行写盘的操作。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+  </entry>
   
   <entry>
     <title>pg_hint_plan</title>
@@ -69,11 +139,12 @@
     <link href="http://daydayup863.github.io/PostgreSQL/pg13_notice/"/>
     <id>http://daydayup863.github.io/PostgreSQL/pg13_notice/</id>
     <published>2020-08-14T11:41:25.000Z</published>
-    <updated>2020-08-14T12:18:23.157Z</updated>
+    <updated>2020-08-19T08:32:52.741Z</updated>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;log-line-prefix-增加-P-显示并行leader&quot;&gt;&lt;a href=&quot;#log-line-prefix-增加-P-显示并行leader&quot; class=&quot;headerlink&quot; title=&quot;log_line_prefix 增加 %P 显示并行leader&quot;&gt;&lt;/a&gt;log_line_prefix 增加 %P 显示并行leader&lt;/h1&gt;&lt;figure class=&quot;highlight pgsql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs pgsql&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;commit&lt;/span&gt; b8fdee7d0ca8bd2165d46fb1468f75571b706a01&lt;br&gt;Author: Michael Paquier &amp;lt;michael@paquier.xyz&amp;gt;&lt;br&gt;&lt;span class=&quot;hljs-type&quot;&gt;Date&lt;/span&gt;:   Mon Aug &lt;span class=&quot;hljs-number&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;13&lt;/span&gt;:&lt;span class=&quot;hljs-number&quot;&gt;38&lt;/span&gt;:&lt;span class=&quot;hljs-number&quot;&gt;48&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;2020&lt;/span&gt; +&lt;span class=&quot;hljs-number&quot;&gt;0900&lt;/span&gt;&lt;br&gt;&lt;br&gt;    &lt;span class=&quot;hljs-keyword&quot;&gt;Add&lt;/span&gt; %P &lt;span class=&quot;hljs-keyword&quot;&gt;to&lt;/span&gt; log_line_prefix &lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt; parallel &lt;span class=&quot;hljs-keyword&quot;&gt;group&lt;/span&gt; leader&lt;br&gt;&lt;br&gt;    This &lt;span class=&quot;hljs-keyword&quot;&gt;is&lt;/span&gt; useful &lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt; monitoring purposes &lt;span class=&quot;hljs-keyword&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;log&lt;/span&gt; parsing.  Similarly &lt;span class=&quot;hljs-keyword&quot;&gt;to&lt;/span&gt;&lt;br&gt;    pg_stat_activity, the leader&lt;span class=&quot;hljs-string&quot;&gt;&amp;#x27;s PID is shown only for active parallel&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;    workers, minimizing the log footprint for the leaders as the equivalent&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;    shared memory field is set as long as a backend is alive.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;    Author: Justin Pryzby&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;    Reviewed-by: Álvaro Herrera, Michael Paquier, Julien Rouhaud, Tom Lane&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;    Discussion: https://postgr.es/m/20200315111831.GA21492@telsasoft.com&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+      &lt;h1 id=&quot;新增视图pg-backend-memory-contexts&quot;&gt;&lt;a href=&quot;#新增视图pg-backend-memory-contexts&quot; class=&quot;headerlink&quot; title=&quot;新增视图pg_backend_memory_contexts&quot;&gt;&lt;/a&gt;新增视图pg_backend_memory_contexts&lt;/h1&gt;&lt;figure class=&quot;highlight pgsql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs pgsql&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;commit&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;3e98&lt;/span&gt;c0bafb28de87ae095b341687dc082371af54 (HEAD -&amp;gt; master, origin/master, origin/HEAD)&lt;br&gt;Author: Fujii Masao &amp;lt;fujii@postgresql.org&amp;gt;&lt;br&gt;&lt;span class=&quot;hljs-type&quot;&gt;Date&lt;/span&gt;:   Wed Aug &lt;span class=&quot;hljs-number&quot;&gt;19&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;15&lt;/span&gt;:&lt;span class=&quot;hljs-number&quot;&gt;34&lt;/span&gt;:&lt;span class=&quot;hljs-number&quot;&gt;43&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;2020&lt;/span&gt; +&lt;span class=&quot;hljs-number&quot;&gt;0900&lt;/span&gt;&lt;br&gt;&lt;br&gt;    &lt;span class=&quot;hljs-keyword&quot;&gt;Add&lt;/span&gt; pg_backend_memory_contexts &lt;span class=&quot;hljs-keyword&quot;&gt;system&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;view&lt;/span&gt;.&lt;br&gt;&lt;br&gt;    This &lt;span class=&quot;hljs-keyword&quot;&gt;view&lt;/span&gt; displays the usages &lt;span class=&quot;hljs-keyword&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;all&lt;/span&gt; the memory contexts &lt;span class=&quot;hljs-keyword&quot;&gt;of&lt;/span&gt; the &lt;span class=&quot;hljs-keyword&quot;&gt;server&lt;/span&gt;&lt;br&gt;    process attached &lt;span class=&quot;hljs-keyword&quot;&gt;to&lt;/span&gt; the &lt;span class=&quot;hljs-keyword&quot;&gt;current&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;session&lt;/span&gt;. This information &lt;span class=&quot;hljs-keyword&quot;&gt;is&lt;/span&gt; useful &lt;span class=&quot;hljs-keyword&quot;&gt;to&lt;/span&gt;&lt;br&gt;    investigate the cause &lt;span class=&quot;hljs-keyword&quot;&gt;of&lt;/span&gt; backend-&lt;span class=&quot;hljs-keyword&quot;&gt;local&lt;/span&gt; memory bloat.&lt;br&gt;&lt;br&gt;    This information can be &lt;span class=&quot;hljs-keyword&quot;&gt;also&lt;/span&gt; collected &lt;span class=&quot;hljs-keyword&quot;&gt;by&lt;/span&gt; calling&lt;br&gt;    MemoryContextStats(TopMemoryContext) via a debugger. But this technique&lt;br&gt;    cannot be uesd &lt;span class=&quot;hljs-keyword&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;some&lt;/span&gt; environments because &lt;span class=&quot;hljs-keyword&quot;&gt;no&lt;/span&gt; debugger &lt;span class=&quot;hljs-keyword&quot;&gt;is&lt;/span&gt; available there.&lt;br&gt;    &lt;span class=&quot;hljs-keyword&quot;&gt;And&lt;/span&gt; it outputs lots &lt;span class=&quot;hljs-keyword&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;hljs-type&quot;&gt;text&lt;/span&gt; messages &lt;span class=&quot;hljs-keyword&quot;&gt;and&lt;/span&gt; it&lt;span class=&quot;hljs-string&quot;&gt;&amp;#x27;s not easy to analyze them.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;    So, pg_backend_memory_contexts view allows us to access to backend-local&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;    memory contexts information more easily.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;    Bump catalog version.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;    Author: Atsushi Torikoshi, Fujii Masao&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;    Reviewed-by: Tatsuhito Kasahara, Andres Freund, Daniel Gustafsson, Robert Haas, Michael Paquier&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;    Discussion: https://postgr.es/m/72a656e0f71d0860161e0b3f67e4d771@oss.nttdata.com&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h1 id=&quot;log-line-prefix-增加-P-显示并行leader&quot;&gt;&lt;a href=&quot;#log-line-prefix-增加-P-显示并行leader&quot; class=&quot;headerlink&quot; title=&quot;log_line_prefix 增加 %P 显示并行leader&quot;&gt;&lt;/a&gt;log_line_prefix 增加 %P 显示并行leader&lt;/h1&gt;&lt;figure class=&quot;highlight pgsql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs pgsql&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;commit&lt;/span&gt; b8fdee7d0ca8bd2165d46fb1468f75571b706a01&lt;br&gt;Author: Michael Paquier &amp;lt;michael@paquier.xyz&amp;gt;&lt;br&gt;&lt;span class=&quot;hljs-type&quot;&gt;Date&lt;/span&gt;:   Mon Aug &lt;span class=&quot;hljs-number&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;13&lt;/span&gt;:&lt;span class=&quot;hljs-number&quot;&gt;38&lt;/span&gt;:&lt;span class=&quot;hljs-number&quot;&gt;48&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;2020&lt;/span&gt; +&lt;span class=&quot;hljs-number&quot;&gt;0900&lt;/span&gt;&lt;br&gt;&lt;br&gt;    &lt;span class=&quot;hljs-keyword&quot;&gt;Add&lt;/span&gt; %P &lt;span class=&quot;hljs-keyword&quot;&gt;to&lt;/span&gt; log_line_prefix &lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt; parallel &lt;span class=&quot;hljs-keyword&quot;&gt;group&lt;/span&gt; leader&lt;br&gt;&lt;br&gt;    This &lt;span class=&quot;hljs-keyword&quot;&gt;is&lt;/span&gt; useful &lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt; monitoring purposes &lt;span class=&quot;hljs-keyword&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;log&lt;/span&gt; parsing.  Similarly &lt;span class=&quot;hljs-keyword&quot;&gt;to&lt;/span&gt;&lt;br&gt;    pg_stat_activity, the leader&lt;span class=&quot;hljs-string&quot;&gt;&amp;#x27;s PID is shown only for active parallel&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;    workers, minimizing the log footprint for the leaders as the equivalent&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;    shared memory field is set as long as a backend is alive.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;    Author: Justin Pryzby&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;    Reviewed-by: Álvaro Herrera, Michael Paquier, Julien Rouhaud, Tom Lane&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;    Discussion: https://postgr.es/m/20200315111831.GA21492@telsasoft.com&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
@@ -273,58 +344,6 @@
   </entry>
   
   <entry>
-    <title>利用PostgreSQL LATERAL完成行列转换</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/PostgreSQL%E8%A1%8C%E5%88%97%E8%BD%AC%E6%8D%A2/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/PostgreSQL%E8%A1%8C%E5%88%97%E8%BD%AC%E6%8D%A2/</id>
-    <published>2020-08-04T16:00:00.000Z</published>
-    <updated>2020-08-07T12:04:52.707Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;利用PostgreSQL LATERAL完成行列转换.&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-      <category term="行列转换" scheme="http://daydayup863.github.io/tags/%E8%A1%8C%E5%88%97%E8%BD%AC%E6%8D%A2/"/>
-    
-      <category term="LATERAL" scheme="http://daydayup863.github.io/tags/LATERAL/"/>
-    
-      <category term="自连接" scheme="http://daydayup863.github.io/tags/%E8%87%AA%E8%BF%9E%E6%8E%A5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>内核Softdog测试</title>
-    <link href="http://daydayup863.github.io/Linux/softdog/"/>
-    <id>http://daydayup863.github.io/Linux/softdog/</id>
-    <published>2020-08-04T16:00:00.000Z</published>
-    <updated>2020-08-07T12:14:29.600Z</updated>
-    
-    <summary type="html">
-    
-      Linux内核watchdog于监视系统是否正在运行。由于存在不可恢复的软件错误，应该自动重新启动挂起的系统
-    
-    </summary>
-    
-    
-      <category term="Linux" scheme="http://daydayup863.github.io/categories/Linux/"/>
-    
-    
-      <category term="Linux" scheme="http://daydayup863.github.io/tags/Linux/"/>
-    
-      <category term="softdog" scheme="http://daydayup863.github.io/tags/softdog/"/>
-    
-      <category term="watchdog" scheme="http://daydayup863.github.io/tags/watchdog/"/>
-    
-  </entry>
-  
-  <entry>
     <title>利用Github分支备份Hexo博客源文件</title>
     <link href="http://daydayup863.github.io/hexo/%E5%88%A9%E7%94%A8Github%E5%88%86%E6%94%AF%E5%A4%87%E4%BB%BDHexo%E5%8D%9A%E5%AE%A2%E6%BA%90%E6%96%87%E4%BB%B6/"/>
     <id>http://daydayup863.github.io/hexo/%E5%88%A9%E7%94%A8Github%E5%88%86%E6%94%AF%E5%A4%87%E4%BB%BDHexo%E5%8D%9A%E5%AE%A2%E6%BA%90%E6%96%87%E4%BB%B6/</id>
@@ -370,6 +389,58 @@
       <category term="robot" scheme="http://daydayup863.github.io/tags/robot/"/>
     
       <category term="微信自动回复" scheme="http://daydayup863.github.io/tags/%E5%BE%AE%E4%BF%A1%E8%87%AA%E5%8A%A8%E5%9B%9E%E5%A4%8D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>内核Softdog测试</title>
+    <link href="http://daydayup863.github.io/Linux/softdog/"/>
+    <id>http://daydayup863.github.io/Linux/softdog/</id>
+    <published>2020-08-04T16:00:00.000Z</published>
+    <updated>2020-08-07T12:14:29.600Z</updated>
+    
+    <summary type="html">
+    
+      Linux内核watchdog于监视系统是否正在运行。由于存在不可恢复的软件错误，应该自动重新启动挂起的系统
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="http://daydayup863.github.io/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://daydayup863.github.io/tags/Linux/"/>
+    
+      <category term="softdog" scheme="http://daydayup863.github.io/tags/softdog/"/>
+    
+      <category term="watchdog" scheme="http://daydayup863.github.io/tags/watchdog/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>利用PostgreSQL LATERAL完成行列转换</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/PostgreSQL%E8%A1%8C%E5%88%97%E8%BD%AC%E6%8D%A2/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/PostgreSQL%E8%A1%8C%E5%88%97%E8%BD%AC%E6%8D%A2/</id>
+    <published>2020-08-04T16:00:00.000Z</published>
+    <updated>2020-08-07T12:04:52.707Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;利用PostgreSQL LATERAL完成行列转换.&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="行列转换" scheme="http://daydayup863.github.io/tags/%E8%A1%8C%E5%88%97%E8%BD%AC%E6%8D%A2/"/>
+    
+      <category term="LATERAL" scheme="http://daydayup863.github.io/tags/LATERAL/"/>
+    
+      <category term="自连接" scheme="http://daydayup863.github.io/tags/%E8%87%AA%E8%BF%9E%E6%8E%A5/"/>
     
   </entry>
   
