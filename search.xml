@@ -1,12 +1,289 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>PostgreSQL vacuum</title>
+    <url>/PostgreSQL/PostgreSQL_vacuum/</url>
+    <content><![CDATA[<p>vacuum processing is a maintenance process that facilitates the persistent operation of PostgreSQL. Its two main tasks are removing dead tuples and the freezing transaction ids, both of which are briefly mentioned in Section 5.10.</p>
+<p>To remove dead tuples, vacuum processing provides two modes, i.e. Concurrent VACUUM and Full VACUUM. Concurrent VACUUM, often simply called VACUUM, removes dead tuples for each page of the table file, and other transactions can read the table while this process is running. In contrast, Full VACUUM removes dead tuples and defragments live tuples the whole file, and other transactions cannot access tables while Full VACUUM is running.</p>
+<p>Despite the fact that vacuum processing is essential for PostgreSQL, improving its functionality has been slow compared to other functions. For example, until version 8.0, this process had to be executed manually (with the psql utility or using the cron daemon). It was automated in 2005 when the autovacuum daemon was implemented.</p>
+<p>Since vacuum processing involves scanning whole tables, it is a costly process. In version 8.4 (2009), the Visibility Map (VM) was introduced to improve the efficiency of removing dead tuples. In version 9.6 (2016), the freeze process was improved by enhancing the VM. </p>
+<a id="more"></a>
+<h1 id="Concurrent-VACUUM"><a href="#Concurrent-VACUUM" class="headerlink" title="Concurrent VACUUM"></a>Concurrent VACUUM</h1><figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql">(<span class="hljs-number">1</span>)  <span class="hljs-keyword">FOR</span> <span class="hljs-keyword">each</span> <span class="hljs-keyword">table</span><br>(<span class="hljs-number">2</span>)       Acquire ShareUpdateExclusiveLock <span class="hljs-keyword">lock</span> <span class="hljs-keyword">for</span> the target <span class="hljs-keyword">table</span><br><br>          <span class="hljs-comment">/* The first block */</span><br>(<span class="hljs-number">3</span>)       Scan <span class="hljs-keyword">all</span> pages <span class="hljs-keyword">to</span> <span class="hljs-keyword">get</span> <span class="hljs-keyword">all</span> dead tuples, <span class="hljs-keyword">and</span> <span class="hljs-keyword">freeze</span> <span class="hljs-built_in">old</span> tuples <span class="hljs-keyword">if</span> necessary<br>          PostgreSQL scans a target <span class="hljs-keyword">table</span> <span class="hljs-keyword">to</span> build a list <span class="hljs-keyword">of</span> dead tuples <span class="hljs-keyword">and</span> <span class="hljs-keyword">freeze</span> <span class="hljs-built_in">old</span> tuples <span class="hljs-keyword">if</span> possible. The list <span class="hljs-keyword">is</span> stored <span class="hljs-keyword">in</span> maintenance_work_mem <span class="hljs-keyword">in</span> <span class="hljs-keyword">local</span> memory<br>(<span class="hljs-number">4</span>)       Remove the <span class="hljs-keyword">index</span> tuples that <span class="hljs-type">point</span> <span class="hljs-keyword">to</span> the respective dead tuples <span class="hljs-keyword">if</span> <span class="hljs-keyword">exists</span><br><br>          <span class="hljs-comment">/* The second block */</span><br>(<span class="hljs-number">5</span>)       <span class="hljs-keyword">FOR</span> <span class="hljs-keyword">each</span> page <span class="hljs-keyword">of</span> the <span class="hljs-keyword">table</span><br>(<span class="hljs-number">6</span>)            Remove the dead tuples, <span class="hljs-keyword">and</span> Reallocate the live tuples <span class="hljs-keyword">in</span> the page<br>(<span class="hljs-number">7</span>)            <span class="hljs-keyword">Update</span> FSM <span class="hljs-keyword">and</span> VM<br>           <span class="hljs-keyword">END</span> <span class="hljs-keyword">FOR</span><br><br>          <span class="hljs-comment">/* The third block */</span><br>(<span class="hljs-number">8</span>)       Clean up indexes<br>(<span class="hljs-number">9</span>)       <span class="hljs-keyword">Truncate</span> the last page <span class="hljs-keyword">if</span> possible<br>(<span class="hljs-number">10</span>       <span class="hljs-keyword">Update</span> <span class="hljs-keyword">both</span> the <span class="hljs-keyword">statistics</span> <span class="hljs-keyword">and</span> <span class="hljs-keyword">system</span> catalogs <span class="hljs-keyword">of</span> the target <span class="hljs-keyword">table</span><br>          <span class="hljs-keyword">Release</span> ShareUpdateExclusiveLock <span class="hljs-keyword">lock</span><br>       <span class="hljs-keyword">END</span> <span class="hljs-keyword">FOR</span><br><br>        <span class="hljs-comment">/* Post-processing */</span><br>(<span class="hljs-number">11</span>)  <span class="hljs-keyword">Update</span> <span class="hljs-keyword">statistics</span> <span class="hljs-keyword">and</span> <span class="hljs-keyword">system</span> catalogs<br>(<span class="hljs-number">12</span>)  Remove <span class="hljs-keyword">both</span> unnecessary files <span class="hljs-keyword">and</span> pages <span class="hljs-keyword">of</span> the clog <span class="hljs-keyword">if</span> possible<br><br></code></pre></td></tr></table></figure>
+<p>(1) Get each table from the specified tables.<br>(2) Acquire ShareUpdateExclusiveLock lock for the table. This lock allows reading from other transactions.<br>(3) Scan all pages to get all dead tuples, and freeze old tuples if necessary.<br>(4) Remove the index tuples that point to the respective dead tuples if exists.<br>(5) Do the following tasks, step (6) and (7), for each page of the table.<br>(6) Remove the dead tuples and Reallocate the live tuples in the page.<br>(7) Update both the respective FSM and VM of the target table.<br>(8) Clean up the indexes by the index_vacuum_cleanup()@indexam.c function.<br>(9) Truncate the last page if the last one does not have any tuple.<br>(10) Update both the statistics and the system catalogs related to vacuum processing for the target table.<br>(11) Update both the statistics and the system catalogs related to vacuum processing.<br>(12) Remove both unnecessary files and pages of the clog if possible.</p>
+<h1 id="Full-VACUUM"><a href="#Full-VACUUM" class="headerlink" title="Full VACUUM"></a>Full VACUUM</h1><figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql">(<span class="hljs-number">1</span>)  <span class="hljs-keyword">FOR</span> <span class="hljs-keyword">each</span> <span class="hljs-keyword">table</span><br>(<span class="hljs-number">2</span>)       Acquire AccessExclusiveLock <span class="hljs-keyword">lock</span> <span class="hljs-keyword">for</span> the <span class="hljs-keyword">table</span><br>(<span class="hljs-number">3</span>)       <span class="hljs-keyword">Create</span> a <span class="hljs-built_in">new</span> <span class="hljs-keyword">table</span> file<br>(<span class="hljs-number">4</span>)       <span class="hljs-keyword">FOR</span> <span class="hljs-keyword">each</span> live tuple <span class="hljs-keyword">in</span> the <span class="hljs-built_in">old</span> <span class="hljs-keyword">table</span><br>(<span class="hljs-number">5</span>)            <span class="hljs-keyword">Copy</span> the live tuple <span class="hljs-keyword">to</span> the <span class="hljs-built_in">new</span> <span class="hljs-keyword">table</span> file<br>(<span class="hljs-number">6</span>)            <span class="hljs-keyword">Freeze</span> the tuple <span class="hljs-keyword">IF</span> necessary<br>            <span class="hljs-keyword">END</span> <span class="hljs-keyword">FOR</span><br>(<span class="hljs-number">7</span>)        Remove the <span class="hljs-built_in">old</span> <span class="hljs-keyword">table</span> file<br>(<span class="hljs-number">8</span>)        Rebuild <span class="hljs-keyword">all</span> indexes<br>(<span class="hljs-number">9</span>)        <span class="hljs-keyword">Update</span> FSM <span class="hljs-keyword">and</span> VM<br>(<span class="hljs-number">10</span>)      <span class="hljs-keyword">Update</span> <span class="hljs-keyword">statistics</span><br>            <span class="hljs-keyword">Release</span> AccessExclusiveLock <span class="hljs-keyword">lock</span><br>       <span class="hljs-keyword">END</span> <span class="hljs-keyword">FOR</span><br>(<span class="hljs-number">11</span>)  Remove unnecessary clog files <span class="hljs-keyword">and</span> pages <span class="hljs-keyword">if</span> possible<br></code></pre></td></tr></table></figure>
+<h2 id="When-should-I-do-VACUUM-FULL"><a href="#When-should-I-do-VACUUM-FULL" class="headerlink" title="When should I do VACUUM FULL?"></a>When should I do VACUUM FULL?</h2><p>There is unfortunately no best practice when you should execute ‘VACUUM FULL’. However, the extension pg_freespacemap may give you good suggestions.</p>
+<p>The following query shows the average freespace ratio of the table you want to know.<br><figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql">testdb=# <span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">EXTENSION</span> pg_freespacemap;<br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">EXTENSION</span><br><br>testdb=# <span class="hljs-keyword">SELECT</span> count(*) <span class="hljs-keyword">as</span> &quot;number of pages&quot;,<br>       pg_size_pretty(cast(avg(avail) <span class="hljs-keyword">as</span> <span class="hljs-type">bigint</span>)) <span class="hljs-keyword">as</span> &quot;Av. freespace size&quot;,<br>       round(<span class="hljs-number">100</span> * avg(avail)/<span class="hljs-number">8192</span> ,<span class="hljs-number">2</span>) <span class="hljs-keyword">as</span> &quot;Av. freespace ratio&quot;<br>       <span class="hljs-keyword">FROM</span> pg_freespace(<span class="hljs-string">&#x27;accounts&#x27;</span>);<br> number <span class="hljs-keyword">of</span> pages | Av. freespace size | Av. freespace ratio<br><span class="hljs-comment">-----------------+--------------------+---------------------</span><br>            <span class="hljs-number">1640</span> | <span class="hljs-number">99</span> bytes           |                <span class="hljs-number">1.21</span><br>(<span class="hljs-number">1</span> <span class="hljs-keyword">row</span>)<br></code></pre></td></tr></table></figure></p>
+<p>As the result above, You can find that there are few free spaces.</p>
+<p>If you delete almost tuples and execute VACUUM command, you can find that almost pages are spaces ones.<br><figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql">testdb=# <span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> accounts <span class="hljs-keyword">WHERE</span> aid %<span class="hljs-number">10</span> != <span class="hljs-number">0</span> <span class="hljs-keyword">OR</span> aid &lt; <span class="hljs-number">100</span>;<br><span class="hljs-keyword">DELETE</span> <span class="hljs-number">90009</span><br><br>testdb=# <span class="hljs-keyword">VACUUM</span> accounts;<br><span class="hljs-keyword">VACUUM</span><br><br>testdb=# <span class="hljs-keyword">SELECT</span> count(*) <span class="hljs-keyword">as</span> &quot;number of pages&quot;,<br>       pg_size_pretty(cast(avg(avail) <span class="hljs-keyword">as</span> <span class="hljs-type">bigint</span>)) <span class="hljs-keyword">as</span> &quot;Av. freespace size&quot;,<br>       round(<span class="hljs-number">100</span> * avg(avail)/<span class="hljs-number">8192</span> ,<span class="hljs-number">2</span>) <span class="hljs-keyword">as</span> &quot;Av. freespace ratio&quot;<br>       <span class="hljs-keyword">FROM</span> pg_freespace(<span class="hljs-string">&#x27;accounts&#x27;</span>);<br> number <span class="hljs-keyword">of</span> pages | Av. freespace size | Av. freespace ratio<br><span class="hljs-comment">-----------------+--------------------+---------------------</span><br>            <span class="hljs-number">1640</span> | <span class="hljs-number">7124</span> bytes         |               <span class="hljs-number">86.97</span><br>(<span class="hljs-number">1</span> <span class="hljs-keyword">row</span>)<br></code></pre></td></tr></table></figure></p>
+<p>The following query inspects the freespace ratio of each page of the specified table.<br><figure class="highlight lsl"><table><tr><td class="code"><pre><code class="hljs lsl">testdb=# SELECT *, round(<span class="hljs-number">100</span> * avail/<span class="hljs-number">8192</span> ,<span class="hljs-number">2</span>) as <span class="hljs-string">&quot;freespace ratio&quot;</span><br>                FROM pg_freespace(&#x27;accounts&#x27;);<br> blkno | avail | freespace ratio<br>-------+-------+-----------------<br>     <span class="hljs-number">0</span> |  <span class="hljs-number">7904</span> |           <span class="hljs-number">96.00</span><br>     <span class="hljs-number">1</span> |  <span class="hljs-number">7520</span> |           <span class="hljs-number">91.00</span><br>     <span class="hljs-number">2</span> |  <span class="hljs-number">7136</span> |           <span class="hljs-number">87.00</span><br>     <span class="hljs-number">3</span> |  <span class="hljs-number">7136</span> |           <span class="hljs-number">87.00</span><br>     <span class="hljs-number">4</span> |  <span class="hljs-number">7136</span> |           <span class="hljs-number">87.00</span><br>     <span class="hljs-number">5</span> |  <span class="hljs-number">7136</span> |           <span class="hljs-number">87.00</span><br>....<br></code></pre></td></tr></table></figure><br>After executing VACUUM FULL, you can find that the table file has been compacted.<br><figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql">testdb=# <span class="hljs-keyword">VACUUM</span> <span class="hljs-keyword">FULL</span> accounts;<br><span class="hljs-keyword">VACUUM</span><br>testdb=# <span class="hljs-keyword">SELECT</span> count(*) <span class="hljs-keyword">as</span> &quot;number of blocks&quot;,<br>       pg_size_pretty(cast(avg(avail) <span class="hljs-keyword">as</span> <span class="hljs-type">bigint</span>)) <span class="hljs-keyword">as</span> &quot;Av. freespace size&quot;,<br>       round(<span class="hljs-number">100</span> * avg(avail)/<span class="hljs-number">8192</span> ,<span class="hljs-number">2</span>) <span class="hljs-keyword">as</span> &quot;Av. freespace ratio&quot;<br>       <span class="hljs-keyword">FROM</span> pg_freespace(<span class="hljs-string">&#x27;accounts&#x27;</span>);<br> number <span class="hljs-keyword">of</span> pages | Av. freespace size | Av. freespace ratio<br><span class="hljs-comment">-----------------+--------------------+---------------------</span><br>             <span class="hljs-number">164</span> | <span class="hljs-number">0</span> bytes            |                <span class="hljs-number">0.00</span><br>(<span class="hljs-number">1</span> <span class="hljs-keyword">row</span>)<br></code></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>PostgreSQL</category>
+      </categories>
+      <tags>
+        <tag>PostgreSQL</tag>
+        <tag>vacuum</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PostgreSQL 缓冲区管理</title>
+    <url>/PostgreSQL/PostgreSQL_Buffer_Manager/</url>
+    <content><![CDATA[<p>缓冲区管理器管理共享内存和持久性存储之间的数据传输，并且可能对DBMS的性能产生重大影响。 PostgreSQL缓冲区管理器非常高效。<br>在本章中，将介绍PostgreSQL缓冲区管理器。第一部分提供了概述，随后的部分描述了以下主题：</p>
+<ul>
+<li>Buffer manager structure</li>
+<li>Buffer manager locks</li>
+<li>How the buffer manager works</li>
+<li>Ring buffer</li>
+<li>Flushing of dirty pages<a id="more"></a>
+<img data-src="/images/pg_buffer_manager.png?150x100" alt="Relations between buffer manager, storage, and backend processes."></li>
+</ul>
+<h1 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h1><p>本节介绍了有助于在后续各节中进行描述的关键概念。</p>
+<h2 id="Buffer-Manager-Structure"><a href="#Buffer-Manager-Structure" class="headerlink" title="Buffer Manager Structure"></a>Buffer Manager Structure</h2><p>PostgreSQL缓冲区管理器包含一个缓冲区表，缓冲区描述符和缓冲池，这将在下一节中介绍。缓冲池层存储数据文件页面，例如表和索引，以及自由空间映射和可见性映射。缓冲池是一个数组，即每个插槽存储一个数据文件的一页。缓冲池阵列的索引称为buffer_id。</p>
+<h2 id="Buffer-Tag"><a href="#Buffer-Tag" class="headerlink" title="Buffer Tag"></a>Buffer Tag</h2><p>在PostgreSQL中，每一个数据文件的每一个页面分配了一个唯一的标签，即buffer tag。当缓冲区管理器收到请求时，PostgreSQL会使用目标页面的buffer_tag</p>
+<p>buffer_tag包含三个值：其页面所属relation的RelFileNode和fork number，以及其页面的块编号。表，空闲空间映射和可见性映射的派生编号分别在0、1和2中定义。</p>
+<p>例如，buffer_tag’{（16821，16384，37721），0，7}’ 表示这个页面位于relation中数据页面的第七块页面，relation的OID和派生编号分别为37721和0；在OID为16821的表空间下，其OID为16384的数据库中。<br>类似地，buffer_tag’{（16821，16384，37721），1，3}’ 表示这个页面位于relation中的freespace map页面第三个页面，relation的OID和派生编号分别为37721和1; 在OID为16821的表空间下，其OID为16384的数据库中。</p>
+<h2 id="How-a-Backend-Process-Reads-Pages"><a href="#How-a-Backend-Process-Reads-Pages" class="headerlink" title="How a Backend Process Reads Pages"></a>How a Backend Process Reads Pages</h2><p>本小节描述了后端进程如何从缓冲区管理器读取页面<br><img data-src="/images/pg_buffer_manager_2.png" alt="How a backend reads a page from the buffer manager.."></p>
+<ul>
+<li>读取表或索引页时，后端进程会将包含页面的buffer_tag的请求发送到缓冲区管理器.</li>
+<li>缓冲区管理器返回存储请求页面的插槽的buffer_ID。如果请求的页面未存储在缓冲池中，则缓冲管理器将页面从持久性存储加载到缓冲池插槽之一，然后返回buffer_ID的插槽</li>
+<li>后端进程访问buffer_ID的插槽（以读取所需的页面</li>
+</ul>
+<p>当后端进程修改缓冲池中的页面（例如，通过插入元组）时，尚未刷新到存储的修改后的页面称为脏页面。</p>
+<h2 id="Page-Replacement-Algorithm"><a href="#Page-Replacement-Algorithm" class="headerlink" title="Page Replacement Algorithm"></a>Page Replacement Algorithm</h2><p>当所有缓冲池插槽均被占用但未存储请求的页面时，缓冲管理器必须在缓冲池中选择一个页面，该页面将由请求的页面替换。通常，在计算机科学领域中，页面选择算法称为页面替换算法，而所选页面称为受害者页面<br>自计算机科学问世以来，一直在进行页面替换算法的研究。因此，先前已经提出了许多替换算法。从8.1版开始，PostgreSQL使用了clock-sweep，因为它比以前版本中使用的LRU算法更简单，更高效。<br>4.4节详细介绍了时钟扫描</p>
+<h2 id="Flushing-Dirty-Pages"><a href="#Flushing-Dirty-Pages" class="headerlink" title="Flushing Dirty Pages"></a>Flushing Dirty Pages</h2><p>脏页最终应刷新到存储中；但是，缓冲区管理器需要帮助才能执行此任务。在PostgreSQL中，两个后台进程（checkpointer和background writer）负责此任务。</p>
+<p>第6节介绍了checkpointer和background writer</p>
+<p><strong>Direct I/O</strong><br>PostgreSQL不支持direct I/O，尽管已经讨论过了。如果您想了解更多详细信息，请参考<a href="https://www.postgresql.org/message-id/529E267F.4050700@agliodbs.com">pgsql-ML</a>和这篇<a href="https://lwn.net/Articles/580542/">文章</a>。</p>
+<h1 id="Buffer-Manager-Structure-1"><a href="#Buffer-Manager-Structure-1" class="headerlink" title="Buffer Manager Structure"></a>Buffer Manager Structure</h1><p>PostgreSQL缓冲区管理器包括三层，即缓冲区表(buffer table)，缓冲区描述符(buffer descriptors)和缓冲池(buffer pool)</p>
+<p><img data-src="/images/pg_buffer_manager_3.png" alt="Fig. 8.3. Buffer manager&#39;s three-layer structure."></p>
+<ul>
+<li>缓冲池是一个数组。每个插槽存储一个数据文件页面。阵列插槽的索引称为bufferids </li>
+<li><p>缓冲区描述符层是缓冲区描述符的数组。每个描述符与缓冲池插槽一一对应，并在相应的插槽中保存存储页面的元数据。</p>
+<hr>
+<p> <strong>Note</strong></p>
+<p> 为方便起见，采用术语“缓冲区描述符层”，并且仅在本文档中使用。</p>
+<hr>
+</li>
+<li><p>缓冲区表是一个哈希表，用于存储存储页的buffer_tags与保存存储页各自元数据的描述符的buffer_id之间的关系。</p>
+</li>
+</ul>
+<p>这些层将在以下章节中详细介绍</p>
+<h2 id="Buffer-Table"><a href="#Buffer-Table" class="headerlink" title="Buffer Table"></a>Buffer Table</h2><p>缓冲区表在逻辑上可以分为三个部分：哈希函数(a hash function)，哈希存储桶插槽(hash bucket slots)和数据条目(data entries) (Fig. 8.4)<br>内置的哈希函数将buffer_tags映射到哈希存储桶插槽。由于哈希桶插槽的数量大于缓冲池插槽的数量，会发生冲突。因此，缓冲区表使用单独的链表链接方法来解决冲突。当数据条目(data entries)映射到相同的存储桶插槽(bucket slot)时，此方法将条目存储在相同的链表中，如图8.4所示。</p>
+<p><img data-src="/images/pg_buffer_manager_4.png" alt="Fig. 8.4. Buffer table."></p>
+<p>数据条目包含两个值：页面的buffer_tag和保存页面元数据的描述符的buffer_id。例如，数据条目’Tag_A，id = 1’表示具有buffer_id 1的缓冲区描述符存储带有Tag_A标签的页面的元数据。</p>
+<p><strong>Hash function</strong><br>哈希函数是calc_bucket()和hash()的复合函数。以下是其作为伪函数的表示。<br><figure class="highlight lisp"><table><tr><td class="code"><pre><code class="hljs lisp">uint32 bucket_slot = calc_bucket(<span class="hljs-name">unsigned</span> hash(<span class="hljs-name">BufferTag</span> buffer_tag), uint32 bucket_size)<br></code></pre></td></tr></table></figure></p>
+<hr>
+<p>NOTE</p>
+<p>基本操作（查找，插入和删除数据条目）在此不作解释。这些是非常常见的操作，将在以下各节中进行说明。</p>
+<hr>
+<h2 id="Buffer-Descriptor"><a href="#Buffer-Descriptor" class="headerlink" title="Buffer Descriptor"></a>Buffer Descriptor</h2><p>缓冲区描述符的结构在本小节中描述，缓冲区描述符层在下一个小节中</p>
+<p>缓冲区描述符将存储的页面的元数据保存在相应的缓冲池插槽中。缓冲区描述符结构由结构BufferDesc定义。虽然此结构有很多字段，但主要显示在以下字段中：</p>
+<ul>
+<li>tag 将存储页面的buffer_tag保存在相应的缓冲池插槽中（缓冲区标记在第1.2节中定义）</li>
+<li>buffer_id 标识描述符（等效于相应缓冲池插槽的buffer_id）</li>
+<li>refcount 保存当前正在访问关联的存储页面的PostgreSQL进程数。也称为引脚数(pin count)。 PostgreSQL进程访问存储的页面时，其引用计数必须增加1（refcount ++）。访问该页面后，其引用计数必须减少1（refcount—）。<br>  当refcount为零时，即当前未访问关联的存储页面，则该页面被取消固定(unpinned)；否则将其固定(pinned.)。</li>
+<li>usage_count 保存关联的存储页面自加载到相应的缓冲池插槽以来已被访问的次数。注意在页面替换算法(page replacement algorithm)中使用了usage_count (Section 4.4).</li>
+<li>context_lock和io_in_progress_lock是轻量级锁，用于控制对关联的存储页面的访问。这些字段在第3.2节中描述。</li>
+<li>flags 保存关联的存储页面的几种状态。主要状态如下:<ul>
+<li>dirty bit 指示存储的页面是否脏.</li>
+<li>valid bit 指示是否可以读取或写入存储的页面（有效）。例如，如果该位有效，则相应的缓冲池插槽将存储一个页面，并且此描述符（有效位）将保存页面元数据；因此，可以读取或写入存储的页面。如果该位无效，则此描述符不包含任何元数据；这意味着无法读取或写入存储的页面，或者缓冲区管理器正在替换存储的页面。</li>
+<li>io_in_progress bit 指示缓冲区管理器是否正在从存储中读取/写入关联页面。换句话说，该位指示单个进程是否持有此描述符的</li>
+</ul>
+</li>
+<li>freeNext 指向下一个描述符以生成空闲列表的指针，这将在下一个小节中进行描述。</li>
+</ul>
+<hr>
+<p><strong>NOTE</strong></p>
+<p>结构 BufferDesc 定义在 src/include/storage/buf_internals.h.</p>
+<hr>
+<p>To simplify the following descriptions, three descriptor states are defined:</p>
+<p>Empty: When the corresponding buffer pool slot does not store a page (i.e. refcount and usage_count are 0), the state of this descriptor is empty.<br>Pinned: When the corresponding buffer pool slot stores a page and any PostgreSQL processes are accessing the page (i.e. refcount and usage_count are greater than or equal to 1), the state of this buffer descriptor is pinned.<br>Unpinned: When the corresponding buffer pool slot stores a page but no PostgreSQL processes are accessing the page (i.e. usage_count is greater than or equal to 1, but refcount is 0), the state of this buffer descriptor is unpinned.</p>
+<p>Each descriptor will have one of the above states. The descriptor state changes relative to particular conditions, which are described in the next subsection.</p>
+<p>In the following figures, buffer descriptors’ states are represented by coloured boxes.</p>
+<p>(white) Empty<br>(blue) Pinned<br>(aqua blue) Unpinned</p>
+<p>In addition, a dirty page is denoted as ‘X’. For example, an unpinned dirty descriptor is represented by  X .</p>
+<h2 id="Buffer-Descriptors-Layer"><a href="#Buffer-Descriptors-Layer" class="headerlink" title="Buffer Descriptors Layer"></a>Buffer Descriptors Layer</h2><p>A collection of buffer descriptors forms an array. In this document, the array is referred to as the buffer descriptors layer.</p>
+<p>When the PostgreSQL server starts, the state of all buffer descriptors is empty. In PostgreSQL, those descriptors comprise a linked list called freelist (Fig. 8.5).</p>
+<p><img data-src="/images/pg_buffer_manager_5.png" alt="Fig. 8.5. Buffer manager initial state."></p>
+<hr>
+<p><em>*NOTE</em></p>
+<p>Please note that the freelist in PostgreSQL is completely different concept from the freelists in Oracle. PostgreSQL’s freelist is only linked list of empty buffer descriptors. In PostgreSQL freespace maps, which are described in Section 5.3.4, act as the same role of the freelists in Oracle. </p>
+<hr>
+<p>Figure 8.6 shows that how the first page is loaded.</p>
+<ul>
+<li>Retrieve an empty descriptor from the top of the freelist, and pin it (i.e. increase its refcount and usage_count by 1).</li>
+<li>Insert the new entry, which holds the relation between the tag of the first page and the buffer_id of the retrieved descriptor, in the buffer table.</li>
+<li>Load the new page from storage to the corresponding buffer pool slot.</li>
+<li>Save the metadata of the new page to the retrieved descriptor.</li>
+</ul>
+<p>The second and subsequent pages are loaded in a similar manner. Additional details are provided in Section 8.4.2.</p>
+<p><img data-src="/images/pg_buffer_manager_6.png" alt="Fig. 8.6. Loading the first page."></p>
+<p>Descriptors that have been retrieved from the freelist always hold page’s metadata. In other words, non-empty descriptors continue to be used do not return to the freelist. However, related descriptors are added to the freelist again and the descriptor state becomes ‘empty’ when one of the following occurs:</p>
+<ul>
+<li>Tables or indexes have been dropped.</li>
+<li>Databases have been dropped.</li>
+<li>Tables or indexes have been cleaned up using the VACUUM FULL command.</li>
+</ul>
+<hr>
+<p><strong>Why empty descriptors comprise the freelist?</strong></p>
+<p>The reason why the freelist be made is to get the first descriptor immediately. This is a usual practice for dynamic memory resource allocation. Refer to this description. </p>
+<hr>
+<p>The buffer descriptors layer contains an unsigned 32-bit integer variable, i.e. nextVictimBuffer. This variable is used in the page replacement algorithm described in Section 8.4.4.</p>
+<h2 id="Buffer-Pool"><a href="#Buffer-Pool" class="headerlink" title="Buffer Pool"></a>Buffer Pool</h2><p>The buffer pool is a simple array that stores data file pages, such as tables and indexes. Indices of the buffer pool array are referred to as buffer_ids.</p>
+<p>The buffer pool slot size is 8 KB, which is equal to the size of a page. Thus, each slot can store an entire page.</p>
+<h1 id="Buffer-Manager-Locks"><a href="#Buffer-Manager-Locks" class="headerlink" title="Buffer Manager Locks"></a>Buffer Manager Locks</h1><p>The buffer manager uses many locks for many different purposes. This section describes the locks necessary for the explanations in the subsequent sections.</p>
+<hr>
+<p><strong>NOTE</strong></p>
+<p>Please note that the locks described in this section are parts of a synchronization mechanism for the buffer manager; they do not relate to any SQL statements and SQL options. </p>
+<hr>
+<h2 id="Buffer-Table-Locks"><a href="#Buffer-Table-Locks" class="headerlink" title="Buffer Table Locks"></a>Buffer Table Locks</h2><p>BufMappingLock protects the data integrity of the entire buffer table. It is a light-weight lock that can be used in both shared and exclusive modes. When searching an entry in the buffer table, a backend process holds a shared BufMappingLock. When inserting or deleting entries, a backend process holds an exclusive lock.</p>
+<p>The BufMappingLock is split into partitions to reduce the contention in the buffer table (the default is 128 partitions). Each BufMappingLock partition guards the portion of the corresponding hash bucket slots.</p>
+<p>Figure 8.7 shows a typical example of the effect of splitting BufMappingLock. Two backend processes can simultaneously hold respective BufMappingLock partitions in exclusive mode in order to insert new data entries. If the BufMappingLock is a single system-wide lock, both processes should wait for the processing of another process, depending on which started processing.</p>
+<p><img data-src="/images/pg_buffer_manager_7.png" alt="Two processes simultaneously acquire the respective partitions of BufMappingLock in exclusive mode to insert new data entries."></p>
+<p>The buffer table requires many other locks. For example, the buffer table internally uses a spin lock to delete an entry. However, descriptions of these other locks are omitted because they are not required in this document.</p>
+<hr>
+<p><strong>NOTE</strong></p>
+<p>The BufMappingLock had been split into 16 separate locks by default until version 9.4.</p>
+<hr>
+<h2 id="Locks-for-Each-Buffer-Descriptor"><a href="#Locks-for-Each-Buffer-Descriptor" class="headerlink" title="Locks for Each Buffer Descriptor"></a>Locks for Each Buffer Descriptor</h2><p>Each buffer descriptor uses two light-weight locks, content_lock and io_in_progress_lock, to control access to the stored page in the corresponding buffer pool slot. When the values of own fields are checked or changed, a spinlock is used. </p>
+<h3 id="content-lock"><a href="#content-lock" class="headerlink" title="content_lock"></a>content_lock</h3><p>The content_lock is a typical lock that enforces access limits. It can be used in shared and exclusive modes.</p>
+<p>When reading a page, a backend process acquires a shared content_lock of the buffer descriptor that stores the page.</p>
+<p>However, an exclusive content_lock is acquired when doing one of the following:</p>
+<ul>
+<li>Inserting rows (i.e. tuples) into the stored page or changing the t_xmin/t_xmax fields of tuples within the stored page (t_xmin and t_xmax are described in Section 5.2; simply, when deleting or updating rows, these fields of the associated tuples are changed).</li>
+<li>Removing tuples physically or compacting free space on the stored page (performed by vacuum processing and HOT, which are described in Chapters 6 and 7, respectively).</li>
+<li>Freezing tuples within the stored page (freezing is described in Section 5.10.1 and Section 6.3).</li>
+</ul>
+<p>The official <a href="https://github.com/postgres/postgres/blob/master/src/backend/storage/buffer/README">README</a> file shows more details.</p>
+<h3 id="io-in-progress-lock"><a href="#io-in-progress-lock" class="headerlink" title="io_in_progress_lock"></a>io_in_progress_lock</h3><p>The io_in_progress lock is used to wait for I/O on a buffer to complete. When a PostgreSQL process loads/writes page data from/to storage, the process holds an exclusive io_in_progress lock of the corresponding descriptor while accessing the storage.</p>
+<h3 id="spinlock"><a href="#spinlock" class="headerlink" title="spinlock"></a>spinlock</h3><p>When the flags or other fields (e.g. refcount and usage_count) are checked or changed, a spinlock is used. Two specific examples of spinlock usage are given below:</p>
+<ul>
+<li>The following shows how to pin the buffer descriptor:<ul>
+<li>Acquire a spinlock of the buffer descriptor.</li>
+<li>Increase the values of its refcount and usage_count by 1.</li>
+<li>Release the spinlock.<figure class="highlight mipsasm"><table><tr><td class="code"><pre><code class="hljs mipsasm">LockBufHdr(<span class="hljs-keyword">bufferdesc); </span>   <span class="hljs-comment">/* Acquire a spinlock */</span><br><span class="hljs-keyword">bufferdesc-&gt;refcont++;</span><br><span class="hljs-keyword">bufferdesc-&gt;usage_count++;</span><br><span class="hljs-keyword">UnlockBufHdr(bufferdesc); </span><span class="hljs-comment">/* Release the spinlock */</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>The following shows how to set the dirty bit to ‘1’: <ul>
+<li>Acquire a spinlock of the buffer descriptor. </li>
+<li>Set the dirty bit to ‘1’ using a bitwise operation.</li>
+<li>Release the spinlock.<figure class="highlight angelscript"><table><tr><td class="code"><pre><code class="hljs angelscript">#define BM_DIRTY             (<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">0</span>)    <span class="hljs-comment">/* data needs writing */</span><br>#define BM_VALID             (<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">1</span>)    <span class="hljs-comment">/* data is valid */</span><br>#define BM_TAG_VALID         (<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">2</span>)    <span class="hljs-comment">/* tag is assigned */</span><br>#define BM_IO_IN_PROGRESS    (<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">3</span>)    <span class="hljs-comment">/* read or write in progress */</span><br>#define BM_JUST_DIRTIED      (<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">5</span>)    <span class="hljs-comment">/* dirtied since write started */</span><br><br>LockBufHdr(bufferdesc);<br>bufferdesc-&gt;flags |= BM_DIRTY;<br>UnlockBufHdr(bufferdesc);<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p>Changing other bits is performed in the same manner. </p>
+<hr>
+<p><strong>NOTE</strong></p>
+<p>In version 9.6, the spinlocks of buffer manager will be replaced to atomic operations. See this result of <a href="https://commitfest.postgresql.org/9/408/">commitfest</a>. If you want to know the details, refer to this <a href="https://www.postgresql.org/message-id/flat/2400449.GjM57CE0Yg@dinodell#2400449.GjM57CE0Yg@dinodell">discussion</a>. </p>
+<hr>
+<h1 id="How-the-Buffer-Manager-Works"><a href="#How-the-Buffer-Manager-Works" class="headerlink" title="How the Buffer Manager Works"></a>How the Buffer Manager Works</h1><p>This section describes how the buffer manager works. When a backend process wants to access a desired page, it calls the ReadBufferExtended function.</p>
+<p>The behavior of the ReadBufferExtended function depends on three logical cases. Each case is described in the following subsections. In addition, the PostgreSQL clock sweep page replacement algorithm is described in the final subsection.</p>
+<h2 id="Accessing-a-Page-Stored-in-the-Buffer-Pool"><a href="#Accessing-a-Page-Stored-in-the-Buffer-Pool" class="headerlink" title="Accessing a Page Stored in the Buffer Pool"></a>Accessing a Page Stored in the Buffer Pool</h2><p>First, the simplest case is described, i.e. the desired page is already stored in the buffer pool. In this case, the buffer manager performs the following steps:</p>
+<ul>
+<li>Create the buffer_tag of the desired page (in this example, the buffer_tag is ‘Tag_C’) and compute the hash bucket slot, which contains the associated entry of the created buffer_tag, using the hash function.</li>
+<li>Acquire the BufMappingLock partition that covers the obtained hash bucket slot in shared mode (this lock will be released in step (5)).</li>
+<li>Look up the entry whose tag is ‘Tag_C’ and obtain the buffer_id from the entry. In this example, the buffer_id is 2.</li>
+<li>Pin the buffer descriptor for buffer_id 2, i.e. the refcount and usage_count of the descriptor are increased by 1 ( Section 8.3.2 describes pinning).</li>
+<li>Release the BufMappingLock.</li>
+<li>Access the buffer pool slot with buffer_id 2.</li>
+</ul>
+<p><img data-src="/images/pg_buffer_manager_8.png" alt="Fig. 8.8. Accessing a page stored in the buffer pool."></p>
+<p>Then, when reading rows from the page in the buffer pool slot, the PostgreSQL process acquires the shared content_lock of the corresponding buffer descriptor. Thus, buffer pool slots can be read by multiple processes simultaneously.</p>
+<p>When inserting (and updating or deleting) rows to the page, a Postgres process acquires the exclusive content_lock of the corresponding buffer descriptor (note that the dirty bit of the page must be set to ‘1’).</p>
+<p>After accessing the pages, the refcount values of the corresponding buffer descriptors are decreased by 1.</p>
+<h2 id="Loading-a-Page-from-Storage-to-Empty-Slot"><a href="#Loading-a-Page-from-Storage-to-Empty-Slot" class="headerlink" title="Loading a Page from Storage to Empty Slot"></a>Loading a Page from Storage to Empty Slot</h2><p>In this second case, assume that the desired page is not in the buffer pool and the freelist has free elements (empty descriptors). In this case, the buffer manager performs the following steps:</p>
+<ul>
+<li>Look up the buffer table (we assume it is not found).</li>
+<li>Create the buffer_tag of the desired page (in this example, the buffer_tag is ‘Tag_E’) and compute the hash bucket slot.</li>
+<li>Acquire the BufMappingLock partition in shared mode.<ul>
+<li>Look up the buffer table (not found according to the assumption).</li>
+<li>Release the BufMappingLock.</li>
+</ul>
+</li>
+<li>Obtain the empty buffer descriptor from the freelist, and pin it. In this example, the buffer_id of the obtained descriptor is 4.</li>
+<li>Acquire the BufMappingLock partition in exclusive mode (this lock will be released in step (6)).</li>
+<li>Create a new data entry that comprises the buffer_tag ‘Tag_E’ and buffer_id 4; insert the created entry to the buffer table.</li>
+<li>Load the desired page data from storage to the buffer pool slot with buffer_id 4 as follows:</li>
+<li>Acquire the exclusive io_in_progress_lock of the corresponding descriptor.<ul>
+<li>Set the io_in_progress bit of the corresponding descriptor to ‘1 to prevent access by other processes.</li>
+<li>Load the desired page data from storage to the buffer pool slot.</li>
+<li>Change the states of the corresponding descriptor; the io_in_progress bit is set to ‘0’, and the valid bit is set to ‘1’.</li>
+<li>Release the io_in_progress_lock.</li>
+</ul>
+</li>
+<li>Release the BufMappingLock.</li>
+<li>Access the buffer pool slot with buffer_id 4.</li>
+</ul>
+<p><img data-src="/images/pg_buffer_manager_9.png" alt="Fig. 8.9. Loading a page from storage to an empty slot."></p>
+<h2 id="Loading-a-Page-from-Storage-to-a-Victim-Buffer-Pool-Slot"><a href="#Loading-a-Page-from-Storage-to-a-Victim-Buffer-Pool-Slot" class="headerlink" title="Loading a Page from Storage to a Victim Buffer Pool Slot"></a>Loading a Page from Storage to a Victim Buffer Pool Slot</h2><p>In this case, assume that all buffer pool slots are occupied by pages but the desired page is not stored. The buffer manager performs the following steps:</p>
+<ul>
+<li>Create the buffer_tag of the desired page and look up the buffer table. In this example, we assume that the buffer_tag is ‘Tag_M’ (the desired page is not found).</li>
+<li>Select a victim buffer pool slot using the clock-sweep algorithm, obtain the old entry, which contains the buffer_id of the victim pool slot, from the buffer table and pin the victim pool slot in the buffer descriptors layer. In this example, the buffer_id of the victim slot is 5 and the old entry is ‘Tag_F, id=5’. The clock sweep is described in the next subsection.</li>
+<li>Flush (write and fsync) the victim page data if it is dirty; otherwise proceed to step (4).<br> The dirty page must be written to storage before overwriting with new data. Flushing a dirty page is performed as follows:<ul>
+<li>Acquire the shared content_lock and the exclusive io_in_progress lock of the descriptor with buffer_id 5 (released in step 6).</li>
+<li>Change the states of the corresponding descriptor; the io_in_progress bit is set to ‘1’ and the just_dirtied bit is set to ‘0’.</li>
+<li>Depending on the situation, the XLogFlush() function is invoked to write WAL data on the WAL buffer to the current WAL segment file (details are omitted; WAL and the XLogFlush function are described in Chapter 9).</li>
+<li>Flush the victim page data to storage.</li>
+<li>Change the states of the corresponding descriptor; the io_in_progress bit is set to ‘0’ and the valid bit is set to ‘1’.</li>
+<li>Release the io_in_progress and content_lock locks.</li>
+</ul>
+</li>
+<li>Acquire the old BufMappingLock partition that covers the slot that contains the old entry, in exclusive mode.</li>
+<li>Acquire the new BufMappingLock partition and insert the new entry to the buffer table:<ul>
+<li>Create the new entry comprised of the new buffer_tag ‘Tag_M’ and the victim’s buffer_id.</li>
+<li>Acquire the new BufMappingLock partition that covers the slot containing the new entry in exclusive mode.</li>
+<li>Insert the new entry to the buffer table.</li>
+</ul>
+</li>
+<li>Delete the old entry from the buffer table, and release the old BufMappingLock partition.</li>
+<li>Load the desired page data from the storage to the victim buffer slot. Then, update the flags of the descriptor with buffer_id 5; the dirty bit is set to ‘0 and initialize other bits.</li>
+<li>Release the new BufMappingLock partition.</li>
+<li>Access the buffer pool slot with buffer_id 5.</li>
+</ul>
+<p><img data-src="/images/pg_buffer_manager_10.png" alt="Fig. 8.10. Loading a page from storage to a victim buffer pool slot."></p>
+<h2 id="Page-Replacement-Algorithm-Clock-Sweep"><a href="#Page-Replacement-Algorithm-Clock-Sweep" class="headerlink" title="Page Replacement Algorithm: Clock Sweep"></a>Page Replacement Algorithm: Clock Sweep</h2><p>The rest of this section describes the clock-sweep algorithm. This algorithm is a variant of NFU (Not Frequently Used) with low overhead; it selects less frequently used pages efficiently.</p>
+<p>Imagine buffer descriptors as a circular list (Fig. 8.12). The nextVictimBuffer, an unsigned 32-bit integer, is always pointing to one of the buffer descriptors and rotates clockwise. The pseudocode and description of the algorithm are follows: </p>
+<hr>
+<p><strong>Pseudocode: clock-sweep</strong></p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><figure class="highlight vhdl"><table><tr><td class="code"><pre><code class="hljs vhdl">     <span class="hljs-keyword">WHILE</span> <span class="hljs-literal">true</span><br>(<span class="hljs-number">1</span>)     Obtain the candidate <span class="hljs-keyword">buffer</span> descriptor pointed by the nextVictimBuffer<br>(<span class="hljs-number">2</span>)     <span class="hljs-keyword">IF</span> the candidate descriptor <span class="hljs-keyword">is</span> unpinned <span class="hljs-keyword">THEN</span><br>(<span class="hljs-number">3</span>)           <span class="hljs-keyword">IF</span> the candidate descriptor<span class="hljs-symbol">&#x27;s</span> usage_count == <span class="hljs-number">0</span> <span class="hljs-keyword">THEN</span><br>                BREAK <span class="hljs-keyword">WHILE</span> <span class="hljs-keyword">LOOP</span>  <span class="hljs-comment">/* the corresponding slot of this descriptor is victim slot. */</span><br>           <span class="hljs-keyword">ELSE</span><br>            Decrease the candidate descriptpor<span class="hljs-symbol">&#x27;s</span> usage_count by <span class="hljs-number">1</span><br>               <span class="hljs-keyword">END</span> <span class="hljs-keyword">IF</span><br>         <span class="hljs-keyword">END</span> <span class="hljs-keyword">IF</span><br>(<span class="hljs-number">4</span>)     Advance nextVictimBuffer <span class="hljs-keyword">to</span> the <span class="hljs-keyword">next</span> one<br>      <span class="hljs-keyword">END</span> <span class="hljs-keyword">WHILE</span> <br>(<span class="hljs-number">5</span>) <span class="hljs-keyword">RETURN</span> buffer_id <span class="hljs-keyword">of</span> the victim<br></code></pre></td></tr></table></figure></h2><p>A specific example is shown in Fig. 8.12. The buffer descriptors are shown as blue or cyan boxes, and the numbers in the boxes show the usage_count of each descriptor. </p>
+<h1 id="Ring-Buffer"><a href="#Ring-Buffer" class="headerlink" title="Ring Buffer"></a>Ring Buffer</h1><p>When reading or writing a huge table, PostgreSQL uses a ring buffer rather than the buffer pool. The ring buffer is a small and temporary buffer area. When any condition listed below is met, a ring buffer is allocated to shared memory:</p>
+<ul>
+<li>Bulk-reading<br>When a relation whose size exceeds one-quarter of the buffer pool size (shared_buffers/4) is scanned. In this case, the ring buffer size is 256 KB.</li>
+<li>Bulk-writing<br>When the SQL commands listed below are executed. In this case, the ring buffer size is 16 MB.<ul>
+<li>COPY FROM command.</li>
+<li>CREATE TABLE AS command.</li>
+<li>CREATE MATERIALIZED VIEW or REFRESH MATERIALIZED VIEW command.</li>
+<li>ALTER TABLE command.</li>
+</ul>
+</li>
+<li>Vacuum-processing<br>When an autovacuum performs a vacuum processing. In this case, the ring buffer size is 256 KB.</li>
+</ul>
+<p>The allocated ring buffer is released immediately after use.</p>
+<p>The benefit of the ring buffer is obvious. If a backend process reads a huge table without using a ring buffer, all stored pages in the buffer pool are removed (kicked out); therefore, the cache hit ratio decreases. The ring buffer avoids this issue. </p>
+<hr>
+<p><strong>Why the default ring buffer size for bulk-reading and vacuum processing is 256 KB?</strong></p>
+<p>Why 256 KB? The answer is explained in the <a href="https://github.com/postgres/postgres/blob/master/src/backend/storage/buffer/README">README</a> located under the buffer manager’s source directory.<br>  For sequential scans, a 256 KB ring is used. That’s small enough to fit in L2 cache, which makes transferring pages from OS cache to shared buffer cache efficient. Even less would often be enough, but the ring must be big enough to accommodate all pages in the scan that are pinned concurrently. (snip) </p>
+<hr>
+<h1 id="Flushing-Dirty-Pages-1"><a href="#Flushing-Dirty-Pages-1" class="headerlink" title="Flushing Dirty Pages"></a>Flushing Dirty Pages</h1><p>In addition to replacing victim pages, the checkpointer and background writer processes flush dirty pages to storage. Both processes have the same function (flushing dirty pages); however, they have different roles and behaviours.</p>
+<p>The checkpointer process writes a checkpoint record to the WAL segment file and flushes dirty pages whenever checkpointing starts. Section 9.7 describes checkpointing and when it begins.</p>
+<p>The role of the background writer is to reduce the influence of the intensive writing of checkpointing. The background writer continues to flush dirty pages little by little with minimal impact on database activity. By default, the background writer wakes every 200 msec (defined by bgwriter_delay) and flushes bgwriter_lru_maxpages (the default is 100 pages) at maximum. </p>
+<hr>
+<p><strong>为什么要从background writer分离出checkpointer?</strong></p>
+<p>在9.1或更早版本中，background writer定期执行checkpoint处理。在版本9.2中，checkpointer进程已与background writer进程分离。在<a href="https://www.postgresql.org/message-id/CA%2BU5nMLv2ah-HNHaQ%3D2rxhp_hDJ9jcf-LL2kW3sE4msfnUw9gA%40mail.gmail.com">“Separating bgwriter and checkpointer”</a> 提案中描述了原因。</p>
+<h2 id="-1"><a href="#-1" class="headerlink" title=""></a><figure class="highlight applescript"><table><tr><td class="code"><pre><code class="hljs applescript">Currently(<span class="hljs-keyword">in</span> <span class="hljs-number">2011</span>) <span class="hljs-keyword">the</span> bgwriter process performs both background writing, checkpointing <span class="hljs-keyword">and</span> <span class="hljs-keyword">some</span> other duties. This means <span class="hljs-keyword">that</span> we can&#x27;t perform <span class="hljs-keyword">the</span> final checkpoint fsync <span class="hljs-keyword">without</span> stopping background writing, so there <span class="hljs-keyword">is</span> a negative performance effect <span class="hljs-keyword">from</span> doing both things <span class="hljs-keyword">in</span> one process.<br>Additionally, our aim <span class="hljs-keyword">in</span> <span class="hljs-number">9.2</span> <span class="hljs-keyword">is</span> <span class="hljs-keyword">to</span> replace polling loops <span class="hljs-keyword">with</span> latches <span class="hljs-keyword">for</span> power reduction. The complexity <span class="hljs-keyword">of</span> <span class="hljs-keyword">the</span> bgwriter loops <span class="hljs-keyword">is</span> high <span class="hljs-keyword">and</span> <span class="hljs-keyword">it</span> seems unlikely <span class="hljs-keyword">to</span> come up <span class="hljs-keyword">with</span> a clean approach using latches.<br></code></pre></td></tr></table></figure></h2>]]></content>
+      <categories>
+        <category>PostgreSQL</category>
+      </categories>
+      <tags>
+        <tag>PostgreSQL</tag>
+        <tag>buffer</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>PostgreSQL后端进程</title>
     <url>/PostgreSQL/PostgreSQL_backend_process/</url>
     <content><![CDATA[<h1 id="checkpoint"><a href="#checkpoint" class="headerlink" title="checkpoint"></a>checkpoint</h1><h2 id="功能描述"><a href="#功能描述" class="headerlink" title="功能描述"></a>功能描述</h2><p>其保证了数据库的一致性状态，定期执行检查点是很重要的，确保数据变化持久保存到磁盘中并且数据库的状态是一致的。</p>
-<h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><p>checkpoint_timeout<br>系统自动执行checkpoint之间的最大时间间隔。系统默认值是5分钟，这个值可以在压测过程中调大，尽量避免执行checkpoint争抢IO</p>
-<p>max_wal_size<br>写满多少个WAL时执行checkpoint，也是同理，这个值可以在压测过程中调大，尽量避免执行checkpoint争抢IO</p>
-<p>min_wal_size<br>只要wal日志目录使用空间小于该值，那么旧的wal日志就会循环使用而不是进行删除。这个参数是为了确保足够的wal空间预留给突发情况，比如大的跑批操作。</p>
+<h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><p>checkpoint_timeout<br>系统自动执行checkpoint之间的最大时间间隔。系统默认值是5分钟，这个值可以在压测过程中调大，尽量避免执行checkpoint争抢IO<br>max_wal_size<br>写满多少个WAL时执行checkpoint，也是同理，这个值可以在压测过程中调大，尽量避免执行checkpoint争抢IO<br><a id="more"></a><br>min_wal_size<br>只要wal日志目录使用空间小于该值，那么旧的wal日志就会循环使用而不是进行删除。这个参数是为了确保足够的wal空间预留给突发情况，比如大的跑批操作。</p>
 <p>checkpoint_completion_target<br>分散检查点，默认为0.5，即表示每个checkpoint需要在checkpoints间隔时间的50%内完成，然后立马进行fsync，fsync执行是很快的(为了平滑fsync，以防尖锐的IO请求，PostgreSQL9.6以后加了checkpoint_flush_after、wal_writer_flush_after、bgwriter_flush_after和backend_flush_after这些参数来缓解)看如下一个场景。</p>
 <div class="table-container">
 <table>
@@ -34,7 +311,7 @@
 <p>full_page_writes<br>PostgreSQL服务器在检查点之后对页面的第一次写入时将整个页面写到WAL里面。如果checkpoint发生太频繁，会导致写放大，默认为on，假如调为off，需要确保数据库在压测期间不要崩溃，不然重启后可能发生数据块部分写，导致重启失败。full_page_writes就是为了确保数据页一致性，不发生块折断。而在MySQL中，则是通过double write来预防partial write的。如果你的块设备对齐，并支持原子写(原子写大于或等于一个DATA FILE数据页的大小)，那可以关闭这个参数</p>
 <h1 id="background-writer"><a href="#background-writer" class="headerlink" title="background writer"></a>background writer</h1><h2 id="功能描述-1"><a href="#功能描述-1" class="headerlink" title="功能描述"></a>功能描述</h2><p>1、数据库在进行查询处理时若发现要读取的数据不在缓冲区中时要先从磁盘中读入需要的页面，此时如果缓冲区已满，则需要遵从类似于LRU算法先选择部分缓冲区中的页面置换出去。如果被替换的页面没有被修改过，则可以直接丢弃；但如果已经被修改过，则需要先将这些页面写出到磁盘后才能置换，通过使用BgWriter定期写出缓冲区中的部分脏页，为缓冲区腾出空间，就可以降低查询处理被阻塞的可能性；</p>
 <p>2、PostgreSQL在定期做检查点时需要把所有脏页写出到磁盘，通过BgWriter预先写出一些脏页，可以减少检查点时要进行的IO动作，使系统的IO更加平稳。通过BgWriter对共享缓冲区写操作的管理，避免了其他服务进程在需要读入新的页面到缓冲区时，不得不先进行写盘的操作。</p>
-<a id="more"></a>
+<!-- more -->
 <h2 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h2><p>writer_delay<br>background writer每次扫描之间的时间间隔，也就是刷shared buffer脏页的进程调度间隔，尽量高频调度，减少用户进程申请不到内存而需要主动刷脏页的可能(导致RT升高)</p>
 <p>bgwriter_lru_maxpages<br>一次最多刷多少脏页</p>
 <p>bgwriter_lru_multiplier<br>写出至多bgwriter_lru_multiplier * N个脏页，并且不超过bgwriter_lru_maxpages值的限制。其中N是最近一段时间在两次BgWriter运行期间系统新申请的缓冲区页数。后台写进程根据最近服务进程需要的buffer数量乘上这个比率估算出下次服务进程需要的buffer数量，再使用后台写进程刷脏页面，使缓冲区能使用的干净页面达到这个估计值</p>
@@ -270,8 +547,9 @@
   </entry>
   <entry>
     <title>有用的连接</title>
-    <url>/%E4%B8%AA%E4%BA%BA%E8%AE%B0%E5%BD%95/%E9%BA%BB%E9%9B%80/</url>
-    <content><![CDATA[<h2 id="生成随即背景图片"><a href="#生成随即背景图片" class="headerlink" title="生成随即背景图片"></a>生成随即背景图片</h2><figure class="highlight vim"><table><tr><td class="code"><pre><code class="hljs vim">http<span class="hljs-variable">s:</span>//<span class="hljs-keyword">source</span>.unsplash.<span class="hljs-keyword">com</span>/<br></code></pre></td></tr></table></figure>
+    <url>/%E4%B8%AA%E4%BA%BA%E8%AE%B0%E5%BD%95/%E6%9C%89%E7%94%A8%E7%9A%84%E8%BF%9E%E6%8E%A5/</url>
+    <content><![CDATA[<h2 id="PostgreSQL-MVCC"><a href="#PostgreSQL-MVCC" class="headerlink" title="PostgreSQL MVCC"></a>PostgreSQL MVCC</h2><figure class="highlight awk"><table><tr><td class="code"><pre><code class="hljs awk">http:<span class="hljs-regexp">//</span>www.interdb.jp<span class="hljs-regexp">/pg/</span>pgsql05.html<br></code></pre></td></tr></table></figure>
+<h2 id="生成随即背景图片"><a href="#生成随即背景图片" class="headerlink" title="生成随即背景图片"></a>生成随即背景图片</h2><figure class="highlight vim"><table><tr><td class="code"><pre><code class="hljs vim">http<span class="hljs-variable">s:</span>//<span class="hljs-keyword">source</span>.unsplash.<span class="hljs-keyword">com</span>/<br></code></pre></td></tr></table></figure>
 <h2 id="SQL格式化"><a href="#SQL格式化" class="headerlink" title="SQL格式化"></a>SQL格式化</h2><figure class="highlight awk"><table><tr><td class="code"><pre><code class="hljs awk">http:<span class="hljs-regexp">//</span>sqlformat.darold.net/<br></code></pre></td></tr></table></figure>
 <a id="more"></a>
 <h2 id="PG11中文手册"><a href="#PG11中文手册" class="headerlink" title="PG11中文手册"></a>PG11中文手册</h2><figure class="highlight awk"><table><tr><td class="code"><pre><code class="hljs awk">https:<span class="hljs-regexp">//</span>www.docs4dev.com<span class="hljs-regexp">/docs/</span>zh<span class="hljs-regexp">/postgre-sql/</span><span class="hljs-number">11.2</span><span class="hljs-regexp">/reference/</span>release-<span class="hljs-number">11</span>-<span class="hljs-number">2</span>.html<br></code></pre></td></tr></table></figure>
@@ -327,6 +605,29 @@
       </tags>
   </entry>
   <entry>
+    <title>内核Softdog测试</title>
+    <url>/Linux/softdog/</url>
+    <content><![CDATA[<h1 id="Watchdog的功能"><a href="#Watchdog的功能" class="headerlink" title="Watchdog的功能"></a>Watchdog的功能</h1><pre><code>Linux内核watchdog于监视系统是否正在运行。由于存在不可恢复的软件错误，应该自动重新启动挂起的系统。
+
+看门狗模块特依赖所使用的硬件或芯片。个人计算机用户通常不需要看门狗，因为他们可以手动重置系统。但是，watchdog对于任务关键型系统和需要无需人工干预即可自行重启的系统很有用。
+</code></pre><p>例如，需要自动硬件重置功能的远程位置的服务器。</p>
+<a id="more"></a>
+<h1 id="Watchdog的实现"><a href="#Watchdog的实现" class="headerlink" title="Watchdog的实现"></a>Watchdog的实现</h1><pre><code>看门狗功能设置了一个计时器在预定时间后超时。然后看门狗软件定期喂狗(刷新硬件计时器)。如果停止喂狗，到达设定时间后，将会出现狗咬人(执行设备的硬件重置)。
+</code></pre><p>可以分为hardware watchdog 和 software watchdog。<br>    hardware watchdog 是主板芯片的功能。不同的芯片使用不同的模块，例如：Intel 主板使用 “iTCO_wdt”， HP 通常使用 “hpwdt”，IBM 使用 “vmwatchdog”，Xen VM 使用 “xen_wdt”。<br>    software watchdog 是Linux内核提供使用内核计时器实现的软件监视程序。</p>
+<h1 id="测试Linux自带watchdog"><a href="#测试Linux自带watchdog" class="headerlink" title="测试Linux自带watchdog"></a>测试Linux自带watchdog</h1><figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros">[root@server6 ~]# ls /dev/watchdog*              #查看watchdog设备文件<br>/dev<span class="hljs-built_in">/watchdog </span> /dev/watchdog0<br>[root@server6 ~]# lsmod |grep -i soft            #查看softdog是否加载<br>[root@server6 ~]# modinfo softdog                #查看softdog模块信息<br>filename:       /lib/modules/3.10.0-957.10.1.el7.x86_64/kernel/drivers/watchdog/softdog.ko.xz<br>alias:          char-major-10-130<br>license:        GPL<br>description:    Software<span class="hljs-built_in"> Watchdog </span>Device Driver<br>author:         Alan Cox<br>retpoline:      Y<br>rhelversion:    7.6<br>srcversion:     250C077ED39E75BF25AD8D1<br>depends:<br>intree:         Y<br>vermagic:       3.10.0-957.10.1.el7.x86_64 SMP mod_unload modversions<br>signer:         CentOS Linux kernel signing key<br>sig_key:        17:EA:5F:B9:16:4B:C2:26:55:5C:00:43:FA:D4:E5:86:CC:E8:A2:05<br>sig_hashalgo:   sha256<br>parm:           soft_margin:Watchdog soft_margin <span class="hljs-keyword">in</span> seconds. (0 &lt; soft_margin &lt; 65536, <span class="hljs-attribute">default</span>=60) (uint)<br>parm:           nowayout:Watchdog cannot be stopped once started (<span class="hljs-attribute">default</span>=0) (bool)<br>parm:           soft_noboot:Softdog action, <span class="hljs-builtin-name">set</span> <span class="hljs-keyword">to</span> 1 <span class="hljs-keyword">to</span> ignore reboots, 0 <span class="hljs-keyword">to</span> reboot (<span class="hljs-attribute">default</span>=0) (int)<br>parm:           soft_panic:Softdog action, <span class="hljs-builtin-name">set</span> <span class="hljs-keyword">to</span> 1 <span class="hljs-keyword">to</span> panic, 0 <span class="hljs-keyword">to</span> reboot (<span class="hljs-attribute">default</span>=0) (int)<br><br>[root@server6 ~]# modprobe softdog               #加载softdog 可以设置 soft_margin soft_noboot   soft_panic   nowayout等参数<br>[root@server6 ~]# ls /dev/watchdog*              #查看watchdog设备文件<br>/dev<span class="hljs-built_in">/watchdog </span> /dev/watchdog0  /dev/watchdog1<br>[root@server6 ~]# wdctl /dev/watchdog1           #查看softdog设备文件信息<br>Device:        /dev/watchdog1<br>Identity:      Software<span class="hljs-built_in"> Watchdog </span>[version 0]<br>Timeout:       60 seconds<br>Pre-timeout:    0 seconds<br>FLAG           DESCRIPTION               STATUS BOOT-STATUS<br>KEEPALIVEPING  Keep alive<span class="hljs-built_in"> ping </span>reply          1           0<br>MAGICCLOSE     Supports magic close char      0           0<br>SETTIMEOUT     <span class="hljs-builtin-name">Set</span> timeout (<span class="hljs-keyword">in</span> seconds)       0           0<br>[root@server6 ~]# ehco a &gt;/dev<span class="hljs-built_in">/watchdog </span>         #追加除V以外任意字符到softdog  60秒后系统将重启<br>watchdog   watchdog0  watchdog1<br>[root@server6 ~]# echo V &gt;/dev/watchdog1         #取消测试<br></code></pre></td></tr></table></figure>
+<h1 id="警告"><a href="#警告" class="headerlink" title="警告"></a>警告</h1><figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">错误的watchdog配置可能导致以下情形<br>    无限重启<br>    硬重置导致文件损坏<br>    不可预测的重启<br>线上服务器慎用。<br></code></pre></td></tr></table></figure>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><figure class="highlight awk"><table><tr><td class="code"><pre><code class="hljs awk">https:<span class="hljs-regexp">//</span>linuxhint.com<span class="hljs-regexp">/linux-kernel-watchdog-explained/</span><br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>softdog</tag>
+        <tag>watchdog</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>利用Github分支备份Hexo博客源文件</title>
     <url>/hexo/%E5%88%A9%E7%94%A8Github%E5%88%86%E6%94%AF%E5%A4%87%E4%BB%BDHexo%E5%8D%9A%E5%AE%A2%E6%BA%90%E6%96%87%E4%BB%B6/</url>
     <content><![CDATA[<h1 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h1><p>Hexo 部署博客很方便，我的这个博客也是用 Hexo 部署在 GitHub Pages 上的，有得人可能在多台电脑上写博客，这个时候需要把博客<br>的源文件备份在一个地方，这样只需把博客源文件复制下来就可以在另一个地方写博客并部署到 GitHub Pages上了.</p>
@@ -354,29 +655,6 @@
       <tags>
         <tag>hexo</tag>
         <tag>github</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>内核Softdog测试</title>
-    <url>/Linux/softdog/</url>
-    <content><![CDATA[<h1 id="Watchdog的功能"><a href="#Watchdog的功能" class="headerlink" title="Watchdog的功能"></a>Watchdog的功能</h1><pre><code>Linux内核watchdog于监视系统是否正在运行。由于存在不可恢复的软件错误，应该自动重新启动挂起的系统。
-
-看门狗模块特依赖所使用的硬件或芯片。个人计算机用户通常不需要看门狗，因为他们可以手动重置系统。但是，watchdog对于任务关键型系统和需要无需人工干预即可自行重启的系统很有用。
-</code></pre><p>例如，需要自动硬件重置功能的远程位置的服务器。</p>
-<a id="more"></a>
-<h1 id="Watchdog的实现"><a href="#Watchdog的实现" class="headerlink" title="Watchdog的实现"></a>Watchdog的实现</h1><pre><code>看门狗功能设置了一个计时器在预定时间后超时。然后看门狗软件定期喂狗(刷新硬件计时器)。如果停止喂狗，到达设定时间后，将会出现狗咬人(执行设备的硬件重置)。
-</code></pre><p>可以分为hardware watchdog 和 software watchdog。<br>    hardware watchdog 是主板芯片的功能。不同的芯片使用不同的模块，例如：Intel 主板使用 “iTCO_wdt”， HP 通常使用 “hpwdt”，IBM 使用 “vmwatchdog”，Xen VM 使用 “xen_wdt”。<br>    software watchdog 是Linux内核提供使用内核计时器实现的软件监视程序。</p>
-<h1 id="测试Linux自带watchdog"><a href="#测试Linux自带watchdog" class="headerlink" title="测试Linux自带watchdog"></a>测试Linux自带watchdog</h1><figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros">[root@server6 ~]# ls /dev/watchdog*              #查看watchdog设备文件<br>/dev<span class="hljs-built_in">/watchdog </span> /dev/watchdog0<br>[root@server6 ~]# lsmod |grep -i soft            #查看softdog是否加载<br>[root@server6 ~]# modinfo softdog                #查看softdog模块信息<br>filename:       /lib/modules/3.10.0-957.10.1.el7.x86_64/kernel/drivers/watchdog/softdog.ko.xz<br>alias:          char-major-10-130<br>license:        GPL<br>description:    Software<span class="hljs-built_in"> Watchdog </span>Device Driver<br>author:         Alan Cox<br>retpoline:      Y<br>rhelversion:    7.6<br>srcversion:     250C077ED39E75BF25AD8D1<br>depends:<br>intree:         Y<br>vermagic:       3.10.0-957.10.1.el7.x86_64 SMP mod_unload modversions<br>signer:         CentOS Linux kernel signing key<br>sig_key:        17:EA:5F:B9:16:4B:C2:26:55:5C:00:43:FA:D4:E5:86:CC:E8:A2:05<br>sig_hashalgo:   sha256<br>parm:           soft_margin:Watchdog soft_margin <span class="hljs-keyword">in</span> seconds. (0 &lt; soft_margin &lt; 65536, <span class="hljs-attribute">default</span>=60) (uint)<br>parm:           nowayout:Watchdog cannot be stopped once started (<span class="hljs-attribute">default</span>=0) (bool)<br>parm:           soft_noboot:Softdog action, <span class="hljs-builtin-name">set</span> <span class="hljs-keyword">to</span> 1 <span class="hljs-keyword">to</span> ignore reboots, 0 <span class="hljs-keyword">to</span> reboot (<span class="hljs-attribute">default</span>=0) (int)<br>parm:           soft_panic:Softdog action, <span class="hljs-builtin-name">set</span> <span class="hljs-keyword">to</span> 1 <span class="hljs-keyword">to</span> panic, 0 <span class="hljs-keyword">to</span> reboot (<span class="hljs-attribute">default</span>=0) (int)<br><br>[root@server6 ~]# modprobe softdog               #加载softdog 可以设置 soft_margin soft_noboot   soft_panic   nowayout等参数<br>[root@server6 ~]# ls /dev/watchdog*              #查看watchdog设备文件<br>/dev<span class="hljs-built_in">/watchdog </span> /dev/watchdog0  /dev/watchdog1<br>[root@server6 ~]# wdctl /dev/watchdog1           #查看softdog设备文件信息<br>Device:        /dev/watchdog1<br>Identity:      Software<span class="hljs-built_in"> Watchdog </span>[version 0]<br>Timeout:       60 seconds<br>Pre-timeout:    0 seconds<br>FLAG           DESCRIPTION               STATUS BOOT-STATUS<br>KEEPALIVEPING  Keep alive<span class="hljs-built_in"> ping </span>reply          1           0<br>MAGICCLOSE     Supports magic close char      0           0<br>SETTIMEOUT     <span class="hljs-builtin-name">Set</span> timeout (<span class="hljs-keyword">in</span> seconds)       0           0<br>[root@server6 ~]# ehco a &gt;/dev<span class="hljs-built_in">/watchdog </span>         #追加除V以外任意字符到softdog  60秒后系统将重启<br>watchdog   watchdog0  watchdog1<br>[root@server6 ~]# echo V &gt;/dev/watchdog1         #取消测试<br></code></pre></td></tr></table></figure>
-<h1 id="警告"><a href="#警告" class="headerlink" title="警告"></a>警告</h1><figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">错误的watchdog配置可能导致以下情形<br>    无限重启<br>    硬重置导致文件损坏<br>    不可预测的重启<br>线上服务器慎用。<br></code></pre></td></tr></table></figure>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><figure class="highlight awk"><table><tr><td class="code"><pre><code class="hljs awk">https:<span class="hljs-regexp">//</span>linuxhint.com<span class="hljs-regexp">/linux-kernel-watchdog-explained/</span><br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>softdog</tag>
-        <tag>watchdog</tag>
       </tags>
   </entry>
   <entry>

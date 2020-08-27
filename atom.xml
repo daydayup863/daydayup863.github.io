@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://daydayup863.github.io/"/>
-  <updated>2020-08-19T07:52:05.651Z</updated>
+  <updated>2020-08-20T11:35:10.487Z</updated>
   <id>http://daydayup863.github.io/</id>
   
   <author>
@@ -15,6 +15,61 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PostgreSQL vacuum</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/PostgreSQL_vacuum/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/PostgreSQL_vacuum/</id>
+    <published>2020-08-20T09:30:29.000Z</published>
+    <updated>2020-08-20T11:35:10.487Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;vacuum processing is a maintenance process that facilitates the persistent operation of PostgreSQL. Its two main tasks are removing dead tuples and the freezing transaction ids, both of which are briefly mentioned in Section 5.10.&lt;/p&gt;
+&lt;p&gt;To remove dead tuples, vacuum processing provides two modes, i.e. Concurrent VACUUM and Full VACUUM. Concurrent VACUUM, often simply called VACUUM, removes dead tuples for each page of the table file, and other transactions can read the table while this process is running. In contrast, Full VACUUM removes dead tuples and defragments live tuples the whole file, and other transactions cannot access tables while Full VACUUM is running.&lt;/p&gt;
+&lt;p&gt;Despite the fact that vacuum processing is essential for PostgreSQL, improving its functionality has been slow compared to other functions. For example, until version 8.0, this process had to be executed manually (with the psql utility or using the cron daemon). It was automated in 2005 when the autovacuum daemon was implemented.&lt;/p&gt;
+&lt;p&gt;Since vacuum processing involves scanning whole tables, it is a costly process. In version 8.4 (2009), the Visibility Map (VM) was introduced to improve the efficiency of removing dead tuples. In version 9.6 (2016), the freeze process was improved by enhancing the VM. &lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="vacuum" scheme="http://daydayup863.github.io/tags/vacuum/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PostgreSQL 缓冲区管理</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/PostgreSQL_Buffer_Manager/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/PostgreSQL_Buffer_Manager/</id>
+    <published>2020-08-20T03:21:12.000Z</published>
+    <updated>2020-08-20T07:51:38.027Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;缓冲区管理器管理共享内存和持久性存储之间的数据传输，并且可能对DBMS的性能产生重大影响。 PostgreSQL缓冲区管理器非常高效。&lt;br&gt;在本章中，将介绍PostgreSQL缓冲区管理器。第一部分提供了概述，随后的部分描述了以下主题：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Buffer manager structure&lt;/li&gt;
+&lt;li&gt;Buffer manager locks&lt;/li&gt;
+&lt;li&gt;How the buffer manager works&lt;/li&gt;
+&lt;li&gt;Ring buffer&lt;/li&gt;
+&lt;li&gt;Flushing of dirty pages
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="buffer" scheme="http://daydayup863.github.io/tags/buffer/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux 命令记录</title>
@@ -40,41 +95,12 @@
     <link href="http://daydayup863.github.io/PostgreSQL/PostgreSQL_backend_process/"/>
     <id>http://daydayup863.github.io/PostgreSQL/PostgreSQL_backend_process/</id>
     <published>2020-08-19T03:12:29.000Z</published>
-    <updated>2020-08-19T03:30:52.544Z</updated>
+    <updated>2020-08-27T09:23:09.770Z</updated>
     
     <summary type="html">
     
       &lt;h1 id=&quot;checkpoint&quot;&gt;&lt;a href=&quot;#checkpoint&quot; class=&quot;headerlink&quot; title=&quot;checkpoint&quot;&gt;&lt;/a&gt;checkpoint&lt;/h1&gt;&lt;h2 id=&quot;功能描述&quot;&gt;&lt;a href=&quot;#功能描述&quot; class=&quot;headerlink&quot; title=&quot;功能描述&quot;&gt;&lt;/a&gt;功能描述&lt;/h2&gt;&lt;p&gt;其保证了数据库的一致性状态，定期执行检查点是很重要的，确保数据变化持久保存到磁盘中并且数据库的状态是一致的。&lt;/p&gt;
-&lt;h2 id=&quot;参数&quot;&gt;&lt;a href=&quot;#参数&quot; class=&quot;headerlink&quot; title=&quot;参数&quot;&gt;&lt;/a&gt;参数&lt;/h2&gt;&lt;p&gt;checkpoint_timeout&lt;br&gt;系统自动执行checkpoint之间的最大时间间隔。系统默认值是5分钟，这个值可以在压测过程中调大，尽量避免执行checkpoint争抢IO&lt;/p&gt;
-&lt;p&gt;max_wal_size&lt;br&gt;写满多少个WAL时执行checkpoint，也是同理，这个值可以在压测过程中调大，尽量避免执行checkpoint争抢IO&lt;/p&gt;
-&lt;p&gt;min_wal_size&lt;br&gt;只要wal日志目录使用空间小于该值，那么旧的wal日志就会循环使用而不是进行删除。这个参数是为了确保足够的wal空间预留给突发情况，比如大的跑批操作。&lt;/p&gt;
-&lt;p&gt;checkpoint_completion_target&lt;br&gt;分散检查点，默认为0.5，即表示每个checkpoint需要在checkpoints间隔时间的50%内完成，然后立马进行fsync，fsync执行是很快的(为了平滑fsync，以防尖锐的IO请求，PostgreSQL9.6以后加了checkpoint_flush_after、wal_writer_flush_after、bgwriter_flush_after和backend_flush_after这些参数来缓解)看如下一个场景。&lt;/p&gt;
-&lt;div class=&quot;table-container&quot;&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;场景&lt;/th&gt;
-&lt;th&gt;数据量&lt;/th&gt;
-&lt;th&gt;数据写入速度( 1gb/ s )&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;checkpoint_completion_target=0.5&lt;/td&gt;
-&lt;td&gt;100G&lt;/td&gt;
-&lt;td&gt;100/ ( 0.53060 ) 1024 ≈ 114 M/s&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;checkpoint_timeout = 30min&lt;/td&gt;
-&lt;td&gt;100G&lt;/td&gt;
-&lt;td&gt;100/ ( 0.8 3060 ) 1024 ≈ 71 M/s&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-&lt;p&gt;full_page_writes&lt;br&gt;PostgreSQL服务器在检查点之后对页面的第一次写入时将整个页面写到WAL里面。如果checkpoint发生太频繁，会导致写放大，默认为on，假如调为off，需要确保数据库在压测期间不要崩溃，不然重启后可能发生数据块部分写，导致重启失败。full_page_writes就是为了确保数据页一致性，不发生块折断。而在MySQL中，则是通过double write来预防partial write的。如果你的块设备对齐，并支持原子写(原子写大于或等于一个DATA FILE数据页的大小)，那可以关闭这个参数&lt;/p&gt;
-&lt;h1 id=&quot;background-writer&quot;&gt;&lt;a href=&quot;#background-writer&quot; class=&quot;headerlink&quot; title=&quot;background writer&quot;&gt;&lt;/a&gt;background writer&lt;/h1&gt;&lt;h2 id=&quot;功能描述-1&quot;&gt;&lt;a href=&quot;#功能描述-1&quot; class=&quot;headerlink&quot; title=&quot;功能描述&quot;&gt;&lt;/a&gt;功能描述&lt;/h2&gt;&lt;p&gt;1、数据库在进行查询处理时若发现要读取的数据不在缓冲区中时要先从磁盘中读入需要的页面，此时如果缓冲区已满，则需要遵从类似于LRU算法先选择部分缓冲区中的页面置换出去。如果被替换的页面没有被修改过，则可以直接丢弃；但如果已经被修改过，则需要先将这些页面写出到磁盘后才能置换，通过使用BgWriter定期写出缓冲区中的部分脏页，为缓冲区腾出空间，就可以降低查询处理被阻塞的可能性；&lt;/p&gt;
-&lt;p&gt;2、PostgreSQL在定期做检查点时需要把所有脏页写出到磁盘，通过BgWriter预先写出一些脏页，可以减少检查点时要进行的IO动作，使系统的IO更加平稳。通过BgWriter对共享缓冲区写操作的管理，避免了其他服务进程在需要读入新的页面到缓冲区时，不得不先进行写盘的操作。&lt;/p&gt;
+&lt;h2 id=&quot;参数&quot;&gt;&lt;a href=&quot;#参数&quot; class=&quot;headerlink&quot; title=&quot;参数&quot;&gt;&lt;/a&gt;参数&lt;/h2&gt;&lt;p&gt;checkpoint_timeout&lt;br&gt;系统自动执行checkpoint之间的最大时间间隔。系统默认值是5分钟，这个值可以在压测过程中调大，尽量避免执行checkpoint争抢IO&lt;br&gt;max_wal_size&lt;br&gt;写满多少个WAL时执行checkpoint，也是同理，这个值可以在压测过程中调大，尽量避免执行checkpoint争抢IO&lt;br&gt;
     
     </summary>
     
@@ -228,14 +254,15 @@
   
   <entry>
     <title>有用的连接</title>
-    <link href="http://daydayup863.github.io/%E4%B8%AA%E4%BA%BA%E8%AE%B0%E5%BD%95/%E9%BA%BB%E9%9B%80/"/>
-    <id>http://daydayup863.github.io/%E4%B8%AA%E4%BA%BA%E8%AE%B0%E5%BD%95/%E9%BA%BB%E9%9B%80/</id>
+    <link href="http://daydayup863.github.io/%E4%B8%AA%E4%BA%BA%E8%AE%B0%E5%BD%95/%E6%9C%89%E7%94%A8%E7%9A%84%E8%BF%9E%E6%8E%A5/"/>
+    <id>http://daydayup863.github.io/%E4%B8%AA%E4%BA%BA%E8%AE%B0%E5%BD%95/%E6%9C%89%E7%94%A8%E7%9A%84%E8%BF%9E%E6%8E%A5/</id>
     <published>2020-08-11T03:39:59.000Z</published>
-    <updated>2020-08-14T12:30:21.883Z</updated>
+    <updated>2020-08-20T08:14:50.087Z</updated>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;生成随即背景图片&quot;&gt;&lt;a href=&quot;#生成随即背景图片&quot; class=&quot;headerlink&quot; title=&quot;生成随即背景图片&quot;&gt;&lt;/a&gt;生成随即背景图片&lt;/h2&gt;&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs vim&quot;&gt;http&lt;span class=&quot;hljs-variable&quot;&gt;s:&lt;/span&gt;//&lt;span class=&quot;hljs-keyword&quot;&gt;source&lt;/span&gt;.unsplash.&lt;span class=&quot;hljs-keyword&quot;&gt;com&lt;/span&gt;/&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+      &lt;h2 id=&quot;PostgreSQL-MVCC&quot;&gt;&lt;a href=&quot;#PostgreSQL-MVCC&quot; class=&quot;headerlink&quot; title=&quot;PostgreSQL MVCC&quot;&gt;&lt;/a&gt;PostgreSQL MVCC&lt;/h2&gt;&lt;figure class=&quot;highlight awk&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs awk&quot;&gt;http:&lt;span class=&quot;hljs-regexp&quot;&gt;//&lt;/span&gt;www.interdb.jp&lt;span class=&quot;hljs-regexp&quot;&gt;/pg/&lt;/span&gt;pgsql05.html&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;生成随即背景图片&quot;&gt;&lt;a href=&quot;#生成随即背景图片&quot; class=&quot;headerlink&quot; title=&quot;生成随即背景图片&quot;&gt;&lt;/a&gt;生成随即背景图片&lt;/h2&gt;&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs vim&quot;&gt;http&lt;span class=&quot;hljs-variable&quot;&gt;s:&lt;/span&gt;//&lt;span class=&quot;hljs-keyword&quot;&gt;source&lt;/span&gt;.unsplash.&lt;span class=&quot;hljs-keyword&quot;&gt;com&lt;/span&gt;/&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h2 id=&quot;SQL格式化&quot;&gt;&lt;a href=&quot;#SQL格式化&quot; class=&quot;headerlink&quot; title=&quot;SQL格式化&quot;&gt;&lt;/a&gt;SQL格式化&lt;/h2&gt;&lt;figure class=&quot;highlight awk&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs awk&quot;&gt;http:&lt;span class=&quot;hljs-regexp&quot;&gt;//&lt;/span&gt;sqlformat.darold.net/&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
@@ -344,6 +371,31 @@
   </entry>
   
   <entry>
+    <title>内核Softdog测试</title>
+    <link href="http://daydayup863.github.io/Linux/softdog/"/>
+    <id>http://daydayup863.github.io/Linux/softdog/</id>
+    <published>2020-08-04T16:00:00.000Z</published>
+    <updated>2020-08-07T12:14:29.600Z</updated>
+    
+    <summary type="html">
+    
+      Linux内核watchdog于监视系统是否正在运行。由于存在不可恢复的软件错误，应该自动重新启动挂起的系统
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="http://daydayup863.github.io/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://daydayup863.github.io/tags/Linux/"/>
+    
+      <category term="softdog" scheme="http://daydayup863.github.io/tags/softdog/"/>
+    
+      <category term="watchdog" scheme="http://daydayup863.github.io/tags/watchdog/"/>
+    
+  </entry>
+  
+  <entry>
     <title>利用Github分支备份Hexo博客源文件</title>
     <link href="http://daydayup863.github.io/hexo/%E5%88%A9%E7%94%A8Github%E5%88%86%E6%94%AF%E5%A4%87%E4%BB%BDHexo%E5%8D%9A%E5%AE%A2%E6%BA%90%E6%96%87%E4%BB%B6/"/>
     <id>http://daydayup863.github.io/hexo/%E5%88%A9%E7%94%A8Github%E5%88%86%E6%94%AF%E5%A4%87%E4%BB%BDHexo%E5%8D%9A%E5%AE%A2%E6%BA%90%E6%96%87%E4%BB%B6/</id>
@@ -393,27 +445,23 @@
   </entry>
   
   <entry>
-    <title>内核Softdog测试</title>
-    <link href="http://daydayup863.github.io/Linux/softdog/"/>
-    <id>http://daydayup863.github.io/Linux/softdog/</id>
+    <title>Python小技巧</title>
+    <link href="http://daydayup863.github.io/python/Python%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
+    <id>http://daydayup863.github.io/python/Python%E5%B0%8F%E6%8A%80%E5%B7%A7/</id>
     <published>2020-08-04T16:00:00.000Z</published>
-    <updated>2020-08-07T12:14:29.600Z</updated>
+    <updated>2020-08-10T09:24:38.142Z</updated>
     
     <summary type="html">
     
-      Linux内核watchdog于监视系统是否正在运行。由于存在不可恢复的软件错误，应该自动重新启动挂起的系统
+      列举一些python使用过程中用到的小技巧.
     
     </summary>
     
     
-      <category term="Linux" scheme="http://daydayup863.github.io/categories/Linux/"/>
+      <category term="python" scheme="http://daydayup863.github.io/categories/python/"/>
     
     
-      <category term="Linux" scheme="http://daydayup863.github.io/tags/Linux/"/>
-    
-      <category term="softdog" scheme="http://daydayup863.github.io/tags/softdog/"/>
-    
-      <category term="watchdog" scheme="http://daydayup863.github.io/tags/watchdog/"/>
+      <category term="python" scheme="http://daydayup863.github.io/tags/python/"/>
     
   </entry>
   
@@ -445,27 +493,6 @@
   </entry>
   
   <entry>
-    <title>Python小技巧</title>
-    <link href="http://daydayup863.github.io/python/Python%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
-    <id>http://daydayup863.github.io/python/Python%E5%B0%8F%E6%8A%80%E5%B7%A7/</id>
-    <published>2020-08-04T16:00:00.000Z</published>
-    <updated>2020-08-10T09:24:38.142Z</updated>
-    
-    <summary type="html">
-    
-      列举一些python使用过程中用到的小技巧.
-    
-    </summary>
-    
-    
-      <category term="python" scheme="http://daydayup863.github.io/categories/python/"/>
-    
-    
-      <category term="python" scheme="http://daydayup863.github.io/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Hello World</title>
     <link href="http://daydayup863.github.io/uncategorized/hello-world/"/>
     <id>http://daydayup863.github.io/uncategorized/hello-world/</id>
@@ -479,54 +506,6 @@
     </summary>
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>PostgreSQL有用的SQL</title>
-    <link href="http://daydayup863.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93/PostgreSQL%E6%9C%89%E7%94%A8%E7%9A%84SQL/"/>
-    <id>http://daydayup863.github.io/%E6%95%B0%E6%8D%AE%E5%BA%93/PostgreSQL%E6%9C%89%E7%94%A8%E7%9A%84SQL/</id>
-    <published>2020-07-31T10:19:15.000Z</published>
-    <updated>2020-08-14T07:47:09.733Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;记录工作中常用到的PostgreSQL常用SQL， tps, qps 等等.&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="数据库" scheme="http://daydayup863.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-      <category term="DBA" scheme="http://daydayup863.github.io/tags/DBA/"/>
-    
-      <category term="SQL" scheme="http://daydayup863.github.io/tags/SQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux vim常用配置</title>
-    <link href="http://daydayup863.github.io/vim/linux%E9%85%8D%E7%BD%AEvim/"/>
-    <id>http://daydayup863.github.io/vim/linux%E9%85%8D%E7%BD%AEvim/</id>
-    <published>2019-04-12T12:42:06.000Z</published>
-    <updated>2020-08-07T12:15:22.450Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;列举一些有用的vim小功能, 能有效的避免重复造轮子.&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="vim" scheme="http://daydayup863.github.io/categories/vim/"/>
-    
-    
-      <category term="Linux" scheme="http://daydayup863.github.io/tags/Linux/"/>
-    
-      <category term="vim" scheme="http://daydayup863.github.io/tags/vim/"/>
     
   </entry>
   
