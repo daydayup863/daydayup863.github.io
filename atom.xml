@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://daydayup863.github.io/"/>
-  <updated>2020-08-20T11:35:10.487Z</updated>
+  <updated>2020-08-27T09:38:21.934Z</updated>
   <id>http://daydayup863.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PostgreSQL后端进程</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/PostgreSQL_backend_process/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/PostgreSQL_backend_process/</id>
+    <published>2020-08-27T09:32:48.000Z</published>
+    <updated>2020-08-27T09:38:21.934Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;整体架构图&quot;&gt;&lt;a href=&quot;#整体架构图&quot; class=&quot;headerlink&quot; title=&quot;整体架构图&quot;&gt;&lt;/a&gt;整体架构图&lt;/h1&gt;&lt;p&gt;&lt;img data-src=&quot;/images/A_example_of_the_process_architecture_in_PostgreSQL.png&quot; alt=&quot; An example of the process architecture in PostgreSQL &quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="backend" scheme="http://daydayup863.github.io/tags/backend/"/>
+    
+      <category term="Architecture" scheme="http://daydayup863.github.io/tags/Architecture/"/>
+    
+  </entry>
   
   <entry>
     <title>PostgreSQL vacuum</title>
@@ -87,28 +112,6 @@
     </summary>
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>PostgreSQL后端进程</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/PostgreSQL_backend_process/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/PostgreSQL_backend_process/</id>
-    <published>2020-08-19T03:12:29.000Z</published>
-    <updated>2020-08-27T09:23:09.770Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;checkpoint&quot;&gt;&lt;a href=&quot;#checkpoint&quot; class=&quot;headerlink&quot; title=&quot;checkpoint&quot;&gt;&lt;/a&gt;checkpoint&lt;/h1&gt;&lt;h2 id=&quot;功能描述&quot;&gt;&lt;a href=&quot;#功能描述&quot; class=&quot;headerlink&quot; title=&quot;功能描述&quot;&gt;&lt;/a&gt;功能描述&lt;/h2&gt;&lt;p&gt;其保证了数据库的一致性状态，定期执行检查点是很重要的，确保数据变化持久保存到磁盘中并且数据库的状态是一致的。&lt;/p&gt;
-&lt;h2 id=&quot;参数&quot;&gt;&lt;a href=&quot;#参数&quot; class=&quot;headerlink&quot; title=&quot;参数&quot;&gt;&lt;/a&gt;参数&lt;/h2&gt;&lt;p&gt;checkpoint_timeout&lt;br&gt;系统自动执行checkpoint之间的最大时间间隔。系统默认值是5分钟，这个值可以在压测过程中调大，尽量避免执行checkpoint争抢IO&lt;br&gt;max_wal_size&lt;br&gt;写满多少个WAL时执行checkpoint，也是同理，这个值可以在压测过程中调大，尽量避免执行checkpoint争抢IO&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
     
   </entry>
   
