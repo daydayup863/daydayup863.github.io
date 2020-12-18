@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://daydayup863.github.io/"/>
-  <updated>2020-09-07T11:34:57.126Z</updated>
+  <updated>2020-12-18T09:45:35.015Z</updated>
   <id>http://daydayup863.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>python3 ldap3 NTLM验证用户</title>
+    <link href="http://daydayup863.github.io/python/python3_ldap%E9%AA%8C%E8%AF%81/"/>
+    <id>http://daydayup863.github.io/python/python3_ldap%E9%AA%8C%E8%AF%81/</id>
+    <published>2020-12-18T09:40:54.000Z</published>
+    <updated>2020-12-18T09:45:35.015Z</updated>
+    
+    <summary type="html">
+    
+      &lt;figure class=&quot;highlight routeros&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs routeros&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;from&lt;/span&gt; ldap3 import Server, Connection, NTLM, ALL&lt;br&gt;&lt;br&gt;server = Server(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;xxx.xxx.xxx.xxx&amp;quot;&lt;/span&gt;, 389, &lt;span class=&quot;hljs-attribute&quot;&gt;use_ssl&lt;/span&gt;=&lt;span class=&quot;hljs-literal&quot;&gt;False&lt;/span&gt;, &lt;span class=&quot;hljs-attribute&quot;&gt;get_info&lt;/span&gt;=ALL)&lt;br&gt;&lt;span class=&quot;hljs-builtin-name&quot;&gt;print&lt;/span&gt;(server)&lt;br&gt;conn = Connection(server, &lt;span class=&quot;hljs-attribute&quot;&gt;user&lt;/span&gt;=&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;Domain\\username&amp;quot;&lt;/span&gt;, &lt;span class=&quot;hljs-attribute&quot;&gt;password&lt;/span&gt;=&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;password&amp;quot;&lt;/span&gt;, &lt;span class=&quot;hljs-attribute&quot;&gt;authentication&lt;/span&gt;=NTLM)&lt;br&gt;&lt;span class=&quot;hljs-builtin-name&quot;&gt;print&lt;/span&gt;(conn.bind())&lt;br&gt;&lt;span class=&quot;hljs-builtin-name&quot;&gt;print&lt;/span&gt;(conn.extend.standard.who_am_i())&lt;br&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+    
+    </summary>
+    
+    
+      <category term="python" scheme="http://daydayup863.github.io/categories/python/"/>
+    
+    
+      <category term="python3" scheme="http://daydayup863.github.io/tags/python3/"/>
+    
+      <category term="ldap" scheme="http://daydayup863.github.io/tags/ldap/"/>
+    
+  </entry>
   
   <entry>
     <title>获取PostgreSQL hash table value</title>
@@ -410,31 +434,6 @@
   </entry>
   
   <entry>
-    <title>微信聊天自动回复机器人代码</title>
-    <link href="http://daydayup863.github.io/python/%E5%BE%AE%E4%BF%A1%E8%81%8A%E5%A4%A9%E8%87%AA%E5%8A%A8%E5%9B%9E%E5%A4%8D%E6%9C%BA%E5%99%A8%E4%BA%BA/"/>
-    <id>http://daydayup863.github.io/python/%E5%BE%AE%E4%BF%A1%E8%81%8A%E5%A4%A9%E8%87%AA%E5%8A%A8%E5%9B%9E%E5%A4%8D%E6%9C%BA%E5%99%A8%E4%BA%BA/</id>
-    <published>2020-08-04T16:00:00.000Z</published>
-    <updated>2020-08-07T12:26:19.430Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;微信聊天自动回复小程序, 输入指定内容控制开关，以及添加附加内容等小功能,&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="python" scheme="http://daydayup863.github.io/categories/python/"/>
-    
-    
-      <category term="python" scheme="http://daydayup863.github.io/tags/python/"/>
-    
-      <category term="robot" scheme="http://daydayup863.github.io/tags/robot/"/>
-    
-      <category term="微信自动回复" scheme="http://daydayup863.github.io/tags/%E5%BE%AE%E4%BF%A1%E8%87%AA%E5%8A%A8%E5%9B%9E%E5%A4%8D/"/>
-    
-  </entry>
-  
-  <entry>
     <title>利用Github分支备份Hexo博客源文件</title>
     <link href="http://daydayup863.github.io/hexo/%E5%88%A9%E7%94%A8Github%E5%88%86%E6%94%AF%E5%A4%87%E4%BB%BDHexo%E5%8D%9A%E5%AE%A2%E6%BA%90%E6%96%87%E4%BB%B6/"/>
     <id>http://daydayup863.github.io/hexo/%E5%88%A9%E7%94%A8Github%E5%88%86%E6%94%AF%E5%A4%87%E4%BB%BDHexo%E5%8D%9A%E5%AE%A2%E6%BA%90%E6%96%87%E4%BB%B6/</id>
@@ -511,15 +510,15 @@
   </entry>
   
   <entry>
-    <title>Python小技巧</title>
-    <link href="http://daydayup863.github.io/python/Python%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
-    <id>http://daydayup863.github.io/python/Python%E5%B0%8F%E6%8A%80%E5%B7%A7/</id>
+    <title>微信聊天自动回复机器人代码</title>
+    <link href="http://daydayup863.github.io/python/%E5%BE%AE%E4%BF%A1%E8%81%8A%E5%A4%A9%E8%87%AA%E5%8A%A8%E5%9B%9E%E5%A4%8D%E6%9C%BA%E5%99%A8%E4%BA%BA/"/>
+    <id>http://daydayup863.github.io/python/%E5%BE%AE%E4%BF%A1%E8%81%8A%E5%A4%A9%E8%87%AA%E5%8A%A8%E5%9B%9E%E5%A4%8D%E6%9C%BA%E5%99%A8%E4%BA%BA/</id>
     <published>2020-08-04T16:00:00.000Z</published>
-    <updated>2020-09-03T08:33:34.162Z</updated>
+    <updated>2020-08-07T12:26:19.430Z</updated>
     
     <summary type="html">
     
-      列举一些python使用过程中用到的小技巧.
+      &lt;p&gt;微信聊天自动回复小程序, 输入指定内容控制开关，以及添加附加内容等小功能,&lt;/p&gt;
     
     </summary>
     
@@ -528,6 +527,10 @@
     
     
       <category term="python" scheme="http://daydayup863.github.io/tags/python/"/>
+    
+      <category term="robot" scheme="http://daydayup863.github.io/tags/robot/"/>
+    
+      <category term="微信自动回复" scheme="http://daydayup863.github.io/tags/%E5%BE%AE%E4%BF%A1%E8%87%AA%E5%8A%A8%E5%9B%9E%E5%A4%8D/"/>
     
   </entry>
   
