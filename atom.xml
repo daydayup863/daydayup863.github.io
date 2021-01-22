@@ -54,8 +54,13 @@
     
     <summary type="html">
     
-      &lt;figure class=&quot;highlight routeros&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs routeros&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;from&lt;/span&gt; ldap3 import Server, Connection, NTLM, ALL&lt;br&gt;&lt;br&gt;server = Server(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;xxx.xxx.xxx.xxx&amp;quot;&lt;/span&gt;, 389, &lt;span class=&quot;hljs-attribute&quot;&gt;use_ssl&lt;/span&gt;=&lt;span class=&quot;hljs-literal&quot;&gt;False&lt;/span&gt;, &lt;span class=&quot;hljs-attribute&quot;&gt;get_info&lt;/span&gt;=ALL)&lt;br&gt;&lt;span class=&quot;hljs-builtin-name&quot;&gt;print&lt;/span&gt;(server)&lt;br&gt;conn = Connection(server, &lt;span class=&quot;hljs-attribute&quot;&gt;user&lt;/span&gt;=&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;Domain\\username&amp;quot;&lt;/span&gt;, &lt;span class=&quot;hljs-attribute&quot;&gt;password&lt;/span&gt;=&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;password&amp;quot;&lt;/span&gt;, &lt;span class=&quot;hljs-attribute&quot;&gt;authentication&lt;/span&gt;=NTLM)&lt;br&gt;&lt;span class=&quot;hljs-builtin-name&quot;&gt;print&lt;/span&gt;(conn.bind())&lt;br&gt;&lt;span class=&quot;hljs-builtin-name&quot;&gt;print&lt;/span&gt;(conn.extend.standard.who_am_i())&lt;br&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
+      
+      
+        
+        
+          &lt;figure class=&quot;highlight routeros&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span
+        
+      
     
     </summary>
     
