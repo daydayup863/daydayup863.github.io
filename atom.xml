@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://daydayup863.github.io/"/>
-  <updated>2021-03-05T08:30:47.555Z</updated>
+  <updated>2020-08-04T03:05:29.474Z</updated>
   <id>http://daydayup863.github.io/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://daydayup863.github.io/uncategorized/hello-world/"/>
+    <id>http://daydayup863.github.io/uncategorized/hello-world/</id>
+    <published>2021-03-05T08:51:41.421Z</published>
+    <updated>2020-08-04T03:05:29.474Z</updated>
+    
+    <summary type="html">
+    
+       
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>PostgreSQL开发指南</title>
@@ -89,11 +106,11 @@
       <category term="Postgis" scheme="http://daydayup863.github.io/categories/PostgreSQL/gis/Postgis/"/>
     
     
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+      <category term="gis" scheme="http://daydayup863.github.io/tags/gis/"/>
     
       <category term="postgis" scheme="http://daydayup863.github.io/tags/postgis/"/>
     
-      <category term="gis" scheme="http://daydayup863.github.io/tags/gis/"/>
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
     
   </entry>
   
@@ -344,19 +361,19 @@
       <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
     
     
+      <category term="gis" scheme="http://daydayup863.github.io/tags/gis/"/>
+    
+      <category term="postgis" scheme="http://daydayup863.github.io/tags/postgis/"/>
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
       <category term="postgres" scheme="http://daydayup863.github.io/tags/postgres/"/>
     
       <category term="pg" scheme="http://daydayup863.github.io/tags/pg/"/>
     
       <category term="postgresql" scheme="http://daydayup863.github.io/tags/postgresql/"/>
     
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-      <category term="postgis" scheme="http://daydayup863.github.io/tags/postgis/"/>
-    
       <category term="geo" scheme="http://daydayup863.github.io/tags/geo/"/>
-    
-      <category term="gis" scheme="http://daydayup863.github.io/tags/gis/"/>
     
   </entry>
   
@@ -378,6 +395,8 @@
       <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
     
     
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
       <category term="postgres" scheme="http://daydayup863.github.io/tags/postgres/"/>
     
       <category term="pg" scheme="http://daydayup863.github.io/tags/pg/"/>
@@ -387,8 +406,6 @@
       <category term="source" scheme="http://daydayup863.github.io/tags/source/"/>
     
       <category term="postgresql" scheme="http://daydayup863.github.io/tags/postgresql/"/>
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
     
   </entry>
   
@@ -415,9 +432,9 @@
       <category term="个人记录" scheme="http://daydayup863.github.io/categories/%E4%B8%AA%E4%BA%BA%E8%AE%B0%E5%BD%95/"/>
     
     
-      <category term="python" scheme="http://daydayup863.github.io/tags/python/"/>
-    
       <category term="Linux" scheme="http://daydayup863.github.io/tags/Linux/"/>
+    
+      <category term="python" scheme="http://daydayup863.github.io/tags/python/"/>
     
       <category term="personal" scheme="http://daydayup863.github.io/tags/personal/"/>
     
@@ -511,31 +528,6 @@
       <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
     
       <category term="2pc" scheme="http://daydayup863.github.io/tags/2pc/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>内核Softdog测试</title>
-    <link href="http://daydayup863.github.io/Linux/softdog/"/>
-    <id>http://daydayup863.github.io/Linux/softdog/</id>
-    <published>2020-08-04T16:00:00.000Z</published>
-    <updated>2021-03-05T08:30:47.555Z</updated>
-    
-    <summary type="html">
-    
-      Linux内核watchdog于监视系统是否正在运行。由于存在不可恢复的软件错误，应该自动重新启动挂起的系统
-    
-    </summary>
-    
-    
-      <category term="Linux" scheme="http://daydayup863.github.io/categories/Linux/"/>
-    
-    
-      <category term="Linux" scheme="http://daydayup863.github.io/tags/Linux/"/>
-    
-      <category term="softdog" scheme="http://daydayup863.github.io/tags/softdog/"/>
-    
-      <category term="watchdog" scheme="http://daydayup863.github.io/tags/watchdog/"/>
     
   </entry>
   
