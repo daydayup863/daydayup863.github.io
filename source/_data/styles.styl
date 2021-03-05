@@ -1,0 +1,225 @@
+// 添加背景图片
+body {
+      //background: url(https://tva1.sinaimg.cn/large/00831rSTgy1gdff4utyetj318g0p0q7b.jpg);//自己喜欢的图片地址
+      //background: url(/images/background2.jpeg);//自己喜欢的图片地址
+      //background: url(https://source.unsplash.com/random/1600x900);
+      background: url(https://source.unsplash.com/random/1600x900);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: 50% 50%;
+}
+
+//博客内容透明化
+//文章内容的透明度设置
+.content-wrap {
+  opacity: 0.85;
+}
+
+//侧边框的透明度设置
+.sidebar {
+  opacity: 0.85;
+  //background:url(图片链接);
+  //background:url(https://source.unsplash.com/random/);
+  background-size: cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  p,span,a {color: black;}
+}
+
+//菜单栏的透明度设置
+.header-inner {
+  background: rgba(255,255,255,0.9);
+}
+
+//搜索框（local-search）的透明度设置
+.popup {
+  opacity: 1;
+}
+
+// Comments blocks.
+.comments {
+	padding: $content-desktop-padding;
+	margin: initial;
+	margin-top: sboffset;
+	background: rgba(255,255,255,0.9);   //white;
+	box-shadow: $box-shadow;
+	border-radius: $border-radius;
+}
+
+.chinese-zodiac {
+    float: right;
+}
+@font-face {
+  font-family: 'chinese-zodiac';
+  font-display: swap;
+  src: url('/fonts/chinese-zodiac.eot');
+  src: url('/fonts/chinese-zodiac.eot') format('embedded-opentype'),
+       url('/fonts/chinese-zodiac.woff2') format('woff2'),
+       url('/fonts/chinese-zodiac.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.symbolic-animals {
+  display: inline-block;
+  font: normal normal normal 14px/1 chinese-zodiac;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-dragon:before { content: '\e806'; }
+.icon-tiger:before { content: '\e809'; }
+.icon-pig:before { content: '\e810'; }
+.icon-horse:before { content: '\e813'; }
+.icon-rat:before { content: '\e816'; }
+.icon-goat:before { content: '\e818'; }
+.icon-snake:before { content: '\e820'; }
+.icon-ox:before { content: '\e822'; }
+.icon-dog:before { content: '\e825'; }
+.icon-rabbit:before { content: '\e826'; }
+.icon-monkey:before { content: '\e829'; }
+.icon-rooster:before { content: '\e82f'; }
+
+//文章内容添加边框阴影
+.post {
+   margin-top: 0px;
+   margin-bottom: 60px;
+   padding: 25px;
+   -webkit-box-shadow: 0 0 5px rgba(202, 203, 203, .5);
+   -moz-box-shadow: 0 0 5px rgba(202, 203, 204, .5);
+}
+
+// 鼠标样式
+//* {
+//    cursor: url(/images/sword.ico),auto!important
+//}
+//:active {
+//    cursor: url(/images/sword1.ico),auto!important
+//}
+
+// 鼠标样式
+* {
+    cursor: url("http://om8u46rmb.bkt.clouddn.com/sword2.ico"),auto!important
+}
+:active {
+    cursor: url("http://om8u46rmb.bkt.clouddn.com/sword1.ico"),auto!important
+}
+
+// 自定义页脚跳动的心样式
+@keyframes heartAnimate {
+    0%,100%{transform:scale(1);}
+    10%,30%{transform:scale(0.9);}
+    20%,40%,60%,80%{transform:scale(1.1);}
+    50%,70%{transform:scale(1.1);}
+}
+
+#heart {
+    animation: heartAnimate 1.33s ease-in-out infinite;
+}
+.with-love {
+    color: red;
+}
+
+/*文章底部标签样式*/
+.posts-expand .post-tags a {
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24);
+  font-family: 'Comic Sans MS', sans-serif;
+  transition: .2s ease-out;
+  padding: 3px 5px;
+  margin: 5px;
+  background: #f5f5f5;
+  border-bottom: none;
+  border-radius: 15px;
+
+  +mobile(){
+    padding: 1px 3px;
+    font-size: 8px;
+  }
+
+  &:hover {
+    background: rgba(100,154,182,0.902);
+    color: #fff;
+    -webkit-box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    -moz-box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  }
+}
+
+// 文章首字下沉
+/*
+.post-body>p:first-child::first-letter{
+  float: left;
+  margin-top: 14px;
+  margin-right: 6px;
+  color: #555;
+  font-size: 42px;
+  line-height: 28px;
+  font-style: normal;
+  font-weight: 400;
+  +mobile(){
+    margin-top: 10px;
+    margin-right: 4px;
+    font-size: 26px;
+    line-height: 20px;
+  }
+}
+*/
+
+
+//网站 logo 炫彩效果
+
+.site-title{
+  background-image: linear-gradient(
+    to right,
+    orangered,
+    orange,
+    gold,
+    lightgreen,
+    cyan,
+    dodgerblue,
+    mediumpurple,
+    hotpink,
+    orangered
+  );
+  background-size: 110vw;
+  -webkit-background-clip: text;
+  color: rgba(0,0,0,0.1); /* transparent IE 不支持 */
+  animation: sliding 30s linear infinite;
+}
+@keyframes sliding{
+  to{
+    background-position:  -2000vw;
+  }
+}
+
+.site-meta,
+.site-subtitle {
+  color: rgba(0,0,0,0.1); /* transparent IE 不支持 */
+  animation: hue 1.5s linear infinite;
+  background-image: linear-gradient(to right bottom, rgb(255,0,0), rgb(255,128,0), rgb(255,255,0), rgb(0,255,0), rgb(0,255,128), rgb(0,255,255), rgb(0,128,255), rgb(0,0,255), rgb(128,0,255), rgb(255,0,255), rgb(255,0,128));
+  -webkit-background-clip: text;
+}
+@keyframes hue {
+  from {
+      filter: hue-rotate(0);
+  }
+  to {
+      filter: hue-rotate(-360deg);
+  }
+}
+
+.site-meta{
+  background: #ecf9f8;
+  +mobile(){
+    padding: 10px 0;
+    background-image: linear-gradient(90deg,#f79533 0,#f37055 15%,#ef4e7b 30%,#a166ab 44%,#5073b8 58%,#1098ad 72%,#07b39b 86%,#6dba82 100%)!important;
+  }
+}
+
+.footer-inner {color: black;}
+
+.post-toc .nav .nav-child { display: block; }
