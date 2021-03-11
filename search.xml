@@ -67,9 +67,9 @@
         <category>Postgis</category>
       </categories>
       <tags>
-        <tag>gis</tag>
-        <tag>postgis</tag>
         <tag>PostgreSQL</tag>
+        <tag>postgis</tag>
+        <tag>gis</tag>
       </tags>
   </entry>
   <entry>
@@ -571,13 +571,13 @@
         <category>PostgreSQL</category>
       </categories>
       <tags>
-        <tag>gis</tag>
-        <tag>postgis</tag>
-        <tag>PostgreSQL</tag>
         <tag>postgres</tag>
         <tag>pg</tag>
         <tag>postgresql</tag>
+        <tag>PostgreSQL</tag>
+        <tag>postgis</tag>
         <tag>geo</tag>
+        <tag>gis</tag>
       </tags>
   </entry>
   <entry>
@@ -608,12 +608,12 @@
         <category>PostgreSQL</category>
       </categories>
       <tags>
-        <tag>PostgreSQL</tag>
         <tag>postgres</tag>
         <tag>pg</tag>
         <tag>install</tag>
         <tag>source</tag>
         <tag>postgresql</tag>
+        <tag>PostgreSQL</tag>
       </tags>
   </entry>
   <entry>
@@ -636,8 +636,8 @@
         <category>个人记录</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
         <tag>python</tag>
+        <tag>Linux</tag>
         <tag>personal</tag>
       </tags>
   </entry>
@@ -741,6 +741,8 @@
     <url>/%E6%95%B0%E6%8D%AE%E5%BA%93/PostgreSQL%E6%9C%89%E7%94%A8%E7%9A%84SQL/</url>
     <content><![CDATA[<p>记录工作中常用到的PostgreSQL常用SQL， tps, qps 等等.</p>
 <a id="more"></a>
+<h1 id="plpgsql函数获取Server磁盘空间信息"><a href="#plpgsql函数获取Server磁盘空间信息" class="headerlink" title="plpgsql函数获取Server磁盘空间信息"></a>plpgsql函数获取Server磁盘空间信息</h1><figure class="highlight sql"><table><tr><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> <span class="hljs-keyword">REPLACE</span> <span class="hljs-keyword">FUNCTION</span> public.get_disk_size()<br> <span class="hljs-keyword">RETURNS</span> jsonb<br> <span class="hljs-keyword">LANGUAGE</span> plpgsql<br><span class="hljs-keyword">AS</span> $<span class="hljs-keyword">function</span>$<br><span class="hljs-keyword">declare</span><br>    sqlstring <span class="hljs-built_in">text</span>;<br>    tablename text;<br>    result jsonb;<br><span class="hljs-keyword">begin</span><br>    <span class="hljs-comment">-- uuid_generate_v4() in pg12-， gen_random_uuid() in pg13+</span><br>    tablename = quote_ident( <span class="hljs-string">&#x27;get_disk_size_&#x27;</span> ||  uuid_generate_v4()::<span class="hljs-built_in">text</span>);<br>    sqlstring = format(&#x27;<span class="hljs-keyword">create</span> temp <span class="hljs-keyword">table</span> <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">exists</span> %s(Filesystem <span class="hljs-built_in">text</span>, <span class="hljs-keyword">type</span> <span class="hljs-built_in">text</span>, <span class="hljs-keyword">Size</span> <span class="hljs-built_in">int</span>, Used <span class="hljs-built_in">int</span>, Avail <span class="hljs-built_in">int</span>, <span class="hljs-string">&quot;useper&quot;</span> <span class="hljs-built_in">numeric</span>, <span class="hljs-string">&quot;mounted on&quot;</span> <span class="hljs-built_in">text</span>) <span class="hljs-keyword">ON</span> <span class="hljs-keyword">COMMIT</span> <span class="hljs-keyword">DROP</span><span class="hljs-string">&#x27;, tablename);</span><br><span class="hljs-string">    execute sqlstring;</span><br><span class="hljs-string">    --LC_ALL=C ignore OS language environment</span><br><span class="hljs-string">    sqlstring = format(&#x27;</span>copy %s <span class="hljs-keyword">from</span> program <span class="hljs-string">&#x27;&#x27;</span>LC_ALL=C /<span class="hljs-keyword">bin</span>/df -Tm | /<span class="hljs-keyword">bin</span>/grep -v <span class="hljs-string">&quot;Mounted&quot;</span> | /<span class="hljs-keyword">bin</span>/sed <span class="hljs-string">&quot;s/\s\+/|/g&quot;</span> | /<span class="hljs-keyword">bin</span>/sed <span class="hljs-string">&quot;s/%%//g&quot;</span><span class="hljs-string">&#x27;&#x27;</span> <span class="hljs-keyword">with</span> delimiter <span class="hljs-string">&#x27;&#x27;</span>|<span class="hljs-string">&#x27;&#x27;&#x27;, tablename);</span><br><span class="hljs-string">    execute sqlstring;</span><br><span class="hljs-string">    sqlstring = format(&#x27;</span><span class="hljs-keyword">select</span> json_agg(row_to_json(%s.*)) <span class="hljs-keyword">from</span> %s<span class="hljs-string">&#x27;, tablename, tablename);</span><br><span class="hljs-string">    execute sqlstring into result;</span><br><span class="hljs-string">    return result;</span><br><span class="hljs-string">end;</span><br><span class="hljs-string">$function$;</span><br><span class="hljs-string"></span><br></code></pre></td></tr></table></figure>
+<h1 id="python函数获取Server磁盘空间信息"><a href="#python函数获取Server磁盘空间信息" class="headerlink" title="python函数获取Server磁盘空间信息"></a>python函数获取Server磁盘空间信息</h1><figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">create or replace <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">get_disk_size</span>(<span class="hljs-params"></span>)</span><br><span class="hljs-function"><span class="hljs-title">returns</span> <span class="hljs-title">jsonb</span> <span class="hljs-title">as</span></span><br><span class="hljs-function"><span class="hljs-title">$$</span></span><br><span class="hljs-function"><span class="hljs-title">import</span> <span class="hljs-title">psutil</span> <span class="hljs-title">as</span> <span class="hljs-title">ps</span></span><br><span class="hljs-function"><span class="hljs-title">import</span> <span class="hljs-title">json</span></span><br><span class="hljs-function"></span><br><span class="hljs-function"><span class="hljs-title">return</span> <span class="hljs-title">json</span>.<span class="hljs-title">dumps</span>(<span class="hljs-params">[&#123;</span></span><br><span class="hljs-function"><span class="hljs-params">    <span class="hljs-string">&quot;mounted on&quot;</span>: part.mountpoint,</span></span><br><span class="hljs-function"><span class="hljs-params">    <span class="hljs-string">&quot;filesystem&quot;</span>: part.device,</span></span><br><span class="hljs-function"><span class="hljs-params">    <span class="hljs-string">&quot;size&quot;</span>: round(ps.disk_usage(part.mountpoint).total <span class="hljs-regexp">/ 1024 /</span> <span class="hljs-number">1024</span>, <span class="hljs-number">2</span>),</span></span><br><span class="hljs-function"><span class="hljs-params">    <span class="hljs-string">&quot;avail&quot;</span>: round(ps.disk_usage(part.mountpoint).free <span class="hljs-regexp">/ 1024 /</span> <span class="hljs-number">1024</span>, <span class="hljs-number">2</span>),</span></span><br><span class="hljs-function"><span class="hljs-params">    <span class="hljs-string">&quot;used&quot;</span>: round(ps.disk_usage(part.mountpoint).used <span class="hljs-regexp">/ 1024 /</span> <span class="hljs-number">1024</span>, <span class="hljs-number">2</span>),</span></span><br><span class="hljs-function"><span class="hljs-params">    <span class="hljs-string">&quot;use%&quot;</span>: ps.disk_usage(part.mountpoint).percent,</span></span><br><span class="hljs-function"><span class="hljs-params">    <span class="hljs-string">&quot;type&quot;</span>: part.fstype,</span></span><br><span class="hljs-function"><span class="hljs-params">    <span class="hljs-string">&quot;opts&quot;</span>: part.opts&#125;</span></span><br><span class="hljs-function"><span class="hljs-params">    for part in ps.disk_partitions()]</span>)</span><br><span class="hljs-function"><span class="hljs-title">$$LANGUAGE</span> <span class="hljs-title">plpython3u</span>;</span><br></code></pre></td></tr></table></figure>
 <h1 id="主库查询主从延迟"><a href="#主库查询主从延迟" class="headerlink" title="主库查询主从延迟"></a>主库查询主从延迟</h1><figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">SELECT</span> pg_stat_replication.application_name,<br>   pg_size_pretty(pg_wal_lsn_diff(pg_current_wal_lsn(), pg_stat_replication.replay_lsn)) <span class="hljs-keyword">AS</span> diff<br>  <span class="hljs-keyword">FROM</span> pg_stat_replication;<br></code></pre></td></tr></table></figure>
 <h1 id="从库查询主从延迟"><a href="#从库查询主从延迟" class="headerlink" title="从库查询主从延迟"></a>从库查询主从延迟</h1><figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">SELECT</span><br>    <span class="hljs-keyword">CASE</span><br>        <span class="hljs-keyword">WHEN</span> pg_last_wal_receive_lsn() = pg_last_wal_replay_lsn() <span class="hljs-keyword">THEN</span> <span class="hljs-number">0</span>::<span class="hljs-type">double</span> <span class="hljs-type">precision</span><br>        <span class="hljs-keyword">ELSE</span> date_part(<span class="hljs-string">&#x27;epoch&#x27;</span>::<span class="hljs-type">text</span>, now() - pg_last_xact_replay_timestamp())<br>    <span class="hljs-keyword">END</span> <span class="hljs-keyword">AS</span> log_delay;<br></code></pre></td></tr></table></figure>
 <h1 id="按query分组查询活跃SQL数量"><a href="#按query分组查询活跃SQL数量" class="headerlink" title="按query分组查询活跃SQL数量"></a>按query分组查询活跃SQL数量</h1><figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">SELECT</span> pg_stat_activity.query,<br>   count(<span class="hljs-number">1</span>) <span class="hljs-keyword">AS</span> count<br>  <span class="hljs-keyword">FROM</span> pg_stat_activity<br> <span class="hljs-keyword">WHERE</span> pg_stat_activity.state &lt;&gt; <span class="hljs-string">&#x27;idle&#x27;</span>::<span class="hljs-type">text</span> <span class="hljs-keyword">AND</span> pg_stat_activity.pid &lt;&gt; pg_backend_pid() <span class="hljs-keyword">AND</span> pg_stat_activity.query &lt;&gt; <span class="hljs-string">&#x27;&#x27;</span>::<span class="hljs-type">text</span> <span class="hljs-keyword">AND</span> pg_stat_activity.query !~ <span class="hljs-string">&#x27;^DISCARD|^SET extra_float_digits = 3&#x27;</span>::<span class="hljs-type">text</span><br> <span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> pg_stat_activity.query<br><span class="hljs-keyword">HAVING</span> count(<span class="hljs-number">1</span>) &gt; <span class="hljs-number">1</span><br> <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> (count(<span class="hljs-number">1</span>)) <span class="hljs-keyword">DESC</span><br><span class="hljs-keyword">LIMIT</span> <span class="hljs-number">10</span>;<br></code></pre></td></tr></table></figure>
@@ -924,20 +926,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/uncategorized/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>PostgreSQL开发指南</title>
     <url>/PostgreSQL/PostgreSQL%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/</url>
     <content><![CDATA[<h1 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h1><figure class="highlight oxygene"><table><tr><td class="code"><pre><code class="hljs oxygene"><span class="hljs-number">1</span>. DB object: database, schema, table, column, view, <span class="hljs-keyword">index</span>, <span class="hljs-keyword">sequence</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>, <span class="hljs-title">trigger</span>等名称</span><br><span class="hljs-function"><span class="hljs-params">(1)</span> 建议使用小写字母、数字、下划线的组合</span><br><span class="hljs-function"><span class="hljs-params">(2)</span> 建议不使用双引号即&quot;包围，除非必须包含大写字母或空格等特殊字符</span><br><span class="hljs-function"><span class="hljs-params">(3)</span> [强制]长度不能超过63个字符</span><br><span class="hljs-function"><span class="hljs-params">(4)</span> 不建议以<span class="hljs-title">pg</span>开头<span class="hljs-params">(避免与系统DB object混淆)</span>, 不建议以数字开头</span><br><span class="hljs-function"><span class="hljs-params">(5)</span> 禁止使用 <span class="hljs-title">SQL</span> 关键字中保留类型的<span class="hljs-params">(reserved)</span>，例如 <span class="hljs-title">user</span>, <span class="hljs-title">type</span>, <span class="hljs-title">order</span> 等, 非保留类型的<span class="hljs-params">(unreserved)</span>也不建议使用.</span><br><span class="hljs-function">--判断是否是关键字的方法:</span><br><br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> pg_get_keywords() <span class="hljs-keyword">where</span> word = <span class="hljs-string">&#x27;order&#x27;</span>;;<br> word  | catcode | catdesc<br>-------+---------+----------<br> <span class="hljs-keyword">order</span> | R       | reserved<br>(<span class="hljs-number">1</span> row)<br><br>-- 查看已经存在的table中的关键字<br><span class="hljs-keyword">select</span><br>    table_schema, table_name, column_name, b.word, b.catdesc<br><span class="hljs-keyword">from</span><br>     information_schema.columns a<br><span class="hljs-keyword">join</span> (<span class="hljs-keyword">select</span> word, catcode, catdesc <span class="hljs-keyword">from</span> pg_get_keywords()) b<br>  <span class="hljs-keyword">on</span>  a.column_name = b.word<br><span class="hljs-keyword">where</span> table_schema = <span class="hljs-string">&#x27;public&#x27;</span><br>  <span class="hljs-keyword">and</span> table_name =  <span class="hljs-string">&#x27;student&#x27;</span>;<br><br> table_schema |     table_name     | column_name | word |  catdesc<br>--------------+--------------------+-------------+------+------------<br> <span class="hljs-keyword">public</span>       | student            | name        | name | unreserved<br><br>(<span class="hljs-number">1</span> row)<br><br><br><span class="hljs-number">2</span>. table能包含的column数目,根据字段类型的不同，数目在 <span class="hljs-number">250</span> 到 <span class="hljs-number">1600</span> 之间<br><br><span class="hljs-number">3</span>. 临时或备份的DB object:table,view 等,建议加上日期, 如dba_ops.b2c_product_summay_2014_07_12 (其中dba_ops 为DBA专用schema)<br><br><span class="hljs-number">4</span>. <span class="hljs-keyword">index</span>命名规则为: 表名_列名_idx, 如student_name_idx, 建议不显式给出<span class="hljs-keyword">index</span> name, 使用DBMS默认给出的<span class="hljs-keyword">index</span> name, 如<span class="hljs-keyword">create</span> <span class="hljs-keyword">index</span> <span class="hljs-keyword">ON</span> student (name),则默认给出的<span class="hljs-keyword">index</span>名称为student_name_idx<br><br><span class="hljs-number">5</span>. 建议table中的创建和更新时间字段统一命名为create_time, update_time, 不建议使用created_at, gmt_created, operate_at, optime, operate_time,  gmt_modified,  updated_at 等<br></code></pre></td></tr></table></figure>
@@ -969,6 +957,20 @@
       <tags>
         <tag>psql</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/uncategorized/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
   </entry>
   <entry>
     <title>Linux vim常用配置</title>

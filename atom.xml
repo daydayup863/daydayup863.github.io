@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://daydayup863.github.io/"/>
-  <updated>2020-08-04T03:05:29.474Z</updated>
+  <updated>2021-03-05T08:30:47.555Z</updated>
   <id>http://daydayup863.github.io/</id>
   
   <author>
@@ -15,23 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://daydayup863.github.io/uncategorized/hello-world/"/>
-    <id>http://daydayup863.github.io/uncategorized/hello-world/</id>
-    <published>2021-03-05T08:51:41.421Z</published>
-    <updated>2020-08-04T03:05:29.474Z</updated>
-    
-    <summary type="html">
-    
-       
-    
-    </summary>
-    
-    
-    
-  </entry>
   
   <entry>
     <title>PostgreSQL开发指南</title>
@@ -106,11 +89,11 @@
       <category term="Postgis" scheme="http://daydayup863.github.io/categories/PostgreSQL/gis/Postgis/"/>
     
     
-      <category term="gis" scheme="http://daydayup863.github.io/tags/gis/"/>
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
     
       <category term="postgis" scheme="http://daydayup863.github.io/tags/postgis/"/>
     
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+      <category term="gis" scheme="http://daydayup863.github.io/tags/gis/"/>
     
   </entry>
   
@@ -361,19 +344,19 @@
       <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
     
     
-      <category term="gis" scheme="http://daydayup863.github.io/tags/gis/"/>
-    
-      <category term="postgis" scheme="http://daydayup863.github.io/tags/postgis/"/>
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
       <category term="postgres" scheme="http://daydayup863.github.io/tags/postgres/"/>
     
       <category term="pg" scheme="http://daydayup863.github.io/tags/pg/"/>
     
       <category term="postgresql" scheme="http://daydayup863.github.io/tags/postgresql/"/>
     
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="postgis" scheme="http://daydayup863.github.io/tags/postgis/"/>
+    
       <category term="geo" scheme="http://daydayup863.github.io/tags/geo/"/>
+    
+      <category term="gis" scheme="http://daydayup863.github.io/tags/gis/"/>
     
   </entry>
   
@@ -395,8 +378,6 @@
       <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
     
     
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
       <category term="postgres" scheme="http://daydayup863.github.io/tags/postgres/"/>
     
       <category term="pg" scheme="http://daydayup863.github.io/tags/pg/"/>
@@ -406,6 +387,8 @@
       <category term="source" scheme="http://daydayup863.github.io/tags/source/"/>
     
       <category term="postgresql" scheme="http://daydayup863.github.io/tags/postgresql/"/>
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
     
   </entry>
   
@@ -432,9 +415,9 @@
       <category term="个人记录" scheme="http://daydayup863.github.io/categories/%E4%B8%AA%E4%BA%BA%E8%AE%B0%E5%BD%95/"/>
     
     
-      <category term="Linux" scheme="http://daydayup863.github.io/tags/Linux/"/>
-    
       <category term="python" scheme="http://daydayup863.github.io/tags/python/"/>
+    
+      <category term="Linux" scheme="http://daydayup863.github.io/tags/Linux/"/>
     
       <category term="personal" scheme="http://daydayup863.github.io/tags/personal/"/>
     
@@ -528,6 +511,31 @@
       <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
     
       <category term="2pc" scheme="http://daydayup863.github.io/tags/2pc/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>微信聊天自动回复机器人代码</title>
+    <link href="http://daydayup863.github.io/python/%E5%BE%AE%E4%BF%A1%E8%81%8A%E5%A4%A9%E8%87%AA%E5%8A%A8%E5%9B%9E%E5%A4%8D%E6%9C%BA%E5%99%A8%E4%BA%BA/"/>
+    <id>http://daydayup863.github.io/python/%E5%BE%AE%E4%BF%A1%E8%81%8A%E5%A4%A9%E8%87%AA%E5%8A%A8%E5%9B%9E%E5%A4%8D%E6%9C%BA%E5%99%A8%E4%BA%BA/</id>
+    <published>2020-08-04T16:00:00.000Z</published>
+    <updated>2021-03-05T08:30:47.555Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;微信聊天自动回复小程序, 输入指定内容控制开关，以及添加附加内容等小功能,&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="python" scheme="http://daydayup863.github.io/categories/python/"/>
+    
+    
+      <category term="python" scheme="http://daydayup863.github.io/tags/python/"/>
+    
+      <category term="robot" scheme="http://daydayup863.github.io/tags/robot/"/>
+    
+      <category term="微信自动回复" scheme="http://daydayup863.github.io/tags/%E5%BE%AE%E4%BF%A1%E8%87%AA%E5%8A%A8%E5%9B%9E%E5%A4%8D/"/>
     
   </entry>
   
