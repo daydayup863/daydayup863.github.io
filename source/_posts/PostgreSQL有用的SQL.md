@@ -11,6 +11,53 @@ top: 10
 
 <!-- more -->
 
+# plpgsql函数获取Server磁盘空间信息
+```
+CREATE OR REPLACE FUNCTION public.get_disk_size()
+ RETURNS jsonb
+ LANGUAGE plpgsql
+AS $function$
+declare
+    sqlstring text;
+    tablename text;
+    result jsonb;
+begin
+    -- uuid_generate_v4() in pg12-， gen_random_uuid() in pg13+
+    tablename = quote_ident( 'get_disk_size_' ||  uuid_generate_v4()::text);
+    sqlstring = format('create temp table if not exists %s(Filesystem text, type text, Size int, Used int, Avail int, "useper" numeric, "mounted on" text) ON COMMIT DROP', tablename);
+    execute sqlstring;
+    --LC_ALL=C ignore OS language environment
+    sqlstring = format('copy %s from program ''LC_ALL=C /bin/df -Tm | /bin/grep -v "Mounted" | /bin/sed "s/\s\+/|/g" | /bin/sed "s/%%//g"'' with delimiter ''|''', tablename);
+    execute sqlstring;
+    sqlstring = format('select json_agg(row_to_json(%s.*)) from %s', tablename, tablename);
+    execute sqlstring into result;
+    return result;
+end;
+$function$;
+
+```
+
+# python函数获取Server磁盘空间信息
+```
+create or replace function get_disk_size()
+returns jsonb as
+$$
+import psutil as ps
+import json
+
+return json.dumps([{
+    "mounted on": part.mountpoint,
+    "filesystem": part.device,
+    "size": round(ps.disk_usage(part.mountpoint).total / 1024 / 1024, 2),
+    "avail": round(ps.disk_usage(part.mountpoint).free / 1024 / 1024, 2),
+    "used": round(ps.disk_usage(part.mountpoint).used / 1024 / 1024, 2),
+    "use%": ps.disk_usage(part.mountpoint).percent,
+    "type": part.fstype,
+    "opts": part.opts}
+    for part in ps.disk_partitions()])
+$$LANGUAGE plpython3u;
+```
+
 # 主库查询主从延迟
 ```
  SELECT pg_stat_replication.application_name,
