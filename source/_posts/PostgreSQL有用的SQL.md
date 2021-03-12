@@ -11,6 +11,53 @@ top: 10
 
 <!-- more -->
 
+# 抓去网站天气信息
+```
+postgres=#   CREATE OR REPLACE FUNCTION get_weather_info(city text)
+ RETURNS jsonb
+ LANGUAGE plpython3u
+AS $function$
+
+import re
+import json
+import requests, bs4
+
+res = requests.get('http://pm25.in/{}'.format(city))
+soup = bs4.BeautifulSoup(res.text, 'html.parser')
+
+#script = soup.findAll('script', text=re.compile("highcharts"))
+#categorie = re.findall("categories: (.*),",script[0].string)[0]
+#data = re.findall("data: (.*),",script[0].string)[0]
+#info = dict(zip(json.loads(categorie), json.loads(data)))
+
+table = soup.find('table', attrs={"id": "detail-data"})
+info = {
+    "thead": [ th.get_text() for th in table.find('thead').find('tr').select('th') ],
+    "tbody": []
+}
+theads = [ th.get_text() for th in table.find('thead').find('tr').select('th') ]
+for tr in table.find('tbody').findAll('tr'):
+    tbodys = [ td.get_text() for td in tr.select('td') ]
+    info['tbody'].append(tbodys)
+
+return json.dumps(info, ensure_ascii=False)
+
+$function$;
+CREATE FUNCTION
+postgres=# select get_weather_info('putian');
+
+                                                                          f1
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------
+ {"tbody": [["荔城区仓后路", "39", "优", "_", "20", "39", "0.5", "15", "122", "90", "5"], ["莆田市监测站", "_", "", "_", "20", "39", "_", "14", "126", "98", "4"], ["涵江区六中", "_", "", "_", "_", "_", "0.6", "19", "138", "88", "7"], ["秀屿区政府", "51",
+ "良", "颗粒物(PM10)", "18", "52", "0.6", "10", "128", "83", "5"], ["东圳水库", "19", "优", "_", "10", "10", "0.5", "10", "58", "58", "4"], ["东圳水库(对照点)", "36", "优", "_", "19", "34", "0.5", "13", "114", "81", "3"]], "thead": ["监测点", "AQI", "空
+质量指数类别", "首要污染物", "PM2.5细颗粒物", "PM10可吸入颗粒物", "CO一氧化碳", "NO2二氧化氮", "O3臭氧1小时平均", "O3臭氧8小时平均", "SO2二氧化硫"]}
+(1 row)
+
+```
+
 # plpgsql函数获取Server磁盘空间信息
 ```
 CREATE OR REPLACE FUNCTION public.get_disk_size()

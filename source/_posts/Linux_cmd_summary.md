@@ -16,6 +16,32 @@ password:
 
 <!-- more -->
 
+
+# 查找ip 对应的条数以及主机名
+```
+########   pgbouncer
+[postgres@l-pgb1zzzz ~]$ psql -Upostgres -d pgbouncer -Atc "show clients"|awk -F "|" '{print $5}'|grep "^1"|sort|uniq -c|sort -nk 1|awk '{printf("%s %s ", $1, $2); cmd="host "$2; system(cmd)}'|awk '{printf("%5s %15s %s \n", $1,$2,$7)}'
+    1 192.86.238.131 host1
+    1 192.88.105.131 host2
+    8 192168.254.191 host1
+[postgres@l-pgb1zzzz ~]$
+
+
+####### postgresql
+[postgres@l-grpendb2.cc.cna ~]$ psql -Atc "select client_addr from pg_stat_activity where client_addr is not null" | sort|uniq -c| awk '{printf("%s %s ",$1,$2);cmd="host "$2; system(cmd)}'|awk '{printf("%10s %20s %s\n",$1,$2,$7)}'|sort -k 3
+         1         19288.101.77 l-callcenter14.h.cn6
+         1         19286.236.29 l-host14.xxxx
+         1         19290.4.23   l-host1.yyyy
+         1         19290.15.110 l-host7.yyyy
+         1         19290.15.111 l-host8.yyyy
+```
+
+# PostgreSQL日志变成一行
+```
+awk '{if ($0 !~  "^[\t]") printf("\n%s" ,$0); else printf $0}' postgresql-Tue.log
+zcat postgresql-2013-02-2*.log.gz | perl -e 'while(<>){ if($_ !~ /^\t/ig) { chomp; print "\n",$_;} else {chomp; print;}}' |less
+```
+
 # 磁盘读写测试
 ```
 $ sudo hdparm -tT --direct /dev/nvme0n1p2

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://daydayup863.github.io/"/>
-  <updated>2021-03-05T08:30:47.555Z</updated>
+  <updated>2021-03-12T06:18:20.905Z</updated>
   <id>http://daydayup863.github.io/</id>
   
   <author>
@@ -15,6 +15,83 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PostgreSQL函数/存储过程返回多个游标</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/cursor/refcursor/PostgreSQL_refcursor/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/cursor/refcursor/PostgreSQL_refcursor/</id>
+    <published>2021-03-12T06:15:38.000Z</published>
+    <updated>2021-03-12T06:18:20.905Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;function-返回多个游标&quot;&gt;&lt;a href=&quot;#function-返回多个游标&quot; class=&quot;headerlink&quot; title=&quot;function 返回多个游标&quot;&gt;&lt;/a&gt;function 返回多个游标&lt;/h1&gt;&lt;figure class=&quot;highlight pgsql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs pgsql&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;OR REPLACE&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;FUNCTION&lt;/span&gt; show_cities_multiple() &lt;span class=&quot;hljs-keyword&quot;&gt;RETURNS&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;SETOF&lt;/span&gt; &lt;span class=&quot;hljs-type&quot;&gt;refcursor&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;AS&lt;/span&gt; $$&lt;br&gt;&lt;span class=&quot;pgsql&quot;&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;DECLARE&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;pgsql&quot;&gt;   ref1 &lt;span class=&quot;hljs-type&quot;&gt;refcursor&lt;/span&gt;;           &lt;span class=&quot;hljs-comment&quot;&gt;-- Declare cursor variables&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;pgsql&quot;&gt;   ref2 &lt;span class=&quot;hljs-type&quot;&gt;refcursor&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;pgsql&quot;&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;BEGIN&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;pgsql&quot;&gt;   &lt;span class=&quot;hljs-keyword&quot;&gt;OPEN&lt;/span&gt; ref1 &lt;span class=&quot;hljs-keyword&quot;&gt;FOR&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;;   &lt;span class=&quot;hljs-comment&quot;&gt;-- Open the first cursor&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;pgsql&quot;&gt;   &lt;span class=&quot;hljs-keyword&quot;&gt;RETURN NEXT&lt;/span&gt; ref1;                                                                              &lt;span class=&quot;hljs-comment&quot;&gt;-- Return the cursor to the caller&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&quot;pgsql&quot;&gt;   &lt;span class=&quot;hljs-keyword&quot;&gt;OPEN&lt;/span&gt; ref2 &lt;span class=&quot;hljs-keyword&quot;&gt;FOR&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;;   &lt;span class=&quot;hljs-comment&quot;&gt;-- Open the second cursor&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;pgsql&quot;&gt;   &lt;span class=&quot;hljs-keyword&quot;&gt;RETURN NEXT&lt;/span&gt; ref2;                                                                              &lt;span class=&quot;hljs-comment&quot;&gt;-- Return the cursor to the caller&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;pgsql&quot;&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;END&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;ruby&quot;&gt; $$&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;LANGUAGE&lt;/span&gt; plpgsql;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+      <category term="cursor" scheme="http://daydayup863.github.io/categories/PostgreSQL/cursor/"/>
+    
+      <category term="refcursor" scheme="http://daydayup863.github.io/categories/PostgreSQL/cursor/refcursor/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="cursor" scheme="http://daydayup863.github.io/tags/cursor/"/>
+    
+      <category term="refcursor" scheme="http://daydayup863.github.io/tags/refcursor/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>docker常用命令</title>
+    <link href="http://daydayup863.github.io/docker/docker_command/"/>
+    <id>http://daydayup863.github.io/docker/docker_command/</id>
+    <published>2021-03-11T08:57:05.000Z</published>
+    <updated>2021-03-11T08:58:31.580Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;将-image-文件从仓库抓取到本地，-默认library组&quot;&gt;&lt;a href=&quot;#将-image-文件从仓库抓取到本地，-默认library组&quot; class=&quot;headerlink&quot; title=&quot;将 image 文件从仓库抓取到本地， 默认library组&quot;&gt;&lt;/a&gt;将 image 文件从仓库抓取到本地， 默认library组&lt;/h1&gt;&lt;figure class=&quot;highlight arduino&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs arduino&quot;&gt;$ docker &lt;span class=&quot;hljs-built_in&quot;&gt;image&lt;/span&gt; pull library/hello-world&lt;br&gt;$ docker &lt;span class=&quot;hljs-built_in&quot;&gt;image&lt;/span&gt; pull hello-world&lt;br&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h1 id=&quot;列出本机的所有-image-文件。&quot;&gt;&lt;a href=&quot;#列出本机的所有-image-文件。&quot; class=&quot;headerlink&quot; title=&quot;列出本机的所有 image 文件。&quot;&gt;&lt;/a&gt;列出本机的所有 image 文件。&lt;/h1&gt;&lt;figure class=&quot;highlight mel&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs mel&quot;&gt;$ docker &lt;span class=&quot;hljs-keyword&quot;&gt;image&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;ls&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h1 id=&quot;删除-image-文件&quot;&gt;&lt;a href=&quot;#删除-image-文件&quot; class=&quot;headerlink&quot; title=&quot;删除 image 文件&quot;&gt;&lt;/a&gt;删除 image 文件&lt;/h1&gt;&lt;figure class=&quot;highlight elixir&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs elixir&quot;&gt;&lt;span class=&quot;hljs-variable&quot;&gt;$ &lt;/span&gt;docker rmi [imageName]&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="docker" scheme="http://daydayup863.github.io/categories/docker/"/>
+    
+    
+      <category term="docker" scheme="http://daydayup863.github.io/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CentOS7+PostgreSQL11.2+Docker</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/docker/PostgreSQL_docker/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/docker/PostgreSQL_docker/</id>
+    <published>2021-03-11T08:36:07.000Z</published>
+    <updated>2021-03-12T06:24:32.140Z</updated>
+    
+    <summary type="html">
+    
+      PostgreSQL Docker image 制作
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+      <category term="docker" scheme="http://daydayup863.github.io/categories/PostgreSQL/docker/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="docker" scheme="http://daydayup863.github.io/tags/docker/"/>
+    
+  </entry>
   
   <entry>
     <title>PostgreSQL开发指南</title>
@@ -48,7 +125,7 @@
     <link href="http://daydayup863.github.io/PostgreSQL/PostgreSQL_git_log/"/>
     <id>http://daydayup863.github.io/PostgreSQL/PostgreSQL_git_log/</id>
     <published>2021-01-22T03:43:14.000Z</published>
-    <updated>2021-03-05T08:30:47.555Z</updated>
+    <updated>2021-03-11T07:25:27.103Z</updated>
     
     <summary type="html">
     
@@ -231,7 +308,7 @@
     <link href="http://daydayup863.github.io/Linux/Linux_cmd_summary/"/>
     <id>http://daydayup863.github.io/Linux/Linux_cmd_summary/</id>
     <published>2020-08-19T03:15:42.000Z</published>
-    <updated>2021-03-05T08:30:47.555Z</updated>
+    <updated>2021-03-11T04:08:38.292Z</updated>
     
     <summary type="html">
     
@@ -462,80 +539,6 @@
     
     
       <category term="psql" scheme="http://daydayup863.github.io/tags/psql/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PostgreSQL用户权限</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/PostgreSQL%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/PostgreSQL%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90/</id>
-    <published>2020-08-05T08:41:08.000Z</published>
-    <updated>2021-03-05T08:30:47.555Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;PostgreSQL中role是权限的集合，没有区分用户和角色的概念，”CREATE USER” 为 “CREATE ROLE” 的别名，这两个命令几乎是完全相同的,唯一的区别是”CREATE USER” 命令创建的用户默认带有LOGIN属性，而”CREATE ROLE” 命令创建的用户默认不带LOGIN属性(CREATE USER is equivalent to CREATE ROLE except that CREATE USER assumes LOGIN by default, while CREATE ROLE does not)&lt;/p&gt;
-&lt;p&gt;为了方便用role的方式管理用户， 而不是每新建一个用户就授予权限一次.&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-      <category term="role" scheme="http://daydayup863.github.io/tags/role/"/>
-    
-      <category term="权限" scheme="http://daydayup863.github.io/tags/%E6%9D%83%E9%99%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>两阶段提交事物</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/PostgreSQL%E4%B8%A4%E9%98%B6%E6%AE%B5%E4%BA%8B%E7%89%A9%E6%8F%90%E4%BA%A4/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/PostgreSQL%E4%B8%A4%E9%98%B6%E6%AE%B5%E4%BA%8B%E7%89%A9%E6%8F%90%E4%BA%A4/</id>
-    <published>2020-08-05T03:35:20.000Z</published>
-    <updated>2021-03-05T08:30:47.555Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;什么是两阶段提交事物&quot;&gt;&lt;a href=&quot;#什么是两阶段提交事物&quot; class=&quot;headerlink&quot; title=&quot;什么是两阶段提交事物&quot;&gt;&lt;/a&gt;什么是两阶段提交事物&lt;/h1&gt;&lt;p&gt;两阶段提交协议的目标在于为分布式系统保证数据的一致性，许多分布式系统采用该协议提供对分布式事务的支持。&lt;br&gt;顾名思义，该协议将一个分布式的事务过程拆分成两个阶段： 准备和事务提交&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-      <category term="2pc" scheme="http://daydayup863.github.io/tags/2pc/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>微信聊天自动回复机器人代码</title>
-    <link href="http://daydayup863.github.io/python/%E5%BE%AE%E4%BF%A1%E8%81%8A%E5%A4%A9%E8%87%AA%E5%8A%A8%E5%9B%9E%E5%A4%8D%E6%9C%BA%E5%99%A8%E4%BA%BA/"/>
-    <id>http://daydayup863.github.io/python/%E5%BE%AE%E4%BF%A1%E8%81%8A%E5%A4%A9%E8%87%AA%E5%8A%A8%E5%9B%9E%E5%A4%8D%E6%9C%BA%E5%99%A8%E4%BA%BA/</id>
-    <published>2020-08-04T16:00:00.000Z</published>
-    <updated>2021-03-05T08:30:47.555Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;微信聊天自动回复小程序, 输入指定内容控制开关，以及添加附加内容等小功能,&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="python" scheme="http://daydayup863.github.io/categories/python/"/>
-    
-    
-      <category term="python" scheme="http://daydayup863.github.io/tags/python/"/>
-    
-      <category term="robot" scheme="http://daydayup863.github.io/tags/robot/"/>
-    
-      <category term="微信自动回复" scheme="http://daydayup863.github.io/tags/%E5%BE%AE%E4%BF%A1%E8%87%AA%E5%8A%A8%E5%9B%9E%E5%A4%8D/"/>
     
   </entry>
   

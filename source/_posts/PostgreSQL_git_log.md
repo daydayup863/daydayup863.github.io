@@ -20,6 +20,53 @@ password:
 
 # PG14
 
+## Enable parallel SELECT for "INSERT INTO ... SELECT ..."
+
+```
+commit 05c8482f7f69a954fd65fce85f896e848fc48197
+Author: Amit Kapila <akapila@postgresql.org>
+Date:   Wed Mar 10 07:38:58 2021 +0530
+
+    Enable parallel SELECT for "INSERT INTO ... SELECT ...".
+
+    Parallel SELECT can't be utilized for INSERT in the following cases:
+    - INSERT statement uses the ON CONFLICT DO UPDATE clause
+    - Target table has a parallel-unsafe: trigger, index expression or
+      predicate, column default expression or check constraint
+    - Target table has a parallel-unsafe domain constraint on any column
+    - Target table is a partitioned table with a parallel-unsafe partition key
+      expression or support function
+
+    The planner is updated to perform additional parallel-safety checks for
+    the cases listed above, for determining whether it is safe to run INSERT
+    in parallel-mode with an underlying parallel SELECT. The planner will
+    consider using parallel SELECT for "INSERT INTO ... SELECT ...", provided
+    nothing unsafe is found from the additional parallel-safety checks, or
+    from the existing parallel-safety checks for SELECT.
+
+    While checking parallel-safety, we need to check it for all the partitions
+    on the table which can be costly especially when we decide not to use a
+    parallel plan. So, in a separate patch, we will introduce a GUC and or a
+    reloption to enable/disable parallelism for Insert statements.
+
+    Prior to entering parallel-mode for the execution of INSERT with parallel
+    SELECT, a TransactionId is acquired and assigned to the current
+    transaction state. This is necessary to prevent the INSERT from attempting
+    to assign the TransactionId whilst in parallel-mode, which is not allowed.
+    This approach has a disadvantage in that if the underlying SELECT does not
+    return any rows, then the TransactionId is not used, however that
+    shouldn't happen in practice in many cases.
+
+    Author: Greg Nancarrow, Amit Langote, Amit Kapila
+    Reviewed-by: Amit Langote, Hou Zhijie, Takayuki Tsunakawa, Antonin Houska, Bharath Rupireddy, Dilip Kumar, Vignesh C, Zhihong Yu, Amit Kapila
+    Tested-by: Tang, Haiying
+    Discussion: https://postgr.es/m/CAJcOf-cXnB5cnMKqWEp2E2z7Mvcd04iLVmV=qpFJrR3AcrTS3g@mail.gmail.com
+    Discussion: https://postgr.es/m/CAJcOf-fAdj=nDKMsRhQzndm-O13NY4dL6xGcEvdX5Xvbbi0V7g@mail.gmail.com
+
+commit 0ba71107efeeccde9158f47118f95043afdca0bb
+
+```
+
 ## Add --tablespace option to reindexd
 ```
     Add --tablespace option to reindexdb
