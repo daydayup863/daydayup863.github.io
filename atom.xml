@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://daydayup863.github.io/"/>
-  <updated>2021-03-12T06:18:20.905Z</updated>
+  <updated>2021-03-15T03:53:07.103Z</updated>
   <id>http://daydayup863.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Ubuntu终端常用的快捷键</title>
+    <link href="http://daydayup863.github.io/ubuntu/Linux/ubuntu_quick_key/"/>
+    <id>http://daydayup863.github.io/ubuntu/Linux/ubuntu_quick_key/</id>
+    <published>2021-03-15T03:42:41.000Z</published>
+    <updated>2021-03-15T03:53:07.103Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Ubuntu中的许多操作在终端（Terminal）中十分的快捷，记住一些快捷键的操作更得心应手。在Ubuntu中打开终端的快捷键是Ctrl+Alt+T。其他的一些常用的快捷键如下：&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="ubuntu" scheme="http://daydayup863.github.io/categories/ubuntu/"/>
+    
+      <category term="Linux" scheme="http://daydayup863.github.io/categories/ubuntu/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://daydayup863.github.io/tags/Linux/"/>
+    
+      <category term="ubuntu" scheme="http://daydayup863.github.io/tags/ubuntu/"/>
+    
+  </entry>
   
   <entry>
     <title>PostgreSQL函数/存储过程返回多个游标</title>
@@ -94,6 +119,23 @@
   </entry>
   
   <entry>
+    <title>Hello World</title>
+    <link href="http://daydayup863.github.io/uncategorized/hello-world/"/>
+    <id>http://daydayup863.github.io/uncategorized/hello-world/</id>
+    <published>2021-03-05T08:51:41.421Z</published>
+    <updated>2020-08-04T03:05:29.474Z</updated>
+    
+    <summary type="html">
+    
+       
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>PostgreSQL开发指南</title>
     <link href="http://daydayup863.github.io/PostgreSQL/PostgreSQL%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/"/>
     <id>http://daydayup863.github.io/PostgreSQL/PostgreSQL%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/</id>
@@ -166,11 +208,11 @@
       <category term="Postgis" scheme="http://daydayup863.github.io/categories/PostgreSQL/gis/Postgis/"/>
     
     
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+      <category term="gis" scheme="http://daydayup863.github.io/tags/gis/"/>
     
       <category term="postgis" scheme="http://daydayup863.github.io/tags/postgis/"/>
     
-      <category term="gis" scheme="http://daydayup863.github.io/tags/gis/"/>
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
     
   </entry>
   
@@ -308,7 +350,7 @@
     <link href="http://daydayup863.github.io/Linux/Linux_cmd_summary/"/>
     <id>http://daydayup863.github.io/Linux/Linux_cmd_summary/</id>
     <published>2020-08-19T03:15:42.000Z</published>
-    <updated>2021-03-11T04:08:38.292Z</updated>
+    <updated>2021-03-15T03:57:09.793Z</updated>
     
     <summary type="html">
     
@@ -421,19 +463,19 @@
       <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
     
     
+      <category term="gis" scheme="http://daydayup863.github.io/tags/gis/"/>
+    
+      <category term="postgis" scheme="http://daydayup863.github.io/tags/postgis/"/>
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
       <category term="postgres" scheme="http://daydayup863.github.io/tags/postgres/"/>
     
       <category term="pg" scheme="http://daydayup863.github.io/tags/pg/"/>
     
       <category term="postgresql" scheme="http://daydayup863.github.io/tags/postgresql/"/>
     
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-      <category term="postgis" scheme="http://daydayup863.github.io/tags/postgis/"/>
-    
       <category term="geo" scheme="http://daydayup863.github.io/tags/geo/"/>
-    
-      <category term="gis" scheme="http://daydayup863.github.io/tags/gis/"/>
     
   </entry>
   
@@ -455,6 +497,8 @@
       <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
     
     
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
       <category term="postgres" scheme="http://daydayup863.github.io/tags/postgres/"/>
     
       <category term="pg" scheme="http://daydayup863.github.io/tags/pg/"/>
@@ -464,8 +508,6 @@
       <category term="source" scheme="http://daydayup863.github.io/tags/source/"/>
     
       <category term="postgresql" scheme="http://daydayup863.github.io/tags/postgresql/"/>
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
     
   </entry>
   
@@ -492,53 +534,11 @@
       <category term="个人记录" scheme="http://daydayup863.github.io/categories/%E4%B8%AA%E4%BA%BA%E8%AE%B0%E5%BD%95/"/>
     
     
-      <category term="python" scheme="http://daydayup863.github.io/tags/python/"/>
-    
       <category term="Linux" scheme="http://daydayup863.github.io/tags/Linux/"/>
     
+      <category term="python" scheme="http://daydayup863.github.io/tags/python/"/>
+    
       <category term="personal" scheme="http://daydayup863.github.io/tags/personal/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Zabbix编译安装</title>
-    <link href="http://daydayup863.github.io/zabbix/zabbix%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/"/>
-    <id>http://daydayup863.github.io/zabbix/zabbix%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/</id>
-    <published>2020-08-11T03:16:08.000Z</published>
-    <updated>2021-03-05T08:30:47.555Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;新建帐号&quot;&gt;&lt;a href=&quot;#新建帐号&quot; class=&quot;headerlink&quot; title=&quot;新建帐号&quot;&gt;&lt;/a&gt;新建帐号&lt;/h1&gt;&lt;figure class=&quot;highlight properties&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs properties&quot;&gt;&lt;span class=&quot;hljs-attr&quot;&gt;groupadd&lt;/span&gt; &lt;span class=&quot;hljs-string&quot;&gt;zabbix&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-attr&quot;&gt;useradd&lt;/span&gt; &lt;span class=&quot;hljs-string&quot;&gt;-g zabbix zabbix&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-      <category term="zabbix" scheme="http://daydayup863.github.io/categories/zabbix/"/>
-    
-    
-      <category term="zabbix" scheme="http://daydayup863.github.io/tags/zabbix/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>psql显示风格设置</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/psql%E6%98%BE%E7%A4%BA%E9%A3%8E%E6%A0%BC%E8%AE%BE%E7%BD%AE/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/psql%E6%98%BE%E7%A4%BA%E9%A3%8E%E6%A0%BC%E8%AE%BE%E7%BD%AE/</id>
-    <published>2020-08-05T09:11:24.000Z</published>
-    <updated>2021-03-05T08:30:47.555Z</updated>
-    
-    <summary type="html">
-    
-       
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-    
-      <category term="psql" scheme="http://daydayup863.github.io/tags/psql/"/>
     
   </entry>
   
