@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://daydayup863.github.io/"/>
-  <updated>2021-03-15T03:53:07.103Z</updated>
+  <updated>2021-03-15T04:03:28.484Z</updated>
   <id>http://daydayup863.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>gcc, g++ 使用切换</title>
+    <link href="http://daydayup863.github.io/Linux/g/gcc/Linux_gxx/"/>
+    <id>http://daydayup863.github.io/Linux/g/gcc/Linux_gxx/</id>
+    <published>2021-03-15T04:01:01.000Z</published>
+    <updated>2021-03-15T04:03:28.484Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;安装版本&quot;&gt;&lt;a href=&quot;#安装版本&quot; class=&quot;headerlink&quot; title=&quot;安装版本&quot;&gt;&lt;/a&gt;安装版本&lt;/h1&gt;&lt;figure class=&quot;highlight apache&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs apache&quot;&gt;&lt;span class=&quot;hljs-attribute&quot;&gt;sudo&lt;/span&gt; apt-get install gcc-&lt;span class=&quot;hljs-number&quot;&gt;4&lt;/span&gt;.&lt;span class=&quot;hljs-number&quot;&gt;8&lt;/span&gt; gcc-&lt;span class=&quot;hljs-number&quot;&gt;4&lt;/span&gt;.&lt;span class=&quot;hljs-number&quot;&gt;8&lt;/span&gt;-multilib g++-&lt;span class=&quot;hljs-number&quot;&gt;4&lt;/span&gt;.&lt;span class=&quot;hljs-number&quot;&gt;8&lt;/span&gt; g++-&lt;span class=&quot;hljs-number&quot;&gt;4&lt;/span&gt;.&lt;span class=&quot;hljs-number&quot;&gt;8&lt;/span&gt;-multilib&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="http://daydayup863.github.io/categories/Linux/"/>
+    
+      <category term="g++" scheme="http://daydayup863.github.io/categories/Linux/g/"/>
+    
+      <category term="gcc" scheme="http://daydayup863.github.io/categories/Linux/g/gcc/"/>
+    
+    
+      <category term="Linux" scheme="http://daydayup863.github.io/tags/Linux/"/>
+    
+      <category term="g++" scheme="http://daydayup863.github.io/tags/g/"/>
+    
+      <category term="gcc" scheme="http://daydayup863.github.io/tags/gcc/"/>
+    
+  </entry>
   
   <entry>
     <title>Ubuntu终端常用的快捷键</title>
@@ -350,7 +379,7 @@
     <link href="http://daydayup863.github.io/Linux/Linux_cmd_summary/"/>
     <id>http://daydayup863.github.io/Linux/Linux_cmd_summary/</id>
     <published>2020-08-19T03:15:42.000Z</published>
-    <updated>2021-03-15T03:57:09.793Z</updated>
+    <updated>2021-03-15T04:00:02.610Z</updated>
     
     <summary type="html">
     
@@ -508,37 +537,6 @@
       <category term="source" scheme="http://daydayup863.github.io/tags/source/"/>
     
       <category term="postgresql" scheme="http://daydayup863.github.io/tags/postgresql/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>有用的连接</title>
-    <link href="http://daydayup863.github.io/%E4%B8%AA%E4%BA%BA%E8%AE%B0%E5%BD%95/%E6%9C%89%E7%94%A8%E7%9A%84%E8%BF%9E%E6%8E%A5/"/>
-    <id>http://daydayup863.github.io/%E4%B8%AA%E4%BA%BA%E8%AE%B0%E5%BD%95/%E6%9C%89%E7%94%A8%E7%9A%84%E8%BF%9E%E6%8E%A5/</id>
-    <published>2020-08-11T03:39:59.000Z</published>
-    <updated>2021-03-05T08:30:47.555Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;gis教程&quot;&gt;&lt;a href=&quot;#gis教程&quot; class=&quot;headerlink&quot; title=&quot;gis教程&quot;&gt;&lt;/a&gt;gis教程&lt;/h2&gt;&lt;figure class=&quot;highlight awk&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs awk&quot;&gt;https:&lt;span class=&quot;hljs-regexp&quot;&gt;//&lt;/span&gt;www.zhihu.com&lt;span class=&quot;hljs-regexp&quot;&gt;/column/&lt;/span&gt;c_1253365661696491520&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;刑法准则&quot;&gt;&lt;a href=&quot;#刑法准则&quot; class=&quot;headerlink&quot; title=&quot;刑法准则&quot;&gt;&lt;/a&gt;刑法准则&lt;/h2&gt;&lt;figure class=&quot;highlight awk&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs awk&quot;&gt;http:&lt;span class=&quot;hljs-regexp&quot;&gt;//&lt;/span&gt;www.npc.gov.cn&lt;span class=&quot;hljs-regexp&quot;&gt;/wxzl/&lt;/span&gt;wxzl&lt;span class=&quot;hljs-regexp&quot;&gt;/2000-12/&lt;/span&gt;&lt;span class=&quot;hljs-number&quot;&gt;17&lt;/span&gt;/content_4680.htm&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;各种数据库SQL标准实现对比&quot;&gt;&lt;a href=&quot;#各种数据库SQL标准实现对比&quot; class=&quot;headerlink&quot; title=&quot;各种数据库SQL标准实现对比&quot;&gt;&lt;/a&gt;各种数据库SQL标准实现对比&lt;/h2&gt;&lt;figure class=&quot;highlight awk&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs awk&quot;&gt;https:&lt;span class=&quot;hljs-regexp&quot;&gt;//&lt;/span&gt;www.sql-workbench.eu/dbms_comparison.html&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;PostgreSQL-RPMS&quot;&gt;&lt;a href=&quot;#PostgreSQL-RPMS&quot; class=&quot;headerlink&quot; title=&quot;PostgreSQL RPMS&quot;&gt;&lt;/a&gt;PostgreSQL RPMS&lt;/h2&gt;&lt;figure class=&quot;highlight awk&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs awk&quot;&gt;https:&lt;span class=&quot;hljs-regexp&quot;&gt;//gi&lt;/span&gt;thub.com&lt;span class=&quot;hljs-regexp&quot;&gt;/cybertec-postgresql/&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;PostgreSQL-MVCC&quot;&gt;&lt;a href=&quot;#PostgreSQL-MVCC&quot; class=&quot;headerlink&quot; title=&quot;PostgreSQL MVCC&quot;&gt;&lt;/a&gt;PostgreSQL MVCC&lt;/h2&gt;&lt;figure class=&quot;highlight awk&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs awk&quot;&gt;http:&lt;span class=&quot;hljs-regexp&quot;&gt;//&lt;/span&gt;www.interdb.jp&lt;span class=&quot;hljs-regexp&quot;&gt;/pg/&lt;/span&gt;pgsql05.html&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;生成随即背景图片&quot;&gt;&lt;a href=&quot;#生成随即背景图片&quot; class=&quot;headerlink&quot; title=&quot;生成随即背景图片&quot;&gt;&lt;/a&gt;生成随即背景图片&lt;/h2&gt;&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs vim&quot;&gt;http&lt;span class=&quot;hljs-variable&quot;&gt;s:&lt;/span&gt;//&lt;span class=&quot;hljs-keyword&quot;&gt;source&lt;/span&gt;.unsplash.&lt;span class=&quot;hljs-keyword&quot;&gt;com&lt;/span&gt;/&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;SQL格式化&quot;&gt;&lt;a href=&quot;#SQL格式化&quot; class=&quot;headerlink&quot; title=&quot;SQL格式化&quot;&gt;&lt;/a&gt;SQL格式化&lt;/h2&gt;&lt;figure class=&quot;highlight awk&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs awk&quot;&gt;http:&lt;span class=&quot;hljs-regexp&quot;&gt;//&lt;/span&gt;sqlformat.darold.net/&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-      <category term="个人记录" scheme="http://daydayup863.github.io/categories/%E4%B8%AA%E4%BA%BA%E8%AE%B0%E5%BD%95/"/>
-    
-    
-      <category term="Linux" scheme="http://daydayup863.github.io/tags/Linux/"/>
-    
-      <category term="python" scheme="http://daydayup863.github.io/tags/python/"/>
-    
-      <category term="personal" scheme="http://daydayup863.github.io/tags/personal/"/>
     
   </entry>
   
