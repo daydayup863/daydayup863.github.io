@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://daydayup863.github.io/"/>
-  <updated>2021-03-15T07:38:31.812Z</updated>
+  <updated>2021-03-16T10:40:30.586Z</updated>
   <id>http://daydayup863.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PostgreSQL HA patroni 测试案例</title>
+    <link href="http://daydayup863.github.io/uncategorized/PostgreSQL_patroni/"/>
+    <id>http://daydayup863.github.io/uncategorized/PostgreSQL_patroni/</id>
+    <published>2021-03-16T10:28:12.000Z</published>
+    <updated>2021-03-16T10:40:30.586Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;主要针对patroni 由1.6.5-2 升级至2.0.1 的版本&lt;/p&gt;
+&lt;h1 id=&quot;测试环境&quot;&gt;&lt;a href=&quot;#测试环境&quot; class=&quot;headerlink&quot; title=&quot;测试环境&quot;&gt;&lt;/a&gt;测试环境&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;zookeeper + CentOS 7 + pg11
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;Switchover-计划内维护&quot;&gt;&lt;a href=&quot;#Switchover-计划内维护&quot; class=&quot;headerlink&quot; title=&quot;Switchover (计划内维护)&quot;&gt;&lt;/a&gt;Switchover (计划内维护)&lt;/h1&gt;&lt;h2 id=&quot;主从切换&quot;&gt;&lt;a href=&quot;#主从切换&quot; class=&quot;headerlink&quot; title=&quot;主从切换&quot;&gt;&lt;/a&gt;主从切换&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;        case 1. 期望原主库降为新从库的场景
+        case 2. 期望原主库停掉不做后续处理场景
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;DB集群切换下线1个HA管理的从节点&quot;&gt;&lt;a href=&quot;#DB集群切换下线1个HA管理的从节点&quot; class=&quot;headerlink&quot; title=&quot;DB集群切换下线1个HA管理的从节点&quot;&gt;&lt;/a&gt;DB集群切换下线1个HA管理的从节点&lt;/h2&gt;&lt;h2 id=&quot;DB集群剔除1个HA管理的从节点&quot;&gt;&lt;a href=&quot;#DB集群剔除1个HA管理的从节点&quot; class=&quot;headerlink&quot; title=&quot;DB集群剔除1个HA管理的从节点&quot;&gt;&lt;/a&gt;DB集群剔除1个HA管理的从节点&lt;/h2&gt;&lt;h2 id=&quot;新加从节点&quot;&gt;&lt;a href=&quot;#新加从节点&quot; class=&quot;headerlink&quot; title=&quot;新加从节点&quot;&gt;&lt;/a&gt;新加从节点&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;        case 1. DB集群新加从节点, 期望不需要加入HA管理的场景
+        case 2. DB集群新加从节点, 期望需要加入HA管理的场景
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>PostgreSQL 生成列</title>
@@ -502,31 +525,6 @@
       <category term="Linux" scheme="http://daydayup863.github.io/tags/Linux/"/>
     
       <category term="command" scheme="http://daydayup863.github.io/tags/command/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>pg_hint_plan</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/pg_hint_plan/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/pg_hint_plan/</id>
-    <published>2020-08-18T06:25:34.000Z</published>
-    <updated>2021-03-05T08:30:47.555Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;名字&quot;&gt;&lt;a href=&quot;#名字&quot; class=&quot;headerlink&quot; title=&quot;名字&quot;&gt;&lt;/a&gt;名字&lt;/h1&gt;&lt;p&gt;pg_hint_plan – 在注释中使用特殊格式的 hint 语句来控制查询计划.&lt;/p&gt;
-&lt;h1 id=&quot;语法&quot;&gt;&lt;a href=&quot;#语法&quot; class=&quot;headerlink&quot; title=&quot;语法&quot;&gt;&lt;/a&gt;语法&lt;/h1&gt;&lt;p&gt;PostgresQL 使用查询规划器计算开销，查询规划器是基于数据统计的而不是静态的规则。对于一个 SQL 语句查询规划器估计每一种可能执行方法的开销，然后使用开销最低的执行方法。查询规划器使用它认为最好的执行计划，而并非真正最优的，因为它不考虑一些数据的属性，例如，列之间的关系。&lt;/p&gt;
-&lt;p&gt;pg_hint_plan 使用所谓的 “hint” 来调整执行计划，它可以在 SQL 注释中使用特殊的格式来简单的描述。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-      <category term="pg_hint_plan" scheme="http://daydayup863.github.io/tags/pg-hint-plan/"/>
     
   </entry>
   
