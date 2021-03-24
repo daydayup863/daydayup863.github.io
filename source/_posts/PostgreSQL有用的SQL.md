@@ -11,6 +11,23 @@ top: 10
 
 <!-- more -->
 
+# 设置查询的时间的时区
+```
+mydb=# select now() at time zone 'PRC';
+          timezone          
+----------------------------
+ 2021-03-24 17:42:24.528734
+(1 row)
+
+mydb=# select now() at time zone 'GMT';
+          timezone          
+----------------------------
+ 2021-03-24 09:42:28.560736
+(1 row)
+
+mydb=# 
+```
+
 # 抓去网站天气信息
 ```
 postgres=#   CREATE OR REPLACE FUNCTION get_weather_info(city text)

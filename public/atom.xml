@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://daydayup863.github.io/"/>
-  <updated>2021-03-12T06:18:20.905Z</updated>
+  <updated>2021-03-16T10:40:30.586Z</updated>
   <id>http://daydayup863.github.io/</id>
   
   <author>
@@ -15,6 +15,191 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PostgreSQL HA patroni 测试案例</title>
+    <link href="http://daydayup863.github.io/uncategorized/PostgreSQL_patroni/"/>
+    <id>http://daydayup863.github.io/uncategorized/PostgreSQL_patroni/</id>
+    <published>2021-03-16T10:28:12.000Z</published>
+    <updated>2021-03-16T10:40:30.586Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;主要针对patroni 由1.6.5-2 升级至2.0.1 的版本&lt;/p&gt;
+&lt;h1 id=&quot;测试环境&quot;&gt;&lt;a href=&quot;#测试环境&quot; class=&quot;headerlink&quot; title=&quot;测试环境&quot;&gt;&lt;/a&gt;测试环境&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;zookeeper + CentOS 7 + pg11
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;Switchover-计划内维护&quot;&gt;&lt;a href=&quot;#Switchover-计划内维护&quot; class=&quot;headerlink&quot; title=&quot;Switchover (计划内维护)&quot;&gt;&lt;/a&gt;Switchover (计划内维护)&lt;/h1&gt;&lt;h2 id=&quot;主从切换&quot;&gt;&lt;a href=&quot;#主从切换&quot; class=&quot;headerlink&quot; title=&quot;主从切换&quot;&gt;&lt;/a&gt;主从切换&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;        case 1. 期望原主库降为新从库的场景
+        case 2. 期望原主库停掉不做后续处理场景
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;DB集群切换下线1个HA管理的从节点&quot;&gt;&lt;a href=&quot;#DB集群切换下线1个HA管理的从节点&quot; class=&quot;headerlink&quot; title=&quot;DB集群切换下线1个HA管理的从节点&quot;&gt;&lt;/a&gt;DB集群切换下线1个HA管理的从节点&lt;/h2&gt;&lt;h2 id=&quot;DB集群剔除1个HA管理的从节点&quot;&gt;&lt;a href=&quot;#DB集群剔除1个HA管理的从节点&quot; class=&quot;headerlink&quot; title=&quot;DB集群剔除1个HA管理的从节点&quot;&gt;&lt;/a&gt;DB集群剔除1个HA管理的从节点&lt;/h2&gt;&lt;h2 id=&quot;新加从节点&quot;&gt;&lt;a href=&quot;#新加从节点&quot; class=&quot;headerlink&quot; title=&quot;新加从节点&quot;&gt;&lt;/a&gt;新加从节点&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;        case 1. DB集群新加从节点, 期望不需要加入HA管理的场景
+        case 2. DB集群新加从节点, 期望需要加入HA管理的场景
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>PostgreSQL 生成列</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/Generated-column/pg_grnerated_column/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/Generated-column/pg_grnerated_column/</id>
+    <published>2021-03-15T07:35:49.000Z</published>
+    <updated>2021-03-15T07:38:31.812Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;PostgreSQL 生成列的三种使用方式&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+      <category term="Generated column" scheme="http://daydayup863.github.io/categories/PostgreSQL/Generated-column/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="Generated column" scheme="http://daydayup863.github.io/tags/Generated-column/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PostgreSQL WAL 记录了什么?</title>
+    <link href="http://daydayup863.github.io/WAL/PostgreSQL/pg_wal/"/>
+    <id>http://daydayup863.github.io/WAL/PostgreSQL/pg_wal/</id>
+    <published>2021-03-15T06:37:02.000Z</published>
+    <updated>2021-03-15T06:44:21.294Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;关于持久性&quot;&gt;&lt;a href=&quot;#关于持久性&quot; class=&quot;headerlink&quot; title=&quot;关于持久性&quot;&gt;&lt;/a&gt;关于持久性&lt;/h1&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs plain&quot;&gt;持久性是指，事务提交后，对系统的影响必须是永久的，即使系统意外宕机，也必须确保事务提交时的修改已真正永久写入到永久存储中。&lt;br&gt;最简单的实现方法，当然是在事务提交后立即刷新事务修改后的数据到磁盘。但是磁盘和内存之间的IO操作是最影响数据库系统影响时间的，一有事务提交就去刷新磁盘，会对数据库性能产生不好影响。&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="WAL" scheme="http://daydayup863.github.io/categories/WAL/"/>
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/WAL/PostgreSQL/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="WAL" scheme="http://daydayup863.github.io/tags/WAL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>order by + limit N index backward scan 慢SQL优化</title>
+    <link href="http://daydayup863.github.io/sql/limit/order-by/slow-query/pg_turn_away_from_index_backward_scan/"/>
+    <id>http://daydayup863.github.io/sql/limit/order-by/slow-query/pg_turn_away_from_index_backward_scan/</id>
+    <published>2021-03-15T06:22:23.000Z</published>
+    <updated>2021-03-15T06:30:15.227Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;backward-index-scan&quot;&gt;&lt;a href=&quot;#backward-index-scan&quot; class=&quot;headerlink&quot; title=&quot;backward  index scan&quot;&gt;&lt;/a&gt;backward  index scan&lt;/h1&gt;&lt;figure class=&quot;highlight angelscript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs angelscript&quot;&gt;mydb=# explain analyze select data_id,create_time &lt;span class=&quot;hljs-keyword&quot;&gt;from&lt;/span&gt; test_table where status=&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;and&lt;/span&gt; city_id=&lt;span class=&quot;hljs-number&quot;&gt;310188&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;and&lt;/span&gt; type=&lt;span class=&quot;hljs-number&quot;&gt;103&lt;/span&gt;  &lt;span class=&quot;hljs-keyword&quot;&gt;and&lt;/span&gt; sub_type=any(&lt;span class=&quot;hljs-built_in&quot;&gt;array&lt;/span&gt;[&lt;span class=&quot;hljs-number&quot;&gt;10306&lt;/span&gt;,&lt;span class=&quot;hljs-number&quot;&gt;10304&lt;/span&gt;,&lt;span class=&quot;hljs-number&quot;&gt;10305&lt;/span&gt;]) order by create_time desc limit &lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;;&lt;br&gt;                                                                                    QUERY PLAN                                                                                    &lt;br&gt;----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------&lt;br&gt; Limit  (cost=&lt;span class=&quot;hljs-number&quot;&gt;0.44&lt;/span&gt;.&lt;span class=&quot;hljs-number&quot;&gt;.1615&lt;/span&gt;&lt;span class=&quot;hljs-number&quot;&gt;.86&lt;/span&gt; rows=&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt; width=&lt;span class=&quot;hljs-number&quot;&gt;16&lt;/span&gt;) (actual time=&lt;span class=&quot;hljs-number&quot;&gt;10945.944&lt;/span&gt;.&lt;span class=&quot;hljs-number&quot;&gt;.10945&lt;/span&gt;&lt;span class=&quot;hljs-number&quot;&gt;.945&lt;/span&gt; rows=&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt; loops=&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;)&lt;br&gt;   -&amp;gt;  Index Scan Backward using test_table_create_time_idx on test_table  (cost=&lt;span class=&quot;hljs-number&quot;&gt;0.44&lt;/span&gt;.&lt;span class=&quot;hljs-number&quot;&gt;.1936888&lt;/span&gt;&lt;span class=&quot;hljs-number&quot;&gt;.15&lt;/span&gt; rows=&lt;span class=&quot;hljs-number&quot;&gt;1199&lt;/span&gt; width=&lt;span class=&quot;hljs-number&quot;&gt;16&lt;/span&gt;) (actual time=&lt;span class=&quot;hljs-number&quot;&gt;10945.942&lt;/span&gt;.&lt;span class=&quot;hljs-number&quot;&gt;.10945&lt;/span&gt;&lt;span class=&quot;hljs-number&quot;&gt;.942&lt;/span&gt; rows=&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt; loops=&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;)&lt;br&gt;         Filter: ((status = &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;) AND (city_id = &lt;span class=&quot;hljs-number&quot;&gt;310188&lt;/span&gt;) AND (type = &lt;span class=&quot;hljs-number&quot;&gt;103&lt;/span&gt;) AND (sub_type = ANY (&lt;span class=&quot;hljs-string&quot;&gt;&amp;#x27;&amp;#123;10306,10304,10305&amp;#125;&amp;#x27;&lt;/span&gt;::&lt;span class=&quot;hljs-built_in&quot;&gt;int&lt;/span&gt;eger[])))&lt;br&gt;         Rows Removed by Filter: &lt;span class=&quot;hljs-number&quot;&gt;9975856&lt;/span&gt;&lt;br&gt; Planning time: &lt;span class=&quot;hljs-number&quot;&gt;0.573&lt;/span&gt; ms&lt;br&gt; Execution time: &lt;span class=&quot;hljs-number&quot;&gt;10945.974&lt;/span&gt; ms&lt;br&gt;(&lt;span class=&quot;hljs-number&quot;&gt;6&lt;/span&gt; rows) &lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="sql" scheme="http://daydayup863.github.io/categories/sql/"/>
+    
+      <category term="limit" scheme="http://daydayup863.github.io/categories/sql/limit/"/>
+    
+      <category term="order by" scheme="http://daydayup863.github.io/categories/sql/limit/order-by/"/>
+    
+      <category term="slow query" scheme="http://daydayup863.github.io/categories/sql/limit/order-by/slow-query/"/>
+    
+    
+      <category term="sql" scheme="http://daydayup863.github.io/tags/sql/"/>
+    
+      <category term="limit" scheme="http://daydayup863.github.io/tags/limit/"/>
+    
+      <category term="order by" scheme="http://daydayup863.github.io/tags/order-by/"/>
+    
+      <category term="slow query" scheme="http://daydayup863.github.io/tags/slow-query/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PostgreSQL格式化SQL</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/sql/pg_sql_format/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/sql/pg_sql_format/</id>
+    <published>2021-03-15T06:15:57.000Z</published>
+    <updated>2021-03-15T06:18:05.037Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;利用pg_get_viewdef完成SQL美化。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+      <category term="sql" scheme="http://daydayup863.github.io/categories/PostgreSQL/sql/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="sql" scheme="http://daydayup863.github.io/tags/sql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>gcc, g++ 使用切换</title>
+    <link href="http://daydayup863.github.io/Linux/g/gcc/Linux_gxx/"/>
+    <id>http://daydayup863.github.io/Linux/g/gcc/Linux_gxx/</id>
+    <published>2021-03-15T04:01:01.000Z</published>
+    <updated>2021-03-15T04:03:28.484Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;安装版本&quot;&gt;&lt;a href=&quot;#安装版本&quot; class=&quot;headerlink&quot; title=&quot;安装版本&quot;&gt;&lt;/a&gt;安装版本&lt;/h1&gt;&lt;figure class=&quot;highlight apache&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs apache&quot;&gt;&lt;span class=&quot;hljs-attribute&quot;&gt;sudo&lt;/span&gt; apt-get install gcc-&lt;span class=&quot;hljs-number&quot;&gt;4&lt;/span&gt;.&lt;span class=&quot;hljs-number&quot;&gt;8&lt;/span&gt; gcc-&lt;span class=&quot;hljs-number&quot;&gt;4&lt;/span&gt;.&lt;span class=&quot;hljs-number&quot;&gt;8&lt;/span&gt;-multilib g++-&lt;span class=&quot;hljs-number&quot;&gt;4&lt;/span&gt;.&lt;span class=&quot;hljs-number&quot;&gt;8&lt;/span&gt; g++-&lt;span class=&quot;hljs-number&quot;&gt;4&lt;/span&gt;.&lt;span class=&quot;hljs-number&quot;&gt;8&lt;/span&gt;-multilib&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="http://daydayup863.github.io/categories/Linux/"/>
+    
+      <category term="g++" scheme="http://daydayup863.github.io/categories/Linux/g/"/>
+    
+      <category term="gcc" scheme="http://daydayup863.github.io/categories/Linux/g/gcc/"/>
+    
+    
+      <category term="Linux" scheme="http://daydayup863.github.io/tags/Linux/"/>
+    
+      <category term="g++" scheme="http://daydayup863.github.io/tags/g/"/>
+    
+      <category term="gcc" scheme="http://daydayup863.github.io/tags/gcc/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ubuntu终端常用的快捷键</title>
+    <link href="http://daydayup863.github.io/ubuntu/Linux/ubuntu_quick_key/"/>
+    <id>http://daydayup863.github.io/ubuntu/Linux/ubuntu_quick_key/</id>
+    <published>2021-03-15T03:42:41.000Z</published>
+    <updated>2021-03-15T03:53:07.103Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Ubuntu中的许多操作在终端（Terminal）中十分的快捷，记住一些快捷键的操作更得心应手。在Ubuntu中打开终端的快捷键是Ctrl+Alt+T。其他的一些常用的快捷键如下：&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="ubuntu" scheme="http://daydayup863.github.io/categories/ubuntu/"/>
+    
+      <category term="Linux" scheme="http://daydayup863.github.io/categories/ubuntu/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://daydayup863.github.io/tags/Linux/"/>
+    
+      <category term="ubuntu" scheme="http://daydayup863.github.io/tags/ubuntu/"/>
+    
+  </entry>
   
   <entry>
     <title>PostgreSQL函数/存储过程返回多个游标</title>
@@ -94,6 +279,23 @@
   </entry>
   
   <entry>
+    <title>Hello World</title>
+    <link href="http://daydayup863.github.io/uncategorized/hello-world/"/>
+    <id>http://daydayup863.github.io/uncategorized/hello-world/</id>
+    <published>2021-03-05T08:51:41.421Z</published>
+    <updated>2020-08-04T03:05:29.474Z</updated>
+    
+    <summary type="html">
+    
+       
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>PostgreSQL开发指南</title>
     <link href="http://daydayup863.github.io/PostgreSQL/PostgreSQL%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/"/>
     <id>http://daydayup863.github.io/PostgreSQL/PostgreSQL%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/</id>
@@ -166,11 +368,11 @@
       <category term="Postgis" scheme="http://daydayup863.github.io/categories/PostgreSQL/gis/Postgis/"/>
     
     
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+      <category term="gis" scheme="http://daydayup863.github.io/tags/gis/"/>
     
       <category term="postgis" scheme="http://daydayup863.github.io/tags/postgis/"/>
     
-      <category term="gis" scheme="http://daydayup863.github.io/tags/gis/"/>
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
     
   </entry>
   
@@ -308,7 +510,7 @@
     <link href="http://daydayup863.github.io/Linux/Linux_cmd_summary/"/>
     <id>http://daydayup863.github.io/Linux/Linux_cmd_summary/</id>
     <published>2020-08-19T03:15:42.000Z</published>
-    <updated>2021-03-11T04:08:38.292Z</updated>
+    <updated>2021-03-15T04:00:02.610Z</updated>
     
     <summary type="html">
     
@@ -323,222 +525,6 @@
       <category term="Linux" scheme="http://daydayup863.github.io/tags/Linux/"/>
     
       <category term="command" scheme="http://daydayup863.github.io/tags/command/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>pg_hint_plan</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/pg_hint_plan/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/pg_hint_plan/</id>
-    <published>2020-08-18T06:25:34.000Z</published>
-    <updated>2021-03-05T08:30:47.555Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;名字&quot;&gt;&lt;a href=&quot;#名字&quot; class=&quot;headerlink&quot; title=&quot;名字&quot;&gt;&lt;/a&gt;名字&lt;/h1&gt;&lt;p&gt;pg_hint_plan – 在注释中使用特殊格式的 hint 语句来控制查询计划.&lt;/p&gt;
-&lt;h1 id=&quot;语法&quot;&gt;&lt;a href=&quot;#语法&quot; class=&quot;headerlink&quot; title=&quot;语法&quot;&gt;&lt;/a&gt;语法&lt;/h1&gt;&lt;p&gt;PostgresQL 使用查询规划器计算开销，查询规划器是基于数据统计的而不是静态的规则。对于一个 SQL 语句查询规划器估计每一种可能执行方法的开销，然后使用开销最低的执行方法。查询规划器使用它认为最好的执行计划，而并非真正最优的，因为它不考虑一些数据的属性，例如，列之间的关系。&lt;/p&gt;
-&lt;p&gt;pg_hint_plan 使用所谓的 “hint” 来调整执行计划，它可以在 SQL 注释中使用特殊的格式来简单的描述。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-      <category term="pg_hint_plan" scheme="http://daydayup863.github.io/tags/pg-hint-plan/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PostgreSQL的两种统计信息</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/The_two_kinds_of_stats_in_PostgreSQL/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/The_two_kinds_of_stats_in_PostgreSQL/</id>
-    <published>2020-08-17T06:16:10.000Z</published>
-    <updated>2021-03-05T08:30:47.555Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;时不时地，有人对重置PostgreSQL中的统计信息, 以及重置统计信息对执行计划和数据库其他部分的影响感到困惑。也许文档对此描述的会更清晰一些，但是对于那些以前从未在PostgreSQL中处理过统计信息的人来说无疑是令人困惑的。但这不仅是关于新手的问题-我在9.3中为该区域编写了一个补丁，而且我有时也会感到困惑。对于大多数用户而言，最令人惊讶的事实是“统计信息”实际上可能意味着两件事, 描述数据分布的统计信息，以及监视统计信息，跟踪有关数据库系统本身操作的计数器。每种都有不同的用途，存储方式也不同，丢失数据时的影响也大不相同。因此，让我们看看这两种统计数据的目的是什么，常见的问题是什么，当数据由于某种原因丢失时会发生什么。&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-      <category term="stat" scheme="http://daydayup863.github.io/tags/stat/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>postgresql.git log 阅读记录</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/pg14_git_log/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/pg14_git_log/</id>
-    <published>2020-08-14T11:41:25.000Z</published>
-    <updated>2021-03-05T08:30:47.555Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;psql增加-d-i-m-t&quot;&gt;&lt;a href=&quot;#psql增加-d-i-m-t&quot; class=&quot;headerlink&quot; title=&quot;psql增加\d[i|m|t]+&quot;&gt;&lt;/a&gt;psql增加\d[i|m|t]+&lt;/h1&gt;&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs sql&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;commit&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;07&lt;/span&gt;f386ede026ae8c3f2adeba0c22139df19bf2ff&lt;br&gt;Author: Michael Paquier &amp;lt;michael@paquier.xyz&amp;gt;&lt;br&gt;&lt;span class=&quot;hljs-built_in&quot;&gt;Date&lt;/span&gt;:   Wed Sep &lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;16&lt;/span&gt;:&lt;span class=&quot;hljs-number&quot;&gt;59&lt;/span&gt;:&lt;span class=&quot;hljs-number&quot;&gt;22&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;2020&lt;/span&gt; +&lt;span class=&quot;hljs-number&quot;&gt;0900&lt;/span&gt;&lt;br&gt;&lt;br&gt;    &lt;span class=&quot;hljs-keyword&quot;&gt;Add&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;access&lt;/span&gt; method &lt;span class=&quot;hljs-keyword&quot;&gt;names&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;to&lt;/span&gt; \d[i|m|t]+ &lt;span class=&quot;hljs-keyword&quot;&gt;in&lt;/span&gt; psql&lt;br&gt;&lt;br&gt;    Listing a &lt;span class=&quot;hljs-keyword&quot;&gt;full&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;of&lt;/span&gt; relations &lt;span class=&quot;hljs-keyword&quot;&gt;with&lt;/span&gt; those psql meta-commands, &lt;span class=&quot;hljs-keyword&quot;&gt;without&lt;/span&gt; a&lt;br&gt;    matching pattern, has &lt;span class=&quot;hljs-keyword&quot;&gt;never&lt;/span&gt; showed the &lt;span class=&quot;hljs-keyword&quot;&gt;access&lt;/span&gt; method associated &lt;span class=&quot;hljs-keyword&quot;&gt;with&lt;/span&gt;&lt;br&gt;    &lt;span class=&quot;hljs-keyword&quot;&gt;each&lt;/span&gt; relation.  This &lt;span class=&quot;hljs-keyword&quot;&gt;commit&lt;/span&gt; adds the &lt;span class=&quot;hljs-keyword&quot;&gt;access&lt;/span&gt; method &lt;span class=&quot;hljs-keyword&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;tables&lt;/span&gt;, &lt;span class=&quot;hljs-keyword&quot;&gt;indexes&lt;/span&gt;&lt;br&gt;    &lt;span class=&quot;hljs-keyword&quot;&gt;and&lt;/span&gt; matviews, masking it &lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt; relation kinds &lt;span class=&quot;hljs-keyword&quot;&gt;where&lt;/span&gt; it does &lt;span class=&quot;hljs-keyword&quot;&gt;not&lt;/span&gt; apply.&lt;br&gt;&lt;br&gt;    Note that &lt;span class=&quot;hljs-keyword&quot;&gt;when&lt;/span&gt; HIDE_TABLEAM &lt;span class=&quot;hljs-keyword&quot;&gt;is&lt;/span&gt; enabled, the information does &lt;span class=&quot;hljs-keyword&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;show&lt;/span&gt;&lt;br&gt;    up.  This &lt;span class=&quot;hljs-keyword&quot;&gt;is&lt;/span&gt; available &lt;span class=&quot;hljs-keyword&quot;&gt;when&lt;/span&gt; connecting &lt;span class=&quot;hljs-keyword&quot;&gt;to&lt;/span&gt; a backend &lt;span class=&quot;hljs-keyword&quot;&gt;version&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;at&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;least&lt;/span&gt;&lt;br&gt;    &lt;span class=&quot;hljs-number&quot;&gt;12&lt;/span&gt;, &lt;span class=&quot;hljs-keyword&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;table&lt;/span&gt; AMs have been introduced.&lt;br&gt;&lt;br&gt;    Author: Georgios Kokolatos&lt;br&gt;    Reviewed-&lt;span class=&quot;hljs-keyword&quot;&gt;by&lt;/span&gt;: Vignesh C, Michael Paquier, Justin Pryzby&lt;br&gt;    Discussion: https://postgr.es/m/svaS1VTOEscES9CLKVTeKItjJP1EEJuBhTsA0ESOdlnbXeQSgycYwVlliL5zt8Jwcfo4ATYDXtEqsExxjkSkkhCSTCL8fnRgaCAJdr0unUg=@protonmail.com&lt;br&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h1 id=&quot;新增函数string-to-table&quot;&gt;&lt;a href=&quot;#新增函数string-to-table&quot; class=&quot;headerlink&quot; title=&quot;新增函数string_to_table&quot;&gt;&lt;/a&gt;新增函数string_to_table&lt;/h1&gt;&lt;figure class=&quot;highlight pgsql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs pgsql&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;Add&lt;/span&gt; string_to_table() &lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt;.&lt;br&gt;    This splits a string at occurrences &lt;span class=&quot;hljs-keyword&quot;&gt;of&lt;/span&gt; a &lt;span class=&quot;hljs-keyword&quot;&gt;delimiter&lt;/span&gt;.  It &lt;span class=&quot;hljs-keyword&quot;&gt;is&lt;/span&gt; exactly &lt;span class=&quot;hljs-keyword&quot;&gt;like&lt;/span&gt;&lt;br&gt;    string_to_array() &lt;span class=&quot;hljs-keyword&quot;&gt;except&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt; producing a &lt;span class=&quot;hljs-keyword&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;values&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;instead&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;of&lt;/span&gt; an&lt;br&gt;    &lt;span class=&quot;hljs-keyword&quot;&gt;array&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;values&lt;/span&gt;.  Thus, the relationship &lt;span class=&quot;hljs-keyword&quot;&gt;of&lt;/span&gt; these two &lt;span class=&quot;hljs-keyword&quot;&gt;functions&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;is&lt;/span&gt;&lt;br&gt;    the same &lt;span class=&quot;hljs-keyword&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;between&lt;/span&gt; regexp_split_to_table() &lt;span class=&quot;hljs-keyword&quot;&gt;and&lt;/span&gt; regexp_split_to_array().&lt;br&gt;&lt;br&gt;    Although the same results could be had &lt;span class=&quot;hljs-keyword&quot;&gt;from&lt;/span&gt; unnest(string_to_array()),&lt;br&gt;    this &lt;span class=&quot;hljs-keyword&quot;&gt;is&lt;/span&gt; somewhat faster than that, &lt;span class=&quot;hljs-keyword&quot;&gt;and&lt;/span&gt; anyway it seems reasonable &lt;span class=&quot;hljs-keyword&quot;&gt;to&lt;/span&gt;&lt;br&gt;    have it &lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt; symmetry &lt;span class=&quot;hljs-keyword&quot;&gt;with&lt;/span&gt; the regexp &lt;span class=&quot;hljs-keyword&quot;&gt;functions&lt;/span&gt;.&lt;br&gt;&lt;br&gt;    Pavel Stehule, reviewed &lt;span class=&quot;hljs-keyword&quot;&gt;by&lt;/span&gt; Peter Smith&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h1 id=&quot;逻辑复制增加正在处理的事物中的复制&quot;&gt;&lt;a href=&quot;#逻辑复制增加正在处理的事物中的复制&quot; class=&quot;headerlink&quot; title=&quot;逻辑复制增加正在处理的事物中的复制&quot;&gt;&lt;/a&gt;逻辑复制增加正在处理的事物中的复制&lt;/h1&gt;&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs sql&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;commit&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;464824323e57&lt;/span&gt;dc4b397e8b05854d779908b55304&lt;br&gt;Author: Amit Kapila &amp;lt;akapila@postgresql.org&amp;gt;&lt;br&gt;&lt;span class=&quot;hljs-built_in&quot;&gt;Date&lt;/span&gt;:   Thu Sep &lt;span class=&quot;hljs-number&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;07&lt;/span&gt;:&lt;span class=&quot;hljs-number&quot;&gt;54&lt;/span&gt;:&lt;span class=&quot;hljs-number&quot;&gt;07&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;2020&lt;/span&gt; +&lt;span class=&quot;hljs-number&quot;&gt;0530&lt;/span&gt;&lt;br&gt;&lt;br&gt;    &lt;span class=&quot;hljs-keyword&quot;&gt;Add&lt;/span&gt; support &lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt; streaming &lt;span class=&quot;hljs-keyword&quot;&gt;to&lt;/span&gt; built-&lt;span class=&quot;hljs-keyword&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;logical&lt;/span&gt; replication.&lt;br&gt;&lt;br&gt;    &lt;span class=&quot;hljs-keyword&quot;&gt;To&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;add&lt;/span&gt; support &lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt; streaming &lt;span class=&quot;hljs-keyword&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;in&lt;/span&gt;-progress transactions &lt;span class=&quot;hljs-keyword&quot;&gt;into&lt;/span&gt; the&lt;br&gt;    built-&lt;span class=&quot;hljs-keyword&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;logical&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;replication&lt;/span&gt;, we need &lt;span class=&quot;hljs-keyword&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;do&lt;/span&gt; three things:&lt;br&gt;&lt;br&gt;    * Extend the &lt;span class=&quot;hljs-keyword&quot;&gt;logical&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;replication&lt;/span&gt; protocol, so identify &lt;span class=&quot;hljs-keyword&quot;&gt;in&lt;/span&gt;-progress&lt;br&gt;    transactions, &lt;span class=&quot;hljs-keyword&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;allow&lt;/span&gt; adding additional bits &lt;span class=&quot;hljs-keyword&quot;&gt;of&lt;/span&gt; information (e.g.&lt;br&gt;    XID &lt;span class=&quot;hljs-keyword&quot;&gt;of&lt;/span&gt; subtransactions).&lt;br&gt;&lt;br&gt;    * &lt;span class=&quot;hljs-keyword&quot;&gt;Modify&lt;/span&gt; the &lt;span class=&quot;hljs-keyword&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;plugin&lt;/span&gt; (pgoutput) &lt;span class=&quot;hljs-keyword&quot;&gt;to&lt;/span&gt; implement the &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; stream&lt;br&gt;    API callbacks, &lt;span class=&quot;hljs-keyword&quot;&gt;by&lt;/span&gt; leveraging the &lt;span class=&quot;hljs-keyword&quot;&gt;extended&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;replication&lt;/span&gt; protocol.&lt;br&gt;&lt;br&gt;    * &lt;span class=&quot;hljs-keyword&quot;&gt;Modify&lt;/span&gt; the &lt;span class=&quot;hljs-keyword&quot;&gt;replication&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;apply&lt;/span&gt; worker, &lt;span class=&quot;hljs-keyword&quot;&gt;to&lt;/span&gt; properly handle streamed&lt;br&gt;    &lt;span class=&quot;hljs-keyword&quot;&gt;in&lt;/span&gt;-progress &lt;span class=&quot;hljs-keyword&quot;&gt;transaction&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;by&lt;/span&gt; spilling the &lt;span class=&quot;hljs-keyword&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;to&lt;/span&gt; disk &lt;span class=&quot;hljs-keyword&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;then&lt;/span&gt;&lt;br&gt;    replaying them &lt;span class=&quot;hljs-keyword&quot;&gt;on&lt;/span&gt; commit.&lt;br&gt;&lt;br&gt;    We however must explicitly &lt;span class=&quot;hljs-keyword&quot;&gt;disable&lt;/span&gt; streaming &lt;span class=&quot;hljs-keyword&quot;&gt;replication&lt;/span&gt; during&lt;br&gt;    &lt;span class=&quot;hljs-keyword&quot;&gt;replication&lt;/span&gt; slot &lt;span class=&quot;hljs-keyword&quot;&gt;creation&lt;/span&gt;, even &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; the &lt;span class=&quot;hljs-keyword&quot;&gt;plugin&lt;/span&gt; supports it. We&lt;br&gt;    don&lt;span class=&quot;hljs-string&quot;&gt;&amp;#x27;t need to replicate the changes accumulated during this phase,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;    and moreover we don&amp;#x27;&lt;/span&gt;t have a &lt;span class=&quot;hljs-keyword&quot;&gt;replication&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;connection&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;open&lt;/span&gt; so we&lt;br&gt;    don&lt;span class=&quot;hljs-string&quot;&gt;&amp;#x27;t have where to send the data anyway.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;    Author: Tomas Vondra, Dilip Kumar and Amit Kapila&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;    Reviewed-by: Amit Kapila, Kuntal Ghosh and Ajin Cherian&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;    Tested-by: Neha Sharma, Mahendra Singh Thalor and Ajin Cherian&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;    Discussion: https://postgr.es/m/688b0b7f-2f6c-d827-c27b-216a8e3ea700@2ndquadrant.com&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h1 id=&quot;新增视图pg-backend-memory-contexts&quot;&gt;&lt;a href=&quot;#新增视图pg-backend-memory-contexts&quot; class=&quot;headerlink&quot; title=&quot;新增视图pg_backend_memory_contexts&quot;&gt;&lt;/a&gt;新增视图pg_backend_memory_contexts&lt;/h1&gt;&lt;figure class=&quot;highlight pgsql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs pgsql&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;commit&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;3e98&lt;/span&gt;c0bafb28de87ae095b341687dc082371af54 (HEAD -&amp;gt; master, origin/master, origin/HEAD)&lt;br&gt;Author: Fujii Masao &amp;lt;fujii@postgresql.org&amp;gt;&lt;br&gt;&lt;span class=&quot;hljs-type&quot;&gt;Date&lt;/span&gt;:   Wed Aug &lt;span class=&quot;hljs-number&quot;&gt;19&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;15&lt;/span&gt;:&lt;span class=&quot;hljs-number&quot;&gt;34&lt;/span&gt;:&lt;span class=&quot;hljs-number&quot;&gt;43&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;2020&lt;/span&gt; +&lt;span class=&quot;hljs-number&quot;&gt;0900&lt;/span&gt;&lt;br&gt;&lt;br&gt;    &lt;span class=&quot;hljs-keyword&quot;&gt;Add&lt;/span&gt; pg_backend_memory_contexts &lt;span class=&quot;hljs-keyword&quot;&gt;system&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;view&lt;/span&gt;.&lt;br&gt;&lt;br&gt;    This &lt;span class=&quot;hljs-keyword&quot;&gt;view&lt;/span&gt; displays the usages &lt;span class=&quot;hljs-keyword&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;all&lt;/span&gt; the memory contexts &lt;span class=&quot;hljs-keyword&quot;&gt;of&lt;/span&gt; the &lt;span class=&quot;hljs-keyword&quot;&gt;server&lt;/span&gt;&lt;br&gt;    process attached &lt;span class=&quot;hljs-keyword&quot;&gt;to&lt;/span&gt; the &lt;span class=&quot;hljs-keyword&quot;&gt;current&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;session&lt;/span&gt;. This information &lt;span class=&quot;hljs-keyword&quot;&gt;is&lt;/span&gt; useful &lt;span class=&quot;hljs-keyword&quot;&gt;to&lt;/span&gt;&lt;br&gt;    investigate the cause &lt;span class=&quot;hljs-keyword&quot;&gt;of&lt;/span&gt; backend-&lt;span class=&quot;hljs-keyword&quot;&gt;local&lt;/span&gt; memory bloat.&lt;br&gt;&lt;br&gt;    This information can be &lt;span class=&quot;hljs-keyword&quot;&gt;also&lt;/span&gt; collected &lt;span class=&quot;hljs-keyword&quot;&gt;by&lt;/span&gt; calling&lt;br&gt;    MemoryContextStats(TopMemoryContext) via a debugger. But this technique&lt;br&gt;    cannot be uesd &lt;span class=&quot;hljs-keyword&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;some&lt;/span&gt; environments because &lt;span class=&quot;hljs-keyword&quot;&gt;no&lt;/span&gt; debugger &lt;span class=&quot;hljs-keyword&quot;&gt;is&lt;/span&gt; available there.&lt;br&gt;    &lt;span class=&quot;hljs-keyword&quot;&gt;And&lt;/span&gt; it outputs lots &lt;span class=&quot;hljs-keyword&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;hljs-type&quot;&gt;text&lt;/span&gt; messages &lt;span class=&quot;hljs-keyword&quot;&gt;and&lt;/span&gt; it&lt;span class=&quot;hljs-string&quot;&gt;&amp;#x27;s not easy to analyze them.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;    So, pg_backend_memory_contexts view allows us to access to backend-local&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;    memory contexts information more easily.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;    Bump catalog version.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;    Author: Atsushi Torikoshi, Fujii Masao&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;    Reviewed-by: Tatsuhito Kasahara, Andres Freund, Daniel Gustafsson, Robert Haas, Michael Paquier&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;    Discussion: https://postgr.es/m/72a656e0f71d0860161e0b3f67e4d771@oss.nttdata.com&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h1 id=&quot;log-line-prefix-增加-P-显示并行leader&quot;&gt;&lt;a href=&quot;#log-line-prefix-增加-P-显示并行leader&quot; class=&quot;headerlink&quot; title=&quot;log_line_prefix 增加 %P 显示并行leader&quot;&gt;&lt;/a&gt;log_line_prefix 增加 %P 显示并行leader&lt;/h1&gt;&lt;figure class=&quot;highlight pgsql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs pgsql&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;commit&lt;/span&gt; b8fdee7d0ca8bd2165d46fb1468f75571b706a01&lt;br&gt;Author: Michael Paquier &amp;lt;michael@paquier.xyz&amp;gt;&lt;br&gt;&lt;span class=&quot;hljs-type&quot;&gt;Date&lt;/span&gt;:   Mon Aug &lt;span class=&quot;hljs-number&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;13&lt;/span&gt;:&lt;span class=&quot;hljs-number&quot;&gt;38&lt;/span&gt;:&lt;span class=&quot;hljs-number&quot;&gt;48&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;2020&lt;/span&gt; +&lt;span class=&quot;hljs-number&quot;&gt;0900&lt;/span&gt;&lt;br&gt;&lt;br&gt;    &lt;span class=&quot;hljs-keyword&quot;&gt;Add&lt;/span&gt; %P &lt;span class=&quot;hljs-keyword&quot;&gt;to&lt;/span&gt; log_line_prefix &lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt; parallel &lt;span class=&quot;hljs-keyword&quot;&gt;group&lt;/span&gt; leader&lt;br&gt;&lt;br&gt;    This &lt;span class=&quot;hljs-keyword&quot;&gt;is&lt;/span&gt; useful &lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt; monitoring purposes &lt;span class=&quot;hljs-keyword&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;log&lt;/span&gt; parsing.  Similarly &lt;span class=&quot;hljs-keyword&quot;&gt;to&lt;/span&gt;&lt;br&gt;    pg_stat_activity, the leader&lt;span class=&quot;hljs-string&quot;&gt;&amp;#x27;s PID is shown only for active parallel&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;    workers, minimizing the log footprint for the leaders as the equivalent&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;    shared memory field is set as long as a backend is alive.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;    Author: Justin Pryzby&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;    Reviewed-by: Álvaro Herrera, Michael Paquier, Julien Rouhaud, Tom Lane&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;    Discussion: https://postgr.es/m/20200315111831.GA21492@telsasoft.com&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-      <category term="git" scheme="http://daydayup863.github.io/tags/git/"/>
-    
-      <category term="postgresql.git" scheme="http://daydayup863.github.io/tags/postgresql-git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PostgreSQL Postgis 源码安装</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/unbutu_PostgreSQL_postgis_install/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/unbutu_PostgreSQL_postgis_install/</id>
-    <published>2020-08-11T06:56:15.000Z</published>
-    <updated>2021-03-05T08:30:47.555Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;为PostgreSQL 12.3 安装Postgis 2.5.4&lt;/p&gt;
-&lt;h1 id=&quot;postgis-源码下载&quot;&gt;&lt;a href=&quot;#postgis-源码下载&quot; class=&quot;headerlink&quot; title=&quot;postgis 源码下载&quot;&gt;&lt;/a&gt;postgis 源码下载&lt;/h1&gt;&lt;p&gt;巨慢, 耐心等待吧&lt;br&gt;&lt;figure class=&quot;highlight angelscript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs angelscript&quot;&gt;&lt;span class=&quot;hljs-symbol&quot;&gt;postgres@&lt;/span&gt;jintao-ThinkPad-L490:~/download$ wget https:&lt;span class=&quot;hljs-comment&quot;&gt;//download.osgeo.org/postgis/source/postgis-2.5.4.tar.gz&lt;/span&gt;&lt;br&gt;-&lt;span class=&quot;hljs-number&quot;&gt;-2020&lt;/span&gt;&lt;span class=&quot;hljs-number&quot;&gt;-08&lt;/span&gt;&lt;span class=&quot;hljs-number&quot;&gt;-11&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;14&lt;/span&gt;:&lt;span class=&quot;hljs-number&quot;&gt;57&lt;/span&gt;:&lt;span class=&quot;hljs-number&quot;&gt;46&lt;/span&gt;--  https:&lt;span class=&quot;hljs-comment&quot;&gt;//download.osgeo.org/postgis/source/postgis-2.5.4.tar.gz&lt;/span&gt;&lt;br&gt;Resolving download.osgeo.org (download.osgeo.org)... &lt;span class=&quot;hljs-number&quot;&gt;140.211&lt;/span&gt;&lt;span class=&quot;hljs-number&quot;&gt;.15&lt;/span&gt;&lt;span class=&quot;hljs-number&quot;&gt;.30&lt;/span&gt;&lt;br&gt;Connecting to download.osgeo.org (download.osgeo.org)|&lt;span class=&quot;hljs-number&quot;&gt;140.211&lt;/span&gt;&lt;span class=&quot;hljs-number&quot;&gt;.15&lt;/span&gt;&lt;span class=&quot;hljs-number&quot;&gt;.30&lt;/span&gt;|:&lt;span class=&quot;hljs-number&quot;&gt;443.&lt;/span&gt;.. connected.&lt;br&gt;HTTP request sent, awaiting response... &lt;span class=&quot;hljs-number&quot;&gt;200&lt;/span&gt; OK&lt;br&gt;Length: &lt;span class=&quot;hljs-number&quot;&gt;16041872&lt;/span&gt; (&lt;span class=&quot;hljs-number&quot;&gt;15&lt;/span&gt;M) [application/octet-stream]&lt;br&gt;Saving to: ‘postgis&lt;span class=&quot;hljs-number&quot;&gt;-2.5&lt;/span&gt;&lt;span class=&quot;hljs-number&quot;&gt;.4&lt;/span&gt;.tar.gz’&lt;br&gt;&lt;br&gt;postgis&lt;span class=&quot;hljs-number&quot;&gt;-2.5&lt;/span&gt;&lt;span class=&quot;hljs-number&quot;&gt;.4&lt;/span&gt;.tar.gz       &lt;span class=&quot;hljs-number&quot;&gt;6&lt;/span&gt;%[======&amp;gt;                                                    ]   &lt;span class=&quot;hljs-number&quot;&gt;1016&lt;/span&gt;K  &lt;span class=&quot;hljs-number&quot;&gt;5.72&lt;/span&gt;KB/s    eta &lt;span class=&quot;hljs-number&quot;&gt;43&lt;/span&gt;m &lt;span class=&quot;hljs-number&quot;&gt;7&lt;/span&gt;s&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;br&gt;&lt;a href=&quot;https://git.osgeo.org/gitea/postgis/postgis/branches/&quot;&gt;其他版本下载地址&lt;/a&gt;&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-    
-      <category term="postgres" scheme="http://daydayup863.github.io/tags/postgres/"/>
-    
-      <category term="pg" scheme="http://daydayup863.github.io/tags/pg/"/>
-    
-      <category term="postgresql" scheme="http://daydayup863.github.io/tags/postgresql/"/>
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-      <category term="postgis" scheme="http://daydayup863.github.io/tags/postgis/"/>
-    
-      <category term="geo" scheme="http://daydayup863.github.io/tags/geo/"/>
-    
-      <category term="gis" scheme="http://daydayup863.github.io/tags/gis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux ubuntu postgresql 源码搭建主从</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/PostgreSQL_install_from_source/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/PostgreSQL_install_from_source/</id>
-    <published>2020-08-11T04:04:03.000Z</published>
-    <updated>2021-03-05T08:30:47.555Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;搭建主节点PostgreSQL实例&quot;&gt;&lt;a href=&quot;#搭建主节点PostgreSQL实例&quot; class=&quot;headerlink&quot; title=&quot;搭建主节点PostgreSQL实例&quot;&gt;&lt;/a&gt;搭建主节点PostgreSQL实例&lt;/h1&gt;&lt;h2 id=&quot;下载&quot;&gt;&lt;a href=&quot;#下载&quot; class=&quot;headerlink&quot; title=&quot;下载&quot;&gt;&lt;/a&gt;下载&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://www.postgresql.org/ftp/source/v12.3/&quot;&gt;官网下载地址&lt;/a&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight awk&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs awk&quot;&gt;sudo groupadd postgres&lt;br&gt;sudo useradd -a -G postgres postgres&lt;br&gt;su - postgres&lt;br&gt;wget https:&lt;span class=&quot;hljs-regexp&quot;&gt;//&lt;/span&gt;ftp.postgresql.org&lt;span class=&quot;hljs-regexp&quot;&gt;/pub/&lt;/span&gt;source&lt;span class=&quot;hljs-regexp&quot;&gt;/v12.3/&lt;/span&gt;postgresql-&lt;span class=&quot;hljs-number&quot;&gt;12.3&lt;/span&gt;.tar.gz&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-    
-      <category term="postgres" scheme="http://daydayup863.github.io/tags/postgres/"/>
-    
-      <category term="pg" scheme="http://daydayup863.github.io/tags/pg/"/>
-    
-      <category term="install" scheme="http://daydayup863.github.io/tags/install/"/>
-    
-      <category term="source" scheme="http://daydayup863.github.io/tags/source/"/>
-    
-      <category term="postgresql" scheme="http://daydayup863.github.io/tags/postgresql/"/>
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>有用的连接</title>
-    <link href="http://daydayup863.github.io/%E4%B8%AA%E4%BA%BA%E8%AE%B0%E5%BD%95/%E6%9C%89%E7%94%A8%E7%9A%84%E8%BF%9E%E6%8E%A5/"/>
-    <id>http://daydayup863.github.io/%E4%B8%AA%E4%BA%BA%E8%AE%B0%E5%BD%95/%E6%9C%89%E7%94%A8%E7%9A%84%E8%BF%9E%E6%8E%A5/</id>
-    <published>2020-08-11T03:39:59.000Z</published>
-    <updated>2021-03-05T08:30:47.555Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;gis教程&quot;&gt;&lt;a href=&quot;#gis教程&quot; class=&quot;headerlink&quot; title=&quot;gis教程&quot;&gt;&lt;/a&gt;gis教程&lt;/h2&gt;&lt;figure class=&quot;highlight awk&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs awk&quot;&gt;https:&lt;span class=&quot;hljs-regexp&quot;&gt;//&lt;/span&gt;www.zhihu.com&lt;span class=&quot;hljs-regexp&quot;&gt;/column/&lt;/span&gt;c_1253365661696491520&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;刑法准则&quot;&gt;&lt;a href=&quot;#刑法准则&quot; class=&quot;headerlink&quot; title=&quot;刑法准则&quot;&gt;&lt;/a&gt;刑法准则&lt;/h2&gt;&lt;figure class=&quot;highlight awk&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs awk&quot;&gt;http:&lt;span class=&quot;hljs-regexp&quot;&gt;//&lt;/span&gt;www.npc.gov.cn&lt;span class=&quot;hljs-regexp&quot;&gt;/wxzl/&lt;/span&gt;wxzl&lt;span class=&quot;hljs-regexp&quot;&gt;/2000-12/&lt;/span&gt;&lt;span class=&quot;hljs-number&quot;&gt;17&lt;/span&gt;/content_4680.htm&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;各种数据库SQL标准实现对比&quot;&gt;&lt;a href=&quot;#各种数据库SQL标准实现对比&quot; class=&quot;headerlink&quot; title=&quot;各种数据库SQL标准实现对比&quot;&gt;&lt;/a&gt;各种数据库SQL标准实现对比&lt;/h2&gt;&lt;figure class=&quot;highlight awk&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs awk&quot;&gt;https:&lt;span class=&quot;hljs-regexp&quot;&gt;//&lt;/span&gt;www.sql-workbench.eu/dbms_comparison.html&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;PostgreSQL-RPMS&quot;&gt;&lt;a href=&quot;#PostgreSQL-RPMS&quot; class=&quot;headerlink&quot; title=&quot;PostgreSQL RPMS&quot;&gt;&lt;/a&gt;PostgreSQL RPMS&lt;/h2&gt;&lt;figure class=&quot;highlight awk&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs awk&quot;&gt;https:&lt;span class=&quot;hljs-regexp&quot;&gt;//gi&lt;/span&gt;thub.com&lt;span class=&quot;hljs-regexp&quot;&gt;/cybertec-postgresql/&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;PostgreSQL-MVCC&quot;&gt;&lt;a href=&quot;#PostgreSQL-MVCC&quot; class=&quot;headerlink&quot; title=&quot;PostgreSQL MVCC&quot;&gt;&lt;/a&gt;PostgreSQL MVCC&lt;/h2&gt;&lt;figure class=&quot;highlight awk&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs awk&quot;&gt;http:&lt;span class=&quot;hljs-regexp&quot;&gt;//&lt;/span&gt;www.interdb.jp&lt;span class=&quot;hljs-regexp&quot;&gt;/pg/&lt;/span&gt;pgsql05.html&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;生成随即背景图片&quot;&gt;&lt;a href=&quot;#生成随即背景图片&quot; class=&quot;headerlink&quot; title=&quot;生成随即背景图片&quot;&gt;&lt;/a&gt;生成随即背景图片&lt;/h2&gt;&lt;figure class=&quot;highlight vim&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs vim&quot;&gt;http&lt;span class=&quot;hljs-variable&quot;&gt;s:&lt;/span&gt;//&lt;span class=&quot;hljs-keyword&quot;&gt;source&lt;/span&gt;.unsplash.&lt;span class=&quot;hljs-keyword&quot;&gt;com&lt;/span&gt;/&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;SQL格式化&quot;&gt;&lt;a href=&quot;#SQL格式化&quot; class=&quot;headerlink&quot; title=&quot;SQL格式化&quot;&gt;&lt;/a&gt;SQL格式化&lt;/h2&gt;&lt;figure class=&quot;highlight awk&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs awk&quot;&gt;http:&lt;span class=&quot;hljs-regexp&quot;&gt;//&lt;/span&gt;sqlformat.darold.net/&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-      <category term="个人记录" scheme="http://daydayup863.github.io/categories/%E4%B8%AA%E4%BA%BA%E8%AE%B0%E5%BD%95/"/>
-    
-    
-      <category term="python" scheme="http://daydayup863.github.io/tags/python/"/>
-    
-      <category term="Linux" scheme="http://daydayup863.github.io/tags/Linux/"/>
-    
-      <category term="personal" scheme="http://daydayup863.github.io/tags/personal/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Zabbix编译安装</title>
-    <link href="http://daydayup863.github.io/zabbix/zabbix%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/"/>
-    <id>http://daydayup863.github.io/zabbix/zabbix%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/</id>
-    <published>2020-08-11T03:16:08.000Z</published>
-    <updated>2021-03-05T08:30:47.555Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;新建帐号&quot;&gt;&lt;a href=&quot;#新建帐号&quot; class=&quot;headerlink&quot; title=&quot;新建帐号&quot;&gt;&lt;/a&gt;新建帐号&lt;/h1&gt;&lt;figure class=&quot;highlight properties&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs properties&quot;&gt;&lt;span class=&quot;hljs-attr&quot;&gt;groupadd&lt;/span&gt; &lt;span class=&quot;hljs-string&quot;&gt;zabbix&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-attr&quot;&gt;useradd&lt;/span&gt; &lt;span class=&quot;hljs-string&quot;&gt;-g zabbix zabbix&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-      <category term="zabbix" scheme="http://daydayup863.github.io/categories/zabbix/"/>
-    
-    
-      <category term="zabbix" scheme="http://daydayup863.github.io/tags/zabbix/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>psql显示风格设置</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/psql%E6%98%BE%E7%A4%BA%E9%A3%8E%E6%A0%BC%E8%AE%BE%E7%BD%AE/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/psql%E6%98%BE%E7%A4%BA%E9%A3%8E%E6%A0%BC%E8%AE%BE%E7%BD%AE/</id>
-    <published>2020-08-05T09:11:24.000Z</published>
-    <updated>2021-03-05T08:30:47.555Z</updated>
-    
-    <summary type="html">
-    
-       
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-    
-      <category term="psql" scheme="http://daydayup863.github.io/tags/psql/"/>
     
   </entry>
   

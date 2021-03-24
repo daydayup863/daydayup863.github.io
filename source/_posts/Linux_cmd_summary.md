@@ -16,6 +16,18 @@ password:
 
 <!-- more -->
 
+# python 文件服务器
+```
+python2 -m SimpleHTTPServer 8080
+python3 -m http.server
+```
+
+
+# curl 中带有中文时, 需要使用--data-urlencode否则会报400
+```
+ curl -G "http://192.168.0.1/api/postgresql/get_platform_info" --data-urlencode "bu=公共部门"
+```
+
 
 # 查找ip 对应的条数以及主机名
 ```

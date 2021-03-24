@@ -13,6 +13,23 @@ password:
 
 <!-- more -->
 
+# 获取ipv4地址
+```
+def ipv4_interface():
+    ipv4_addresses = []
+    nets = psutil.net_if_addrs()
+    for adapter in nets:
+        if adapter == 'lo':
+            continue
+
+        for snic in nets[adapter]:
+            if snic.family.name != 'AF_INET':
+                continue
+            ipv4_addresses.append(snic.address)
+
+    return ipv4_addresses
+```
+
 # list中dict按某一列排序
 ```Python
 >>> from operator import itemgetter
