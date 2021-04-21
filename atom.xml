@@ -121,6 +121,35 @@
   </entry>
   
   <entry>
+    <title>PostgreSQL 12 实现 MYSQL ON UPDATE CURRENT_TIMESTAMPTZ功能</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/default/on-update/PostgreSQL_on_Update_current_timestamptz/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/default/on-update/PostgreSQL_on_Update_current_timestamptz/</id>
+    <published>2021-03-21T06:57:29.000Z</published>
+    <updated>2021-04-21T07:00:30.975Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;PostgreSQL 12 实现 MYSQL ON UPDATE CURRENT_TIMESTAMPTZ功能&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+      <category term="default" scheme="http://daydayup863.github.io/categories/PostgreSQL/default/"/>
+    
+      <category term="on update" scheme="http://daydayup863.github.io/categories/PostgreSQL/default/on-update/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="default" scheme="http://daydayup863.github.io/tags/default/"/>
+    
+      <category term="on update" scheme="http://daydayup863.github.io/tags/on-update/"/>
+    
+  </entry>
+  
+  <entry>
     <title>PostgreSQL HA patroni 测试案例</title>
     <link href="http://daydayup863.github.io/uncategorized/PostgreSQL_patroni/"/>
     <id>http://daydayup863.github.io/uncategorized/PostgreSQL_patroni/</id>
@@ -501,31 +530,6 @@
       <category term="python3" scheme="http://daydayup863.github.io/tags/python3/"/>
     
       <category term="ldap" scheme="http://daydayup863.github.io/tags/ldap/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>获取PostgreSQL hash table value</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/get_partition_table_value/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/get_partition_table_value/</id>
-    <published>2020-09-07T11:23:12.000Z</published>
-    <updated>2021-03-05T08:30:47.555Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;简单的修改了postgresql-12.3/src/backend/partitioning/partbounds.c代码， 创建C函数获取PostgreSQL hash 分区表hash value&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-      <category term="hash key" scheme="http://daydayup863.github.io/tags/hash-key/"/>
-    
-      <category term="partition table" scheme="http://daydayup863.github.io/tags/partition-table/"/>
     
   </entry>
   

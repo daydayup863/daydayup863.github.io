@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>PostgreSQL 12 实现 MYSQL ON UPDATE CURRENT_TIMESTAMPTZ功能</title>
+    <url>/PostgreSQL/default/on-update/PostgreSQL_on_Update_current_timestamptz/</url>
+    <content><![CDATA[<p>PostgreSQL 12 实现 MYSQL ON UPDATE CURRENT_TIMESTAMPTZ功能</p>
+<a id="more"></a>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros"><span class="hljs-attribute">postgres</span>=# create <span class="hljs-keyword">or</span> replace function im_now () returns timestamptz as $$<br>postgres<span class="hljs-variable">$#</span>   select CURRENT_TIMESTAMP;<br>postgres<span class="hljs-variable">$#</span> $$ language sql strict immutable;<br>CREATE FUNCTION<br><br><span class="hljs-attribute">postgres</span>=# create table test_generated (id int primary key, <span class="hljs-builtin-name">info</span> text, crt_time timestamp, <br>mod_time timestamp GENERATED ALWAYS AS (im_now()) stored);<br>CREATE TABLE<br><br><span class="hljs-attribute">postgres</span>=# table  test_generated ;<br> id | <span class="hljs-builtin-name">info</span> | crt_time | mod_time<br>----+------+----------+----------<br>(0 rows)<br><br><span class="hljs-attribute">postgres</span>=# insert into test_generated select 1;<br>INSERT 0 1<br><span class="hljs-attribute">postgres</span>=# table  test_generated ;<br> id | <span class="hljs-builtin-name">info</span> | crt_time |          mod_time<br>----+------+----------+----------------------------<br>  1 |      |          | 2021-04-21 14:54:24.886718<br>(1 row)<br><br><span class="hljs-attribute">postgres</span>=# insert into test_generated select 2;<br>INSERT 0 1<br><span class="hljs-attribute">postgres</span>=# table  test_generated ;<br> id | <span class="hljs-builtin-name">info</span> | crt_time |          mod_time<br>----+------+----------+----------------------------<br>  1 |      |          | 2021-04-21 14:54:24.886718<br>  2 |      |          | 2021-04-21 14:54:29.742564<br>(2 rows)<br><br><span class="hljs-attribute">postgres</span>=# update test_generated <span class="hljs-builtin-name">set</span> <span class="hljs-builtin-name">info</span> = <span class="hljs-string">&#x27;a&#x27;</span> where id =1;<br>UPDATE 1<br><span class="hljs-attribute">postgres</span>=# update test_generated <span class="hljs-builtin-name">set</span> <span class="hljs-builtin-name">info</span> = <span class="hljs-string">&#x27;a&#x27;</span> where id =2;<br>UPDATE 1<br><span class="hljs-attribute">postgres</span>=# table  test_generated ;<br> id | <span class="hljs-builtin-name">info</span> | crt_time |          mod_time<br>----+------+----------+----------------------------<br>  1 | a    |          | 2021-04-21 14:54:46.63875<br>  2 | a    |          | 2021-04-21 14:54:48.158909<br>(2 rows)<br><br><span class="hljs-attribute">postgres</span>=# \d+ test_generated<br>                                                         Table <span class="hljs-string">&quot;public.test_generated&quot;</span><br>  Column  |           <span class="hljs-built_in"> Type </span>            | Collation | Nullable |               <span class="hljs-built_in"> Default </span>               | Storage  | Stats target | Description<br>----------+-----------------------------+-----------+----------+---------------------------------------+----------+--------------+-------------<br> id       | integer                     |           | <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span> |                                       | plain    |              |<br> <span class="hljs-builtin-name">info</span>     | text                        |           |          |                                       | extended |              |<br> crt_time | timestamp without time zone |           |          |                                       | plain    |              |<br> mod_time | timestamp without time zone |           |          | generated always as (im_now()) stored | plain    |              |<br>Indexes:<br>    <span class="hljs-string">&quot;test_generated_pkey&quot;</span> PRIMARY KEY, btree (id)<br>Access method: heap<br><br><span class="hljs-attribute">postgres</span>=#<br><br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>PostgreSQL</category>
+        <category>default</category>
+        <category>on update</category>
+      </categories>
+      <tags>
+        <tag>PostgreSQL</tag>
+        <tag>default</tag>
+        <tag>on update</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>PostgreSQL 游标获取多行</title>
     <url>/PostgreSQL/refcursor/cursor/PostgreSQL_refcursor_fetch_multiple_rows/</url>
     <content><![CDATA[<p>函数/匿名块/存储过程中游标返回多行数据.</p>
@@ -975,29 +993,6 @@
       </tags>
   </entry>
   <entry>
-    <title>内核Softdog测试</title>
-    <url>/Linux/softdog/</url>
-    <content><![CDATA[<h1 id="Watchdog的功能"><a href="#Watchdog的功能" class="headerlink" title="Watchdog的功能"></a>Watchdog的功能</h1><pre><code>Linux内核watchdog于监视系统是否正在运行。由于存在不可恢复的软件错误，应该自动重新启动挂起的系统。
-
-看门狗模块特依赖所使用的硬件或芯片。个人计算机用户通常不需要看门狗，因为他们可以手动重置系统。但是，watchdog对于任务关键型系统和需要无需人工干预即可自行重启的系统很有用。
-</code></pre><p>例如，需要自动硬件重置功能的远程位置的服务器。</p>
-<a id="more"></a>
-<h1 id="Watchdog的实现"><a href="#Watchdog的实现" class="headerlink" title="Watchdog的实现"></a>Watchdog的实现</h1><pre><code>看门狗功能设置了一个计时器在预定时间后超时。然后看门狗软件定期喂狗(刷新硬件计时器)。如果停止喂狗，到达设定时间后，将会出现狗咬人(执行设备的硬件重置)。
-</code></pre><p>可以分为hardware watchdog 和 software watchdog。<br>    hardware watchdog 是主板芯片的功能。不同的芯片使用不同的模块，例如：Intel 主板使用 “iTCO_wdt”， HP 通常使用 “hpwdt”，IBM 使用 “vmwatchdog”，Xen VM 使用 “xen_wdt”。<br>    software watchdog 是Linux内核提供使用内核计时器实现的软件监视程序。</p>
-<h1 id="测试Linux自带watchdog"><a href="#测试Linux自带watchdog" class="headerlink" title="测试Linux自带watchdog"></a>测试Linux自带watchdog</h1><figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros">[root@server6 ~]# ls /dev/watchdog*              #查看watchdog设备文件<br>/dev<span class="hljs-built_in">/watchdog </span> /dev/watchdog0<br>[root@server6 ~]# lsmod |grep -i soft            #查看softdog是否加载<br>[root@server6 ~]# modinfo softdog                #查看softdog模块信息<br>filename:       /lib/modules/3.10.0-957.10.1.el7.x86_64/kernel/drivers/watchdog/softdog.ko.xz<br>alias:          char-major-10-130<br>license:        GPL<br>description:    Software<span class="hljs-built_in"> Watchdog </span>Device Driver<br>author:         Alan Cox<br>retpoline:      Y<br>rhelversion:    7.6<br>srcversion:     250C077ED39E75BF25AD8D1<br>depends:<br>intree:         Y<br>vermagic:       3.10.0-957.10.1.el7.x86_64 SMP mod_unload modversions<br>signer:         CentOS Linux kernel signing key<br>sig_key:        17:EA:5F:B9:16:4B:C2:26:55:5C:00:43:FA:D4:E5:86:CC:E8:A2:05<br>sig_hashalgo:   sha256<br>parm:           soft_margin:Watchdog soft_margin <span class="hljs-keyword">in</span> seconds. (0 &lt; soft_margin &lt; 65536, <span class="hljs-attribute">default</span>=60) (uint)<br>parm:           nowayout:Watchdog cannot be stopped once started (<span class="hljs-attribute">default</span>=0) (bool)<br>parm:           soft_noboot:Softdog action, <span class="hljs-builtin-name">set</span> <span class="hljs-keyword">to</span> 1 <span class="hljs-keyword">to</span> ignore reboots, 0 <span class="hljs-keyword">to</span> reboot (<span class="hljs-attribute">default</span>=0) (int)<br>parm:           soft_panic:Softdog action, <span class="hljs-builtin-name">set</span> <span class="hljs-keyword">to</span> 1 <span class="hljs-keyword">to</span> panic, 0 <span class="hljs-keyword">to</span> reboot (<span class="hljs-attribute">default</span>=0) (int)<br><br>[root@server6 ~]# modprobe softdog               #加载softdog 可以设置 soft_margin soft_noboot   soft_panic   nowayout等参数<br>[root@server6 ~]# ls /dev/watchdog*              #查看watchdog设备文件<br>/dev<span class="hljs-built_in">/watchdog </span> /dev/watchdog0  /dev/watchdog1<br>[root@server6 ~]# wdctl /dev/watchdog1           #查看softdog设备文件信息<br>Device:        /dev/watchdog1<br>Identity:      Software<span class="hljs-built_in"> Watchdog </span>[version 0]<br>Timeout:       60 seconds<br>Pre-timeout:    0 seconds<br>FLAG           DESCRIPTION               STATUS BOOT-STATUS<br>KEEPALIVEPING  Keep alive<span class="hljs-built_in"> ping </span>reply          1           0<br>MAGICCLOSE     Supports magic close char      0           0<br>SETTIMEOUT     <span class="hljs-builtin-name">Set</span> timeout (<span class="hljs-keyword">in</span> seconds)       0           0<br>[root@server6 ~]# ehco a &gt;/dev<span class="hljs-built_in">/watchdog </span>         #追加除V以外任意字符到softdog  60秒后系统将重启<br>watchdog   watchdog0  watchdog1<br>[root@server6 ~]# echo V &gt;/dev/watchdog1         #取消测试<br></code></pre></td></tr></table></figure>
-<h1 id="警告"><a href="#警告" class="headerlink" title="警告"></a>警告</h1><figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">错误的watchdog配置可能导致以下情形<br>    无限重启<br>    硬重置导致文件损坏<br>    不可预测的重启<br>线上服务器慎用。<br></code></pre></td></tr></table></figure>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><figure class="highlight awk"><table><tr><td class="code"><pre><code class="hljs awk">https:<span class="hljs-regexp">//</span>linuxhint.com<span class="hljs-regexp">/linux-kernel-watchdog-explained/</span><br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>softdog</tag>
-        <tag>watchdog</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>利用Github分支备份Hexo博客源文件</title>
     <url>/hexo/%E5%88%A9%E7%94%A8Github%E5%88%86%E6%94%AF%E5%A4%87%E4%BB%BDHexo%E5%8D%9A%E5%AE%A2%E6%BA%90%E6%96%87%E4%BB%B6/</url>
     <content><![CDATA[<h1 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h1><p>Hexo 部署博客很方便，我的这个博客也是用 Hexo 部署在 GitHub Pages 上的，有得人可能在多台电脑上写博客，这个时候需要把博客<br>的源文件备份在一个地方，这样只需把博客源文件复制下来就可以在另一个地方写博客并部署到 GitHub Pages上了.</p>
@@ -1025,6 +1020,29 @@
       <tags>
         <tag>hexo</tag>
         <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>内核Softdog测试</title>
+    <url>/Linux/softdog/</url>
+    <content><![CDATA[<h1 id="Watchdog的功能"><a href="#Watchdog的功能" class="headerlink" title="Watchdog的功能"></a>Watchdog的功能</h1><pre><code>Linux内核watchdog于监视系统是否正在运行。由于存在不可恢复的软件错误，应该自动重新启动挂起的系统。
+
+看门狗模块特依赖所使用的硬件或芯片。个人计算机用户通常不需要看门狗，因为他们可以手动重置系统。但是，watchdog对于任务关键型系统和需要无需人工干预即可自行重启的系统很有用。
+</code></pre><p>例如，需要自动硬件重置功能的远程位置的服务器。</p>
+<a id="more"></a>
+<h1 id="Watchdog的实现"><a href="#Watchdog的实现" class="headerlink" title="Watchdog的实现"></a>Watchdog的实现</h1><pre><code>看门狗功能设置了一个计时器在预定时间后超时。然后看门狗软件定期喂狗(刷新硬件计时器)。如果停止喂狗，到达设定时间后，将会出现狗咬人(执行设备的硬件重置)。
+</code></pre><p>可以分为hardware watchdog 和 software watchdog。<br>    hardware watchdog 是主板芯片的功能。不同的芯片使用不同的模块，例如：Intel 主板使用 “iTCO_wdt”， HP 通常使用 “hpwdt”，IBM 使用 “vmwatchdog”，Xen VM 使用 “xen_wdt”。<br>    software watchdog 是Linux内核提供使用内核计时器实现的软件监视程序。</p>
+<h1 id="测试Linux自带watchdog"><a href="#测试Linux自带watchdog" class="headerlink" title="测试Linux自带watchdog"></a>测试Linux自带watchdog</h1><figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros">[root@server6 ~]# ls /dev/watchdog*              #查看watchdog设备文件<br>/dev<span class="hljs-built_in">/watchdog </span> /dev/watchdog0<br>[root@server6 ~]# lsmod |grep -i soft            #查看softdog是否加载<br>[root@server6 ~]# modinfo softdog                #查看softdog模块信息<br>filename:       /lib/modules/3.10.0-957.10.1.el7.x86_64/kernel/drivers/watchdog/softdog.ko.xz<br>alias:          char-major-10-130<br>license:        GPL<br>description:    Software<span class="hljs-built_in"> Watchdog </span>Device Driver<br>author:         Alan Cox<br>retpoline:      Y<br>rhelversion:    7.6<br>srcversion:     250C077ED39E75BF25AD8D1<br>depends:<br>intree:         Y<br>vermagic:       3.10.0-957.10.1.el7.x86_64 SMP mod_unload modversions<br>signer:         CentOS Linux kernel signing key<br>sig_key:        17:EA:5F:B9:16:4B:C2:26:55:5C:00:43:FA:D4:E5:86:CC:E8:A2:05<br>sig_hashalgo:   sha256<br>parm:           soft_margin:Watchdog soft_margin <span class="hljs-keyword">in</span> seconds. (0 &lt; soft_margin &lt; 65536, <span class="hljs-attribute">default</span>=60) (uint)<br>parm:           nowayout:Watchdog cannot be stopped once started (<span class="hljs-attribute">default</span>=0) (bool)<br>parm:           soft_noboot:Softdog action, <span class="hljs-builtin-name">set</span> <span class="hljs-keyword">to</span> 1 <span class="hljs-keyword">to</span> ignore reboots, 0 <span class="hljs-keyword">to</span> reboot (<span class="hljs-attribute">default</span>=0) (int)<br>parm:           soft_panic:Softdog action, <span class="hljs-builtin-name">set</span> <span class="hljs-keyword">to</span> 1 <span class="hljs-keyword">to</span> panic, 0 <span class="hljs-keyword">to</span> reboot (<span class="hljs-attribute">default</span>=0) (int)<br><br>[root@server6 ~]# modprobe softdog               #加载softdog 可以设置 soft_margin soft_noboot   soft_panic   nowayout等参数<br>[root@server6 ~]# ls /dev/watchdog*              #查看watchdog设备文件<br>/dev<span class="hljs-built_in">/watchdog </span> /dev/watchdog0  /dev/watchdog1<br>[root@server6 ~]# wdctl /dev/watchdog1           #查看softdog设备文件信息<br>Device:        /dev/watchdog1<br>Identity:      Software<span class="hljs-built_in"> Watchdog </span>[version 0]<br>Timeout:       60 seconds<br>Pre-timeout:    0 seconds<br>FLAG           DESCRIPTION               STATUS BOOT-STATUS<br>KEEPALIVEPING  Keep alive<span class="hljs-built_in"> ping </span>reply          1           0<br>MAGICCLOSE     Supports magic close char      0           0<br>SETTIMEOUT     <span class="hljs-builtin-name">Set</span> timeout (<span class="hljs-keyword">in</span> seconds)       0           0<br>[root@server6 ~]# ehco a &gt;/dev<span class="hljs-built_in">/watchdog </span>         #追加除V以外任意字符到softdog  60秒后系统将重启<br>watchdog   watchdog0  watchdog1<br>[root@server6 ~]# echo V &gt;/dev/watchdog1         #取消测试<br></code></pre></td></tr></table></figure>
+<h1 id="警告"><a href="#警告" class="headerlink" title="警告"></a>警告</h1><figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">错误的watchdog配置可能导致以下情形<br>    无限重启<br>    硬重置导致文件损坏<br>    不可预测的重启<br>线上服务器慎用。<br></code></pre></td></tr></table></figure>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><figure class="highlight awk"><table><tr><td class="code"><pre><code class="hljs awk">https:<span class="hljs-regexp">//</span>linuxhint.com<span class="hljs-regexp">/linux-kernel-watchdog-explained/</span><br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>softdog</tag>
+        <tag>watchdog</tag>
       </tags>
   </entry>
   <entry>
