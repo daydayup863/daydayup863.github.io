@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>SQL正则判断字符串是不是数字</title>
+    <url>/PostgreSQL/regexp/Linux_string_is_digit/</url>
+    <content><![CDATA[<p>SQL正则判断字符串是不是数字</p>
+<a id="more"></a>
+<figure class="highlight asciidoc"><table><tr><td class="code"><pre><code class="hljs asciidoc">test=# select <span class="hljs-emphasis">&#x27;11.1.1.1&#x27;</span> ~ <span class="hljs-emphasis">&#x27;^(-?\d+)(\.\d+)?$&#x27;</span>;<br><span class="hljs-code"> ?column?</span><br>----------<br><span class="hljs-code"> f</span><br>(1 row)<br><br>test=# select <span class="hljs-emphasis">&#x27;11.1&#x27;</span> ~ <span class="hljs-emphasis">&#x27;^(-?\d+)(\.\d+)?$&#x27;</span>;<br><span class="hljs-code"> ?column?</span><br>----------<br><span class="hljs-code"> t</span><br>(1 row)<br><br>test=# select <span class="hljs-emphasis">&#x27;-11.1&#x27;</span> ~ <span class="hljs-emphasis">&#x27;^(-?\d+)(\.\d+)?$&#x27;</span>;<br><span class="hljs-code"> ?column?</span><br>----------<br><span class="hljs-code"> t</span><br>(1 row)<br><br>test=# select <span class="hljs-emphasis">&#x27;-11.1a&#x27;</span> ~ <span class="hljs-emphasis">&#x27;^(-?\d+)(\.\d+)?$&#x27;</span>;<br><span class="hljs-code"> ?column?</span><br>----------<br><span class="hljs-code"> f</span><br>(1 row)<br><br>test=# select <span class="hljs-emphasis">&#x27;-11&#x27;</span> ~ <span class="hljs-emphasis">&#x27;^(-?\d+)(\.\d+)?$&#x27;</span>;<br><span class="hljs-code"> ?column?</span><br>----------<br><span class="hljs-code"> t</span><br>(1 row)<br><br>test=#<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>PostgreSQL</category>
+        <category>regexp</category>
+      </categories>
+      <tags>
+        <tag>PostgreSQL</tag>
+        <tag>regexp</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>PostgreSQL 12 实现 MYSQL ON UPDATE CURRENT_TIMESTAMPTZ功能</title>
     <url>/PostgreSQL/default/on-update/PostgreSQL_on_Update_current_timestamptz/</url>
     <content><![CDATA[<p>PostgreSQL 12 实现 MYSQL ON UPDATE CURRENT_TIMESTAMPTZ功能</p>

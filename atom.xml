@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://daydayup863.github.io/"/>
-  <updated>2021-04-20T09:59:55.059Z</updated>
+  <updated>2021-04-22T09:25:26.694Z</updated>
   <id>http://daydayup863.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SQL正则判断字符串是不是数字</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/regexp/Linux_string_is_digit/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/regexp/Linux_string_is_digit/</id>
+    <published>2021-04-22T09:24:32.000Z</published>
+    <updated>2021-04-22T09:25:26.694Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;SQL正则判断字符串是不是数字&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+      <category term="regexp" scheme="http://daydayup863.github.io/categories/PostgreSQL/regexp/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="regexp" scheme="http://daydayup863.github.io/tags/regexp/"/>
+    
+  </entry>
   
   <entry>
     <title>PostgreSQL 游标获取多行</title>
@@ -506,30 +531,6 @@
       <category term="postgis" scheme="http://daydayup863.github.io/tags/postgis/"/>
     
       <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>python3 ldap3 NTLM验证用户</title>
-    <link href="http://daydayup863.github.io/python/python3_ldap%E9%AA%8C%E8%AF%81/"/>
-    <id>http://daydayup863.github.io/python/python3_ldap%E9%AA%8C%E8%AF%81/</id>
-    <published>2020-12-18T09:40:54.000Z</published>
-    <updated>2021-03-05T08:30:47.555Z</updated>
-    
-    <summary type="html">
-    
-      &lt;figure class=&quot;highlight routeros&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs routeros&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;from&lt;/span&gt; ldap3 import Server, Connection, NTLM, ALL&lt;br&gt;&lt;br&gt;server = Server(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;xxx.xxx.xxx.xxx&amp;quot;&lt;/span&gt;, 389, &lt;span class=&quot;hljs-attribute&quot;&gt;use_ssl&lt;/span&gt;=&lt;span class=&quot;hljs-literal&quot;&gt;False&lt;/span&gt;, &lt;span class=&quot;hljs-attribute&quot;&gt;get_info&lt;/span&gt;=ALL)&lt;br&gt;&lt;span class=&quot;hljs-builtin-name&quot;&gt;print&lt;/span&gt;(server)&lt;br&gt;conn = Connection(server, &lt;span class=&quot;hljs-attribute&quot;&gt;user&lt;/span&gt;=&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;Domain\\username&amp;quot;&lt;/span&gt;, &lt;span class=&quot;hljs-attribute&quot;&gt;password&lt;/span&gt;=&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;password&amp;quot;&lt;/span&gt;, &lt;span class=&quot;hljs-attribute&quot;&gt;authentication&lt;/span&gt;=NTLM)&lt;br&gt;&lt;span class=&quot;hljs-builtin-name&quot;&gt;print&lt;/span&gt;(conn.bind())&lt;br&gt;&lt;span class=&quot;hljs-builtin-name&quot;&gt;print&lt;/span&gt;(conn.extend.standard.who_am_i())&lt;br&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-    
-    </summary>
-    
-    
-      <category term="python" scheme="http://daydayup863.github.io/categories/python/"/>
-    
-    
-      <category term="python3" scheme="http://daydayup863.github.io/tags/python3/"/>
-    
-      <category term="ldap" scheme="http://daydayup863.github.io/tags/ldap/"/>
     
   </entry>
   
