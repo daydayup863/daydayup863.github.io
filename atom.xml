@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://daydayup863.github.io/"/>
-  <updated>2021-04-22T09:25:26.694Z</updated>
+  <updated>2021-04-23T08:25:15.401Z</updated>
   <id>http://daydayup863.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>TimescaleDB 使用记录</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/TimescaleDB/PostgreSQL_timescaledb/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/TimescaleDB/PostgreSQL_timescaledb/</id>
+    <published>2021-04-23T08:18:08.000Z</published>
+    <updated>2021-04-23T08:25:15.401Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;记录timescaledb使用过程中遇到的一些问题及解决方案&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+      <category term="TimescaleDB" scheme="http://daydayup863.github.io/categories/PostgreSQL/TimescaleDB/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="TimescaleDB" scheme="http://daydayup863.github.io/tags/TimescaleDB/"/>
+    
+  </entry>
   
   <entry>
     <title>SQL正则判断字符串是不是数字</title>
@@ -502,35 +527,6 @@
       <category term="git" scheme="http://daydayup863.github.io/tags/git/"/>
     
       <category term="commit log" scheme="http://daydayup863.github.io/tags/commit-log/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PostGIS 操作geometry方法</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/gis/Postgis/Postgis%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/gis/Postgis/Postgis%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/</id>
-    <published>2020-12-24T07:42:57.000Z</published>
-    <updated>2021-03-05T08:30:47.555Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;记录Postgis常用方法.&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-      <category term="gis" scheme="http://daydayup863.github.io/categories/PostgreSQL/gis/"/>
-    
-      <category term="Postgis" scheme="http://daydayup863.github.io/categories/PostgreSQL/gis/Postgis/"/>
-    
-    
-      <category term="gis" scheme="http://daydayup863.github.io/tags/gis/"/>
-    
-      <category term="postgis" scheme="http://daydayup863.github.io/tags/postgis/"/>
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
     
   </entry>
   

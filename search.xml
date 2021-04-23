@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>TimescaleDB 使用记录</title>
+    <url>/PostgreSQL/TimescaleDB/PostgreSQL_timescaledb/</url>
+    <content><![CDATA[<p>记录timescaledb使用过程中遇到的一些问题及解决方案</p>
+<a id="more"></a>
+<h1 id="用函数的方式重启TimescaleDB-Background-Worker-Scheduler-不影响业务的正常使用"><a href="#用函数的方式重启TimescaleDB-Background-Worker-Scheduler-不影响业务的正常使用" class="headerlink" title="用函数的方式重启TimescaleDB Background Worker Scheduler, 不影响业务的正常使用"></a>用函数的方式重启TimescaleDB Background Worker Scheduler, 不影响业务的正常使用</h1><figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros">postgres@jintao-ThinkPad-L490:~/timescaledb-1.7.5/sql$ psql<br>psql (12.3)<br>Type <span class="hljs-string">&quot;help&quot;</span> <span class="hljs-keyword">for</span> help.<br><br><span class="hljs-attribute">postgres</span>=# CREATE <span class="hljs-keyword">OR</span> REPLACE FUNCTION _timescaledb_internal.restart_background_workers()<br>RETURNS BOOL<br>AS <span class="hljs-string">&#x27;/home/postgres/pg12/lib/timescaledb&#x27;</span>, <span class="hljs-string">&#x27;ts_bgw_db_workers_restart&#x27;</span><br>LANGUAGE C VOLATILE;<br>CREATE FUNCTION<br><span class="hljs-attribute">postgres</span>=#<br><br>postgres@jintao-ThinkPad-L490:~/pg12/lib$ ps -ef|grep <span class="hljs-string">&quot;TimescaleDB Background Worker Scheduler&quot;</span><br>postgres 2641542 2634972  0 16:11 ?        00:00:00 postgres: TimescaleDB Background Worker Scheduler<br>postgres 2641572 2544080  0 16:12 pts/9    00:00:00 grep <span class="hljs-attribute">--color</span>=auto TimescaleDB Background Worker Scheduler<br>postgres@jintao-ThinkPad-L490:~/pg12/lib$<br>postgres@jintao-ThinkPad-L490:~/pg12/lib$<br>postgres@jintao-ThinkPad-L490:~/pg12/lib$ psql -c <span class="hljs-string">&quot;select _timescaledb_internal.restart_background_workers();&quot;</span><br> restart_background_workers<br>----------------------------<br> t<br>(1 row)<br><br>postgres@jintao-ThinkPad-L490:~/pg12/lib$ ps -ef|grep <span class="hljs-string">&quot;TimescaleDB Background Worker Scheduler&quot;</span><br>postgres 2641592 2634972  1 16:12 ?        00:00:00 postgres: TimescaleDB Background Worker Scheduler<br>postgres 2641594 2544080  0 16:12 pts/9    00:00:00 grep <span class="hljs-attribute">--color</span>=auto TimescaleDB Background Worker Scheduler<br>postgres@jintao-ThinkPad-L490:~/pg12/lib$<br><br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>PostgreSQL</category>
+        <category>TimescaleDB</category>
+      </categories>
+      <tags>
+        <tag>PostgreSQL</tag>
+        <tag>TimescaleDB</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SQL正则判断字符串是不是数字</title>
     <url>/PostgreSQL/regexp/Linux_string_is_digit/</url>
     <content><![CDATA[<p>SQL正则判断字符串是不是数字</p>
