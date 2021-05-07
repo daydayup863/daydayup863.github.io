@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://daydayup863.github.io/"/>
-  <updated>2021-04-30T03:32:58.408Z</updated>
+  <updated>2021-05-07T09:31:34.568Z</updated>
   <id>http://daydayup863.github.io/</id>
   
   <author>
@@ -17,32 +17,27 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>PostgreSQL 11 新特性汇总</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_11_release_note/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_11_release_note/</id>
-    <published>2021-04-30T03:08:32.000Z</published>
-    <updated>2021-04-30T03:32:58.408Z</updated>
+    <title>PostgreSQL旧触发器分区表更换为新分区表</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/partition-table/PostgreSQL_old_partition_change_to_new_partition/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/partition-table/PostgreSQL_old_partition_change_to_new_partition/</id>
+    <published>2021-05-07T09:21:02.000Z</published>
+    <updated>2021-05-07T09:31:34.568Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;2018-10-18 PostgreSQL官网 宣布 PostgreSQL 11 正式版发行，PostgreSQL 11 重点对性能进行了提升和功能完善，特别是对大数据库和高计算负载的情况下进行了增强，主要包括以下:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;对分区表进行了大幅的改进和增强。
-增加了对存储过程的支持，存储过程支持事务。
-增强了并行查询能力和并行数据定义能力。
-增加了对 just-in-time (JIT) 编译的支持，加速SQL中的表达式执行效率。
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;最近对PostgreSQL以上新特性和其它功能完善做了演示，希望对PostgreSQL从业者有帮助，详见以下。&lt;br&gt;分区表的改进&lt;/p&gt;
+      &lt;p&gt;利用PostgreSQL新分区表attach功能，完成旧分区表替换成新分区表&lt;/p&gt;
     
     </summary>
     
     
       <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
     
-      <category term="release note" scheme="http://daydayup863.github.io/categories/PostgreSQL/release-note/"/>
+      <category term="partition table" scheme="http://daydayup863.github.io/categories/PostgreSQL/partition-table/"/>
     
     
       <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
     
-      <category term="release note" scheme="http://daydayup863.github.io/tags/release-note/"/>
+      <category term="partition table" scheme="http://daydayup863.github.io/tags/partition-table/"/>
     
   </entry>
   
@@ -137,6 +132,36 @@ PostgreSQL10：Incompatible Changes
 PostgreSQL10：新增 pg_sequence 系统表
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;参考&lt;br&gt;&lt;a href=&quot;https://www.postgresql.org/docs/10/release-10.html&quot;&gt;E.17. Release 10&lt;/a&gt;&lt;/p&gt;
 
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+      <category term="release note" scheme="http://daydayup863.github.io/categories/PostgreSQL/release-note/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="release note" scheme="http://daydayup863.github.io/tags/release-note/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PostgreSQL 11 新特性汇总</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_11_release_note/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_11_release_note/</id>
+    <published>2021-04-30T03:08:32.000Z</published>
+    <updated>2021-04-30T03:32:58.408Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;2018-10-18 PostgreSQL官网 宣布 PostgreSQL 11 正式版发行，PostgreSQL 11 重点对性能进行了提升和功能完善，特别是对大数据库和高计算负载的情况下进行了增强，主要包括以下:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;对分区表进行了大幅的改进和增强。
+增加了对存储过程的支持，存储过程支持事务。
+增强了并行查询能力和并行数据定义能力。
+增加了对 just-in-time (JIT) 编译的支持，加速SQL中的表达式执行效率。
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;最近对PostgreSQL以上新特性和其它功能完善做了演示，希望对PostgreSQL从业者有帮助，详见以下。&lt;br&gt;分区表的改进&lt;/p&gt;
     
     </summary>
     
@@ -546,29 +571,6 @@ PostgreSQL10：新增 pg_sequence 系统表
       <category term="cursor" scheme="http://daydayup863.github.io/tags/cursor/"/>
     
       <category term="refcursor" scheme="http://daydayup863.github.io/tags/refcursor/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>docker常用命令</title>
-    <link href="http://daydayup863.github.io/docker/docker_command/"/>
-    <id>http://daydayup863.github.io/docker/docker_command/</id>
-    <published>2021-03-11T08:57:05.000Z</published>
-    <updated>2021-03-11T08:58:31.580Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;将-image-文件从仓库抓取到本地，-默认library组&quot;&gt;&lt;a href=&quot;#将-image-文件从仓库抓取到本地，-默认library组&quot; class=&quot;headerlink&quot; title=&quot;将 image 文件从仓库抓取到本地， 默认library组&quot;&gt;&lt;/a&gt;将 image 文件从仓库抓取到本地， 默认library组&lt;/h1&gt;&lt;figure class=&quot;highlight arduino&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs arduino&quot;&gt;$ docker &lt;span class=&quot;hljs-built_in&quot;&gt;image&lt;/span&gt; pull library/hello-world&lt;br&gt;$ docker &lt;span class=&quot;hljs-built_in&quot;&gt;image&lt;/span&gt; pull hello-world&lt;br&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h1 id=&quot;列出本机的所有-image-文件。&quot;&gt;&lt;a href=&quot;#列出本机的所有-image-文件。&quot; class=&quot;headerlink&quot; title=&quot;列出本机的所有 image 文件。&quot;&gt;&lt;/a&gt;列出本机的所有 image 文件。&lt;/h1&gt;&lt;figure class=&quot;highlight mel&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs mel&quot;&gt;$ docker &lt;span class=&quot;hljs-keyword&quot;&gt;image&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;ls&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h1 id=&quot;删除-image-文件&quot;&gt;&lt;a href=&quot;#删除-image-文件&quot; class=&quot;headerlink&quot; title=&quot;删除 image 文件&quot;&gt;&lt;/a&gt;删除 image 文件&lt;/h1&gt;&lt;figure class=&quot;highlight elixir&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs elixir&quot;&gt;&lt;span class=&quot;hljs-variable&quot;&gt;$ &lt;/span&gt;docker rmi [imageName]&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-      <category term="docker" scheme="http://daydayup863.github.io/categories/docker/"/>
-    
-    
-      <category term="docker" scheme="http://daydayup863.github.io/tags/docker/"/>
     
   </entry>
   
