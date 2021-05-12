@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://daydayup863.github.io/"/>
-  <updated>2021-05-07T09:31:34.568Z</updated>
+  <updated>2021-05-12T03:47:42.925Z</updated>
   <id>http://daydayup863.github.io/</id>
   
   <author>
@@ -17,11 +17,44 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>PostgreSQL14 允许配置TOAST压缩方法</title>
+    <link href="http://daydayup863.github.io/COMPRESSION/POstgreSQL/lz4/pglz/PostgreSQL14_Allow_configurable_LZ4_TOAST_compression/"/>
+    <id>http://daydayup863.github.io/COMPRESSION/POstgreSQL/lz4/pglz/PostgreSQL14_Allow_configurable_LZ4_TOAST_compression/</id>
+    <published>2021-05-12T02:52:31.000Z</published>
+    <updated>2021-05-12T03:47:42.925Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;PostgreSQL 14 允许配置TOAST压缩方法, 默认为pglz, 可以通过GUC default_toast_compression 设置默认值，当前支持pglz, lz4两种配置, 支持lz4需要在configure时增加—with-lz4.&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="COMPRESSION" scheme="http://daydayup863.github.io/categories/COMPRESSION/"/>
+    
+      <category term="POstgreSQL" scheme="http://daydayup863.github.io/categories/COMPRESSION/POstgreSQL/"/>
+    
+      <category term="lz4" scheme="http://daydayup863.github.io/categories/COMPRESSION/POstgreSQL/lz4/"/>
+    
+      <category term="pglz" scheme="http://daydayup863.github.io/categories/COMPRESSION/POstgreSQL/lz4/pglz/"/>
+    
+    
+      <category term="COMPRESSION" scheme="http://daydayup863.github.io/tags/COMPRESSION/"/>
+    
+      <category term="POstgreSQL" scheme="http://daydayup863.github.io/tags/POstgreSQL/"/>
+    
+      <category term="lz4" scheme="http://daydayup863.github.io/tags/lz4/"/>
+    
+      <category term="pglz" scheme="http://daydayup863.github.io/tags/pglz/"/>
+    
+  </entry>
+  
+  <entry>
     <title>PostgreSQL旧触发器分区表更换为新分区表</title>
     <link href="http://daydayup863.github.io/PostgreSQL/partition-table/PostgreSQL_old_partition_change_to_new_partition/"/>
     <id>http://daydayup863.github.io/PostgreSQL/partition-table/PostgreSQL_old_partition_change_to_new_partition/</id>
     <published>2021-05-07T09:21:02.000Z</published>
-    <updated>2021-05-07T09:31:34.568Z</updated>
+    <updated>2021-05-07T09:35:01.678Z</updated>
     
     <summary type="html">
     
@@ -542,35 +575,6 @@ PostgreSQL10：新增 pg_sequence 系统表
       <category term="Linux" scheme="http://daydayup863.github.io/tags/Linux/"/>
     
       <category term="ubuntu" scheme="http://daydayup863.github.io/tags/ubuntu/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PostgreSQL函数/存储过程返回多个游标</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/cursor/refcursor/PostgreSQL_refcursor/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/cursor/refcursor/PostgreSQL_refcursor/</id>
-    <published>2021-03-12T06:15:38.000Z</published>
-    <updated>2021-03-12T06:18:20.905Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;function-返回多个游标&quot;&gt;&lt;a href=&quot;#function-返回多个游标&quot; class=&quot;headerlink&quot; title=&quot;function 返回多个游标&quot;&gt;&lt;/a&gt;function 返回多个游标&lt;/h1&gt;&lt;figure class=&quot;highlight pgsql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs pgsql&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;OR REPLACE&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;FUNCTION&lt;/span&gt; show_cities_multiple() &lt;span class=&quot;hljs-keyword&quot;&gt;RETURNS&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;SETOF&lt;/span&gt; &lt;span class=&quot;hljs-type&quot;&gt;refcursor&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;AS&lt;/span&gt; $$&lt;br&gt;&lt;span class=&quot;pgsql&quot;&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;DECLARE&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;pgsql&quot;&gt;   ref1 &lt;span class=&quot;hljs-type&quot;&gt;refcursor&lt;/span&gt;;           &lt;span class=&quot;hljs-comment&quot;&gt;-- Declare cursor variables&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;pgsql&quot;&gt;   ref2 &lt;span class=&quot;hljs-type&quot;&gt;refcursor&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;pgsql&quot;&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;BEGIN&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;pgsql&quot;&gt;   &lt;span class=&quot;hljs-keyword&quot;&gt;OPEN&lt;/span&gt; ref1 &lt;span class=&quot;hljs-keyword&quot;&gt;FOR&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;;   &lt;span class=&quot;hljs-comment&quot;&gt;-- Open the first cursor&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;pgsql&quot;&gt;   &lt;span class=&quot;hljs-keyword&quot;&gt;RETURN NEXT&lt;/span&gt; ref1;                                                                              &lt;span class=&quot;hljs-comment&quot;&gt;-- Return the cursor to the caller&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&quot;pgsql&quot;&gt;   &lt;span class=&quot;hljs-keyword&quot;&gt;OPEN&lt;/span&gt; ref2 &lt;span class=&quot;hljs-keyword&quot;&gt;FOR&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;;   &lt;span class=&quot;hljs-comment&quot;&gt;-- Open the second cursor&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;pgsql&quot;&gt;   &lt;span class=&quot;hljs-keyword&quot;&gt;RETURN NEXT&lt;/span&gt; ref2;                                                                              &lt;span class=&quot;hljs-comment&quot;&gt;-- Return the cursor to the caller&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;pgsql&quot;&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;END&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;ruby&quot;&gt; $$&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;LANGUAGE&lt;/span&gt; plpgsql;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-      <category term="cursor" scheme="http://daydayup863.github.io/categories/PostgreSQL/cursor/"/>
-    
-      <category term="refcursor" scheme="http://daydayup863.github.io/categories/PostgreSQL/cursor/refcursor/"/>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-      <category term="cursor" scheme="http://daydayup863.github.io/tags/cursor/"/>
-    
-      <category term="refcursor" scheme="http://daydayup863.github.io/tags/refcursor/"/>
     
   </entry>
   
