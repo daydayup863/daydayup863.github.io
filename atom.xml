@@ -75,6 +75,39 @@
   </entry>
   
   <entry>
+    <title>PostgreSQL 12 新特性汇总</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_12_release_note/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_12_release_note/</id>
+    <published>2021-04-30T03:08:32.000Z</published>
+    <updated>2021-04-30T03:33:05.632Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;尽管现阶段 PostgreSQL 12 才出 Beta3 版本，但 12 版本的新特性和正式版不会有太大出入，最近抽时间对 12 版本的新特性进行了探索，整体上 12 版本的变化不小。&lt;/p&gt;
+&lt;p&gt;12 版本的典型新特性如下:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;支持 SQL/JSON path
+支持 Generated Columns
+CTE 支持 Inlined With Queries
+新增 Pluggable Table Storage Interface
+分区表性能大辐提升
+在线重建索引(Reindex Concurrently)
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+      <category term="release note" scheme="http://daydayup863.github.io/categories/PostgreSQL/release-note/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="release note" scheme="http://daydayup863.github.io/tags/release-note/"/>
+    
+  </entry>
+  
+  <entry>
     <title>PostgreSQL 13 新特性汇总</title>
     <link href="http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_13_release_note/"/>
     <id>http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_13_release_note/</id>
@@ -103,23 +136,20 @@
   </entry>
   
   <entry>
-    <title>PostgreSQL 12 新特性汇总</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_12_release_note/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_12_release_note/</id>
+    <title>PostgreSQL 11 新特性汇总</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_11_release_note/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_11_release_note/</id>
     <published>2021-04-30T03:08:32.000Z</published>
-    <updated>2021-04-30T03:33:05.632Z</updated>
+    <updated>2021-04-30T03:32:58.408Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;尽管现阶段 PostgreSQL 12 才出 Beta3 版本，但 12 版本的新特性和正式版不会有太大出入，最近抽时间对 12 版本的新特性进行了探索，整体上 12 版本的变化不小。&lt;/p&gt;
-&lt;p&gt;12 版本的典型新特性如下:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;支持 SQL/JSON path
-支持 Generated Columns
-CTE 支持 Inlined With Queries
-新增 Pluggable Table Storage Interface
-分区表性能大辐提升
-在线重建索引(Reindex Concurrently)
-&lt;/code&gt;&lt;/pre&gt;
+      &lt;p&gt;2018-10-18 PostgreSQL官网 宣布 PostgreSQL 11 正式版发行，PostgreSQL 11 重点对性能进行了提升和功能完善，特别是对大数据库和高计算负载的情况下进行了增强，主要包括以下:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;对分区表进行了大幅的改进和增强。
+增加了对存储过程的支持，存储过程支持事务。
+增强了并行查询能力和并行数据定义能力。
+增加了对 just-in-time (JIT) 编译的支持，加速SQL中的表达式执行效率。
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;最近对PostgreSQL以上新特性和其它功能完善做了演示，希望对PostgreSQL从业者有帮助，详见以下。&lt;br&gt;分区表的改进&lt;/p&gt;
     
     </summary>
     
@@ -165,36 +195,6 @@ PostgreSQL10：Incompatible Changes
 PostgreSQL10：新增 pg_sequence 系统表
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;参考&lt;br&gt;&lt;a href=&quot;https://www.postgresql.org/docs/10/release-10.html&quot;&gt;E.17. Release 10&lt;/a&gt;&lt;/p&gt;
 
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-      <category term="release note" scheme="http://daydayup863.github.io/categories/PostgreSQL/release-note/"/>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-      <category term="release note" scheme="http://daydayup863.github.io/tags/release-note/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PostgreSQL 11 新特性汇总</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_11_release_note/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_11_release_note/</id>
-    <published>2021-04-30T03:08:32.000Z</published>
-    <updated>2021-04-30T03:32:58.408Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;2018-10-18 PostgreSQL官网 宣布 PostgreSQL 11 正式版发行，PostgreSQL 11 重点对性能进行了提升和功能完善，特别是对大数据库和高计算负载的情况下进行了增强，主要包括以下:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;对分区表进行了大幅的改进和增强。
-增加了对存储过程的支持，存储过程支持事务。
-增强了并行查询能力和并行数据定义能力。
-增加了对 just-in-time (JIT) 编译的支持，加速SQL中的表达式执行效率。
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;最近对PostgreSQL以上新特性和其它功能完善做了演示，希望对PostgreSQL从业者有帮助，详见以下。&lt;br&gt;分区表的改进&lt;/p&gt;
     
     </summary>
     
