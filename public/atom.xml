@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://daydayup863.github.io/"/>
-  <updated>2021-05-26T08:56:00.598Z</updated>
+  <updated>2021-05-28T06:40:42.567Z</updated>
   <id>http://daydayup863.github.io/</id>
   
   <author>
@@ -15,6 +15,59 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://daydayup863.github.io/uncategorized/hello-world/"/>
+    <id>http://daydayup863.github.io/uncategorized/hello-world/</id>
+    <published>2021-05-28T06:40:42.567Z</published>
+    <updated>2021-05-28T06:40:42.567Z</updated>
+    
+    <summary type="html">
+    
+       
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>PostgreSQL内存结构</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/memory-architecture/PostgreSQL%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/memory-architecture/PostgreSQL%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/</id>
+    <published>2021-05-28T06:10:41.000Z</published>
+    <updated>2021-05-28T06:47:02.235Z</updated>
+    
+    <summary type="html">
+    
+      &lt;div class=&quot;hbe hbe-container&quot; id=&quot;hexo-blog-encrypt&quot; data-wpm=&quot;Oh, this is an invalid password. Check and try again, please.&quot; data-whm=&quot;OOPS, these decrypted content may changed, but you can still have a look.&quot;&gt;
+  &lt;script id=&quot;hbeData&quot; type=&quot;hbeData&quot; data-hmacdigest=&quot;78e0cce703a4895200f09af77b9325e63f035d33b9ba695e760f9bff6c788e2d&quot;&gt;4107a32a960ffb4bf995ce54cf178313dd069a223d83a73d3ec89d9b8baca55f166332dd76df4bd7ad6700c4511f3c4fd7b7e161bbbb09085ff0ff68b02d088813b21f23844fc183539cebd3b0a3ccc2281a7f1e303d6290ebff2cea268eb46476609dd492541a8ee1af2c004855e39601e37f89d43b0f3c47c1a39e5214b7dfecb98ab336149523bd796ef824ea48cccf4afd7f4a74712f65a039d22c6082693cee68b735db1c2fdeb546ea3696f3f0876565f963f8a6b23f062a42a65d2c5b2e3a82daff1c9876f0e6c6a6c08c00bcd4921920a5c784cb5e8577f1840554e57d90d8c2de169620da04a6342c7d900abb42ca72832178d5b349d5710ab5af792c1af81369c0a997edaad9020f37499395b8da9109309ff4a39b5d164a99d22bcdbe76324e1d9273da3656798e82f15c5e0334f8180d14bda127ec4f43ef5bac0e4ea9544c5fc0204b5ca33edc1c20af4ddd91f99b958a755aad044655a93f11d63c6aab3395142502092da67090a77caa73e17c25c4bcf7bde8f1b677c341a22c3d7c9b8757037e9f30a3eb525409551d424ed19a6c28ee8fc8755b28a4d899c8db98b87847db11c59752a47e0944a57ba44a094eb2934a64ff5f6647fdcaaea071e859c6d0f55ede04d62babe4683d32a92201f95a72115288325e8895d68a95ab1efa9095dbc2879a4622f5554cc5c7c1eebb1767a13eff28f397bbc3743f793bd8d074cf028eb7bec3432cd3d525bbd56e474a8514d2a324ef1c65102531a03ace224672d240981b9ed076079146af275ac2ec9ebdc23808516266c7a93af4024785beae829253f2a9b8b836b565cf08f3c6fae9f2e7ee082055ea0d5eb8c102aff2171986196d1dc59cc8693601ba0578467ee2f787b288fafe4be1077613477e27f5950b4ae0880225db102eb4cbc709a3d5ce2b123a3930dcd03b9e48a4fa9cbf5dccf1bcac02ca8b910c6726f31988e3656c44d9c1b8896a86738d2f5f6dc8f2bced228402abd984d9437fd5765307a4f144c2459e750f192a93182735843a268200dd994b279df3e42311e413b0f836ac1cf0c7b821a6400af5d652324bb1b93f52ee77b8e7429e7ccd5b85&lt;/script&gt;
+  &lt;div class=&quot;hbe hbe-content&quot;&gt;
+    &lt;div class=&quot;hbe hbe-input hbe-input-default&quot;&gt;
+      &lt;input class=&quot;hbe hbe-input-field hbe-input-field-default&quot; type=&quot;password&quot; id=&quot;hbePass&quot;&gt;
+      &lt;label class=&quot;hbe hbe-input-label hbe-input-label-default&quot; for=&quot;hbePass&quot;&gt;
+        &lt;span class=&quot;hbe hbe-input-label-content hbe-input-label-content-default&quot;&gt;Hey, password is required here.&lt;/span&gt;
+      &lt;/label&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;script data-pjax src=&quot;/lib/hbe.js&quot;&gt;&lt;/script&gt;&lt;link href=&quot;/css/hbe.style.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+      <category term="memory architecture" scheme="http://daydayup863.github.io/categories/PostgreSQL/memory-architecture/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="memory architecture" scheme="http://daydayup863.github.io/tags/memory-architecture/"/>
+    
+  </entry>
   
   <entry>
     <title>PostgreSQL双主逻辑复制</title>
@@ -312,9 +365,9 @@ CTE 支持 Inlined With Queries
     
       <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
     
-      <category term="cursor" scheme="http://daydayup863.github.io/tags/cursor/"/>
-    
       <category term="refcursor" scheme="http://daydayup863.github.io/tags/refcursor/"/>
+    
+      <category term="cursor" scheme="http://daydayup863.github.io/tags/cursor/"/>
     
   </entry>
   
@@ -525,60 +578,6 @@ CTE 支持 Inlined With Queries
       <category term="order by" scheme="http://daydayup863.github.io/tags/order-by/"/>
     
       <category term="slow query" scheme="http://daydayup863.github.io/tags/slow-query/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PostgreSQL格式化SQL</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/sql/pg_sql_format/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/sql/pg_sql_format/</id>
-    <published>2021-03-15T06:15:57.000Z</published>
-    <updated>2021-03-15T06:18:05.037Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;利用pg_get_viewdef完成SQL美化。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-      <category term="sql" scheme="http://daydayup863.github.io/categories/PostgreSQL/sql/"/>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-      <category term="sql" scheme="http://daydayup863.github.io/tags/sql/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>gcc, g++ 使用切换</title>
-    <link href="http://daydayup863.github.io/Linux/g/gcc/Linux_gxx/"/>
-    <id>http://daydayup863.github.io/Linux/g/gcc/Linux_gxx/</id>
-    <published>2021-03-15T04:01:01.000Z</published>
-    <updated>2021-03-15T04:03:28.484Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;安装版本&quot;&gt;&lt;a href=&quot;#安装版本&quot; class=&quot;headerlink&quot; title=&quot;安装版本&quot;&gt;&lt;/a&gt;安装版本&lt;/h1&gt;&lt;figure class=&quot;highlight apache&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs apache&quot;&gt;&lt;span class=&quot;hljs-attribute&quot;&gt;sudo&lt;/span&gt; apt-get install gcc-&lt;span class=&quot;hljs-number&quot;&gt;4&lt;/span&gt;.&lt;span class=&quot;hljs-number&quot;&gt;8&lt;/span&gt; gcc-&lt;span class=&quot;hljs-number&quot;&gt;4&lt;/span&gt;.&lt;span class=&quot;hljs-number&quot;&gt;8&lt;/span&gt;-multilib g++-&lt;span class=&quot;hljs-number&quot;&gt;4&lt;/span&gt;.&lt;span class=&quot;hljs-number&quot;&gt;8&lt;/span&gt; g++-&lt;span class=&quot;hljs-number&quot;&gt;4&lt;/span&gt;.&lt;span class=&quot;hljs-number&quot;&gt;8&lt;/span&gt;-multilib&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-      <category term="Linux" scheme="http://daydayup863.github.io/categories/Linux/"/>
-    
-      <category term="g++" scheme="http://daydayup863.github.io/categories/Linux/g/"/>
-    
-      <category term="gcc" scheme="http://daydayup863.github.io/categories/Linux/g/gcc/"/>
-    
-    
-      <category term="Linux" scheme="http://daydayup863.github.io/tags/Linux/"/>
-    
-      <category term="g++" scheme="http://daydayup863.github.io/tags/g/"/>
-    
-      <category term="gcc" scheme="http://daydayup863.github.io/tags/gcc/"/>
     
   </entry>
   
