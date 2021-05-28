@@ -20,6 +20,375 @@ password:
 
 # PG14
 
+## Support tab-complete for TRUNCATE on foreign tables.
+```
+commit 81e094bdfdd6cf6568cba2b25eea9876daceaacb
+Author: Fujii Masao <fujii@postgresql.org>
+Date:   Mon Apr 12 21:34:23 2021 +0900
+
+    Support tab-complete for TRUNCATE on foreign tables.
+
+    Commit 8ff1c94649 extended TRUNCATE command so that it can also truncate
+    foreign tables. But it forgot to support tab-complete for TRUNCATE on
+    foreign tables. That is, previously tab-complete for TRUNCATE displayed
+    only the names of regular tables.
+
+    This commit improves tab-complete for TRUNCATE so that it displays also
+    the names of foreign tables.
+
+    Author: Fujii Masao
+    Reviewed-by: Bharath Rupireddy
+    Discussion: https://postgr.es/m/551ed8c1-f531-818b-664a-2cecdab99cd8@oss.nttdata.com
+
+```
+
+## Add information of total data processed to replication slot stats.
+```
+commit f5fc2f5b23d1b1dff60f8ca5dc211161df47eda4 (HEAD -> master, origin/master, origin/HEAD)
+Author: Amit Kapila <akapila@postgresql.org>
+Date:   Fri Apr 16 07:34:43 2021 +0530
+
+    Add information of total data processed to replication slot stats.
+
+    This adds the statistics about total transactions count and total
+    transaction data logically sent to the decoding output plugin from
+    ReorderBuffer. Users can query the pg_stat_replication_slots view to check
+    these stats.
+
+    Suggested-by: Andres Freund
+    Author: Vignesh C and Amit Kapila
+    Reviewed-by: Sawada Masahiko, Amit Kapila
+    Discussion: https://postgr.es/m/20210319185247.ldebgpdaxsowiflw@alap3.anarazel.de
+
+
+```
+
+## Add missing COMPRESSION into CREATE TABLE synopsis.
+```
+commit e2e2efca85b4857361780ed0c736c2a44edb458a
+Author: Fujii Masao <fujii@postgresql.org>
+Date:   Thu Apr 15 23:15:19 2021 +0900
+
+    doc: Add missing COMPRESSION into CREATE TABLE synopsis.
+
+    Commit bbe0a81db6 introduced "INCLUDING COMPRESSION" option
+    in CREATE TABLE command, but forgot to mention it in the
+    CREATE TABLE syntax synopsis.
+
+    Author: Fujii Masao
+    Reviewed-by: Michael Paquier
+    Discussion: https://postgr.es/m/54d30e66-dbd6-5485-aaf6-a291ed55919d@oss.nttdata.com
+
+```
+
+
+
+## 新增语法ALTER SUBSCRIPTION ... ADD/DROP PUBLICATION
+```
+commit 82ed7748b710e3ddce3f7ebc74af80fe4869492f
+Author: Peter Eisentraut <peter@eisentraut.org>
+Date:   Tue Apr 6 10:44:26 2021 +0200
+
+    ALTER SUBSCRIPTION ... ADD/DROP PUBLICATION
+
+    At present, if we want to update publications in a subscription, we
+    can use SET PUBLICATION.  However, it requires supplying all
+    publications that exists and the new publications.  If we want to add
+    new publications, it's inconvenient.  The new syntax only supplies the
+    new publications.  When the refresh is true, it only refreshes the new
+    publications.
+
+    Author: Japin Li <japinli@hotmail.com>
+    Author: Bharath Rupireddy <bharath.rupireddyforpostgres@gmail.com>
+    Discussion: https://www.postgresql.org/message-id/flat/MEYP282MB166939D0D6C480B7FBE7EFFBB6BC0@MEYP282MB1669.AUSP282.PROD.OUTLOOK.COM
+
+```
+
+## SP-GiST. Support INCLUDE'd columns
+```
+commit 09c1c6ab4bc5764dd69c53ccfd43b2060b1fd090
+Author: Tom Lane <tgl@sss.pgh.pa.us>
+Date:   Mon Apr 5 18:41:09 2021 -0400
+
+    Support INCLUDE'd columns in SP-GiST.
+
+    Not much to say here: does what it says on the tin.
+    We steal a previously-always-zero bit from the nextOffset
+    field of leaf index tuples in order to track whether there
+    is a nulls bitmap.  Otherwise it works about like included
+    columns in other index types.
+
+    Pavel Borisov, reviewed by Andrey Borodin and Anastasia Lubennikova,
+    and rather heavily editorialized on by me
+
+    Discussion: https://postgr.es/m/CALT9ZEFi-vMp4faht9f9Junb1nO3NOSjhpxTmbm1UGLMsLqiEQ@mail.gmail.com
+
+```
+
+## Change return type of EXTRACT from float8 to numeric
+```
+commit a2da77cdb4661826482ebf2ddba1f953bc74afe4
+Author: Peter Eisentraut <peter@eisentraut.org>
+Date:   Tue Apr 6 07:17:13 2021 +0200
+
+    Change return type of EXTRACT to numeric
+
+    The previous implementation of EXTRACT mapped internally to
+    date_part(), which returned type double precision (since it was
+    implemented long before the numeric type existed).  This can lead to
+    imprecise output in some cases, so returning numeric would be
+    preferrable.  Changing the return type of an existing function is a
+    bit risky, so instead we do the following:  We implement a new set of
+    functions, which are now called "extract", in parallel to the existing
+    date_part functions.  They work the same way internally but use
+    numeric instead of float8.  The EXTRACT construct is now mapped by the
+    parser to these new extract functions.  That way, dumps of views
+    etc. from old versions (which would use date_part) continue to work
+    unchanged, but new uses will map to the new extract functions.
+
+    Additionally, the reverse compilation of EXTRACT now reproduces the
+    original syntax, using the new mechanism introduced in
+    40c24bfef92530bd846e111c1742c2a54441c62c.
+
+    The following minor changes of behavior result from the new
+    implementation:
+
+    - The column name from an isolated EXTRACT call is now "extract"
+      instead of "date_part".
+
+    - Extract from date now rejects inappropriate field names such as
+      HOUR.  It was previously mapped internally to extract from
+      timestamp, so it would silently accept everything appropriate for
+      timestamp.
+
+    - Return values when extracting fields with possibly fractional
+      values, such as second and epoch, now have the full scale that the
+      value has internally (so, for example, '1.000000' instead of just
+      '1').
+
+    Reported-by: Petr Fedorov <petr.fedorov@phystech.edu>
+    Reviewed-by: Tom Lane <tgl@sss.pgh.pa.us>
+    Discussion: https://www.postgresql.org/message-id/flat/42b73d2d-da12-ba9f-570a-420e0cce19d9@phystech.edu
+
+```
+
+## Add function pg_log_backend_memory_contexts to log the memory contexts of specified backend process.
+```
+commit 43620e328617c1f41a2a54c8cee01723064e3ffa
+Author: Fujii Masao <fujii@postgresql.org>
+Date:   Tue Apr 6 13:44:15 2021 +0900
+
+    Add function to log the memory contexts of specified backend process.
+
+    Commit 3e98c0bafb added pg_backend_memory_contexts view to display
+    the memory contexts of the backend process. However its target process
+    is limited to the backend that is accessing to the view. So this is
+    not so convenient when investigating the local memory bloat of other
+    backend process. To improve this situation, this commit adds
+    pg_log_backend_memory_contexts() function that requests to log
+    the memory contexts of the specified backend process.
+
+    This information can be also collected by calling
+    MemoryContextStats(TopMemoryContext) via a debugger. But
+    this technique cannot be used in some environments because no debugger
+    is available there. So, pg_log_backend_memory_contexts() allows us to
+    see the memory contexts of specified backend more easily.
+
+    Only superusers are allowed to request to log the memory contexts
+    because allowing any users to issue this request at an unbounded rate
+    would cause lots of log messages and which can lead to denial of service.
+
+    On receipt of the request, at the next CHECK_FOR_INTERRUPTS(),
+    the target backend logs its memory contexts at LOG_SERVER_ONLY level,
+    so that these memory contexts will appear in the server log but not
+    be sent to the client. It logs one message per memory context.
+    Because if it buffers all memory contexts into StringInfo to log them
+    as one message, which may require the buffer to be enlarged very much
+    and lead to OOM error since there can be a large number of memory
+    contexts in a backend.
+
+    When a backend process is consuming huge memory, logging all its
+    memory contexts might overrun available disk space. To prevent this,
+    now this patch limits the number of child contexts to log per parent
+    to 100. As with MemoryContextStats(), it supposes that practical cases
+    where the log gets long will typically be huge numbers of siblings
+    under the same parent context; while the additional debugging value
+    from seeing details about individual siblings beyond 100 will not be large.
+
+    There was another proposed patch to add the function to return
+    the memory contexts of specified backend as the result sets,
+    instead of logging them, in the discussion. However that patch is
+    not included in this commit because it had several issues to address.
+
+    Thanks to Tatsuhito Kasahara, Andres Freund, Tom Lane, Tomas Vondra,
+    Michael Paquier, Kyotaro Horiguchi and Zhihong Yu for the discussion.
+
+    Bump catalog version.
+
+    Author: Atsushi Torikoshi
+    Reviewed-by: Kyotaro Horiguchi, Zhihong Yu, Fujii Masao
+    Discussion: https://postgr.es/m/0271f440ac77f2a4180e0e56ebd944d1@oss.nttdata.com
+
+```
+## new GUC recovery_prefetch
+```
+commit 1d257577e08d3e598011d6850fd1025858de8c8c
+Author: Thomas Munro <tmunro@postgresql.org>
+Date:   Thu Apr 8 23:03:43 2021 +1200
+
+    Optionally prefetch referenced data in recovery.
+    
+    Introduce a new GUC recovery_prefetch, disabled by default.  When
+    enabled, look ahead in the WAL and try to initiate asynchronous reading
+    of referenced data blocks that are not yet cached in our buffer pool.
+    For now, this is done with posix_fadvise(), which has several caveats.
+    Better mechanisms will follow in later work on the I/O subsystem.
+    
+    The GUC maintenance_io_concurrency is used to limit the number of
+    concurrent I/Os we allow ourselves to initiate, based on pessimistic
+    heuristics used to infer that I/Os have begun and completed.
+    
+    The GUC wal_decode_buffer_size is used to limit the maximum distance we
+    are prepared to read ahead in the WAL to find uncached blocks.
+    
+    Reviewed-by: Alvaro Herrera <alvherre@2ndquadrant.com> (parts)
+    Reviewed-by: Andres Freund <andres@anarazel.de> (parts)
+    Reviewed-by: Tomas Vondra <tomas.vondra@2ndquadrant.com> (parts)
+    Tested-by: Tomas Vondra <tomas.vondra@2ndquadrant.com>
+    Tested-by: Jakub Wartak <Jakub.Wartak@tomtom.com>
+    Tested-by: Dmitry Dolgov <9erthalion6@gmail.com>
+    Tested-by: Sait Talha Nisanci <Sait.Nisanci@microsoft.com>
+    Discussion: https://postgr.es/m/CA%2BhUKGJ4VJN8ttxScUFM8dOKX0BrBiboo5uz1cq%3DAovOddfHpA%40mail.gmail.com
+
+```
+
+## new GUC wal_decode_buffer_size.
+```
+commit f003d9f8721b3249e4aec8a1946034579d40d42c
+Author: Thomas Munro <tmunro@postgresql.org>
+Date:   Thu Apr 8 23:03:34 2021 +1200
+
+    Add circular WAL decoding buffer.
+
+    Teach xlogreader.c to decode its output into a circular buffer, to
+    support optimizations based on looking ahead.
+
+     * XLogReadRecord() works as before, consuming records one by one, and
+       allowing them to be examined via the traditional XLogRecGetXXX()
+       macros.
+
+     * An alternative new interface XLogNextRecord() is added that returns
+       pointers to DecodedXLogRecord structs that can be examined directly.
+
+     * XLogReadAhead() provides a second cursor that lets you see
+       further ahead, as long as data is available and there is enough space
+       in the decoding buffer.  This returns DecodedXLogRecord pointers to the
+       caller, but also adds them to a queue of records that will later be
+       consumed by XLogNextRecord()/XLogReadRecord().
+
+    The buffer's size is controlled with wal_decode_buffer_size.  The buffer
+    could potentially be placed into shared memory, for future projects.
+    Large records that don't fit in the circular buffer are called
+    "oversized" and allocated separately with palloc().
+
+    Discussion: https://postgr.es/m/CA+hUKGJ4VJN8ttxScUFM8dOKX0BrBiboo5uz1cq=AovOddfHpA@mail.gmail.com
+
+```
+
+## Add functions to wait for backend termination
+```
+commit aaf043257205ec523f1ba09a3856464d17cf2281
+Author: Magnus Hagander <magnus@hagander.net>
+Date:   Thu Apr 8 11:32:14 2021 +0200
+
+    Add functions to wait for backend termination
+
+    This adds a function, pg_wait_for_backend_termination(), and a new
+    timeout argument to pg_terminate_backend(), which will wait for the
+    backend to actually terminate (with or without signaling it to do so
+    depending on which function is called). The default behaviour of
+    pg_terminate_backend() remains being timeout=0 which does not waiting.
+    For pg_wait_for_backend_termination() the default wait is 5 seconds.
+
+    Author: Bharath Rupireddy
+    Reviewed-By: Fujii Masao, David Johnston, Muhammad Usama,
+                 Hou Zhijie, Magnus Hagander
+    Discussion: https://postgr.es/m/CALj2ACUBpunmyhYZw-kXCYs5NM+h6oG_7Df_Tn4mLmmUQifkqA@mail.gmail.com
+
+```
+
+##  Add csvlog output for the new query_id value
+```
+commit f57a2f5e03054ade221e554c70e628e1ffae1b66
+Author: Bruce Momjian <bruce@momjian.us>
+Date:   Wed Apr 7 22:30:30 2021 -0400
+
+    Add csvlog output for the new query_id value
+
+    This also adjusts the printf format for query id used by log_line_prefix
+    (%Q).
+
+    Reported-by: Justin Pryzby
+
+    Discussion: https://postgr.es/m/20210408005402.GG24239@momjian.us
+
+    Author: Julien Rouhaud, Bruce Momjian
+
+```
+
+## SQL-standard function body
+```
+commit e717a9a18b2e34c9c40e5259ad4d31cd7e420750
+Author: Peter Eisentraut <peter@eisentraut.org>
+Date:   Wed Apr 7 21:30:08 2021 +0200
+
+    SQL-standard function body
+
+    This adds support for writing CREATE FUNCTION and CREATE PROCEDURE
+    statements for language SQL with a function body that conforms to the
+    SQL standard and is portable to other implementations.
+
+    Instead of the PostgreSQL-specific AS $$ string literal $$ syntax,
+    this allows writing out the SQL statements making up the body
+    unquoted, either as a single statement:
+
+        CREATE FUNCTION add(a integer, b integer) RETURNS integer
+            LANGUAGE SQL
+            RETURN a + b;
+
+    or as a block
+
+        CREATE PROCEDURE insert_data(a integer, b integer)
+        LANGUAGE SQL
+        BEGIN ATOMIC
+          INSERT INTO tbl VALUES (a);
+          INSERT INTO tbl VALUES (b);
+        END;
+
+    The function body is parsed at function definition time and stored as
+    expression nodes in a new pg_proc column prosqlbody.  So at run time,
+    no further parsing is required.
+
+    However, this form does not support polymorphic arguments, because
+    there is no more parse analysis done at call time.
+
+    Dependencies between the function and the objects it uses are fully
+    tracked.
+
+    A new RETURN statement is introduced.  This can only be used inside
+    function bodies.  Internally, it is treated much like a SELECT
+    statement.
+
+    psql needs some new intelligence to keep track of function body
+    boundaries so that it doesn't send off statements when it sees
+    semicolons that are inside a function body.
+
+    Tested-by: Jaime Casanova <jcasanov@systemguards.com.ec>
+    Reviewed-by: Julien Rouhaud <rjuju123@gmail.com>
+    Discussion: https://www.postgresql.org/message-id/flat/1c11f1eb-f00c-43b7-799d-2d44132c02d7@2ndquadrant.com
+
+```
+
 ## Enable parallel SELECT for "INSERT INTO ... SELECT ..."
 
 ```

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://daydayup863.github.io/"/>
-  <updated>2021-03-16T10:40:30.586Z</updated>
+  <updated>2021-05-26T08:56:00.598Z</updated>
   <id>http://daydayup863.github.io/</id>
   
   <author>
@@ -15,6 +15,412 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PostgreSQL双主逻辑复制</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/multi-master/logical-replication/%E5%8F%8C%E4%B8%BB%E9%80%BB%E8%BE%91%E5%A4%8D%E5%88%B6/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/multi-master/logical-replication/%E5%8F%8C%E4%B8%BB%E9%80%BB%E8%BE%91%E5%A4%8D%E5%88%B6/</id>
+    <published>2021-05-26T06:27:11.000Z</published>
+    <updated>2021-05-26T08:56:00.598Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;利用PostgreSQL逻辑复制和触发器实现PostgreSQL双主复制&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+      <category term="multi-master" scheme="http://daydayup863.github.io/categories/PostgreSQL/multi-master/"/>
+    
+      <category term="logical replication" scheme="http://daydayup863.github.io/categories/PostgreSQL/multi-master/logical-replication/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="multi-master" scheme="http://daydayup863.github.io/tags/multi-master/"/>
+    
+      <category term="logical replication" scheme="http://daydayup863.github.io/tags/logical-replication/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PostgreSQL14 允许配置TOAST压缩方法</title>
+    <link href="http://daydayup863.github.io/COMPRESSION/POstgreSQL/lz4/pglz/PostgreSQL14_Allow_configurable_LZ4_TOAST_compression/"/>
+    <id>http://daydayup863.github.io/COMPRESSION/POstgreSQL/lz4/pglz/PostgreSQL14_Allow_configurable_LZ4_TOAST_compression/</id>
+    <published>2021-05-12T02:52:31.000Z</published>
+    <updated>2021-05-12T03:47:42.925Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;PostgreSQL 14 允许配置TOAST压缩方法, 默认为pglz, 可以通过GUC default_toast_compression 设置默认值，当前支持pglz, lz4两种配置, 支持lz4需要在configure时增加—with-lz4.&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="COMPRESSION" scheme="http://daydayup863.github.io/categories/COMPRESSION/"/>
+    
+      <category term="POstgreSQL" scheme="http://daydayup863.github.io/categories/COMPRESSION/POstgreSQL/"/>
+    
+      <category term="lz4" scheme="http://daydayup863.github.io/categories/COMPRESSION/POstgreSQL/lz4/"/>
+    
+      <category term="pglz" scheme="http://daydayup863.github.io/categories/COMPRESSION/POstgreSQL/lz4/pglz/"/>
+    
+    
+      <category term="COMPRESSION" scheme="http://daydayup863.github.io/tags/COMPRESSION/"/>
+    
+      <category term="POstgreSQL" scheme="http://daydayup863.github.io/tags/POstgreSQL/"/>
+    
+      <category term="lz4" scheme="http://daydayup863.github.io/tags/lz4/"/>
+    
+      <category term="pglz" scheme="http://daydayup863.github.io/tags/pglz/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PostgreSQL旧触发器分区表更换为新分区表</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/partition-table/PostgreSQL_old_partition_change_to_new_partition/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/partition-table/PostgreSQL_old_partition_change_to_new_partition/</id>
+    <published>2021-05-07T09:21:02.000Z</published>
+    <updated>2021-05-07T09:35:01.678Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;利用PostgreSQL新分区表attach功能，完成旧分区表替换成新分区表&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+      <category term="partition table" scheme="http://daydayup863.github.io/categories/PostgreSQL/partition-table/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="partition table" scheme="http://daydayup863.github.io/tags/partition-table/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PostgreSQL 10 新特性汇总</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_10_release_note/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_10_release_note/</id>
+    <published>2021-04-30T03:08:32.000Z</published>
+    <updated>2021-04-30T03:35:16.769Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;PostgreSQL10Beta1 版本于 2017年5月18日发行，PostgreSQL 10 新增了大量新特性，其中特重量级新特性如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;内置分区表（ Native Table Partitioning）
+逻辑复制（Logical Replication）
+并行功能增强（Enhancement of Parallel Query）
+Quorum Commit for Synchronous Replication
+全文检索支持JSON和JSONB数据类型
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;其它新特性详见 PostgreSQL10 Release ，这里不详细列出，由于时间和精力的关系，目前仅对部分新特性进行演示，详见以下博客：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;PostgreSQL10：重量级新特性-支持分区表
+PostgreSQL10：Parallel Queries 增强
+PostgreSQL10：Additional FDW Push-Down
+PostgreSQL10：逻辑复制（Logical Replication）之一
+PostgreSQL10：逻辑复制（Logical Replication）之二
+PostgreSQL10：Quorum Commit for Synchronous Replication
+PostgreSQL10：Multi-column Correlation Statistics
+PostgreSQL10：新增 pg_hba_file_rules 视图
+PostgreSQL10：全文检索支持 JSON 和 JSONB
+PostgreSQL10：Identity Columns 特性介绍
+PostgreSQL10：Incompatible Changes
+PostgreSQL10：新增 pg_sequence 系统表
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;参考&lt;br&gt;&lt;a href=&quot;https://www.postgresql.org/docs/10/release-10.html&quot;&gt;E.17. Release 10&lt;/a&gt;&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+      <category term="release note" scheme="http://daydayup863.github.io/categories/PostgreSQL/release-note/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="release note" scheme="http://daydayup863.github.io/tags/release-note/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PostgreSQL 11 新特性汇总</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_11_release_note/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_11_release_note/</id>
+    <published>2021-04-30T03:08:32.000Z</published>
+    <updated>2021-04-30T03:32:58.408Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;2018-10-18 PostgreSQL官网 宣布 PostgreSQL 11 正式版发行，PostgreSQL 11 重点对性能进行了提升和功能完善，特别是对大数据库和高计算负载的情况下进行了增强，主要包括以下:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;对分区表进行了大幅的改进和增强。
+增加了对存储过程的支持，存储过程支持事务。
+增强了并行查询能力和并行数据定义能力。
+增加了对 just-in-time (JIT) 编译的支持，加速SQL中的表达式执行效率。
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;最近对PostgreSQL以上新特性和其它功能完善做了演示，希望对PostgreSQL从业者有帮助，详见以下。&lt;br&gt;分区表的改进&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+      <category term="release note" scheme="http://daydayup863.github.io/categories/PostgreSQL/release-note/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="release note" scheme="http://daydayup863.github.io/tags/release-note/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PostgreSQL 13 新特性汇总</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_13_release_note/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_13_release_note/</id>
+    <published>2021-04-30T03:08:32.000Z</published>
+    <updated>2021-04-30T03:33:15.144Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;PostgreSQL 13 Beta1版本已于2020-05-21发行，目前最新版为Beta2，尽管 PostgreSQL 13 版本没有像10、11、12版本新增重量级的功能，但13版本依然增加了不少新特性和功能提升，值得细细研究。&lt;/p&gt;
+&lt;p&gt;PostgreSQL 13 典型变化如下:&lt;/p&gt;
+&lt;p&gt;逻辑复制支持分区表&lt;br&gt;Btree索引优化(引入Deduplication技术)&lt;br&gt;增量排序(Incremental Sorting)&lt;br&gt;并行VACUUM索引&lt;br&gt;并行Reindexdb&lt;br&gt;手册新增术语(Glossary)附录&lt;/p&gt;
+&lt;p&gt;本文从新特性、性能提升、数据库管理、其它亮点四方面详细介绍 PostgreSQL 13的变化。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+      <category term="release note" scheme="http://daydayup863.github.io/categories/PostgreSQL/release-note/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="release note" scheme="http://daydayup863.github.io/tags/release-note/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PostgreSQL 12 新特性汇总</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_12_release_note/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_12_release_note/</id>
+    <published>2021-04-30T03:08:32.000Z</published>
+    <updated>2021-04-30T03:33:05.632Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;尽管现阶段 PostgreSQL 12 才出 Beta3 版本，但 12 版本的新特性和正式版不会有太大出入，最近抽时间对 12 版本的新特性进行了探索，整体上 12 版本的变化不小。&lt;/p&gt;
+&lt;p&gt;12 版本的典型新特性如下:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;支持 SQL/JSON path
+支持 Generated Columns
+CTE 支持 Inlined With Queries
+新增 Pluggable Table Storage Interface
+分区表性能大辐提升
+在线重建索引(Reindex Concurrently)
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+      <category term="release note" scheme="http://daydayup863.github.io/categories/PostgreSQL/release-note/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="release note" scheme="http://daydayup863.github.io/tags/release-note/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TimescaleDB 使用记录</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/TimescaleDB/PostgreSQL_timescaledb/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/TimescaleDB/PostgreSQL_timescaledb/</id>
+    <published>2021-04-23T08:18:08.000Z</published>
+    <updated>2021-04-23T08:25:15.401Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;记录timescaledb使用过程中遇到的一些问题及解决方案&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+      <category term="TimescaleDB" scheme="http://daydayup863.github.io/categories/PostgreSQL/TimescaleDB/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="TimescaleDB" scheme="http://daydayup863.github.io/tags/TimescaleDB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SQL正则判断字符串是不是数字</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/regexp/Linux_string_is_digit/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/regexp/Linux_string_is_digit/</id>
+    <published>2021-04-22T09:24:32.000Z</published>
+    <updated>2021-04-22T09:25:26.694Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;SQL正则判断字符串是不是数字&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+      <category term="regexp" scheme="http://daydayup863.github.io/categories/PostgreSQL/regexp/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="regexp" scheme="http://daydayup863.github.io/tags/regexp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PostgreSQL 游标获取多行</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/refcursor/cursor/PostgreSQL_refcursor_fetch_multiple_rows/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/refcursor/cursor/PostgreSQL_refcursor_fetch_multiple_rows/</id>
+    <published>2021-04-20T09:45:17.000Z</published>
+    <updated>2021-04-20T09:59:55.059Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;函数/匿名块/存储过程中游标返回多行数据.&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+      <category term="refcursor" scheme="http://daydayup863.github.io/categories/PostgreSQL/refcursor/"/>
+    
+      <category term="cursor" scheme="http://daydayup863.github.io/categories/PostgreSQL/refcursor/cursor/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="cursor" scheme="http://daydayup863.github.io/tags/cursor/"/>
+    
+      <category term="refcursor" scheme="http://daydayup863.github.io/tags/refcursor/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>OpenSSL的简单使用</title>
+    <link href="http://daydayup863.github.io/openssl/ssl/openssl/"/>
+    <id>http://daydayup863.github.io/openssl/ssl/openssl/</id>
+    <published>2021-04-16T11:18:18.000Z</published>
+    <updated>2021-04-16T11:33:22.609Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;OpenSSL 不仅仅是 SSL。它可以实现消息摘要、文件的加密和解密、数字证书、数字签名 和随机数字。关于 OpenSSL 库的内容非常多，远不是一篇文章可以容纳的。&lt;br&gt;OpenSSL 不只是 API，它还是一个命令行工具。命令行工具可以完成与 API 同样的工作， 而且更进一步，可以测试 SSL 服务器和客户机。它还让开发人员对 OpenSSL 的能力有一个 认识。要获得关于如何使用 OpenSSL 命令行工具的资料, 请参阅&lt;a href=&quot;https://www.openssl.org/docs/apps/openssl.html&quot;&gt;官方手册&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="openssl" scheme="http://daydayup863.github.io/categories/openssl/"/>
+    
+      <category term="ssl" scheme="http://daydayup863.github.io/categories/openssl/ssl/"/>
+    
+    
+      <category term="openssl" scheme="http://daydayup863.github.io/tags/openssl/"/>
+    
+      <category term="ssl" scheme="http://daydayup863.github.io/tags/ssl/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SQL-standard function body</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/function/SQL-standard/PostgreSQL_SQL-standard_function_body/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/function/SQL-standard/PostgreSQL_SQL-standard_function_body/</id>
+    <published>2021-04-16T07:21:25.000Z</published>
+    <updated>2021-04-16T08:11:37.855Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;PostgreSQL 函数和储存过程支持SQL-standard function body&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+      <category term="function" scheme="http://daydayup863.github.io/categories/PostgreSQL/function/"/>
+    
+      <category term="SQL-standard" scheme="http://daydayup863.github.io/categories/PostgreSQL/function/SQL-standard/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="function" scheme="http://daydayup863.github.io/tags/function/"/>
+    
+      <category term="SQL-standard" scheme="http://daydayup863.github.io/tags/SQL-standard/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux 新机配置</title>
+    <link href="http://daydayup863.github.io/linux/linux_new_machine/"/>
+    <id>http://daydayup863.github.io/linux/linux_new_machine/</id>
+    <published>2021-03-29T07:32:31.000Z</published>
+    <updated>2021-03-29T07:38:38.380Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;记录一些linux新机器常用的配置, 方便更换系统时更快的配置个人环境.&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="http://daydayup863.github.io/categories/linux/"/>
+    
+    
+      <category term="linux" scheme="http://daydayup863.github.io/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PostgreSQL 12 实现 MYSQL ON UPDATE CURRENT_TIMESTAMPTZ功能</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/default/on-update/PostgreSQL_on_Update_current_timestamptz/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/default/on-update/PostgreSQL_on_Update_current_timestamptz/</id>
+    <published>2021-03-21T06:57:29.000Z</published>
+    <updated>2021-04-21T07:00:30.975Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;PostgreSQL 12 实现 MYSQL ON UPDATE CURRENT_TIMESTAMPTZ功能&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+      <category term="default" scheme="http://daydayup863.github.io/categories/PostgreSQL/default/"/>
+    
+      <category term="on update" scheme="http://daydayup863.github.io/categories/PostgreSQL/default/on-update/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="default" scheme="http://daydayup863.github.io/tags/default/"/>
+    
+      <category term="on update" scheme="http://daydayup863.github.io/tags/on-update/"/>
+    
+  </entry>
   
   <entry>
     <title>PostgreSQL HA patroni 测试案例</title>
@@ -173,358 +579,6 @@
       <category term="g++" scheme="http://daydayup863.github.io/tags/g/"/>
     
       <category term="gcc" scheme="http://daydayup863.github.io/tags/gcc/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Ubuntu终端常用的快捷键</title>
-    <link href="http://daydayup863.github.io/ubuntu/Linux/ubuntu_quick_key/"/>
-    <id>http://daydayup863.github.io/ubuntu/Linux/ubuntu_quick_key/</id>
-    <published>2021-03-15T03:42:41.000Z</published>
-    <updated>2021-03-15T03:53:07.103Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Ubuntu中的许多操作在终端（Terminal）中十分的快捷，记住一些快捷键的操作更得心应手。在Ubuntu中打开终端的快捷键是Ctrl+Alt+T。其他的一些常用的快捷键如下：&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="ubuntu" scheme="http://daydayup863.github.io/categories/ubuntu/"/>
-    
-      <category term="Linux" scheme="http://daydayup863.github.io/categories/ubuntu/Linux/"/>
-    
-    
-      <category term="Linux" scheme="http://daydayup863.github.io/tags/Linux/"/>
-    
-      <category term="ubuntu" scheme="http://daydayup863.github.io/tags/ubuntu/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PostgreSQL函数/存储过程返回多个游标</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/cursor/refcursor/PostgreSQL_refcursor/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/cursor/refcursor/PostgreSQL_refcursor/</id>
-    <published>2021-03-12T06:15:38.000Z</published>
-    <updated>2021-03-12T06:18:20.905Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;function-返回多个游标&quot;&gt;&lt;a href=&quot;#function-返回多个游标&quot; class=&quot;headerlink&quot; title=&quot;function 返回多个游标&quot;&gt;&lt;/a&gt;function 返回多个游标&lt;/h1&gt;&lt;figure class=&quot;highlight pgsql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs pgsql&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;OR REPLACE&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;FUNCTION&lt;/span&gt; show_cities_multiple() &lt;span class=&quot;hljs-keyword&quot;&gt;RETURNS&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;SETOF&lt;/span&gt; &lt;span class=&quot;hljs-type&quot;&gt;refcursor&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;AS&lt;/span&gt; $$&lt;br&gt;&lt;span class=&quot;pgsql&quot;&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;DECLARE&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;pgsql&quot;&gt;   ref1 &lt;span class=&quot;hljs-type&quot;&gt;refcursor&lt;/span&gt;;           &lt;span class=&quot;hljs-comment&quot;&gt;-- Declare cursor variables&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;pgsql&quot;&gt;   ref2 &lt;span class=&quot;hljs-type&quot;&gt;refcursor&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;pgsql&quot;&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;BEGIN&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;pgsql&quot;&gt;   &lt;span class=&quot;hljs-keyword&quot;&gt;OPEN&lt;/span&gt; ref1 &lt;span class=&quot;hljs-keyword&quot;&gt;FOR&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;;   &lt;span class=&quot;hljs-comment&quot;&gt;-- Open the first cursor&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;pgsql&quot;&gt;   &lt;span class=&quot;hljs-keyword&quot;&gt;RETURN NEXT&lt;/span&gt; ref1;                                                                              &lt;span class=&quot;hljs-comment&quot;&gt;-- Return the cursor to the caller&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&quot;pgsql&quot;&gt;   &lt;span class=&quot;hljs-keyword&quot;&gt;OPEN&lt;/span&gt; ref2 &lt;span class=&quot;hljs-keyword&quot;&gt;FOR&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;;   &lt;span class=&quot;hljs-comment&quot;&gt;-- Open the second cursor&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;pgsql&quot;&gt;   &lt;span class=&quot;hljs-keyword&quot;&gt;RETURN NEXT&lt;/span&gt; ref2;                                                                              &lt;span class=&quot;hljs-comment&quot;&gt;-- Return the cursor to the caller&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;pgsql&quot;&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;END&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;ruby&quot;&gt; $$&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;LANGUAGE&lt;/span&gt; plpgsql;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-      <category term="cursor" scheme="http://daydayup863.github.io/categories/PostgreSQL/cursor/"/>
-    
-      <category term="refcursor" scheme="http://daydayup863.github.io/categories/PostgreSQL/cursor/refcursor/"/>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-      <category term="cursor" scheme="http://daydayup863.github.io/tags/cursor/"/>
-    
-      <category term="refcursor" scheme="http://daydayup863.github.io/tags/refcursor/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>docker常用命令</title>
-    <link href="http://daydayup863.github.io/docker/docker_command/"/>
-    <id>http://daydayup863.github.io/docker/docker_command/</id>
-    <published>2021-03-11T08:57:05.000Z</published>
-    <updated>2021-03-11T08:58:31.580Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;将-image-文件从仓库抓取到本地，-默认library组&quot;&gt;&lt;a href=&quot;#将-image-文件从仓库抓取到本地，-默认library组&quot; class=&quot;headerlink&quot; title=&quot;将 image 文件从仓库抓取到本地， 默认library组&quot;&gt;&lt;/a&gt;将 image 文件从仓库抓取到本地， 默认library组&lt;/h1&gt;&lt;figure class=&quot;highlight arduino&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs arduino&quot;&gt;$ docker &lt;span class=&quot;hljs-built_in&quot;&gt;image&lt;/span&gt; pull library/hello-world&lt;br&gt;$ docker &lt;span class=&quot;hljs-built_in&quot;&gt;image&lt;/span&gt; pull hello-world&lt;br&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h1 id=&quot;列出本机的所有-image-文件。&quot;&gt;&lt;a href=&quot;#列出本机的所有-image-文件。&quot; class=&quot;headerlink&quot; title=&quot;列出本机的所有 image 文件。&quot;&gt;&lt;/a&gt;列出本机的所有 image 文件。&lt;/h1&gt;&lt;figure class=&quot;highlight mel&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs mel&quot;&gt;$ docker &lt;span class=&quot;hljs-keyword&quot;&gt;image&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;ls&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h1 id=&quot;删除-image-文件&quot;&gt;&lt;a href=&quot;#删除-image-文件&quot; class=&quot;headerlink&quot; title=&quot;删除 image 文件&quot;&gt;&lt;/a&gt;删除 image 文件&lt;/h1&gt;&lt;figure class=&quot;highlight elixir&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs elixir&quot;&gt;&lt;span class=&quot;hljs-variable&quot;&gt;$ &lt;/span&gt;docker rmi [imageName]&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-      <category term="docker" scheme="http://daydayup863.github.io/categories/docker/"/>
-    
-    
-      <category term="docker" scheme="http://daydayup863.github.io/tags/docker/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CentOS7+PostgreSQL11.2+Docker</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/docker/PostgreSQL_docker/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/docker/PostgreSQL_docker/</id>
-    <published>2021-03-11T08:36:07.000Z</published>
-    <updated>2021-03-12T06:24:32.140Z</updated>
-    
-    <summary type="html">
-    
-      PostgreSQL Docker image 制作
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-      <category term="docker" scheme="http://daydayup863.github.io/categories/PostgreSQL/docker/"/>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-      <category term="docker" scheme="http://daydayup863.github.io/tags/docker/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://daydayup863.github.io/uncategorized/hello-world/"/>
-    <id>http://daydayup863.github.io/uncategorized/hello-world/</id>
-    <published>2021-03-05T08:51:41.421Z</published>
-    <updated>2020-08-04T03:05:29.474Z</updated>
-    
-    <summary type="html">
-    
-       
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>PostgreSQL开发指南</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/PostgreSQL%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/PostgreSQL%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/</id>
-    <published>2021-02-25T09:16:23.000Z</published>
-    <updated>2021-03-05T08:30:47.555Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;命名规范&quot;&gt;&lt;a href=&quot;#命名规范&quot; class=&quot;headerlink&quot; title=&quot;命名规范&quot;&gt;&lt;/a&gt;命名规范&lt;/h1&gt;&lt;figure class=&quot;highlight oxygene&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs oxygene&quot;&gt;&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;. DB object: database, schema, table, column, view, &lt;span class=&quot;hljs-keyword&quot;&gt;index&lt;/span&gt;, &lt;span class=&quot;hljs-keyword&quot;&gt;sequence&lt;/span&gt;, &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt;, &lt;span class=&quot;hljs-title&quot;&gt;trigger&lt;/span&gt;等名称&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-params&quot;&gt;(1)&lt;/span&gt; 建议使用小写字母、数字、下划线的组合&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-params&quot;&gt;(2)&lt;/span&gt; 建议不使用双引号即&amp;quot;包围，除非必须包含大写字母或空格等特殊字符&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-params&quot;&gt;(3)&lt;/span&gt; [强制]长度不能超过63个字符&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-params&quot;&gt;(4)&lt;/span&gt; 不建议以&lt;span class=&quot;hljs-title&quot;&gt;pg&lt;/span&gt;开头&lt;span class=&quot;hljs-params&quot;&gt;(避免与系统DB object混淆)&lt;/span&gt;, 不建议以数字开头&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-params&quot;&gt;(5)&lt;/span&gt; 禁止使用 &lt;span class=&quot;hljs-title&quot;&gt;SQL&lt;/span&gt; 关键字中保留类型的&lt;span class=&quot;hljs-params&quot;&gt;(reserved)&lt;/span&gt;，例如 &lt;span class=&quot;hljs-title&quot;&gt;user&lt;/span&gt;, &lt;span class=&quot;hljs-title&quot;&gt;type&lt;/span&gt;, &lt;span class=&quot;hljs-title&quot;&gt;order&lt;/span&gt; 等, 非保留类型的&lt;span class=&quot;hljs-params&quot;&gt;(unreserved)&lt;/span&gt;也不建议使用.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-function&quot;&gt;--判断是否是关键字的方法:&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;select&lt;/span&gt; * &lt;span class=&quot;hljs-keyword&quot;&gt;from&lt;/span&gt; pg_get_keywords() &lt;span class=&quot;hljs-keyword&quot;&gt;where&lt;/span&gt; word = &lt;span class=&quot;hljs-string&quot;&gt;&amp;#x27;order&amp;#x27;&lt;/span&gt;;;&lt;br&gt; word  | catcode | catdesc&lt;br&gt;-------+---------+----------&lt;br&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;order&lt;/span&gt; | R       | reserved&lt;br&gt;(&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt; row)&lt;br&gt;&lt;br&gt;-- 查看已经存在的table中的关键字&lt;br&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;select&lt;/span&gt;&lt;br&gt;    table_schema, table_name, column_name, b.word, b.catdesc&lt;br&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;from&lt;/span&gt;&lt;br&gt;     information_schema.columns a&lt;br&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;join&lt;/span&gt; (&lt;span class=&quot;hljs-keyword&quot;&gt;select&lt;/span&gt; word, catcode, catdesc &lt;span class=&quot;hljs-keyword&quot;&gt;from&lt;/span&gt; pg_get_keywords()) b&lt;br&gt;  &lt;span class=&quot;hljs-keyword&quot;&gt;on&lt;/span&gt;  a.column_name = b.word&lt;br&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;where&lt;/span&gt; table_schema = &lt;span class=&quot;hljs-string&quot;&gt;&amp;#x27;public&amp;#x27;&lt;/span&gt;&lt;br&gt;  &lt;span class=&quot;hljs-keyword&quot;&gt;and&lt;/span&gt; table_name =  &lt;span class=&quot;hljs-string&quot;&gt;&amp;#x27;student&amp;#x27;&lt;/span&gt;;&lt;br&gt;&lt;br&gt; table_schema |     table_name     | column_name | word |  catdesc&lt;br&gt;--------------+--------------------+-------------+------+------------&lt;br&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;public&lt;/span&gt;       | student            | name        | name | unreserved&lt;br&gt;&lt;br&gt;(&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt; row)&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;. table能包含的column数目,根据字段类型的不同，数目在 &lt;span class=&quot;hljs-number&quot;&gt;250&lt;/span&gt; 到 &lt;span class=&quot;hljs-number&quot;&gt;1600&lt;/span&gt; 之间&lt;br&gt;&lt;br&gt;&lt;span class=&quot;hljs-number&quot;&gt;3&lt;/span&gt;. 临时或备份的DB object:table,view 等,建议加上日期, 如dba_ops.b2c_product_summay_2014_07_12 (其中dba_ops 为DBA专用schema)&lt;br&gt;&lt;br&gt;&lt;span class=&quot;hljs-number&quot;&gt;4&lt;/span&gt;. &lt;span class=&quot;hljs-keyword&quot;&gt;index&lt;/span&gt;命名规则为: 表名_列名_idx, 如student_name_idx, 建议不显式给出&lt;span class=&quot;hljs-keyword&quot;&gt;index&lt;/span&gt; name, 使用DBMS默认给出的&lt;span class=&quot;hljs-keyword&quot;&gt;index&lt;/span&gt; name, 如&lt;span class=&quot;hljs-keyword&quot;&gt;create&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;ON&lt;/span&gt; student (name),则默认给出的&lt;span class=&quot;hljs-keyword&quot;&gt;index&lt;/span&gt;名称为student_name_idx&lt;br&gt;&lt;br&gt;&lt;span class=&quot;hljs-number&quot;&gt;5&lt;/span&gt;. 建议table中的创建和更新时间字段统一命名为create_time, update_time, 不建议使用created_at, gmt_created, operate_at, optime, operate_time,  gmt_modified,  updated_at 等&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h1 id=&quot;Column设计&quot;&gt;&lt;a href=&quot;#Column设计&quot; class=&quot;headerlink&quot; title=&quot;Column设计&quot;&gt;&lt;/a&gt;Column设计&lt;/h1&gt;&lt;figure class=&quot;highlight pgsql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;42&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs pgsql&quot;&gt;&lt;span class=&quot;hljs-number&quot;&gt;1.&lt;/span&gt; [强制]建议能用数值类型的，就不用字符类型&lt;br&gt;&lt;br&gt;&lt;span class=&quot;hljs-number&quot;&gt;2.&lt;/span&gt; [强制]建议能用&lt;span class=&quot;hljs-type&quot;&gt;varchar&lt;/span&gt;(N) 就不用&lt;span class=&quot;hljs-type&quot;&gt;char&lt;/span&gt;(N),以利于节省存储空间&lt;br&gt;&lt;br&gt;&lt;span class=&quot;hljs-number&quot;&gt;3.&lt;/span&gt; 建议能用&lt;span class=&quot;hljs-type&quot;&gt;varchar&lt;/span&gt;(N) 就不用&lt;span class=&quot;hljs-type&quot;&gt;text&lt;/span&gt;,&lt;span class=&quot;hljs-type&quot;&gt;varchar&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&quot;hljs-number&quot;&gt;4.&lt;/span&gt; 建议使用&lt;span class=&quot;hljs-keyword&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;NULL&lt;/span&gt;,而不用&lt;span class=&quot;hljs-keyword&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;hljs-string&quot;&gt;&amp;#x27;&amp;#x27;&lt;/span&gt;,以节省存储空间, 原理请见: 老何的&lt;span class=&quot;hljs-number&quot;&gt;1001&lt;/span&gt;夜&lt;br&gt;&lt;br&gt;&lt;span class=&quot;hljs-number&quot;&gt;5.&lt;/span&gt; 建议使用ip4,ip4r,ip6,ip6r,ipaddress,iprange 来存储IP,IP范围；使用&lt;span class=&quot;hljs-type&quot;&gt;macaddr&lt;/span&gt;来存储MAC (Media &lt;span class=&quot;hljs-keyword&quot;&gt;Access&lt;/span&gt; Control) address&lt;br&gt;&lt;br&gt;&lt;span class=&quot;hljs-number&quot;&gt;6.&lt;/span&gt; [强制]建议使用&lt;span class=&quot;hljs-type&quot;&gt;timestamp&lt;/span&gt; &lt;span class=&quot;hljs-type&quot;&gt;with time zone&lt;/span&gt;(&lt;span class=&quot;hljs-type&quot;&gt;timestamptz&lt;/span&gt;),而不用&lt;span class=&quot;hljs-type&quot;&gt;timestamp&lt;/span&gt; &lt;span class=&quot;hljs-type&quot;&gt;without time zone&lt;/span&gt;,避免时间函数在对于不同时区的时间点返回值不同,也为业务国际化扫清障碍&lt;br&gt;&lt;br&gt;&lt;span class=&quot;hljs-number&quot;&gt;7.&lt;/span&gt; [强制]建议使用&lt;span class=&quot;hljs-type&quot;&gt;NUMERIC&lt;/span&gt;(&lt;span class=&quot;hljs-type&quot;&gt;precision&lt;/span&gt;, scale)来存储货币金额和其它要求精确计算的数值, 而不建议使用&lt;span class=&quot;hljs-type&quot;&gt;real&lt;/span&gt;, &lt;span class=&quot;hljs-type&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;hljs-type&quot;&gt;precision&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&quot;hljs-number&quot;&gt;8.&lt;/span&gt; 建议使用hstore 来存储非结构化,key-&lt;span class=&quot;hljs-keyword&quot;&gt;value&lt;/span&gt; 键值型,对数不定的数据&lt;br&gt;&lt;br&gt;&lt;span class=&quot;hljs-number&quot;&gt;9.&lt;/span&gt; 建议使用ltree 来存储 Top.中国.北京.海淀区.苏州街 这种 树状层次结构 数据&lt;br&gt;&lt;br&gt;&lt;span class=&quot;hljs-number&quot;&gt;10.&lt;/span&gt; 建议使用&lt;span class=&quot;hljs-type&quot;&gt;jsonb&lt;/span&gt;(比&lt;span class=&quot;hljs-type&quot;&gt;json&lt;/span&gt;更有优势)来存储&lt;span class=&quot;hljs-type&quot;&gt;JSON&lt;/span&gt; (JavaScript &lt;span class=&quot;hljs-keyword&quot;&gt;Object&lt;/span&gt; Notation) data&lt;br&gt;&lt;br&gt;&lt;span class=&quot;hljs-number&quot;&gt;11.&lt;/span&gt; 建议使用Geometric &lt;span class=&quot;hljs-keyword&quot;&gt;Types&lt;/span&gt; 结合PostGIS来实现地理信息数据存储及操作&lt;br&gt;&lt;br&gt;&lt;span class=&quot;hljs-number&quot;&gt;12.&lt;/span&gt; 建议使用如下range类型代替字符串或多列来实现范围的存储&lt;br&gt;&lt;span class=&quot;hljs-type&quot;&gt;int4range&lt;/span&gt; — Range &lt;span class=&quot;hljs-keyword&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;hljs-type&quot;&gt;integer&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&quot;hljs-type&quot;&gt;int8range&lt;/span&gt; — Range &lt;span class=&quot;hljs-keyword&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;hljs-type&quot;&gt;bigint&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&quot;hljs-type&quot;&gt;numrange&lt;/span&gt; — Range &lt;span class=&quot;hljs-keyword&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;hljs-type&quot;&gt;numeric&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&quot;hljs-type&quot;&gt;tsrange&lt;/span&gt; — Range &lt;span class=&quot;hljs-keyword&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;hljs-type&quot;&gt;timestamp&lt;/span&gt; &lt;span class=&quot;hljs-type&quot;&gt;without time zone&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&quot;hljs-type&quot;&gt;tstzrange&lt;/span&gt; — Range &lt;span class=&quot;hljs-keyword&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;hljs-type&quot;&gt;timestamp&lt;/span&gt; &lt;span class=&quot;hljs-type&quot;&gt;with time zone&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&quot;hljs-type&quot;&gt;daterange&lt;/span&gt; — Range &lt;span class=&quot;hljs-keyword&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;hljs-type&quot;&gt;date&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&quot;hljs-number&quot;&gt;13.&lt;/span&gt; 建议在给 &lt;span class=&quot;hljs-type&quot;&gt;date&lt;/span&gt;, &lt;span class=&quot;hljs-type&quot;&gt;timestamp&lt;/span&gt; &lt;span class=&quot;hljs-type&quot;&gt;with time zone&lt;/span&gt; (&lt;span class=&quot;hljs-type&quot;&gt;timestamptz&lt;/span&gt;)字段设置&lt;span class=&quot;hljs-keyword&quot;&gt;default&lt;/span&gt;值时,使用now(), 而不使用timeofday(), 避免因时区不通导致的字段值错误&lt;br&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;select&lt;/span&gt; now()::&lt;span class=&quot;hljs-type&quot;&gt;timestamp&lt;/span&gt;, now()::&lt;span class=&quot;hljs-type&quot;&gt;timestamptz&lt;/span&gt;, timeofday()::&lt;span class=&quot;hljs-type&quot;&gt;timestamp&lt;/span&gt;, timeofday()::&lt;span class=&quot;hljs-type&quot;&gt;timestamptz&lt;/span&gt;;&lt;br&gt;            now             |              now              |         timeofday          |           timeofday&lt;br&gt;&lt;span class=&quot;hljs-comment&quot;&gt;----------------------------+-------------------------------+----------------------------+-------------------------------&lt;/span&gt;&lt;br&gt; &lt;span class=&quot;hljs-number&quot;&gt;2017&lt;/span&gt;&lt;span class=&quot;hljs-number&quot;&gt;-09&lt;/span&gt;&lt;span class=&quot;hljs-number&quot;&gt;-16&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;18&lt;/span&gt;:&lt;span class=&quot;hljs-number&quot;&gt;01&lt;/span&gt;:&lt;span class=&quot;hljs-number&quot;&gt;50.179549&lt;/span&gt; | &lt;span class=&quot;hljs-number&quot;&gt;2017&lt;/span&gt;&lt;span class=&quot;hljs-number&quot;&gt;-09&lt;/span&gt;&lt;span class=&quot;hljs-number&quot;&gt;-16&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;18&lt;/span&gt;:&lt;span class=&quot;hljs-number&quot;&gt;01&lt;/span&gt;:&lt;span class=&quot;hljs-number&quot;&gt;50.179549&lt;/span&gt;+&lt;span class=&quot;hljs-number&quot;&gt;08&lt;/span&gt; | &lt;span class=&quot;hljs-number&quot;&gt;2017&lt;/span&gt;&lt;span class=&quot;hljs-number&quot;&gt;-09&lt;/span&gt;&lt;span class=&quot;hljs-number&quot;&gt;-16&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;18&lt;/span&gt;:&lt;span class=&quot;hljs-number&quot;&gt;01&lt;/span&gt;:&lt;span class=&quot;hljs-number&quot;&gt;50.179718&lt;/span&gt; | &lt;span class=&quot;hljs-number&quot;&gt;2017&lt;/span&gt;&lt;span class=&quot;hljs-number&quot;&gt;-09&lt;/span&gt;&lt;span class=&quot;hljs-number&quot;&gt;-17&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;08&lt;/span&gt;:&lt;span class=&quot;hljs-number&quot;&gt;01&lt;/span&gt;:&lt;span class=&quot;hljs-number&quot;&gt;50.179733&lt;/span&gt;+&lt;span class=&quot;hljs-number&quot;&gt;08&lt;/span&gt;&lt;br&gt;(&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;row&lt;/span&gt;)&lt;br&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h1 id=&quot;Constraints-设计&quot;&gt;&lt;a href=&quot;#Constraints-设计&quot; class=&quot;headerlink&quot; title=&quot;Constraints 设计&quot;&gt;&lt;/a&gt;Constraints 设计&lt;/h1&gt;&lt;figure class=&quot;highlight pgsql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs pgsql&quot;&gt;&lt;span class=&quot;hljs-number&quot;&gt;1.&lt;/span&gt; [强制]建议每个&lt;span class=&quot;hljs-keyword&quot;&gt;table&lt;/span&gt;都有主键;&lt;br&gt;&lt;br&gt;&lt;span class=&quot;hljs-number&quot;&gt;2.&lt;/span&gt; [强制]建议不要用有业务含义的名称作为主键,比如身份证或者国家名称,尽管其是&lt;span class=&quot;hljs-keyword&quot;&gt;unique&lt;/span&gt;的&lt;br&gt;&lt;br&gt;&lt;span class=&quot;hljs-number&quot;&gt;3.&lt;/span&gt; 建议主键的一步到位的写法:id &lt;span class=&quot;hljs-type&quot;&gt;serial&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;primary key&lt;/span&gt; 或id &lt;span class=&quot;hljs-type&quot;&gt;bigserial&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;primary key&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&quot;hljs-number&quot;&gt;4.&lt;/span&gt; 建议内容系统中size较大的&lt;span class=&quot;hljs-keyword&quot;&gt;table&lt;/span&gt;主键的等效写法如下,便于后续维护&lt;br&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;create&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;table&lt;/span&gt; test(id &lt;span class=&quot;hljs-type&quot;&gt;serial&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;null&lt;/span&gt; );&lt;br&gt;&lt;br&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;create&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;unique&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;CONCURRENTLY&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;ON&lt;/span&gt; test (id);&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h1 id=&quot;Index-设计&quot;&gt;&lt;a href=&quot;#Index-设计&quot; class=&quot;headerlink&quot; title=&quot;Index 设计&quot;&gt;&lt;/a&gt;Index 设计&lt;/h1&gt;&lt;figure class=&quot;highlight pgsql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs pgsql&quot;&gt;&lt;span class=&quot;hljs-number&quot;&gt;1.&lt;/span&gt; PostgreSQL 提供的&lt;span class=&quot;hljs-keyword&quot;&gt;index&lt;/span&gt;类型: B-tree, Hash, GiST (Generalized &lt;span class=&quot;hljs-keyword&quot;&gt;Search&lt;/span&gt; Tree), SP-GiST (space-partitioned GiST), GIN (Generalized Inverted &lt;span class=&quot;hljs-keyword&quot;&gt;Index&lt;/span&gt;), BRIN (Block Range &lt;span class=&quot;hljs-keyword&quot;&gt;Index&lt;/span&gt;), PostgreSQL &lt;span class=&quot;hljs-number&quot;&gt;10&lt;/span&gt; 之前版本不建议使用Hash &lt;span class=&quot;hljs-keyword&quot;&gt;Index&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&quot;hljs-number&quot;&gt;2.&lt;/span&gt; [强制]建议&lt;span class=&quot;hljs-keyword&quot;&gt;create&lt;/span&gt; 或 &lt;span class=&quot;hljs-keyword&quot;&gt;drop&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;index&lt;/span&gt; 时,加 &lt;span class=&quot;hljs-keyword&quot;&gt;CONCURRENTLY&lt;/span&gt;参数,这是个好习惯，达到与写入数据并发的效果&lt;br&gt;&lt;br&gt;&lt;span class=&quot;hljs-number&quot;&gt;3.&lt;/span&gt; 建议对于频繁&lt;span class=&quot;hljs-keyword&quot;&gt;update&lt;/span&gt;, &lt;span class=&quot;hljs-keyword&quot;&gt;delete&lt;/span&gt;的包含于&lt;span class=&quot;hljs-keyword&quot;&gt;index&lt;/span&gt; 定义中的&lt;span class=&quot;hljs-keyword&quot;&gt;column&lt;/span&gt;的&lt;span class=&quot;hljs-keyword&quot;&gt;table&lt;/span&gt;, 用&lt;span class=&quot;hljs-keyword&quot;&gt;create&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;CONCURRENTLY&lt;/span&gt; , &lt;span class=&quot;hljs-keyword&quot;&gt;drop&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;CONCURRENTLY&lt;/span&gt; 的方式进行维护其对应&lt;span class=&quot;hljs-keyword&quot;&gt;index&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&quot;hljs-number&quot;&gt;4.&lt;/span&gt; 建议用&lt;span class=&quot;hljs-keyword&quot;&gt;unique&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;index&lt;/span&gt; 代替&lt;span class=&quot;hljs-keyword&quot;&gt;unique&lt;/span&gt; constraints,便于后续维护&lt;br&gt;&lt;br&gt;&lt;span class=&quot;hljs-number&quot;&gt;5.&lt;/span&gt; 建议对&lt;span class=&quot;hljs-keyword&quot;&gt;where&lt;/span&gt; 中带多个字段&lt;span class=&quot;hljs-keyword&quot;&gt;and&lt;/span&gt;条件的高频 query，参考数据分布情况，建多个字段的联合&lt;span class=&quot;hljs-keyword&quot;&gt;index&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&quot;hljs-number&quot;&gt;6.&lt;/span&gt; 建议对固定条件的（一般有特定业务含义）且选择比好（数据占比低）的query，建带&lt;span class=&quot;hljs-keyword&quot;&gt;where&lt;/span&gt;的Partial Indexes&lt;br&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;select&lt;/span&gt; * &lt;span class=&quot;hljs-keyword&quot;&gt;from&lt;/span&gt; test &lt;span class=&quot;hljs-keyword&quot;&gt;where&lt;/span&gt; status=&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;and&lt;/span&gt; col=?; &lt;span class=&quot;hljs-comment&quot;&gt;-- 其中status=1为固定的条件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;create&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;on&lt;/span&gt; test (col) &lt;span class=&quot;hljs-keyword&quot;&gt;where&lt;/span&gt; status=&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;;&lt;br&gt;&lt;br&gt;&lt;span class=&quot;hljs-number&quot;&gt;7.&lt;/span&gt; 建议对经常使用表达式作为查询条件的query，可以使用表达式或函数索引加速query&lt;br&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;select&lt;/span&gt; * &lt;span class=&quot;hljs-keyword&quot;&gt;from&lt;/span&gt; test &lt;span class=&quot;hljs-keyword&quot;&gt;where&lt;/span&gt; exp(xxx);&lt;br&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;create&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;on&lt;/span&gt; test ( exp(xxx) );&lt;br&gt;&lt;br&gt;&lt;span class=&quot;hljs-number&quot;&gt;8.&lt;/span&gt; 建议不要建过多&lt;span class=&quot;hljs-keyword&quot;&gt;index&lt;/span&gt;，一般不要超过&lt;span class=&quot;hljs-number&quot;&gt;6&lt;/span&gt;个，核心&lt;span class=&quot;hljs-keyword&quot;&gt;table&lt;/span&gt;（产品，订单）可适当增加&lt;span class=&quot;hljs-keyword&quot;&gt;index&lt;/span&gt;个数&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h1 id=&quot;关于NULL&quot;&gt;&lt;a href=&quot;#关于NULL&quot; class=&quot;headerlink&quot; title=&quot;关于NULL&quot;&gt;&lt;/a&gt;关于NULL&lt;/h1&gt;&lt;figure class=&quot;highlight asciidoc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;50&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;51&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;52&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;53&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;54&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;55&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;56&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;57&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;58&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;59&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;60&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;61&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;62&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;63&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;64&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;65&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;66&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;67&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;68&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;69&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;70&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;71&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;72&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;73&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;74&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;75&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;76&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;77&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;78&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;79&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;80&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;81&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;82&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;83&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;84&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;85&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;86&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;87&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;88&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;89&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;90&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;91&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;92&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;93&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;94&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;95&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;96&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;97&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;98&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;99&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;100&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;101&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;102&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;103&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;104&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs asciidoc&quot;&gt;1. NULL 的判断：IS NULL ，IS NOT NULL&lt;br&gt;&lt;br&gt;2. 注意boolean 类型取值 true，false， NULL&lt;br&gt;&lt;br&gt;3. 小心NOT IN 集合中带有NULL元素&lt;br&gt;mydb=# SELECT * FROM (VALUES(1),(2)) v(a) ;&lt;br&gt;&lt;span class=&quot;hljs-code&quot;&gt; a&lt;/span&gt;&lt;br&gt;---&lt;br&gt;&lt;span class=&quot;hljs-code&quot;&gt; 1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-code&quot;&gt; 2&lt;/span&gt;&lt;br&gt;(2 rows)&lt;br&gt;&lt;br&gt;&lt;br&gt;mydb=# select 1 NOT IN (1, NULL);&lt;br&gt;&lt;span class=&quot;hljs-code&quot;&gt; ?column?&lt;/span&gt;&lt;br&gt;----------&lt;br&gt;&lt;span class=&quot;hljs-code&quot;&gt; f&lt;/span&gt;&lt;br&gt;(1 row)&lt;br&gt;&lt;br&gt;&lt;br&gt;mydb=# select 2 NOT IN (1, NULL);&lt;br&gt;&lt;span class=&quot;hljs-code&quot;&gt; ?column?&lt;/span&gt;&lt;br&gt;----------&lt;br&gt;&lt;br&gt;(1 row)&lt;br&gt;&lt;br&gt;mydb=# SELECT * FROM (VALUES(1),(2)) v(a) WHERE a NOT IN (1, NULL);&lt;br&gt;&lt;span class=&quot;hljs-code&quot;&gt; a&lt;/span&gt;&lt;br&gt;---&lt;br&gt;(0 rows)&lt;br&gt;&lt;br&gt;--可见，出现这种情况的根本原因在于SELECT只返回WHERE中判断条件结果为true的数据&lt;br&gt;&lt;br&gt;4. 建议对字符串型NULL值处理后，进行 || 操作&lt;br&gt;mydb=# select NULL||&lt;span class=&quot;hljs-emphasis&quot;&gt;&amp;#x27;PostgreSQL&amp;#x27;&lt;/span&gt;;&lt;br&gt;&lt;span class=&quot;hljs-code&quot;&gt; ?column?&lt;/span&gt;&lt;br&gt;----------&lt;br&gt;&lt;br&gt;(1 row)&lt;br&gt;&lt;br&gt;mydb=# select coalesce(NULL,&amp;#x27;&lt;span class=&quot;hljs-emphasis&quot;&gt;&amp;#x27;)||&amp;#x27;&lt;/span&gt;PostgreSQL&amp;#x27;;&lt;br&gt;&lt;span class=&quot;hljs-code&quot;&gt;  ?column?&lt;/span&gt;&lt;br&gt;------------&lt;br&gt;&lt;span class=&quot;hljs-code&quot;&gt; PostgreSQL&lt;/span&gt;&lt;br&gt;(1 row)&lt;br&gt;&lt;br&gt;5. 建议对hstore 类型进行处理后，进行 || 操作，避免被NULL吃掉&lt;br&gt;mydb=# select  NULL::hstore || (&lt;span class=&quot;hljs-emphasis&quot;&gt;&amp;#x27;key=&amp;gt;value&amp;#x27;&lt;/span&gt;) ;&lt;br&gt;&lt;span class=&quot;hljs-code&quot;&gt; ?column?&lt;/span&gt;&lt;br&gt;----------&lt;br&gt;&lt;br&gt;(1 row)&lt;br&gt;&lt;br&gt;mydb=# select  coalesce(NULL::hstore, hstore(array[]::varchar[])) || (&lt;span class=&quot;hljs-emphasis&quot;&gt;&amp;#x27;key=&amp;gt;value&amp;#x27;&lt;/span&gt;) ;&lt;br&gt;&lt;span class=&quot;hljs-code&quot;&gt;    ?column?&lt;/span&gt;&lt;br&gt;----------------&lt;br&gt;&lt;span class=&quot;hljs-code&quot;&gt; &amp;quot;key&amp;quot;=&amp;gt;&amp;quot;value&amp;quot;&lt;/span&gt;&lt;br&gt;(1 row)&lt;br&gt;&lt;br&gt;mydb=# select  coalesce(NULL::hstore,&amp;#x27;&lt;span class=&quot;hljs-emphasis&quot;&gt;&amp;#x27;::hstore) || (&amp;#x27;&lt;/span&gt;key=&amp;gt;value&amp;#x27;) ;&lt;br&gt;&lt;span class=&quot;hljs-code&quot;&gt;    ?column?&lt;/span&gt;&lt;br&gt;----------------&lt;br&gt;&lt;span class=&quot;hljs-code&quot;&gt; &amp;quot;key&amp;quot;=&amp;gt;&amp;quot;value&amp;quot;&lt;/span&gt;&lt;br&gt;(1 row)&lt;br&gt;&lt;br&gt;6. 建议使用count(1) 或count(&lt;span class=&quot;hljs-strong&quot;&gt;*) 来统计行数，而不建议使用count(col) 来统计行数，因为NULL值不会计入&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-strong&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-strong&quot;&gt;注意: count(多列列名)时，多列列名必须使用括号，例如count( (col1,col2,col3) ); 注意多列的count，即使所有列都为NULL，该行也被计数，所以效果与count(*&lt;/span&gt;) 一致&lt;br&gt;&lt;br&gt;7. count(distinct col) 计算某列的非NULL不重复数量，NULL不被计数&lt;br&gt;&lt;br&gt;注意: count(distinct (col1,col2,...) ) 计算多列的唯一值时，NULL会被计数，同时NULL与NULL会被认为是相同的&lt;br&gt;&lt;br&gt;8. NULL 的count与sum&lt;br&gt;select count(1), count(a), sum(a)  from (SELECT * FROM (VALUES (NULL), (2) ) v(a)) as foo where a is NULL;&lt;br&gt;&lt;span class=&quot;hljs-code&quot;&gt; count | count | sum&lt;/span&gt;&lt;br&gt;-------&lt;span class=&quot;hljs-code&quot;&gt;+-------+&lt;/span&gt;-----&lt;br&gt;&lt;span class=&quot;hljs-code&quot;&gt;     1 |     0 |&lt;/span&gt;&lt;br&gt;(1 row)&lt;br&gt;&lt;br&gt;9. 判断两个值是否相同（将NULL视为相同的值）&lt;br&gt;select null is distinct from null;&lt;br&gt;&lt;span class=&quot;hljs-code&quot;&gt; ?column?&lt;/span&gt;&lt;br&gt;----------&lt;br&gt;&lt;span class=&quot;hljs-code&quot;&gt; f&lt;/span&gt;&lt;br&gt;(1 row)&lt;br&gt;&lt;br&gt;&lt;span class=&quot;hljs-code&quot;&gt; select null is distinct from 1;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-code&quot;&gt; ?column?&lt;/span&gt;&lt;br&gt;----------&lt;br&gt;&lt;span class=&quot;hljs-code&quot;&gt; t&lt;/span&gt;&lt;br&gt;(1 row)&lt;br&gt;&lt;br&gt;select null is not  distinct from null;&lt;br&gt;&lt;span class=&quot;hljs-code&quot;&gt; ?column?&lt;/span&gt;&lt;br&gt;----------&lt;br&gt;&lt;span class=&quot;hljs-code&quot;&gt; t&lt;/span&gt;&lt;br&gt;(1 row)&lt;br&gt;&lt;br&gt;mydb=#  select null is not distinct from 1;&lt;br&gt;&lt;span class=&quot;hljs-code&quot;&gt; ?column?&lt;/span&gt;&lt;br&gt;----------&lt;br&gt;&lt;span class=&quot;hljs-code&quot;&gt; f&lt;/span&gt;&lt;br&gt;(1 row)&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-      <category term="开发指南" scheme="http://daydayup863.github.io/tags/%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PostgreSQL git commit 阅读记录</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/PostgreSQL_git_log/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/PostgreSQL_git_log/</id>
-    <published>2021-01-22T03:43:14.000Z</published>
-    <updated>2021-03-11T07:25:27.103Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;记录阅读PostgreSQL git 提交记录, 觉得好的记录一下.&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-      <category term="git" scheme="http://daydayup863.github.io/tags/git/"/>
-    
-      <category term="commit log" scheme="http://daydayup863.github.io/tags/commit-log/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PostGIS 操作geometry方法</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/gis/Postgis/Postgis%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/gis/Postgis/Postgis%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/</id>
-    <published>2020-12-24T07:42:57.000Z</published>
-    <updated>2021-03-05T08:30:47.555Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;记录Postgis常用方法.&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-      <category term="gis" scheme="http://daydayup863.github.io/categories/PostgreSQL/gis/"/>
-    
-      <category term="Postgis" scheme="http://daydayup863.github.io/categories/PostgreSQL/gis/Postgis/"/>
-    
-    
-      <category term="gis" scheme="http://daydayup863.github.io/tags/gis/"/>
-    
-      <category term="postgis" scheme="http://daydayup863.github.io/tags/postgis/"/>
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>python3 ldap3 NTLM验证用户</title>
-    <link href="http://daydayup863.github.io/python/python3_ldap%E9%AA%8C%E8%AF%81/"/>
-    <id>http://daydayup863.github.io/python/python3_ldap%E9%AA%8C%E8%AF%81/</id>
-    <published>2020-12-18T09:40:54.000Z</published>
-    <updated>2021-03-05T08:30:47.555Z</updated>
-    
-    <summary type="html">
-    
-      &lt;figure class=&quot;highlight routeros&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs routeros&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;from&lt;/span&gt; ldap3 import Server, Connection, NTLM, ALL&lt;br&gt;&lt;br&gt;server = Server(&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;xxx.xxx.xxx.xxx&amp;quot;&lt;/span&gt;, 389, &lt;span class=&quot;hljs-attribute&quot;&gt;use_ssl&lt;/span&gt;=&lt;span class=&quot;hljs-literal&quot;&gt;False&lt;/span&gt;, &lt;span class=&quot;hljs-attribute&quot;&gt;get_info&lt;/span&gt;=ALL)&lt;br&gt;&lt;span class=&quot;hljs-builtin-name&quot;&gt;print&lt;/span&gt;(server)&lt;br&gt;conn = Connection(server, &lt;span class=&quot;hljs-attribute&quot;&gt;user&lt;/span&gt;=&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;Domain\\username&amp;quot;&lt;/span&gt;, &lt;span class=&quot;hljs-attribute&quot;&gt;password&lt;/span&gt;=&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;password&amp;quot;&lt;/span&gt;, &lt;span class=&quot;hljs-attribute&quot;&gt;authentication&lt;/span&gt;=NTLM)&lt;br&gt;&lt;span class=&quot;hljs-builtin-name&quot;&gt;print&lt;/span&gt;(conn.bind())&lt;br&gt;&lt;span class=&quot;hljs-builtin-name&quot;&gt;print&lt;/span&gt;(conn.extend.standard.who_am_i())&lt;br&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-    
-    </summary>
-    
-    
-      <category term="python" scheme="http://daydayup863.github.io/categories/python/"/>
-    
-    
-      <category term="python3" scheme="http://daydayup863.github.io/tags/python3/"/>
-    
-      <category term="ldap" scheme="http://daydayup863.github.io/tags/ldap/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>获取PostgreSQL hash table value</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/get_partition_table_value/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/get_partition_table_value/</id>
-    <published>2020-09-07T11:23:12.000Z</published>
-    <updated>2021-03-05T08:30:47.555Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;简单的修改了postgresql-12.3/src/backend/partitioning/partbounds.c代码， 创建C函数获取PostgreSQL hash 分区表hash value&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-      <category term="hash key" scheme="http://daydayup863.github.io/tags/hash-key/"/>
-    
-      <category term="partition table" scheme="http://daydayup863.github.io/tags/partition-table/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PostgreSQL后端进程</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/PostgreSQL_backend_process/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/PostgreSQL_backend_process/</id>
-    <published>2020-08-27T09:32:48.000Z</published>
-    <updated>2021-03-05T08:30:47.555Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;整体架构图&quot;&gt;&lt;a href=&quot;#整体架构图&quot; class=&quot;headerlink&quot; title=&quot;整体架构图&quot;&gt;&lt;/a&gt;整体架构图&lt;/h1&gt;&lt;p&gt;&lt;img data-src=&quot;/images/A_example_of_the_process_architecture_in_PostgreSQL.png&quot; alt=&quot; An example of the process architecture in PostgreSQL &quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-      <category term="backend" scheme="http://daydayup863.github.io/tags/backend/"/>
-    
-      <category term="Architecture" scheme="http://daydayup863.github.io/tags/Architecture/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PostgreSQL vacuum</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/PostgreSQL_vacuum/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/PostgreSQL_vacuum/</id>
-    <published>2020-08-20T09:30:29.000Z</published>
-    <updated>2021-03-05T08:30:47.555Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;vacuum processing is a maintenance process that facilitates the persistent operation of PostgreSQL. Its two main tasks are removing dead tuples and the freezing transaction ids, both of which are briefly mentioned in Section 5.10.&lt;/p&gt;
-&lt;p&gt;To remove dead tuples, vacuum processing provides two modes, i.e. Concurrent VACUUM and Full VACUUM. Concurrent VACUUM, often simply called VACUUM, removes dead tuples for each page of the table file, and other transactions can read the table while this process is running. In contrast, Full VACUUM removes dead tuples and defragments live tuples the whole file, and other transactions cannot access tables while Full VACUUM is running.&lt;/p&gt;
-&lt;p&gt;Despite the fact that vacuum processing is essential for PostgreSQL, improving its functionality has been slow compared to other functions. For example, until version 8.0, this process had to be executed manually (with the psql utility or using the cron daemon). It was automated in 2005 when the autovacuum daemon was implemented.&lt;/p&gt;
-&lt;p&gt;Since vacuum processing involves scanning whole tables, it is a costly process. In version 8.4 (2009), the Visibility Map (VM) was introduced to improve the efficiency of removing dead tuples. In version 9.6 (2016), the freeze process was improved by enhancing the VM. &lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-      <category term="vacuum" scheme="http://daydayup863.github.io/tags/vacuum/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PostgreSQL 缓冲区管理</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/PostgreSQL_Buffer_Manager/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/PostgreSQL_Buffer_Manager/</id>
-    <published>2020-08-20T03:21:12.000Z</published>
-    <updated>2021-03-05T08:30:47.555Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;缓冲区管理器管理共享内存和持久性存储之间的数据传输，并且可能对DBMS的性能产生重大影响。 PostgreSQL缓冲区管理器非常高效。&lt;br&gt;在本章中，将介绍PostgreSQL缓冲区管理器。第一部分提供了概述，随后的部分描述了以下主题：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Buffer manager structure&lt;/li&gt;
-&lt;li&gt;Buffer manager locks&lt;/li&gt;
-&lt;li&gt;How the buffer manager works&lt;/li&gt;
-&lt;li&gt;Ring buffer&lt;/li&gt;
-&lt;li&gt;Flushing of dirty pages
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-      <category term="buffer" scheme="http://daydayup863.github.io/tags/buffer/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux 命令记录</title>
-    <link href="http://daydayup863.github.io/Linux/Linux_cmd_summary/"/>
-    <id>http://daydayup863.github.io/Linux/Linux_cmd_summary/</id>
-    <published>2020-08-19T03:15:42.000Z</published>
-    <updated>2021-03-15T04:00:02.610Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;记录一些工作中遇到的命令.&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Linux" scheme="http://daydayup863.github.io/categories/Linux/"/>
-    
-    
-      <category term="Linux" scheme="http://daydayup863.github.io/tags/Linux/"/>
-    
-      <category term="command" scheme="http://daydayup863.github.io/tags/command/"/>
     
   </entry>
   

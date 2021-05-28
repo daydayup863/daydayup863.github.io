@@ -16,10 +16,50 @@ password:
 
 <!-- more -->
 
+# 适用于PG的一个sysctl.conf配置
+```
+vim /etc/sysctl.conf
+
+vm.dirty_background_bytes = 0
+vm.dirty_background_ratio = 10
+vm.dirty_bytes = 0
+vm.dirty_expire_centisecs = 3000
+vm.dirty_ratio = 20
+vm.dirty_writeback_centisecs = 500
+
+net.ipv4.tcp_syncookies = 1 表示开启SYN Cookies。当出现SYN等待队列溢出时，启用cookies来处理，可防范少量SYN攻击，默认为0，表示关闭；
+net.ipv4.tcp_tw_reuse = 1    表示开启重用。允许将TIME-WAIT sockets重新用于新的TCP连接，默认为0，表示关闭；
+net.ipv4.tcp_tw_recycle = 1  表示开启TCP连接中TIME-WAIT sockets的快速回收，默认为0，表示关闭；
+net.ipv4.tcp_fin_timeout=30修改系統默认的 TIMEOUT 时间。
+
+如果以上配置调优后性能还不理想，可继续修改一下配置：
+
+vi /etc/sysctl.conf
+net.ipv4.tcp_keepalive_time = 1200
+#表示当keepalive起用的时候，TCP发送keepalive消息的频度。缺省是2小时，改为20分钟。
+net.ipv4.ip_local_port_range = 1024 65000
+#表示用于向外连接的端口范围。缺省情况下很小：32768到61000，改为1024到65000。
+net.ipv4.tcp_max_syn_backlog = 8192
+#表示SYN队列的长度，默认为1024，加大队列长度为8192，可以容纳更多等待连接的网络连接数。
+net.ipv4.tcp_max_tw_buckets = 5000
+#表示系统同时保持TIME_WAIT套接字的最大数量，如果超过这个数字，TIME_WAIT套接字将立刻被清除并打印警告信息。
+默认为180000，改为5000。对于Apache、Nginx等服务器，上几行的参数可以很好地减少TIME_WAIT套接字数量，此项参数可以控制TIME_WAIT套接字的最大数量，避免Squid服务器被大量的TIME_WAIT套接字拖死。
+
+```
+
 # python 文件服务器
 ```
 python2 -m SimpleHTTPServer 8080
 python3 -m http.server
+```
+
+# 查看链接详情
+```
+jintao@jintao-ThinkPad-L490:~/personal/code/postgresql-master$ netstat -n | awk '/^tcp/ {++y[$NF]} END {for(w in y) print w, y[w]}'
+CLOSE_WAIT 10
+ESTABLISHED 153
+TIME_WAIT 10
+
 ```
 
 
@@ -40,7 +80,7 @@ python3 -m http.server
 
 
 ####### postgresql
-[postgres@l-grpendb2.cc.cna ~]$ psql -Atc "select client_addr from pg_stat_activity where client_addr is not null" | sort|uniq -c| awk '{printf("%s %s ",$1,$2);cmd="host "$2; system(cmd)}'|awk '{printf("%10s %20s %s\n",$1,$2,$7)}'|sort -k 3
+[postgres@l-grpxxxx ~]$ psql -Atc "select client_addr from pg_stat_activity where client_addr is not null" | sort|uniq -c| awk '{printf("%s %s ",$1,$2);cmd="host "$2; system(cmd)}'|awk '{printf("%10s %20s %s\n",$1,$2,$7)}'|sort -k 3
          1         19288.101.77 l-callcenter14.h.cn6
          1         19286.236.29 l-host14.xxxx
          1         19290.4.23   l-host1.yyyy
@@ -106,5 +146,4 @@ CPU 3 enabled
 # ip a a local 192.168.0.25/32 brd + dev bond0 && arping -q -c 3 -U -I  bond0 192.168.0.25
 
 # ip a d local 192.168.0.25/32 brd + dev bond0
-
 ```
