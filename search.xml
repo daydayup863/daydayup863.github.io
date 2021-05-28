@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>PostgreSQL内存结构</title>
+    <url>/PostgreSQL/memory-architecture/PostgreSQL%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/</url>
+    <content><![CDATA[<p>在PostgreSQL内存结构中，主要分为本地缓冲区(Local Memory Area)和共享缓冲区(hared Memory Area)两部分, 本文主要介绍这两种缓冲区的功能。</p>
+<a id="more"></a>
+<h1 id="本地缓冲区"><a href="#本地缓冲区" class="headerlink" title="本地缓冲区"></a>本地缓冲区</h1><p>当连接建立时, postgres都会为每一个backend process分配Local Memory Area，每一块区域又分为三个子区域, 如下表所示:</p>
+<p>Each backend process allocates a local memory area for query processing; each area is divided into several sub-areas – whose sizes are either fixed or variable</p>
+<h1 id="共享缓冲区"><a href="#共享缓冲区" class="headerlink" title="共享缓冲区"></a>共享缓冲区</h1>]]></content>
+      <categories>
+        <category>PostgreSQL</category>
+        <category>memory architecture</category>
+      </categories>
+      <tags>
+        <tag>PostgreSQL</tag>
+        <tag>memory architecture</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>PostgreSQL双主逻辑复制</title>
     <url>/PostgreSQL/multi-master/logical-replication/%E5%8F%8C%E4%B8%BB%E9%80%BB%E8%BE%91%E5%A4%8D%E5%88%B6/</url>
     <content><![CDATA[<p>利用PostgreSQL逻辑复制和触发器实现PostgreSQL双主复制</p>
@@ -1269,6 +1286,29 @@ PostgreSQL10：新增 pg_sequence 系统表
       </tags>
   </entry>
   <entry>
+    <title>内核Softdog测试</title>
+    <url>/Linux/softdog/</url>
+    <content><![CDATA[<h1 id="Watchdog的功能"><a href="#Watchdog的功能" class="headerlink" title="Watchdog的功能"></a>Watchdog的功能</h1><pre><code>Linux内核watchdog于监视系统是否正在运行。由于存在不可恢复的软件错误，应该自动重新启动挂起的系统。
+
+看门狗模块特依赖所使用的硬件或芯片。个人计算机用户通常不需要看门狗，因为他们可以手动重置系统。但是，watchdog对于任务关键型系统和需要无需人工干预即可自行重启的系统很有用。
+</code></pre><p>例如，需要自动硬件重置功能的远程位置的服务器。</p>
+<a id="more"></a>
+<h1 id="Watchdog的实现"><a href="#Watchdog的实现" class="headerlink" title="Watchdog的实现"></a>Watchdog的实现</h1><pre><code>看门狗功能设置了一个计时器在预定时间后超时。然后看门狗软件定期喂狗(刷新硬件计时器)。如果停止喂狗，到达设定时间后，将会出现狗咬人(执行设备的硬件重置)。
+</code></pre><p>可以分为hardware watchdog 和 software watchdog。<br>    hardware watchdog 是主板芯片的功能。不同的芯片使用不同的模块，例如：Intel 主板使用 “iTCO_wdt”， HP 通常使用 “hpwdt”，IBM 使用 “vmwatchdog”，Xen VM 使用 “xen_wdt”。<br>    software watchdog 是Linux内核提供使用内核计时器实现的软件监视程序。</p>
+<h1 id="测试Linux自带watchdog"><a href="#测试Linux自带watchdog" class="headerlink" title="测试Linux自带watchdog"></a>测试Linux自带watchdog</h1><figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros">[root@server6 ~]# ls /dev/watchdog*              #查看watchdog设备文件<br>/dev<span class="hljs-built_in">/watchdog </span> /dev/watchdog0<br>[root@server6 ~]# lsmod |grep -i soft            #查看softdog是否加载<br>[root@server6 ~]# modinfo softdog                #查看softdog模块信息<br>filename:       /lib/modules/3.10.0-957.10.1.el7.x86_64/kernel/drivers/watchdog/softdog.ko.xz<br>alias:          char-major-10-130<br>license:        GPL<br>description:    Software<span class="hljs-built_in"> Watchdog </span>Device Driver<br>author:         Alan Cox<br>retpoline:      Y<br>rhelversion:    7.6<br>srcversion:     250C077ED39E75BF25AD8D1<br>depends:<br>intree:         Y<br>vermagic:       3.10.0-957.10.1.el7.x86_64 SMP mod_unload modversions<br>signer:         CentOS Linux kernel signing key<br>sig_key:        17:EA:5F:B9:16:4B:C2:26:55:5C:00:43:FA:D4:E5:86:CC:E8:A2:05<br>sig_hashalgo:   sha256<br>parm:           soft_margin:Watchdog soft_margin <span class="hljs-keyword">in</span> seconds. (0 &lt; soft_margin &lt; 65536, <span class="hljs-attribute">default</span>=60) (uint)<br>parm:           nowayout:Watchdog cannot be stopped once started (<span class="hljs-attribute">default</span>=0) (bool)<br>parm:           soft_noboot:Softdog action, <span class="hljs-builtin-name">set</span> <span class="hljs-keyword">to</span> 1 <span class="hljs-keyword">to</span> ignore reboots, 0 <span class="hljs-keyword">to</span> reboot (<span class="hljs-attribute">default</span>=0) (int)<br>parm:           soft_panic:Softdog action, <span class="hljs-builtin-name">set</span> <span class="hljs-keyword">to</span> 1 <span class="hljs-keyword">to</span> panic, 0 <span class="hljs-keyword">to</span> reboot (<span class="hljs-attribute">default</span>=0) (int)<br><br>[root@server6 ~]# modprobe softdog               #加载softdog 可以设置 soft_margin soft_noboot   soft_panic   nowayout等参数<br>[root@server6 ~]# ls /dev/watchdog*              #查看watchdog设备文件<br>/dev<span class="hljs-built_in">/watchdog </span> /dev/watchdog0  /dev/watchdog1<br>[root@server6 ~]# wdctl /dev/watchdog1           #查看softdog设备文件信息<br>Device:        /dev/watchdog1<br>Identity:      Software<span class="hljs-built_in"> Watchdog </span>[version 0]<br>Timeout:       60 seconds<br>Pre-timeout:    0 seconds<br>FLAG           DESCRIPTION               STATUS BOOT-STATUS<br>KEEPALIVEPING  Keep alive<span class="hljs-built_in"> ping </span>reply          1           0<br>MAGICCLOSE     Supports magic close char      0           0<br>SETTIMEOUT     <span class="hljs-builtin-name">Set</span> timeout (<span class="hljs-keyword">in</span> seconds)       0           0<br>[root@server6 ~]# ehco a &gt;/dev<span class="hljs-built_in">/watchdog </span>         #追加除V以外任意字符到softdog  60秒后系统将重启<br>watchdog   watchdog0  watchdog1<br>[root@server6 ~]# echo V &gt;/dev/watchdog1         #取消测试<br></code></pre></td></tr></table></figure>
+<h1 id="警告"><a href="#警告" class="headerlink" title="警告"></a>警告</h1><figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">错误的watchdog配置可能导致以下情形<br>    无限重启<br>    硬重置导致文件损坏<br>    不可预测的重启<br>线上服务器慎用。<br></code></pre></td></tr></table></figure>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><figure class="highlight awk"><table><tr><td class="code"><pre><code class="hljs awk">https:<span class="hljs-regexp">//</span>linuxhint.com<span class="hljs-regexp">/linux-kernel-watchdog-explained/</span><br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>softdog</tag>
+        <tag>watchdog</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>利用Github分支备份Hexo博客源文件</title>
     <url>/hexo/%E5%88%A9%E7%94%A8Github%E5%88%86%E6%94%AF%E5%A4%87%E4%BB%BDHexo%E5%8D%9A%E5%AE%A2%E6%BA%90%E6%96%87%E4%BB%B6/</url>
     <content><![CDATA[<h1 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h1><p>Hexo 部署博客很方便，我的这个博客也是用 Hexo 部署在 GitHub Pages 上的，有得人可能在多台电脑上写博客，这个时候需要把博客<br>的源文件备份在一个地方，这样只需把博客源文件复制下来就可以在另一个地方写博客并部署到 GitHub Pages上了.</p>
@@ -1296,29 +1336,6 @@ PostgreSQL10：新增 pg_sequence 系统表
       <tags>
         <tag>hexo</tag>
         <tag>github</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>内核Softdog测试</title>
-    <url>/Linux/softdog/</url>
-    <content><![CDATA[<h1 id="Watchdog的功能"><a href="#Watchdog的功能" class="headerlink" title="Watchdog的功能"></a>Watchdog的功能</h1><pre><code>Linux内核watchdog于监视系统是否正在运行。由于存在不可恢复的软件错误，应该自动重新启动挂起的系统。
-
-看门狗模块特依赖所使用的硬件或芯片。个人计算机用户通常不需要看门狗，因为他们可以手动重置系统。但是，watchdog对于任务关键型系统和需要无需人工干预即可自行重启的系统很有用。
-</code></pre><p>例如，需要自动硬件重置功能的远程位置的服务器。</p>
-<a id="more"></a>
-<h1 id="Watchdog的实现"><a href="#Watchdog的实现" class="headerlink" title="Watchdog的实现"></a>Watchdog的实现</h1><pre><code>看门狗功能设置了一个计时器在预定时间后超时。然后看门狗软件定期喂狗(刷新硬件计时器)。如果停止喂狗，到达设定时间后，将会出现狗咬人(执行设备的硬件重置)。
-</code></pre><p>可以分为hardware watchdog 和 software watchdog。<br>    hardware watchdog 是主板芯片的功能。不同的芯片使用不同的模块，例如：Intel 主板使用 “iTCO_wdt”， HP 通常使用 “hpwdt”，IBM 使用 “vmwatchdog”，Xen VM 使用 “xen_wdt”。<br>    software watchdog 是Linux内核提供使用内核计时器实现的软件监视程序。</p>
-<h1 id="测试Linux自带watchdog"><a href="#测试Linux自带watchdog" class="headerlink" title="测试Linux自带watchdog"></a>测试Linux自带watchdog</h1><figure class="highlight routeros"><table><tr><td class="code"><pre><code class="hljs routeros">[root@server6 ~]# ls /dev/watchdog*              #查看watchdog设备文件<br>/dev<span class="hljs-built_in">/watchdog </span> /dev/watchdog0<br>[root@server6 ~]# lsmod |grep -i soft            #查看softdog是否加载<br>[root@server6 ~]# modinfo softdog                #查看softdog模块信息<br>filename:       /lib/modules/3.10.0-957.10.1.el7.x86_64/kernel/drivers/watchdog/softdog.ko.xz<br>alias:          char-major-10-130<br>license:        GPL<br>description:    Software<span class="hljs-built_in"> Watchdog </span>Device Driver<br>author:         Alan Cox<br>retpoline:      Y<br>rhelversion:    7.6<br>srcversion:     250C077ED39E75BF25AD8D1<br>depends:<br>intree:         Y<br>vermagic:       3.10.0-957.10.1.el7.x86_64 SMP mod_unload modversions<br>signer:         CentOS Linux kernel signing key<br>sig_key:        17:EA:5F:B9:16:4B:C2:26:55:5C:00:43:FA:D4:E5:86:CC:E8:A2:05<br>sig_hashalgo:   sha256<br>parm:           soft_margin:Watchdog soft_margin <span class="hljs-keyword">in</span> seconds. (0 &lt; soft_margin &lt; 65536, <span class="hljs-attribute">default</span>=60) (uint)<br>parm:           nowayout:Watchdog cannot be stopped once started (<span class="hljs-attribute">default</span>=0) (bool)<br>parm:           soft_noboot:Softdog action, <span class="hljs-builtin-name">set</span> <span class="hljs-keyword">to</span> 1 <span class="hljs-keyword">to</span> ignore reboots, 0 <span class="hljs-keyword">to</span> reboot (<span class="hljs-attribute">default</span>=0) (int)<br>parm:           soft_panic:Softdog action, <span class="hljs-builtin-name">set</span> <span class="hljs-keyword">to</span> 1 <span class="hljs-keyword">to</span> panic, 0 <span class="hljs-keyword">to</span> reboot (<span class="hljs-attribute">default</span>=0) (int)<br><br>[root@server6 ~]# modprobe softdog               #加载softdog 可以设置 soft_margin soft_noboot   soft_panic   nowayout等参数<br>[root@server6 ~]# ls /dev/watchdog*              #查看watchdog设备文件<br>/dev<span class="hljs-built_in">/watchdog </span> /dev/watchdog0  /dev/watchdog1<br>[root@server6 ~]# wdctl /dev/watchdog1           #查看softdog设备文件信息<br>Device:        /dev/watchdog1<br>Identity:      Software<span class="hljs-built_in"> Watchdog </span>[version 0]<br>Timeout:       60 seconds<br>Pre-timeout:    0 seconds<br>FLAG           DESCRIPTION               STATUS BOOT-STATUS<br>KEEPALIVEPING  Keep alive<span class="hljs-built_in"> ping </span>reply          1           0<br>MAGICCLOSE     Supports magic close char      0           0<br>SETTIMEOUT     <span class="hljs-builtin-name">Set</span> timeout (<span class="hljs-keyword">in</span> seconds)       0           0<br>[root@server6 ~]# ehco a &gt;/dev<span class="hljs-built_in">/watchdog </span>         #追加除V以外任意字符到softdog  60秒后系统将重启<br>watchdog   watchdog0  watchdog1<br>[root@server6 ~]# echo V &gt;/dev/watchdog1         #取消测试<br></code></pre></td></tr></table></figure>
-<h1 id="警告"><a href="#警告" class="headerlink" title="警告"></a>警告</h1><figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">错误的watchdog配置可能导致以下情形<br>    无限重启<br>    硬重置导致文件损坏<br>    不可预测的重启<br>线上服务器慎用。<br></code></pre></td></tr></table></figure>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><figure class="highlight awk"><table><tr><td class="code"><pre><code class="hljs awk">https:<span class="hljs-regexp">//</span>linuxhint.com<span class="hljs-regexp">/linux-kernel-watchdog-explained/</span><br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-        <tag>softdog</tag>
-        <tag>watchdog</tag>
       </tags>
   </entry>
   <entry>
@@ -1513,17 +1530,6 @@ PostgreSQL10：新增 pg_sequence 系统表
       </tags>
   </entry>
   <entry>
-    <title>PostgreSQL HA patroni 测试案例</title>
-    <url>/uncategorized/PostgreSQL_patroni/</url>
-    <content><![CDATA[<p>主要针对patroni 由1.6.5-2 升级至2.0.1 的版本</p>
-<h1 id="测试环境"><a href="#测试环境" class="headerlink" title="测试环境"></a>测试环境</h1><pre><code>zookeeper + CentOS 7 + pg11
-</code></pre><h1 id="Switchover-计划内维护"><a href="#Switchover-计划内维护" class="headerlink" title="Switchover (计划内维护)"></a>Switchover (计划内维护)</h1><h2 id="主从切换"><a href="#主从切换" class="headerlink" title="主从切换"></a>主从切换</h2><pre><code>        case 1. 期望原主库降为新从库的场景
-        case 2. 期望原主库停掉不做后续处理场景
-</code></pre><h2 id="DB集群切换下线1个HA管理的从节点"><a href="#DB集群切换下线1个HA管理的从节点" class="headerlink" title="DB集群切换下线1个HA管理的从节点"></a>DB集群切换下线1个HA管理的从节点</h2><h2 id="DB集群剔除1个HA管理的从节点"><a href="#DB集群剔除1个HA管理的从节点" class="headerlink" title="DB集群剔除1个HA管理的从节点"></a>DB集群剔除1个HA管理的从节点</h2><h2 id="新加从节点"><a href="#新加从节点" class="headerlink" title="新加从节点"></a>新加从节点</h2><pre><code>        case 1. DB集群新加从节点, 期望不需要加入HA管理的场景
-        case 2. DB集群新加从节点, 期望需要加入HA管理的场景
-</code></pre><h1 id="failover-故障切换"><a href="#failover-故障切换" class="headerlink" title="failover (故障切换)"></a>failover (故障切换)</h1><h2 id="Master"><a href="#Master" class="headerlink" title="Master"></a>Master</h2><h3 id="主库DB实例异常kill-导致主库down"><a href="#主库DB实例异常kill-导致主库down" class="headerlink" title="主库DB实例异常kill, 导致主库down"></a>主库DB实例异常kill, 导致主库down</h3><h3 id="主库DB实例通过pg-ctl-停掉-导致主库down"><a href="#主库DB实例通过pg-ctl-停掉-导致主库down" class="headerlink" title="主库DB实例通过pg_ctl 停掉, 导致主库down"></a>主库DB实例通过pg_ctl 停掉, 导致主库down</h3><h3 id="主库DB实例-patroni-down-kill"><a href="#主库DB实例-patroni-down-kill" class="headerlink" title="主库DB实例 patroni down (kill)"></a>主库DB实例 patroni down (kill)</h3><h3 id="主库DB实例-patroni-down-kill-9"><a href="#主库DB实例-patroni-down-kill-9" class="headerlink" title="主库DB实例 patroni down (kill -9)"></a>主库DB实例 patroni down (kill -9)</h3><h3 id="主库DB实例所在DB-Server-down"><a href="#主库DB实例所在DB-Server-down" class="headerlink" title="主库DB实例所在DB Server  down"></a>主库DB实例所在DB Server  down</h3><h3 id="主库性能抖动的影响"><a href="#主库性能抖动的影响" class="headerlink" title="主库性能抖动的影响"></a>主库性能抖动的影响</h3><h3 id="主库网络抖动的影响"><a href="#主库网络抖动的影响" class="headerlink" title="主库网络抖动的影响"></a>主库网络抖动的影响</h3><h3 id="主从复制断掉影响"><a href="#主从复制断掉影响" class="headerlink" title="主从复制断掉影响"></a>主从复制断掉影响</h3><h3 id="base目录被删除"><a href="#base目录被删除" class="headerlink" title="base目录被删除"></a>base目录被删除</h3><h2 id="Slave"><a href="#Slave" class="headerlink" title="Slave"></a>Slave</h2><h3 id="从库DB实例异常kill-导致从库down"><a href="#从库DB实例异常kill-导致从库down" class="headerlink" title="从库DB实例异常kill, 导致从库down"></a>从库DB实例异常kill, 导致从库down</h3><h3 id="从库DB实例通过pg-ctl-停掉-导致从库down"><a href="#从库DB实例通过pg-ctl-停掉-导致从库down" class="headerlink" title="从库DB实例通过pg_ctl 停掉, 导致从库down"></a>从库DB实例通过pg_ctl 停掉, 导致从库down</h3><h3 id="从库DB实例-patroni-down-kill"><a href="#从库DB实例-patroni-down-kill" class="headerlink" title="从库DB实例 patroni down (kill )"></a>从库DB实例 patroni down (kill )</h3><h3 id="从库DB实例-patroni-down-kill-9"><a href="#从库DB实例-patroni-down-kill-9" class="headerlink" title="从库DB实例 patroni down (kill -9)"></a>从库DB实例 patroni down (kill -9)</h3><h3 id="从库DB实例所在DB-Server-down"><a href="#从库DB实例所在DB-Server-down" class="headerlink" title="从库DB实例所在DB Server  down"></a>从库DB实例所在DB Server  down</h3><h3 id="从库性能抖动的影响"><a href="#从库性能抖动的影响" class="headerlink" title="从库性能抖动的影响"></a>从库性能抖动的影响</h3><h3 id="从库网络抖动的影响"><a href="#从库网络抖动的影响" class="headerlink" title="从库网络抖动的影响"></a>从库网络抖动的影响</h3><h1 id="zk故障"><a href="#zk故障" class="headerlink" title="zk故障"></a>zk故障</h1><h2 id="zk仅到DB集群主库网络不通-zk至DB集群至少有个1个从库都是通的"><a href="#zk仅到DB集群主库网络不通-zk至DB集群至少有个1个从库都是通的" class="headerlink" title="zk仅到DB集群主库网络不通, zk至DB集群至少有个1个从库都是通的"></a>zk仅到DB集群主库网络不通, zk至DB集群至少有个1个从库都是通的</h2><h2 id="zk到DB集群的所有从库网络都不通-zk至DB集群主库是通的"><a href="#zk到DB集群的所有从库网络都不通-zk至DB集群主库是通的" class="headerlink" title="zk到DB集群的所有从库网络都不通, zk至DB集群主库是通的"></a>zk到DB集群的所有从库网络都不通, zk至DB集群主库是通的</h2><h2 id="zk到DB集群的所有节点网络都几乎同时不通-包括主从库"><a href="#zk到DB集群的所有节点网络都几乎同时不通-包括主从库" class="headerlink" title="zk到DB集群的所有节点网络都几乎同时不通,包括主从库"></a>zk到DB集群的所有节点网络都几乎同时不通,包括主从库</h2><h3 id="几乎同时不通-又几乎同时通"><a href="#几乎同时不通-又几乎同时通" class="headerlink" title="几乎同时不通, 又几乎同时通"></a>几乎同时不通, 又几乎同时通</h3><h3 id="几乎同时不通-主库先通-从库后通"><a href="#几乎同时不通-主库先通-从库后通" class="headerlink" title="几乎同时不通, 主库先通, 从库后通"></a>几乎同时不通, 主库先通, 从库后通</h3><h3 id="几乎同时不通-从库先通-过1个ttl-主库再通"><a href="#几乎同时不通-从库先通-过1个ttl-主库再通" class="headerlink" title="几乎同时不通, 从库先通, 过1个ttl, 主库再通"></a>几乎同时不通, 从库先通, 过1个ttl, 主库再通</h3><h3 id="几乎同时不通-从库先通-但不到1个ttl-主库就通了"><a href="#几乎同时不通-从库先通-但不到1个ttl-主库就通了" class="headerlink" title="几乎同时不通, 从库先通, 但不到1个ttl, 主库就通了"></a>几乎同时不通, 从库先通, 但不到1个ttl, 主库就通了</h3><h2 id="zk服务down掉-zk到DB集群的所有节点网络正常-但是都无法正常访问zk"><a href="#zk服务down掉-zk到DB集群的所有节点网络正常-但是都无法正常访问zk" class="headerlink" title="zk服务down掉, zk到DB集群的所有节点网络正常, 但是都无法正常访问zk"></a>zk服务down掉, zk到DB集群的所有节点网络正常, 但是都无法正常访问zk</h2>]]></content>
-  </entry>
-  <entry>
     <title>Hello World</title>
     <url>/uncategorized/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
@@ -1535,7 +1541,41 @@ PostgreSQL10：新增 pg_sequence 系统表
 <p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">左对齐标题</th>
+<th style="text-align:right">右对齐标题</th>
+<th style="text-align:center">居中对齐标题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">短文本</td>
+<td style="text-align:right">中等文本</td>
+<td style="text-align:center">稍微长一点的文本</td>
+</tr>
+<tr>
+<td style="text-align:left">稍微长一点的文本</td>
+<td style="text-align:right">短文本</td>
+<td style="text-align:center">中等文本</td>
+</tr>
+</tbody>
+</table>
+</div>
 ]]></content>
+  </entry>
+  <entry>
+    <title>PostgreSQL HA patroni 测试案例</title>
+    <url>/uncategorized/PostgreSQL_patroni/</url>
+    <content><![CDATA[<p>主要针对patroni 由1.6.5-2 升级至2.0.1 的版本</p>
+<h1 id="测试环境"><a href="#测试环境" class="headerlink" title="测试环境"></a>测试环境</h1><pre><code>zookeeper + CentOS 7 + pg11
+</code></pre><h1 id="Switchover-计划内维护"><a href="#Switchover-计划内维护" class="headerlink" title="Switchover (计划内维护)"></a>Switchover (计划内维护)</h1><h2 id="主从切换"><a href="#主从切换" class="headerlink" title="主从切换"></a>主从切换</h2><pre><code>        case 1. 期望原主库降为新从库的场景
+        case 2. 期望原主库停掉不做后续处理场景
+</code></pre><h2 id="DB集群切换下线1个HA管理的从节点"><a href="#DB集群切换下线1个HA管理的从节点" class="headerlink" title="DB集群切换下线1个HA管理的从节点"></a>DB集群切换下线1个HA管理的从节点</h2><h2 id="DB集群剔除1个HA管理的从节点"><a href="#DB集群剔除1个HA管理的从节点" class="headerlink" title="DB集群剔除1个HA管理的从节点"></a>DB集群剔除1个HA管理的从节点</h2><h2 id="新加从节点"><a href="#新加从节点" class="headerlink" title="新加从节点"></a>新加从节点</h2><pre><code>        case 1. DB集群新加从节点, 期望不需要加入HA管理的场景
+        case 2. DB集群新加从节点, 期望需要加入HA管理的场景
+</code></pre><h1 id="failover-故障切换"><a href="#failover-故障切换" class="headerlink" title="failover (故障切换)"></a>failover (故障切换)</h1><h2 id="Master"><a href="#Master" class="headerlink" title="Master"></a>Master</h2><h3 id="主库DB实例异常kill-导致主库down"><a href="#主库DB实例异常kill-导致主库down" class="headerlink" title="主库DB实例异常kill, 导致主库down"></a>主库DB实例异常kill, 导致主库down</h3><h3 id="主库DB实例通过pg-ctl-停掉-导致主库down"><a href="#主库DB实例通过pg-ctl-停掉-导致主库down" class="headerlink" title="主库DB实例通过pg_ctl 停掉, 导致主库down"></a>主库DB实例通过pg_ctl 停掉, 导致主库down</h3><h3 id="主库DB实例-patroni-down-kill"><a href="#主库DB实例-patroni-down-kill" class="headerlink" title="主库DB实例 patroni down (kill)"></a>主库DB实例 patroni down (kill)</h3><h3 id="主库DB实例-patroni-down-kill-9"><a href="#主库DB实例-patroni-down-kill-9" class="headerlink" title="主库DB实例 patroni down (kill -9)"></a>主库DB实例 patroni down (kill -9)</h3><h3 id="主库DB实例所在DB-Server-down"><a href="#主库DB实例所在DB-Server-down" class="headerlink" title="主库DB实例所在DB Server  down"></a>主库DB实例所在DB Server  down</h3><h3 id="主库性能抖动的影响"><a href="#主库性能抖动的影响" class="headerlink" title="主库性能抖动的影响"></a>主库性能抖动的影响</h3><h3 id="主库网络抖动的影响"><a href="#主库网络抖动的影响" class="headerlink" title="主库网络抖动的影响"></a>主库网络抖动的影响</h3><h3 id="主从复制断掉影响"><a href="#主从复制断掉影响" class="headerlink" title="主从复制断掉影响"></a>主从复制断掉影响</h3><h3 id="base目录被删除"><a href="#base目录被删除" class="headerlink" title="base目录被删除"></a>base目录被删除</h3><h2 id="Slave"><a href="#Slave" class="headerlink" title="Slave"></a>Slave</h2><h3 id="从库DB实例异常kill-导致从库down"><a href="#从库DB实例异常kill-导致从库down" class="headerlink" title="从库DB实例异常kill, 导致从库down"></a>从库DB实例异常kill, 导致从库down</h3><h3 id="从库DB实例通过pg-ctl-停掉-导致从库down"><a href="#从库DB实例通过pg-ctl-停掉-导致从库down" class="headerlink" title="从库DB实例通过pg_ctl 停掉, 导致从库down"></a>从库DB实例通过pg_ctl 停掉, 导致从库down</h3><h3 id="从库DB实例-patroni-down-kill"><a href="#从库DB实例-patroni-down-kill" class="headerlink" title="从库DB实例 patroni down (kill )"></a>从库DB实例 patroni down (kill )</h3><h3 id="从库DB实例-patroni-down-kill-9"><a href="#从库DB实例-patroni-down-kill-9" class="headerlink" title="从库DB实例 patroni down (kill -9)"></a>从库DB实例 patroni down (kill -9)</h3><h3 id="从库DB实例所在DB-Server-down"><a href="#从库DB实例所在DB-Server-down" class="headerlink" title="从库DB实例所在DB Server  down"></a>从库DB实例所在DB Server  down</h3><h3 id="从库性能抖动的影响"><a href="#从库性能抖动的影响" class="headerlink" title="从库性能抖动的影响"></a>从库性能抖动的影响</h3><h3 id="从库网络抖动的影响"><a href="#从库网络抖动的影响" class="headerlink" title="从库网络抖动的影响"></a>从库网络抖动的影响</h3><h1 id="zk故障"><a href="#zk故障" class="headerlink" title="zk故障"></a>zk故障</h1><h2 id="zk仅到DB集群主库网络不通-zk至DB集群至少有个1个从库都是通的"><a href="#zk仅到DB集群主库网络不通-zk至DB集群至少有个1个从库都是通的" class="headerlink" title="zk仅到DB集群主库网络不通, zk至DB集群至少有个1个从库都是通的"></a>zk仅到DB集群主库网络不通, zk至DB集群至少有个1个从库都是通的</h2><h2 id="zk到DB集群的所有从库网络都不通-zk至DB集群主库是通的"><a href="#zk到DB集群的所有从库网络都不通-zk至DB集群主库是通的" class="headerlink" title="zk到DB集群的所有从库网络都不通, zk至DB集群主库是通的"></a>zk到DB集群的所有从库网络都不通, zk至DB集群主库是通的</h2><h2 id="zk到DB集群的所有节点网络都几乎同时不通-包括主从库"><a href="#zk到DB集群的所有节点网络都几乎同时不通-包括主从库" class="headerlink" title="zk到DB集群的所有节点网络都几乎同时不通,包括主从库"></a>zk到DB集群的所有节点网络都几乎同时不通,包括主从库</h2><h3 id="几乎同时不通-又几乎同时通"><a href="#几乎同时不通-又几乎同时通" class="headerlink" title="几乎同时不通, 又几乎同时通"></a>几乎同时不通, 又几乎同时通</h3><h3 id="几乎同时不通-主库先通-从库后通"><a href="#几乎同时不通-主库先通-从库后通" class="headerlink" title="几乎同时不通, 主库先通, 从库后通"></a>几乎同时不通, 主库先通, 从库后通</h3><h3 id="几乎同时不通-从库先通-过1个ttl-主库再通"><a href="#几乎同时不通-从库先通-过1个ttl-主库再通" class="headerlink" title="几乎同时不通, 从库先通, 过1个ttl, 主库再通"></a>几乎同时不通, 从库先通, 过1个ttl, 主库再通</h3><h3 id="几乎同时不通-从库先通-但不到1个ttl-主库就通了"><a href="#几乎同时不通-从库先通-但不到1个ttl-主库就通了" class="headerlink" title="几乎同时不通, 从库先通, 但不到1个ttl, 主库就通了"></a>几乎同时不通, 从库先通, 但不到1个ttl, 主库就通了</h3><h2 id="zk服务down掉-zk到DB集群的所有节点网络正常-但是都无法正常访问zk"><a href="#zk服务down掉-zk到DB集群的所有节点网络正常-但是都无法正常访问zk" class="headerlink" title="zk服务down掉, zk到DB集群的所有节点网络正常, 但是都无法正常访问zk"></a>zk服务down掉, zk到DB集群的所有节点网络正常, 但是都无法正常访问zk</h2>]]></content>
   </entry>
   <entry>
     <title>PostgreSQL开发指南</title>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://daydayup863.github.io/"/>
-  <updated>2021-05-26T08:56:00.598Z</updated>
+  <updated>2021-05-28T06:40:42.567Z</updated>
   <id>http://daydayup863.github.io/</id>
   
   <author>
@@ -15,6 +15,48 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://daydayup863.github.io/uncategorized/hello-world/"/>
+    <id>http://daydayup863.github.io/uncategorized/hello-world/</id>
+    <published>2021-05-28T06:40:42.567Z</published>
+    <updated>2021-05-28T06:40:42.567Z</updated>
+    
+    <summary type="html">
+    
+       
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>PostgreSQL内存结构</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/memory-architecture/PostgreSQL%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/memory-architecture/PostgreSQL%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/</id>
+    <published>2021-05-28T06:10:41.000Z</published>
+    <updated>2021-05-28T06:39:11.250Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在PostgreSQL内存结构中，主要分为本地缓冲区(Local Memory Area)和共享缓冲区(hared Memory Area)两部分, 本文主要介绍这两种缓冲区的功能。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+      <category term="memory architecture" scheme="http://daydayup863.github.io/categories/PostgreSQL/memory-architecture/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="memory architecture" scheme="http://daydayup863.github.io/tags/memory-architecture/"/>
+    
+  </entry>
   
   <entry>
     <title>PostgreSQL双主逻辑复制</title>
@@ -149,36 +191,6 @@ PostgreSQL10：新增 pg_sequence 系统表
   </entry>
   
   <entry>
-    <title>PostgreSQL 11 新特性汇总</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_11_release_note/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_11_release_note/</id>
-    <published>2021-04-30T03:08:32.000Z</published>
-    <updated>2021-04-30T03:32:58.408Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;2018-10-18 PostgreSQL官网 宣布 PostgreSQL 11 正式版发行，PostgreSQL 11 重点对性能进行了提升和功能完善，特别是对大数据库和高计算负载的情况下进行了增强，主要包括以下:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;对分区表进行了大幅的改进和增强。
-增加了对存储过程的支持，存储过程支持事务。
-增强了并行查询能力和并行数据定义能力。
-增加了对 just-in-time (JIT) 编译的支持，加速SQL中的表达式执行效率。
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;最近对PostgreSQL以上新特性和其它功能完善做了演示，希望对PostgreSQL从业者有帮助，详见以下。&lt;br&gt;分区表的改进&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-      <category term="release note" scheme="http://daydayup863.github.io/categories/PostgreSQL/release-note/"/>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-      <category term="release note" scheme="http://daydayup863.github.io/tags/release-note/"/>
-    
-  </entry>
-  
-  <entry>
     <title>PostgreSQL 13 新特性汇总</title>
     <link href="http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_13_release_note/"/>
     <id>http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_13_release_note/</id>
@@ -224,6 +236,36 @@ CTE 支持 Inlined With Queries
 分区表性能大辐提升
 在线重建索引(Reindex Concurrently)
 &lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+      <category term="release note" scheme="http://daydayup863.github.io/categories/PostgreSQL/release-note/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="release note" scheme="http://daydayup863.github.io/tags/release-note/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PostgreSQL 11 新特性汇总</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_11_release_note/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_11_release_note/</id>
+    <published>2021-04-30T03:08:32.000Z</published>
+    <updated>2021-04-30T03:32:58.408Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;2018-10-18 PostgreSQL官网 宣布 PostgreSQL 11 正式版发行，PostgreSQL 11 重点对性能进行了提升和功能完善，特别是对大数据库和高计算负载的情况下进行了增强，主要包括以下:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;对分区表进行了大幅的改进和增强。
+增加了对存储过程的支持，存储过程支持事务。
+增强了并行查询能力和并行数据定义能力。
+增加了对 just-in-time (JIT) 编译的支持，加速SQL中的表达式执行效率。
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;最近对PostgreSQL以上新特性和其它功能完善做了演示，希望对PostgreSQL从业者有帮助，详见以下。&lt;br&gt;分区表的改进&lt;/p&gt;
     
     </summary>
     
@@ -525,60 +567,6 @@ CTE 支持 Inlined With Queries
       <category term="order by" scheme="http://daydayup863.github.io/tags/order-by/"/>
     
       <category term="slow query" scheme="http://daydayup863.github.io/tags/slow-query/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PostgreSQL格式化SQL</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/sql/pg_sql_format/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/sql/pg_sql_format/</id>
-    <published>2021-03-15T06:15:57.000Z</published>
-    <updated>2021-03-15T06:18:05.037Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;利用pg_get_viewdef完成SQL美化。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-      <category term="sql" scheme="http://daydayup863.github.io/categories/PostgreSQL/sql/"/>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-      <category term="sql" scheme="http://daydayup863.github.io/tags/sql/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>gcc, g++ 使用切换</title>
-    <link href="http://daydayup863.github.io/Linux/g/gcc/Linux_gxx/"/>
-    <id>http://daydayup863.github.io/Linux/g/gcc/Linux_gxx/</id>
-    <published>2021-03-15T04:01:01.000Z</published>
-    <updated>2021-03-15T04:03:28.484Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;安装版本&quot;&gt;&lt;a href=&quot;#安装版本&quot; class=&quot;headerlink&quot; title=&quot;安装版本&quot;&gt;&lt;/a&gt;安装版本&lt;/h1&gt;&lt;figure class=&quot;highlight apache&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs apache&quot;&gt;&lt;span class=&quot;hljs-attribute&quot;&gt;sudo&lt;/span&gt; apt-get install gcc-&lt;span class=&quot;hljs-number&quot;&gt;4&lt;/span&gt;.&lt;span class=&quot;hljs-number&quot;&gt;8&lt;/span&gt; gcc-&lt;span class=&quot;hljs-number&quot;&gt;4&lt;/span&gt;.&lt;span class=&quot;hljs-number&quot;&gt;8&lt;/span&gt;-multilib g++-&lt;span class=&quot;hljs-number&quot;&gt;4&lt;/span&gt;.&lt;span class=&quot;hljs-number&quot;&gt;8&lt;/span&gt; g++-&lt;span class=&quot;hljs-number&quot;&gt;4&lt;/span&gt;.&lt;span class=&quot;hljs-number&quot;&gt;8&lt;/span&gt;-multilib&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-      <category term="Linux" scheme="http://daydayup863.github.io/categories/Linux/"/>
-    
-      <category term="g++" scheme="http://daydayup863.github.io/categories/Linux/g/"/>
-    
-      <category term="gcc" scheme="http://daydayup863.github.io/categories/Linux/g/gcc/"/>
-    
-    
-      <category term="Linux" scheme="http://daydayup863.github.io/tags/Linux/"/>
-    
-      <category term="g++" scheme="http://daydayup863.github.io/tags/g/"/>
-    
-      <category term="gcc" scheme="http://daydayup863.github.io/tags/gcc/"/>
     
   </entry>
   
