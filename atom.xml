@@ -193,18 +193,35 @@
   </entry>
   
   <entry>
-    <title>PostgreSQL 13 新特性汇总</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_13_release_note/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_13_release_note/</id>
+    <title>PostgreSQL 10 新特性汇总</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_10_release_note/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_10_release_note/</id>
     <published>2021-04-30T03:08:32.000Z</published>
-    <updated>2021-04-30T03:33:15.144Z</updated>
+    <updated>2021-04-30T03:35:16.769Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;PostgreSQL 13 Beta1版本已于2020-05-21发行，目前最新版为Beta2，尽管 PostgreSQL 13 版本没有像10、11、12版本新增重量级的功能，但13版本依然增加了不少新特性和功能提升，值得细细研究。&lt;/p&gt;
-&lt;p&gt;PostgreSQL 13 典型变化如下:&lt;/p&gt;
-&lt;p&gt;逻辑复制支持分区表&lt;br&gt;Btree索引优化(引入Deduplication技术)&lt;br&gt;增量排序(Incremental Sorting)&lt;br&gt;并行VACUUM索引&lt;br&gt;并行Reindexdb&lt;br&gt;手册新增术语(Glossary)附录&lt;/p&gt;
-&lt;p&gt;本文从新特性、性能提升、数据库管理、其它亮点四方面详细介绍 PostgreSQL 13的变化。&lt;/p&gt;
+      &lt;p&gt;PostgreSQL10Beta1 版本于 2017年5月18日发行，PostgreSQL 10 新增了大量新特性，其中特重量级新特性如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;内置分区表（ Native Table Partitioning）
+逻辑复制（Logical Replication）
+并行功能增强（Enhancement of Parallel Query）
+Quorum Commit for Synchronous Replication
+全文检索支持JSON和JSONB数据类型
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;其它新特性详见 PostgreSQL10 Release ，这里不详细列出，由于时间和精力的关系，目前仅对部分新特性进行演示，详见以下博客：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;PostgreSQL10：重量级新特性-支持分区表
+PostgreSQL10：Parallel Queries 增强
+PostgreSQL10：Additional FDW Push-Down
+PostgreSQL10：逻辑复制（Logical Replication）之一
+PostgreSQL10：逻辑复制（Logical Replication）之二
+PostgreSQL10：Quorum Commit for Synchronous Replication
+PostgreSQL10：Multi-column Correlation Statistics
+PostgreSQL10：新增 pg_hba_file_rules 视图
+PostgreSQL10：全文检索支持 JSON 和 JSONB
+PostgreSQL10：Identity Columns 特性介绍
+PostgreSQL10：Incompatible Changes
+PostgreSQL10：新增 pg_sequence 系统表
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;参考&lt;br&gt;&lt;a href=&quot;https://www.postgresql.org/docs/10/release-10.html&quot;&gt;E.17. Release 10&lt;/a&gt;&lt;/p&gt;
+
     
     </summary>
     
@@ -251,51 +268,6 @@
   </entry>
   
   <entry>
-    <title>PostgreSQL 10 新特性汇总</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_10_release_note/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_10_release_note/</id>
-    <published>2021-04-30T03:08:32.000Z</published>
-    <updated>2021-04-30T03:35:16.769Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;PostgreSQL10Beta1 版本于 2017年5月18日发行，PostgreSQL 10 新增了大量新特性，其中特重量级新特性如下：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;内置分区表（ Native Table Partitioning）
-逻辑复制（Logical Replication）
-并行功能增强（Enhancement of Parallel Query）
-Quorum Commit for Synchronous Replication
-全文检索支持JSON和JSONB数据类型
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;其它新特性详见 PostgreSQL10 Release ，这里不详细列出，由于时间和精力的关系，目前仅对部分新特性进行演示，详见以下博客：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;PostgreSQL10：重量级新特性-支持分区表
-PostgreSQL10：Parallel Queries 增强
-PostgreSQL10：Additional FDW Push-Down
-PostgreSQL10：逻辑复制（Logical Replication）之一
-PostgreSQL10：逻辑复制（Logical Replication）之二
-PostgreSQL10：Quorum Commit for Synchronous Replication
-PostgreSQL10：Multi-column Correlation Statistics
-PostgreSQL10：新增 pg_hba_file_rules 视图
-PostgreSQL10：全文检索支持 JSON 和 JSONB
-PostgreSQL10：Identity Columns 特性介绍
-PostgreSQL10：Incompatible Changes
-PostgreSQL10：新增 pg_sequence 系统表
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;参考&lt;br&gt;&lt;a href=&quot;https://www.postgresql.org/docs/10/release-10.html&quot;&gt;E.17. Release 10&lt;/a&gt;&lt;/p&gt;
-
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-      <category term="release note" scheme="http://daydayup863.github.io/categories/PostgreSQL/release-note/"/>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-      <category term="release note" scheme="http://daydayup863.github.io/tags/release-note/"/>
-    
-  </entry>
-  
-  <entry>
     <title>PostgreSQL 12 新特性汇总</title>
     <link href="http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_12_release_note/"/>
     <id>http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_12_release_note/</id>
@@ -313,6 +285,34 @@ CTE 支持 Inlined With Queries
 分区表性能大辐提升
 在线重建索引(Reindex Concurrently)
 &lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+      <category term="release note" scheme="http://daydayup863.github.io/categories/PostgreSQL/release-note/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="release note" scheme="http://daydayup863.github.io/tags/release-note/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PostgreSQL 13 新特性汇总</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_13_release_note/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_13_release_note/</id>
+    <published>2021-04-30T03:08:32.000Z</published>
+    <updated>2021-04-30T03:33:15.144Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;PostgreSQL 13 Beta1版本已于2020-05-21发行，目前最新版为Beta2，尽管 PostgreSQL 13 版本没有像10、11、12版本新增重量级的功能，但13版本依然增加了不少新特性和功能提升，值得细细研究。&lt;/p&gt;
+&lt;p&gt;PostgreSQL 13 典型变化如下:&lt;/p&gt;
+&lt;p&gt;逻辑复制支持分区表&lt;br&gt;Btree索引优化(引入Deduplication技术)&lt;br&gt;增量排序(Incremental Sorting)&lt;br&gt;并行VACUUM索引&lt;br&gt;并行Reindexdb&lt;br&gt;手册新增术语(Glossary)附录&lt;/p&gt;
+&lt;p&gt;本文从新特性、性能提升、数据库管理、其它亮点四方面详细介绍 PostgreSQL 13的变化。&lt;/p&gt;
     
     </summary>
     
