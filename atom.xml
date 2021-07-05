@@ -193,51 +193,6 @@
   </entry>
   
   <entry>
-    <title>PostgreSQL 10 新特性汇总</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_10_release_note/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_10_release_note/</id>
-    <published>2021-04-30T03:08:32.000Z</published>
-    <updated>2021-04-30T03:35:16.769Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;PostgreSQL10Beta1 版本于 2017年5月18日发行，PostgreSQL 10 新增了大量新特性，其中特重量级新特性如下：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;内置分区表（ Native Table Partitioning）
-逻辑复制（Logical Replication）
-并行功能增强（Enhancement of Parallel Query）
-Quorum Commit for Synchronous Replication
-全文检索支持JSON和JSONB数据类型
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;其它新特性详见 PostgreSQL10 Release ，这里不详细列出，由于时间和精力的关系，目前仅对部分新特性进行演示，详见以下博客：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;PostgreSQL10：重量级新特性-支持分区表
-PostgreSQL10：Parallel Queries 增强
-PostgreSQL10：Additional FDW Push-Down
-PostgreSQL10：逻辑复制（Logical Replication）之一
-PostgreSQL10：逻辑复制（Logical Replication）之二
-PostgreSQL10：Quorum Commit for Synchronous Replication
-PostgreSQL10：Multi-column Correlation Statistics
-PostgreSQL10：新增 pg_hba_file_rules 视图
-PostgreSQL10：全文检索支持 JSON 和 JSONB
-PostgreSQL10：Identity Columns 特性介绍
-PostgreSQL10：Incompatible Changes
-PostgreSQL10：新增 pg_sequence 系统表
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;参考&lt;br&gt;&lt;a href=&quot;https://www.postgresql.org/docs/10/release-10.html&quot;&gt;E.17. Release 10&lt;/a&gt;&lt;/p&gt;
-
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-      <category term="release note" scheme="http://daydayup863.github.io/categories/PostgreSQL/release-note/"/>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-      <category term="release note" scheme="http://daydayup863.github.io/tags/release-note/"/>
-    
-  </entry>
-  
-  <entry>
     <title>PostgreSQL 13 新特性汇总</title>
     <link href="http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_13_release_note/"/>
     <id>http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_13_release_note/</id>
@@ -280,6 +235,51 @@ PostgreSQL10：新增 pg_sequence 系统表
 增强了并行查询能力和并行数据定义能力。
 增加了对 just-in-time (JIT) 编译的支持，加速SQL中的表达式执行效率。
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;最近对PostgreSQL以上新特性和其它功能完善做了演示，希望对PostgreSQL从业者有帮助，详见以下。&lt;br&gt;分区表的改进&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+      <category term="release note" scheme="http://daydayup863.github.io/categories/PostgreSQL/release-note/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="release note" scheme="http://daydayup863.github.io/tags/release-note/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PostgreSQL 10 新特性汇总</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_10_release_note/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_10_release_note/</id>
+    <published>2021-04-30T03:08:32.000Z</published>
+    <updated>2021-04-30T03:35:16.769Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;PostgreSQL10Beta1 版本于 2017年5月18日发行，PostgreSQL 10 新增了大量新特性，其中特重量级新特性如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;内置分区表（ Native Table Partitioning）
+逻辑复制（Logical Replication）
+并行功能增强（Enhancement of Parallel Query）
+Quorum Commit for Synchronous Replication
+全文检索支持JSON和JSONB数据类型
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;其它新特性详见 PostgreSQL10 Release ，这里不详细列出，由于时间和精力的关系，目前仅对部分新特性进行演示，详见以下博客：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;PostgreSQL10：重量级新特性-支持分区表
+PostgreSQL10：Parallel Queries 增强
+PostgreSQL10：Additional FDW Push-Down
+PostgreSQL10：逻辑复制（Logical Replication）之一
+PostgreSQL10：逻辑复制（Logical Replication）之二
+PostgreSQL10：Quorum Commit for Synchronous Replication
+PostgreSQL10：Multi-column Correlation Statistics
+PostgreSQL10：新增 pg_hba_file_rules 视图
+PostgreSQL10：全文检索支持 JSON 和 JSONB
+PostgreSQL10：Identity Columns 特性介绍
+PostgreSQL10：Incompatible Changes
+PostgreSQL10：新增 pg_sequence 系统表
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;参考&lt;br&gt;&lt;a href=&quot;https://www.postgresql.org/docs/10/release-10.html&quot;&gt;E.17. Release 10&lt;/a&gt;&lt;/p&gt;
+
     
     </summary>
     
