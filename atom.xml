@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://daydayup863.github.io/"/>
-  <updated>2021-08-16T03:05:26.435Z</updated>
+  <updated>2022-02-21T08:42:50.779Z</updated>
   <id>http://daydayup863.github.io/</id>
   
   <author>
@@ -15,6 +15,194 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>各种各样的FDW</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/fdw/foreign-data-wapper/fdw/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/fdw/foreign-data-wapper/fdw/</id>
+    <published>2022-02-21T08:31:55.000Z</published>
+    <updated>2022-02-21T08:42:50.779Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;记录各种PostgreSQL FDW&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+      <category term="fdw" scheme="http://daydayup863.github.io/categories/PostgreSQL/fdw/"/>
+    
+      <category term="foreign data wapper" scheme="http://daydayup863.github.io/categories/PostgreSQL/fdw/foreign-data-wapper/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="fdw" scheme="http://daydayup863.github.io/tags/fdw/"/>
+    
+      <category term="foreign data wapper" scheme="http://daydayup863.github.io/tags/foreign-data-wapper/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PostgreSQL迁移工具</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/%E8%BF%81%E7%A7%BB%E5%B7%A5%E5%85%B7/qianyigongju/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/%E8%BF%81%E7%A7%BB%E5%B7%A5%E5%85%B7/qianyigongju/</id>
+    <published>2022-02-21T08:25:15.000Z</published>
+    <updated>2022-02-21T08:33:56.403Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;记录各种常见的迁移到PostgreSQL的迁移工具&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+      <category term="迁移工具" scheme="http://daydayup863.github.io/categories/PostgreSQL/%E8%BF%81%E7%A7%BB%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="迁移工具" scheme="http://daydayup863.github.io/tags/%E8%BF%81%E7%A7%BB%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="ora2pg" scheme="http://daydayup863.github.io/tags/ora2pg/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PostgreSQL 14 新特性汇总</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_14_release_note/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_14_release_note/</id>
+    <published>2022-02-21T03:08:32.000Z</published>
+    <updated>2022-02-21T08:23:14.286Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;PostgreSQL 14 contains many new features and enhancements, including:&lt;/p&gt;
+&lt;figure class=&quot;highlight pgsql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs pgsql&quot;&gt;Stored &lt;span class=&quot;hljs-keyword&quot;&gt;procedures&lt;/span&gt; can now &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; data via &lt;span class=&quot;hljs-keyword&quot;&gt;OUT&lt;/span&gt; parameters.&lt;br&gt;&lt;br&gt;The &lt;span class=&quot;hljs-keyword&quot;&gt;SQL&lt;/span&gt;-standard &lt;span class=&quot;hljs-keyword&quot;&gt;SEARCH&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;CYCLE&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;options&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt; common &lt;span class=&quot;hljs-keyword&quot;&gt;table&lt;/span&gt; expressions have been implemented.&lt;br&gt;&lt;br&gt;Subscripting can now be applied &lt;span class=&quot;hljs-keyword&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;any&lt;/span&gt; data &lt;span class=&quot;hljs-keyword&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt; which it &lt;span class=&quot;hljs-keyword&quot;&gt;is&lt;/span&gt; a useful notation, &lt;span class=&quot;hljs-keyword&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;only&lt;/span&gt; arrays. &lt;span class=&quot;hljs-keyword&quot;&gt;In&lt;/span&gt; this &lt;span class=&quot;hljs-keyword&quot;&gt;release&lt;/span&gt;, the &lt;span class=&quot;hljs-type&quot;&gt;jsonb&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;and&lt;/span&gt; hstore &lt;span class=&quot;hljs-keyword&quot;&gt;types&lt;/span&gt; have gained subscripting operators.&lt;br&gt;&lt;br&gt;Range &lt;span class=&quot;hljs-keyword&quot;&gt;types&lt;/span&gt; have been extended &lt;span class=&quot;hljs-keyword&quot;&gt;by&lt;/span&gt; adding multiranges, allowing representation &lt;span class=&quot;hljs-keyword&quot;&gt;of&lt;/span&gt; noncontiguous data ranges.&lt;br&gt;&lt;br&gt;Numerous performance improvements have been made &lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt; parallel queries, heavily-concurrent workloads, partitioned &lt;span class=&quot;hljs-keyword&quot;&gt;tables&lt;/span&gt;, logical &lt;span class=&quot;hljs-keyword&quot;&gt;replication&lt;/span&gt;, &lt;span class=&quot;hljs-keyword&quot;&gt;and&lt;/span&gt; vacuuming.&lt;br&gt;&lt;br&gt;B-tree &lt;span class=&quot;hljs-keyword&quot;&gt;index&lt;/span&gt; updates are managed more efficiently, reducing &lt;span class=&quot;hljs-keyword&quot;&gt;index&lt;/span&gt; bloat.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;VACUUM&lt;/span&gt; automatically becomes more aggressive, &lt;span class=&quot;hljs-keyword&quot;&gt;and&lt;/span&gt; skips inessential cleanup, &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; the &lt;span class=&quot;hljs-keyword&quot;&gt;database&lt;/span&gt; starts &lt;span class=&quot;hljs-keyword&quot;&gt;to&lt;/span&gt; approach a &lt;span class=&quot;hljs-keyword&quot;&gt;transaction&lt;/span&gt; ID wraparound condition.&lt;br&gt;&lt;br&gt;Extended &lt;span class=&quot;hljs-keyword&quot;&gt;statistics&lt;/span&gt; can now be collected &lt;span class=&quot;hljs-keyword&quot;&gt;on&lt;/span&gt; expressions, allowing better planning results &lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt; complex queries.&lt;br&gt;&lt;br&gt;libpq now has the ability &lt;span class=&quot;hljs-keyword&quot;&gt;to&lt;/span&gt; pipeline multiple queries, which can boost throughput &lt;span class=&quot;hljs-keyword&quot;&gt;over&lt;/span&gt; high-latency connections.&lt;br&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;The above items and other new features of PostgreSQL 14 are explained in more detail in the sections below.&lt;/p&gt;
+&lt;p&gt;A dump/restore using pg_dumpall or use of pg_upgrade or logical replication is required for those wishing to migrate data from any previous release. See Section 19.6 for general information on migrating to new major releases.&lt;/p&gt;
+&lt;p&gt;Version 14 contains a number of changes that may affect compatibility with previous releases. Observe the following incompatibilities:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;User-defined objects that reference certain built-in array functions along with their argument types must be recreated (Tom Lane)
+
+Specifically, array_append(), array_prepend(), array_cat(), array_position(), array_positions(), array_remove(), array_replace(), and width_bucket() used to take anyarray arguments but now take anycompatiblearray. Therefore, user-defined objects like aggregates and operators that reference those array function signatures must be dropped before upgrading, and recreated once the upgrade completes.
+
+Remove deprecated containment operators @ and ~ for built-in geometric data types and contrib modules cube, hstore, intarray, and seg (Justin Pryzby)
+
+The more consistently named &amp;lt;@ and @&amp;gt; have been recommended for many years.
+
+Fix to_tsquery() and websearch_to_tsquery() to properly parse query text containing discarded tokens (Alexander Korotkov)
+
+Certain discarded tokens, like underscore, caused the output of these functions to produce incorrect tsquery output, e.g., both websearch_to_tsquery(&amp;#39;&amp;quot;pg_class pg&amp;quot;&amp;#39;) and to_tsquery(&amp;#39;pg_class &amp;lt;-&amp;gt; pg&amp;#39;) used to output ( &amp;#39;pg&amp;#39; &amp;amp; &amp;#39;class&amp;#39; ) &amp;lt;-&amp;gt; &amp;#39;pg&amp;#39;, but now both output &amp;#39;pg&amp;#39; &amp;lt;-&amp;gt; &amp;#39;class&amp;#39; &amp;lt;-&amp;gt; &amp;#39;pg&amp;#39;.
+
+Fix websearch_to_tsquery() to properly parse multiple adjacent discarded tokens in quotes (Alexander Korotkov)
+
+Previously, quoted text that contained multiple adjacent discarded tokens was treated as multiple tokens, causing incorrect tsquery output, e.g., websearch_to_tsquery(&amp;#39;&amp;quot;aaa: bbb&amp;quot;&amp;#39;) used to output &amp;#39;aaa&amp;#39; &amp;lt;2&amp;gt; &amp;#39;bbb&amp;#39;, but now outputs &amp;#39;aaa&amp;#39; &amp;lt;-&amp;gt; &amp;#39;bbb&amp;#39;.
+
+Change EXTRACT() to return type numeric instead of float8 (Peter Eisentraut)
+
+This avoids loss-of-precision issues in some usages. The old behavior can still be obtained by using the old underlying function date_part().
+
+Also, EXTRACT(date) now throws an error for units that are not part of the date data type.
+
+Change var_samp() and stddev_samp() with numeric parameters to return NULL when the input is a single NaN value (Tom Lane)
+
+Previously NaN was returned.
+
+Return false for has_column_privilege() checks on non-existent or dropped columns when using attribute numbers (Joe Conway)
+
+Previously such attribute numbers returned an invalid-column error.
+
+Fix handling of infinite window function ranges (Tom Lane)
+
+Previously window frame clauses like &amp;#39;inf&amp;#39; PRECEDING AND &amp;#39;inf&amp;#39; FOLLOWING returned incorrect results.
+
+Remove factorial operators ! and !!, as well as function numeric_fac() (Mark Dilger)
+
+The factorial() function is still supported.
+
+Disallow factorial() of negative numbers (Peter Eisentraut)
+
+Previously such cases returned 1.
+
+Remove support for postfix (right-unary) operators (Mark Dilger)
+
+pg_dump and pg_upgrade will warn if postfix operators are being dumped.
+
+Allow \D and \W shorthands to match newlines in regular expression newline-sensitive mode (Tom Lane)
+
+Previously they did not match newlines in this mode, but that disagrees with the behavior of other common regular expression engines. [^[:digit:]] or [^[:word:]] can be used to get the old behavior.
+
+Disregard constraints when matching regular expression back-references (Tom Lane)
+
+For example, in (^\d+).*\1, the ^ constraint should be applied at the start of the string, but not when matching \1.
+
+Disallow \w as a range start or end in regular expression character classes (Tom Lane)
+
+This previously was allowed but produced unexpected results.
+
+Require custom server parameter names to use only characters that are valid in unquoted SQL identifiers (Tom Lane)
+
+Change the default of the password_encryption server parameter to scram-sha-256 (Peter Eisentraut)
+
+Previously it was md5. All new passwords will be stored as SHA256 unless this server setting is changed or the password is specified in MD5 format. Also, the legacy (and undocumented) Boolean-like values which were previously synonyms for md5 are no longer accepted.
+
+Remove server parameter vacuum_cleanup_index_scale_factor (Peter Geoghegan)
+
+This setting was ignored starting in PostgreSQL version 13.3.
+
+Remove server parameter operator_precedence_warning (Tom Lane)
+
+This setting was used for warning applications about PostgreSQL 9.5 changes.
+
+Overhaul the specification of clientcert in pg_hba.conf (Kyotaro Horiguchi)
+
+Values 1/0/no-verify are no longer supported; only the strings verify-ca and verify-full can be used. Also, disallow verify-ca if cert authentication is enabled since cert requires verify-full checking.
+
+Remove support for SSL compression (Daniel Gustafsson, Michael Paquier)
+
+This was already disabled by default in previous PostgreSQL releases, and most modern OpenSSL and TLS versions no longer support it.
+
+Remove server and libpq support for the version 2 wire protocol (Heikki Linnakangas)
+
+This was last used as the default in PostgreSQL 7.3 (released in 2002).
+
+Disallow single-quoting of the language name in the CREATE/DROP LANGUAGE command (Peter Eisentraut)
+
+Remove the composite types that were formerly created for sequences and toast tables (Tom Lane)
+
+Process doubled quote marks in ecpg SQL command strings correctly (Tom Lane)
+
+Previously &amp;#39;abc&amp;#39;&amp;#39;def&amp;#39; was passed to the server as &amp;#39;abc&amp;#39;def&amp;#39;, and &amp;quot;abc&amp;quot;&amp;quot;def&amp;quot; was passed as &amp;quot;abc&amp;quot;def&amp;quot;, causing syntax errors.
+
+Prevent the containment operators (&amp;lt;@ and @&amp;gt;) for intarray from using GiST indexes (Tom Lane)
+
+Previously a full GiST index scan was required, so just avoid that and scan the heap, which is faster. Indexes created for this purpose should be removed.
+
+Remove contrib program pg_standby (Justin Pryzby)
+
+Prevent tablefunc&amp;#39;s function normal_rand() from accepting negative values (Ashutosh Bapat)
+
+Negative values produced undesirable results.
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;Changes&quot;&gt;&lt;a href=&quot;#Changes&quot; class=&quot;headerlink&quot; title=&quot;Changes&quot;&gt;&lt;/a&gt;Changes&lt;/h1&gt;&lt;h2 id=&quot;Server&quot;&gt;&lt;a href=&quot;#Server&quot; class=&quot;headerlink&quot; title=&quot;Server&quot;&gt;&lt;/a&gt;Server&lt;/h2&gt;&lt;figure class=&quot;highlight pgsql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs pgsql&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;Add&lt;/span&gt; predefined roles pg_read_all_data &lt;span class=&quot;hljs-keyword&quot;&gt;and&lt;/span&gt; pg_write_all_data (Stephen Frost)&lt;br&gt;&lt;br&gt;These non-&lt;span class=&quot;hljs-keyword&quot;&gt;login&lt;/span&gt; roles can be used &lt;span class=&quot;hljs-keyword&quot;&gt;to&lt;/span&gt; give &lt;span class=&quot;hljs-keyword&quot;&gt;read&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;write&lt;/span&gt; permission &lt;span class=&quot;hljs-keyword&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;all&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;tables&lt;/span&gt;, views, &lt;span class=&quot;hljs-keyword&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;sequences&lt;/span&gt;.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;Add&lt;/span&gt; predefined &lt;span class=&quot;hljs-keyword&quot;&gt;role&lt;/span&gt; pg_database_owner that contains &lt;span class=&quot;hljs-keyword&quot;&gt;only&lt;/span&gt; the &lt;span class=&quot;hljs-keyword&quot;&gt;current&lt;/span&gt; databas&lt;span class=&quot;hljs-string&quot;&gt;e&amp;#x27;s owner (Noah Misch)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;This is especially useful in template databases.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;Remove temporary files after backend crashes (Euler Taveira)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;Previously, such files were retained for debugging purposes. If necessary, deletion can be disabled with the new server parameter remove_temp_files_after_crash.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;Allow long-running queries to be canceled if the client disconnects (Sergey Cherkashin, Thomas Munro)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;The server parameter client_connection_check_interval allows control over whether loss of connection is checked for intra-query. (This is supported on Linux and a few other operating systems.)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;Add an optional timeout parameter to pg_terminate_backend() (Magnus Hagander)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;Allow wide tuples to be always added to almost-empty heap pages (John Naylor, Floris van Nee)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;hljs-string&quot;&gt;Previously tuples whose insertion would have exceeded the page&amp;#x27;&lt;/span&gt;s fill factor were &lt;span class=&quot;hljs-keyword&quot;&gt;instead&lt;/span&gt; added &lt;span class=&quot;hljs-keyword&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;hljs-built_in&quot;&gt;new&lt;/span&gt; pages.&lt;br&gt;&lt;br&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;Add&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;Server&lt;/span&gt; &lt;span class=&quot;hljs-type&quot;&gt;Name&lt;/span&gt; Indication (SNI) &lt;span class=&quot;hljs-keyword&quot;&gt;in&lt;/span&gt; SSL &lt;span class=&quot;hljs-keyword&quot;&gt;connection&lt;/span&gt; packets (Peter Eisentraut)&lt;br&gt;&lt;br&gt;This can be disabled &lt;span class=&quot;hljs-keyword&quot;&gt;by&lt;/span&gt; turning &lt;span class=&quot;hljs-keyword&quot;&gt;off&lt;/span&gt; client &lt;span class=&quot;hljs-keyword&quot;&gt;connection&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;option&lt;/span&gt; sslsni.&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;Vacuuming&quot;&gt;&lt;a href=&quot;#Vacuuming&quot; class=&quot;headerlink&quot; title=&quot;Vacuuming&quot;&gt;&lt;/a&gt;Vacuuming&lt;/h2&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+      <category term="release note" scheme="http://daydayup863.github.io/categories/PostgreSQL/release-note/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="release note" scheme="http://daydayup863.github.io/tags/release-note/"/>
+    
+  </entry>
   
   <entry>
     <title>\[转\]老何的1001夜-如何成为优秀的领导</title>
@@ -498,85 +686,6 @@ PostgreSQL10：新增 pg_sequence 系统表
       <category term="openssl" scheme="http://daydayup863.github.io/tags/openssl/"/>
     
       <category term="ssl" scheme="http://daydayup863.github.io/tags/ssl/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SQL-standard function body</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/function/SQL-standard/PostgreSQL_SQL-standard_function_body/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/function/SQL-standard/PostgreSQL_SQL-standard_function_body/</id>
-    <published>2021-04-16T07:21:25.000Z</published>
-    <updated>2021-04-16T08:11:37.855Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;PostgreSQL 函数和储存过程支持SQL-standard function body&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-      <category term="function" scheme="http://daydayup863.github.io/categories/PostgreSQL/function/"/>
-    
-      <category term="SQL-standard" scheme="http://daydayup863.github.io/categories/PostgreSQL/function/SQL-standard/"/>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-      <category term="function" scheme="http://daydayup863.github.io/tags/function/"/>
-    
-      <category term="SQL-standard" scheme="http://daydayup863.github.io/tags/SQL-standard/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux 新机配置</title>
-    <link href="http://daydayup863.github.io/linux/linux_new_machine/"/>
-    <id>http://daydayup863.github.io/linux/linux_new_machine/</id>
-    <published>2021-03-29T07:32:31.000Z</published>
-    <updated>2021-03-29T07:38:38.380Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;记录一些linux新机器常用的配置, 方便更换系统时更快的配置个人环境.&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="linux" scheme="http://daydayup863.github.io/categories/linux/"/>
-    
-    
-      <category term="linux" scheme="http://daydayup863.github.io/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PostgreSQL 12 实现 MYSQL ON UPDATE CURRENT_TIMESTAMPTZ功能</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/default/on-update/PostgreSQL_on_Update_current_timestamptz/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/default/on-update/PostgreSQL_on_Update_current_timestamptz/</id>
-    <published>2021-03-21T06:57:29.000Z</published>
-    <updated>2021-09-06T07:28:45.213Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;PostgreSQL 12 实现 MYSQL ON UPDATE CURRENT_TIMESTAMPTZ功能&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-      <category term="default" scheme="http://daydayup863.github.io/categories/PostgreSQL/default/"/>
-    
-      <category term="on update" scheme="http://daydayup863.github.io/categories/PostgreSQL/default/on-update/"/>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-      <category term="default" scheme="http://daydayup863.github.io/tags/default/"/>
-    
-      <category term="on update" scheme="http://daydayup863.github.io/tags/on-update/"/>
     
   </entry>
   
