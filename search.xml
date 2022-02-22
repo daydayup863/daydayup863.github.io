@@ -42,7 +42,7 @@
       </tags>
   </entry>
   <entry>
-    <title>\[转\]老何的1001夜-选择数据类型的重要性</title>
+    <title>转 - 老何的1001夜-选择数据类型的重要性</title>
     <url>/PostgreSQL/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/PostgreSQL_important_datetype/</url>
     <content><![CDATA[<h1 id="varchar-vs-timestamp"><a href="#varchar-vs-timestamp" class="headerlink" title="varchar vs. timestamp"></a>varchar vs. timestamp</h1><p>时间戳字段是类似这样的形式的：<br>‘2013-04-07 12:33:20.000+08’</p>
 <p>根据iso标准，要求时间戳是精确到毫秒的，所以在秒之后有三位小数，表示毫秒，并且后缀时区（+08部分）。我们存储时间戳有很多办法，最粗糙的是字串存储，像上面那样（注意有单引号），这样一个带时区的时间戳要26个字节。而很多数据库系统里面，会用浮点数或者整数保存时间戳，通常是这样的：</p>
@@ -68,7 +68,7 @@
       </tags>
   </entry>
   <entry>
-    <title>\[转\]老何的1001夜-如何成为优秀的领导</title>
+    <title>转 - 老何的1001夜-如何成为优秀的领导</title>
     <url>/leader-way/leader_way/</url>
     <content><![CDATA[<p>“Leader lead the way” — Anonymous</p>
 <h1 id="要素"><a href="#要素" class="headerlink" title="要素"></a>要素</h1><pre><code>Help
