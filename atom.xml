@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://daydayup863.github.io/"/>
-  <updated>2022-02-21T08:42:50.779Z</updated>
+  <updated>2022-02-22T07:30:05.776Z</updated>
   <id>http://daydayup863.github.io/</id>
   
   <author>
@@ -15,6 +15,62 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PostgreSQL 15 preview - 逻辑复制支持row filters</title>
+    <link href="http://daydayup863.github.io/%E9%80%BB%E8%BE%91%E5%A4%8D%E5%88%B6/PostgreSQL/logical-replication/PostgreSQL_15_preview_row_filters/"/>
+    <id>http://daydayup863.github.io/%E9%80%BB%E8%BE%91%E5%A4%8D%E5%88%B6/PostgreSQL/logical-replication/PostgreSQL_15_preview_row_filters/</id>
+    <published>2022-02-22T07:17:42.000Z</published>
+    <updated>2022-02-22T07:30:05.776Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;刚看到PostgreSQL15 新增加功能－Allow specifying row filters for logical replication of tables，就第一时间体验一把。之前版本的逻辑复制针对的都是整个表的复制，某些情况下，对于一个极大的表，可能只关心部分数据，这时候row filters功能就显得特别有用。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="逻辑复制" scheme="http://daydayup863.github.io/categories/%E9%80%BB%E8%BE%91%E5%A4%8D%E5%88%B6/"/>
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/%E9%80%BB%E8%BE%91%E5%A4%8D%E5%88%B6/PostgreSQL/"/>
+    
+      <category term="logical replication" scheme="http://daydayup863.github.io/categories/%E9%80%BB%E8%BE%91%E5%A4%8D%E5%88%B6/PostgreSQL/logical-replication/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="logical replication" scheme="http://daydayup863.github.io/tags/logical-replication/"/>
+    
+      <category term="逻辑复制" scheme="http://daydayup863.github.io/tags/%E9%80%BB%E8%BE%91%E5%A4%8D%E5%88%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PostgreSQL 15 preview</title>
+    <link href="http://daydayup863.github.io/PostgreSQL-15/preview/PostgreSQL_15_preview/"/>
+    <id>http://daydayup863.github.io/PostgreSQL-15/preview/PostgreSQL_15_preview/</id>
+    <published>2022-02-22T02:47:46.000Z</published>
+    <updated>2022-02-22T07:29:55.904Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;记录PostgreSQL 15中的提交日志&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL 15" scheme="http://daydayup863.github.io/categories/PostgreSQL-15/"/>
+    
+      <category term="preview" scheme="http://daydayup863.github.io/categories/PostgreSQL-15/preview/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="preview" scheme="http://daydayup863.github.io/tags/preview/"/>
+    
+      <category term="PostgreSQL 15" scheme="http://daydayup863.github.io/tags/PostgreSQL-15/"/>
+    
+  </entry>
   
   <entry>
     <title>各种各样的FDW</title>
@@ -450,6 +506,36 @@ Result
   </entry>
   
   <entry>
+    <title>PostgreSQL 11 新特性汇总</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_11_release_note/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_11_release_note/</id>
+    <published>2021-04-30T03:08:32.000Z</published>
+    <updated>2021-04-30T03:32:58.408Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;2018-10-18 PostgreSQL官网 宣布 PostgreSQL 11 正式版发行，PostgreSQL 11 重点对性能进行了提升和功能完善，特别是对大数据库和高计算负载的情况下进行了增强，主要包括以下:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;对分区表进行了大幅的改进和增强。
+增加了对存储过程的支持，存储过程支持事务。
+增强了并行查询能力和并行数据定义能力。
+增加了对 just-in-time (JIT) 编译的支持，加速SQL中的表达式执行效率。
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;最近对PostgreSQL以上新特性和其它功能完善做了演示，希望对PostgreSQL从业者有帮助，详见以下。&lt;br&gt;分区表的改进&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+      <category term="release note" scheme="http://daydayup863.github.io/categories/PostgreSQL/release-note/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="release note" scheme="http://daydayup863.github.io/tags/release-note/"/>
+    
+  </entry>
+  
+  <entry>
     <title>PostgreSQL 13 新特性汇总</title>
     <link href="http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_13_release_note/"/>
     <id>http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_13_release_note/</id>
@@ -495,36 +581,6 @@ CTE 支持 Inlined With Queries
 分区表性能大辐提升
 在线重建索引(Reindex Concurrently)
 &lt;/code&gt;&lt;/pre&gt;
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-      <category term="release note" scheme="http://daydayup863.github.io/categories/PostgreSQL/release-note/"/>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-      <category term="release note" scheme="http://daydayup863.github.io/tags/release-note/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PostgreSQL 11 新特性汇总</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_11_release_note/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_11_release_note/</id>
-    <published>2021-04-30T03:08:32.000Z</published>
-    <updated>2021-04-30T03:32:58.408Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;2018-10-18 PostgreSQL官网 宣布 PostgreSQL 11 正式版发行，PostgreSQL 11 重点对性能进行了提升和功能完善，特别是对大数据库和高计算负载的情况下进行了增强，主要包括以下:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;对分区表进行了大幅的改进和增强。
-增加了对存储过程的支持，存储过程支持事务。
-增强了并行查询能力和并行数据定义能力。
-增加了对 just-in-time (JIT) 编译的支持，加速SQL中的表达式执行效率。
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;最近对PostgreSQL以上新特性和其它功能完善做了演示，希望对PostgreSQL从业者有帮助，详见以下。&lt;br&gt;分区表的改进&lt;/p&gt;
     
     </summary>
     
@@ -632,60 +688,6 @@ PostgreSQL10：新增 pg_sequence 系统表
       <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
     
       <category term="regexp" scheme="http://daydayup863.github.io/tags/regexp/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PostgreSQL 游标获取多行</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/refcursor/cursor/PostgreSQL_refcursor_fetch_multiple_rows/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/refcursor/cursor/PostgreSQL_refcursor_fetch_multiple_rows/</id>
-    <published>2021-04-20T09:45:17.000Z</published>
-    <updated>2021-04-20T09:59:55.059Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;函数/匿名块/存储过程中游标返回多行数据.&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-      <category term="refcursor" scheme="http://daydayup863.github.io/categories/PostgreSQL/refcursor/"/>
-    
-      <category term="cursor" scheme="http://daydayup863.github.io/categories/PostgreSQL/refcursor/cursor/"/>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-      <category term="cursor" scheme="http://daydayup863.github.io/tags/cursor/"/>
-    
-      <category term="refcursor" scheme="http://daydayup863.github.io/tags/refcursor/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>OpenSSL的简单使用</title>
-    <link href="http://daydayup863.github.io/openssl/ssl/openssl/"/>
-    <id>http://daydayup863.github.io/openssl/ssl/openssl/</id>
-    <published>2021-04-16T11:18:18.000Z</published>
-    <updated>2021-04-16T11:33:22.609Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;OpenSSL 不仅仅是 SSL。它可以实现消息摘要、文件的加密和解密、数字证书、数字签名 和随机数字。关于 OpenSSL 库的内容非常多，远不是一篇文章可以容纳的。&lt;br&gt;OpenSSL 不只是 API，它还是一个命令行工具。命令行工具可以完成与 API 同样的工作， 而且更进一步，可以测试 SSL 服务器和客户机。它还让开发人员对 OpenSSL 的能力有一个 认识。要获得关于如何使用 OpenSSL 命令行工具的资料, 请参阅&lt;a href=&quot;https://www.openssl.org/docs/apps/openssl.html&quot;&gt;官方手册&lt;/a&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="openssl" scheme="http://daydayup863.github.io/categories/openssl/"/>
-    
-      <category term="ssl" scheme="http://daydayup863.github.io/categories/openssl/ssl/"/>
-    
-    
-      <category term="openssl" scheme="http://daydayup863.github.io/tags/openssl/"/>
-    
-      <category term="ssl" scheme="http://daydayup863.github.io/tags/ssl/"/>
     
   </entry>
   
