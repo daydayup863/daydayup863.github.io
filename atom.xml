@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://daydayup863.github.io/"/>
-  <updated>2022-03-15T08:50:43.674Z</updated>
+  <updated>2022-03-15T09:09:08.876Z</updated>
   <id>http://daydayup863.github.io/</id>
   
   <author>
@@ -17,11 +17,65 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Hello World</title>
+    <link href="http://daydayup863.github.io/uncategorized/hello-world/"/>
+    <id>http://daydayup863.github.io/uncategorized/hello-world/</id>
+    <published>2022-03-15T09:09:08.876Z</published>
+    <updated>2022-03-15T09:09:08.876Z</updated>
+    
+    <summary type="html">
+    
+       
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>PostgreSQL 15 preview - 订阅端新增选项disable_on_error控制是否重试订阅</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/logical-decoding/logical-replication/subscriptions/%E9%80%BB%E8%BE%91%E5%A4%8D%E5%88%B6/PostgreSQL_15_logical/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/logical-decoding/logical-replication/subscriptions/%E9%80%BB%E8%BE%91%E5%A4%8D%E5%88%B6/PostgreSQL_15_logical/</id>
+    <published>2022-03-15T08:54:18.000Z</published>
+    <updated>2022-03-15T08:59:51.855Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;PG15之前的版本前，逻辑复制中，如果订阅端发生唯一性约束冲突，订阅端会一直重试，PG15增加选项 disable_on_error 去控制是否重试，默认情况为false, 表示不会disable订阅。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+      <category term="logical decoding" scheme="http://daydayup863.github.io/categories/PostgreSQL/logical-decoding/"/>
+    
+      <category term="logical replication" scheme="http://daydayup863.github.io/categories/PostgreSQL/logical-decoding/logical-replication/"/>
+    
+      <category term="subscriptions" scheme="http://daydayup863.github.io/categories/PostgreSQL/logical-decoding/logical-replication/subscriptions/"/>
+    
+      <category term="逻辑复制" scheme="http://daydayup863.github.io/categories/PostgreSQL/logical-decoding/logical-replication/subscriptions/%E9%80%BB%E8%BE%91%E5%A4%8D%E5%88%B6/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="logical replication" scheme="http://daydayup863.github.io/tags/logical-replication/"/>
+    
+      <category term="逻辑复制" scheme="http://daydayup863.github.io/tags/%E9%80%BB%E8%BE%91%E5%A4%8D%E5%88%B6/"/>
+    
+      <category term="logical decoding" scheme="http://daydayup863.github.io/tags/logical-decoding/"/>
+    
+      <category term="subscriptions" scheme="http://daydayup863.github.io/tags/subscriptions/"/>
+    
+  </entry>
+  
+  <entry>
     <title>PostgreSQL 不同版本性能基准测试对比</title>
     <link href="http://daydayup863.github.io/PostgreSQL/pgbench/PostgreSQL_%E4%B8%8D%E5%90%8C%E7%89%88%E6%9C%AC%E6%80%A7%E8%83%BD%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95%E5%AF%B9%E6%AF%94/"/>
     <id>http://daydayup863.github.io/PostgreSQL/pgbench/PostgreSQL_%E4%B8%8D%E5%90%8C%E7%89%88%E6%9C%AC%E6%80%A7%E8%83%BD%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95%E5%AF%B9%E6%AF%94/</id>
     <published>2022-03-15T07:59:06.000Z</published>
-    <updated>2022-03-15T08:50:43.674Z</updated>
+    <updated>2022-03-15T09:11:06.369Z</updated>
     
     <summary type="html">
     
@@ -366,23 +420,6 @@ Result
   </entry>
   
   <entry>
-    <title>Hello World</title>
-    <link href="http://daydayup863.github.io/uncategorized/hello-world/"/>
-    <id>http://daydayup863.github.io/uncategorized/hello-world/</id>
-    <published>2021-06-28T09:42:05.082Z</published>
-    <updated>2021-06-28T09:42:05.082Z</updated>
-    
-    <summary type="html">
-    
-       
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
     <title>PostgreSQL Database Administration</title>
     <link href="http://daydayup863.github.io/PostgreSQL/Administration/PostgreSQL_Database_Administration/"/>
     <id>http://daydayup863.github.io/PostgreSQL/Administration/PostgreSQL_Database_Administration/</id>
@@ -531,36 +568,6 @@ Result
   </entry>
   
   <entry>
-    <title>PostgreSQL 11 新特性汇总</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_11_release_note/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_11_release_note/</id>
-    <published>2021-04-30T03:08:32.000Z</published>
-    <updated>2021-04-30T03:32:58.408Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;2018-10-18 PostgreSQL官网 宣布 PostgreSQL 11 正式版发行，PostgreSQL 11 重点对性能进行了提升和功能完善，特别是对大数据库和高计算负载的情况下进行了增强，主要包括以下:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;对分区表进行了大幅的改进和增强。
-增加了对存储过程的支持，存储过程支持事务。
-增强了并行查询能力和并行数据定义能力。
-增加了对 just-in-time (JIT) 编译的支持，加速SQL中的表达式执行效率。
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;最近对PostgreSQL以上新特性和其它功能完善做了演示，希望对PostgreSQL从业者有帮助，详见以下。&lt;br&gt;分区表的改进&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-      <category term="release note" scheme="http://daydayup863.github.io/categories/PostgreSQL/release-note/"/>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-      <category term="release note" scheme="http://daydayup863.github.io/tags/release-note/"/>
-    
-  </entry>
-  
-  <entry>
     <title>PostgreSQL 10 新特性汇总</title>
     <link href="http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_10_release_note/"/>
     <id>http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_10_release_note/</id>
@@ -590,6 +597,34 @@ PostgreSQL10：Incompatible Changes
 PostgreSQL10：新增 pg_sequence 系统表
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;参考&lt;br&gt;&lt;a href=&quot;https://www.postgresql.org/docs/10/release-10.html&quot;&gt;E.17. Release 10&lt;/a&gt;&lt;/p&gt;
 
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+      <category term="release note" scheme="http://daydayup863.github.io/categories/PostgreSQL/release-note/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="release note" scheme="http://daydayup863.github.io/tags/release-note/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PostgreSQL 13 新特性汇总</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_13_release_note/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_13_release_note/</id>
+    <published>2021-04-30T03:08:32.000Z</published>
+    <updated>2021-04-30T03:33:15.144Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;PostgreSQL 13 Beta1版本已于2020-05-21发行，目前最新版为Beta2，尽管 PostgreSQL 13 版本没有像10、11、12版本新增重量级的功能，但13版本依然增加了不少新特性和功能提升，值得细细研究。&lt;/p&gt;
+&lt;p&gt;PostgreSQL 13 典型变化如下:&lt;/p&gt;
+&lt;p&gt;逻辑复制支持分区表&lt;br&gt;Btree索引优化(引入Deduplication技术)&lt;br&gt;增量排序(Incremental Sorting)&lt;br&gt;并行VACUUM索引&lt;br&gt;并行Reindexdb&lt;br&gt;手册新增术语(Glossary)附录&lt;/p&gt;
+&lt;p&gt;本文从新特性、性能提升、数据库管理、其它亮点四方面详细介绍 PostgreSQL 13的变化。&lt;/p&gt;
     
     </summary>
     
@@ -639,18 +674,20 @@ CTE 支持 Inlined With Queries
   </entry>
   
   <entry>
-    <title>PostgreSQL 13 新特性汇总</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_13_release_note/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_13_release_note/</id>
+    <title>PostgreSQL 11 新特性汇总</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_11_release_note/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_11_release_note/</id>
     <published>2021-04-30T03:08:32.000Z</published>
-    <updated>2021-04-30T03:33:15.144Z</updated>
+    <updated>2021-04-30T03:32:58.408Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;PostgreSQL 13 Beta1版本已于2020-05-21发行，目前最新版为Beta2，尽管 PostgreSQL 13 版本没有像10、11、12版本新增重量级的功能，但13版本依然增加了不少新特性和功能提升，值得细细研究。&lt;/p&gt;
-&lt;p&gt;PostgreSQL 13 典型变化如下:&lt;/p&gt;
-&lt;p&gt;逻辑复制支持分区表&lt;br&gt;Btree索引优化(引入Deduplication技术)&lt;br&gt;增量排序(Incremental Sorting)&lt;br&gt;并行VACUUM索引&lt;br&gt;并行Reindexdb&lt;br&gt;手册新增术语(Glossary)附录&lt;/p&gt;
-&lt;p&gt;本文从新特性、性能提升、数据库管理、其它亮点四方面详细介绍 PostgreSQL 13的变化。&lt;/p&gt;
+      &lt;p&gt;2018-10-18 PostgreSQL官网 宣布 PostgreSQL 11 正式版发行，PostgreSQL 11 重点对性能进行了提升和功能完善，特别是对大数据库和高计算负载的情况下进行了增强，主要包括以下:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;对分区表进行了大幅的改进和增强。
+增加了对存储过程的支持，存储过程支持事务。
+增强了并行查询能力和并行数据定义能力。
+增加了对 just-in-time (JIT) 编译的支持，加速SQL中的表达式执行效率。
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;最近对PostgreSQL以上新特性和其它功能完善做了演示，希望对PostgreSQL从业者有帮助，详见以下。&lt;br&gt;分区表的改进&lt;/p&gt;
     
     </summary>
     
@@ -663,31 +700,6 @@ CTE 支持 Inlined With Queries
       <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
     
       <category term="release note" scheme="http://daydayup863.github.io/tags/release-note/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>TimescaleDB 使用记录</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/TimescaleDB/PostgreSQL_timescaledb/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/TimescaleDB/PostgreSQL_timescaledb/</id>
-    <published>2021-04-23T08:18:08.000Z</published>
-    <updated>2021-04-23T08:25:15.401Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;记录timescaledb使用过程中遇到的一些问题及解决方案&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-      <category term="TimescaleDB" scheme="http://daydayup863.github.io/categories/PostgreSQL/TimescaleDB/"/>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-      <category term="TimescaleDB" scheme="http://daydayup863.github.io/tags/TimescaleDB/"/>
     
   </entry>
   
