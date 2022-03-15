@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://daydayup863.github.io/"/>
-  <updated>2022-03-15T09:09:08.876Z</updated>
+  <updated>2022-03-15T09:20:08.274Z</updated>
   <id>http://daydayup863.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>python 生成折线图</title>
+    <link href="http://daydayup863.github.io/python/pandas/%E6%8A%98%E7%BA%BF%E5%9B%BE/python3_%E6%8A%98%E7%BA%BF%E5%9B%BE/"/>
+    <id>http://daydayup863.github.io/python/pandas/%E6%8A%98%E7%BA%BF%E5%9B%BE/python3_%E6%8A%98%E7%BA%BF%E5%9B%BE/</id>
+    <published>2022-03-15T09:14:06.000Z</published>
+    <updated>2022-03-15T09:20:08.274Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;使用python代码将csv中的数据生成折线图&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="python" scheme="http://daydayup863.github.io/categories/python/"/>
+    
+      <category term="pandas" scheme="http://daydayup863.github.io/categories/python/pandas/"/>
+    
+      <category term="折线图" scheme="http://daydayup863.github.io/categories/python/pandas/%E6%8A%98%E7%BA%BF%E5%9B%BE/"/>
+    
+    
+      <category term="python" scheme="http://daydayup863.github.io/tags/python/"/>
+    
+      <category term="pandas" scheme="http://daydayup863.github.io/tags/pandas/"/>
+    
+      <category term="折线图" scheme="http://daydayup863.github.io/tags/%E6%8A%98%E7%BA%BF%E5%9B%BE/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
@@ -568,6 +597,36 @@ Result
   </entry>
   
   <entry>
+    <title>PostgreSQL 11 新特性汇总</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_11_release_note/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_11_release_note/</id>
+    <published>2021-04-30T03:08:32.000Z</published>
+    <updated>2021-04-30T03:32:58.408Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;2018-10-18 PostgreSQL官网 宣布 PostgreSQL 11 正式版发行，PostgreSQL 11 重点对性能进行了提升和功能完善，特别是对大数据库和高计算负载的情况下进行了增强，主要包括以下:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;对分区表进行了大幅的改进和增强。
+增加了对存储过程的支持，存储过程支持事务。
+增强了并行查询能力和并行数据定义能力。
+增加了对 just-in-time (JIT) 编译的支持，加速SQL中的表达式执行效率。
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;最近对PostgreSQL以上新特性和其它功能完善做了演示，希望对PostgreSQL从业者有帮助，详见以下。&lt;br&gt;分区表的改进&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+      <category term="release note" scheme="http://daydayup863.github.io/categories/PostgreSQL/release-note/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="release note" scheme="http://daydayup863.github.io/tags/release-note/"/>
+    
+  </entry>
+  
+  <entry>
     <title>PostgreSQL 10 新特性汇总</title>
     <link href="http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_10_release_note/"/>
     <id>http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_10_release_note/</id>
@@ -613,34 +672,6 @@ PostgreSQL10：新增 pg_sequence 系统表
   </entry>
   
   <entry>
-    <title>PostgreSQL 13 新特性汇总</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_13_release_note/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_13_release_note/</id>
-    <published>2021-04-30T03:08:32.000Z</published>
-    <updated>2021-04-30T03:33:15.144Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;PostgreSQL 13 Beta1版本已于2020-05-21发行，目前最新版为Beta2，尽管 PostgreSQL 13 版本没有像10、11、12版本新增重量级的功能，但13版本依然增加了不少新特性和功能提升，值得细细研究。&lt;/p&gt;
-&lt;p&gt;PostgreSQL 13 典型变化如下:&lt;/p&gt;
-&lt;p&gt;逻辑复制支持分区表&lt;br&gt;Btree索引优化(引入Deduplication技术)&lt;br&gt;增量排序(Incremental Sorting)&lt;br&gt;并行VACUUM索引&lt;br&gt;并行Reindexdb&lt;br&gt;手册新增术语(Glossary)附录&lt;/p&gt;
-&lt;p&gt;本文从新特性、性能提升、数据库管理、其它亮点四方面详细介绍 PostgreSQL 13的变化。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-      <category term="release note" scheme="http://daydayup863.github.io/categories/PostgreSQL/release-note/"/>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-      <category term="release note" scheme="http://daydayup863.github.io/tags/release-note/"/>
-    
-  </entry>
-  
-  <entry>
     <title>PostgreSQL 12 新特性汇总</title>
     <link href="http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_12_release_note/"/>
     <id>http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_12_release_note/</id>
@@ -658,36 +689,6 @@ CTE 支持 Inlined With Queries
 分区表性能大辐提升
 在线重建索引(Reindex Concurrently)
 &lt;/code&gt;&lt;/pre&gt;
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-      <category term="release note" scheme="http://daydayup863.github.io/categories/PostgreSQL/release-note/"/>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-      <category term="release note" scheme="http://daydayup863.github.io/tags/release-note/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PostgreSQL 11 新特性汇总</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_11_release_note/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_11_release_note/</id>
-    <published>2021-04-30T03:08:32.000Z</published>
-    <updated>2021-04-30T03:32:58.408Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;2018-10-18 PostgreSQL官网 宣布 PostgreSQL 11 正式版发行，PostgreSQL 11 重点对性能进行了提升和功能完善，特别是对大数据库和高计算负载的情况下进行了增强，主要包括以下:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;对分区表进行了大幅的改进和增强。
-增加了对存储过程的支持，存储过程支持事务。
-增强了并行查询能力和并行数据定义能力。
-增加了对 just-in-time (JIT) 编译的支持，加速SQL中的表达式执行效率。
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;最近对PostgreSQL以上新特性和其它功能完善做了演示，希望对PostgreSQL从业者有帮助，详见以下。&lt;br&gt;分区表的改进&lt;/p&gt;
     
     </summary>
     
