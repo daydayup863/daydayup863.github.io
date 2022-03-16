@@ -5,8 +5,8 @@
     <url>/PostgreSQL/arch/PostgreSQL_%E9%80%BB%E8%BE%91%E6%9E%B6%E6%9E%84/</url>
     <content><![CDATA[<p>很久没复习，居然连PostgreSQL的五层逻辑架构都忘记了，下面就复习一下吧</p>
 <a id="more"></a>
-<p>parse  -&gt; plan/optimizer -&gt; executor -&gt; access -&gt; storage</p>
-<p>parser:             负责词法语法解析，　生成parse tree<br>plan/optimizer  　　对生成的parse tree进行优化重写，生成plan tree<br>executor:           执行层<br>access:             存取层，也就是常说的access method, \dA可以查看AM<br>storage:            存储层，</p>
+<p>parse  -&gt; rewrite -&gt; plan/optimizer -&gt; executor -&gt; access -&gt; storage</p>
+<p>parser:             负责词法语法解析，　生成原始query tree<br>rewrite             The rewrite system takes the query tree created by the parser stage and looks for any rules (stored in the system catalogs) to apply to the query tree. It performs the transformations given in the rule bodies, One application of the rewrite system is in the realization of views. Whenever a query against a view (i.e., a virtual table) is made, the rewrite system rewrites the user’s query to a query that accesses the base tables given in the view definition instead.<br>plan/optimizer  　　The planner/optimizer takes the (rewritten) query tree and creates a query plan that will be the input to the executor<br>executor:           The executor recursively steps through the plan tree and retrieves rows in the way represented by the plan. The executor makes use of the storage system while scanning relations, performs sorts and joins, evaluates qualifications and finally hands back the rows derived.<br>access:             存取层，也就是常说的access method, \dA可以查看AM<br>storage:            存储层，</p>
 <p>后面整理</p>
 ]]></content>
       <categories>
