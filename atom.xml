@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://daydayup863.github.io/"/>
-  <updated>2022-03-16T12:47:49.079Z</updated>
+  <updated>2022-03-22T12:29:29.233Z</updated>
   <id>http://daydayup863.github.io/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PostgreSQL 15 preview - 逻辑复制订阅端跳过lsn</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/%E9%80%BB%E8%BE%91%E5%A4%8D%E5%88%B6/%E8%B7%B3%E8%BF%87%E5%86%B2%E7%AA%81/%E9%80%BB%E8%BE%91%E8%A7%A3%E7%A0%81/PostgreSQL_15_preview_sub_skip/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/%E9%80%BB%E8%BE%91%E5%A4%8D%E5%88%B6/%E8%B7%B3%E8%BF%87%E5%86%B2%E7%AA%81/%E9%80%BB%E8%BE%91%E8%A7%A3%E7%A0%81/PostgreSQL_15_preview_sub_skip/</id>
+    <published>2022-03-22T12:22:30.000Z</published>
+    <updated>2022-03-22T12:29:29.233Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;之前版本的逻辑复制如果冲突，需要手动处理冲突，并且步骤较为繁琐(参考&lt;a href=&quot;https://www.modb.pro/db/48642)，v15中提供了更简便的处理方式&quot;&gt;https://www.modb.pro/db/48642)，v15中提供了更简便的处理方式&lt;/a&gt;: ALTER SUBSCRIPTION … SKIP&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+      <category term="逻辑复制" scheme="http://daydayup863.github.io/categories/PostgreSQL/%E9%80%BB%E8%BE%91%E5%A4%8D%E5%88%B6/"/>
+    
+      <category term="跳过冲突" scheme="http://daydayup863.github.io/categories/PostgreSQL/%E9%80%BB%E8%BE%91%E5%A4%8D%E5%88%B6/%E8%B7%B3%E8%BF%87%E5%86%B2%E7%AA%81/"/>
+    
+      <category term="逻辑解码" scheme="http://daydayup863.github.io/categories/PostgreSQL/%E9%80%BB%E8%BE%91%E5%A4%8D%E5%88%B6/%E8%B7%B3%E8%BF%87%E5%86%B2%E7%AA%81/%E9%80%BB%E8%BE%91%E8%A7%A3%E7%A0%81/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="逻辑复制" scheme="http://daydayup863.github.io/tags/%E9%80%BB%E8%BE%91%E5%A4%8D%E5%88%B6/"/>
+    
+      <category term="跳过冲突" scheme="http://daydayup863.github.io/tags/%E8%B7%B3%E8%BF%87%E5%86%B2%E7%AA%81/"/>
+    
+      <category term="逻辑解码" scheme="http://daydayup863.github.io/tags/%E9%80%BB%E8%BE%91%E8%A7%A3%E7%A0%81/"/>
+    
+  </entry>
   
   <entry>
     <title>PostgreSQL逻辑架构</title>
@@ -622,51 +655,20 @@ Result
   </entry>
   
   <entry>
-    <title>PostgreSQL 12 新特性汇总</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_12_release_note/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_12_release_note/</id>
+    <title>PostgreSQL 11 新特性汇总</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_11_release_note/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_11_release_note/</id>
     <published>2021-04-30T03:08:32.000Z</published>
-    <updated>2021-04-30T03:33:05.632Z</updated>
+    <updated>2021-04-30T03:32:58.408Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;尽管现阶段 PostgreSQL 12 才出 Beta3 版本，但 12 版本的新特性和正式版不会有太大出入，最近抽时间对 12 版本的新特性进行了探索，整体上 12 版本的变化不小。&lt;/p&gt;
-&lt;p&gt;12 版本的典型新特性如下:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;支持 SQL/JSON path
-支持 Generated Columns
-CTE 支持 Inlined With Queries
-新增 Pluggable Table Storage Interface
-分区表性能大辐提升
-在线重建索引(Reindex Concurrently)
-&lt;/code&gt;&lt;/pre&gt;
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-      <category term="release note" scheme="http://daydayup863.github.io/categories/PostgreSQL/release-note/"/>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-      <category term="release note" scheme="http://daydayup863.github.io/tags/release-note/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PostgreSQL 13 新特性汇总</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_13_release_note/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_13_release_note/</id>
-    <published>2021-04-30T03:08:32.000Z</published>
-    <updated>2021-04-30T03:33:15.144Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;PostgreSQL 13 Beta1版本已于2020-05-21发行，目前最新版为Beta2，尽管 PostgreSQL 13 版本没有像10、11、12版本新增重量级的功能，但13版本依然增加了不少新特性和功能提升，值得细细研究。&lt;/p&gt;
-&lt;p&gt;PostgreSQL 13 典型变化如下:&lt;/p&gt;
-&lt;p&gt;逻辑复制支持分区表&lt;br&gt;Btree索引优化(引入Deduplication技术)&lt;br&gt;增量排序(Incremental Sorting)&lt;br&gt;并行VACUUM索引&lt;br&gt;并行Reindexdb&lt;br&gt;手册新增术语(Glossary)附录&lt;/p&gt;
-&lt;p&gt;本文从新特性、性能提升、数据库管理、其它亮点四方面详细介绍 PostgreSQL 13的变化。&lt;/p&gt;
+      &lt;p&gt;2018-10-18 PostgreSQL官网 宣布 PostgreSQL 11 正式版发行，PostgreSQL 11 重点对性能进行了提升和功能完善，特别是对大数据库和高计算负载的情况下进行了增强，主要包括以下:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;对分区表进行了大幅的改进和增强。
+增加了对存储过程的支持，存储过程支持事务。
+增强了并行查询能力和并行数据定义能力。
+增加了对 just-in-time (JIT) 编译的支持，加速SQL中的表达式执行效率。
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;最近对PostgreSQL以上新特性和其它功能完善做了演示，希望对PostgreSQL从业者有帮助，详见以下。&lt;br&gt;分区表的改进&lt;/p&gt;
     
     </summary>
     
