@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://daydayup863.github.io/"/>
-  <updated>2022-03-22T12:29:29.233Z</updated>
+  <updated>2022-03-23T09:23:34.455Z</updated>
   <id>http://daydayup863.github.io/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用go去抓取PostgreSQL端口的SQL</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/gopacket/%E6%8A%93%E5%8C%85/go_%E6%8A%93%E5%8F%96PostgreSQL_Query/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/gopacket/%E6%8A%93%E5%8C%85/go_%E6%8A%93%E5%8F%96PostgreSQL_Query/</id>
+    <published>2022-03-23T08:37:47.000Z</published>
+    <updated>2022-03-23T09:23:34.455Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;之前被问到tcpdump去抓取PostgreSQL的SQL时，怎么将SQL解析成可读内容，知道有wireshark可以解析tcpdump生成的cap文件，但不知道wireshake还有针对pg协议专门的扩展, 一直也没遇到过这种需求。最近在学习go语言，于是就想到能否用go直接抓包解析呢。&lt;/p&gt;
+&lt;p&gt;这篇文章就主要以获取SQL为主。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+      <category term="gopacket" scheme="http://daydayup863.github.io/categories/PostgreSQL/gopacket/"/>
+    
+      <category term="抓包" scheme="http://daydayup863.github.io/categories/PostgreSQL/gopacket/%E6%8A%93%E5%8C%85/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="gopacket" scheme="http://daydayup863.github.io/tags/gopacket/"/>
+    
+      <category term="抓包" scheme="http://daydayup863.github.io/tags/%E6%8A%93%E5%8C%85/"/>
+    
+  </entry>
   
   <entry>
     <title>PostgreSQL 15 preview - 逻辑复制订阅端跳过lsn</title>
@@ -651,36 +681,6 @@ Result
       <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
     
       <category term="partition table" scheme="http://daydayup863.github.io/tags/partition-table/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PostgreSQL 11 新特性汇总</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_11_release_note/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/release-note/PostgreSQL_11_release_note/</id>
-    <published>2021-04-30T03:08:32.000Z</published>
-    <updated>2021-04-30T03:32:58.408Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;2018-10-18 PostgreSQL官网 宣布 PostgreSQL 11 正式版发行，PostgreSQL 11 重点对性能进行了提升和功能完善，特别是对大数据库和高计算负载的情况下进行了增强，主要包括以下:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;对分区表进行了大幅的改进和增强。
-增加了对存储过程的支持，存储过程支持事务。
-增强了并行查询能力和并行数据定义能力。
-增加了对 just-in-time (JIT) 编译的支持，加速SQL中的表达式执行效率。
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;最近对PostgreSQL以上新特性和其它功能完善做了演示，希望对PostgreSQL从业者有帮助，详见以下。&lt;br&gt;分区表的改进&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-      <category term="release note" scheme="http://daydayup863.github.io/categories/PostgreSQL/release-note/"/>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-      <category term="release note" scheme="http://daydayup863.github.io/tags/release-note/"/>
     
   </entry>
   
