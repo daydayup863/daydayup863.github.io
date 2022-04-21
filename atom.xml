@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://daydayup863.github.io/"/>
-  <updated>2022-04-21T03:42:05.205Z</updated>
+  <updated>2022-04-21T03:52:38.635Z</updated>
   <id>http://daydayup863.github.io/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PostgreSQL 15 preview - 支持MERGE语法</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/SQL/merge/PostgreSQL-15/PostgreSQL_15_preview_merge/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/SQL/merge/PostgreSQL-15/PostgreSQL_15_preview_merge/</id>
+    <published>2022-04-21T03:48:12.000Z</published>
+    <updated>2022-04-21T03:52:38.635Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;早上上班途中看到PostgreSQL提交日志，已经支持MERGE语法，现在就上手体验一把。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+      <category term="SQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/SQL/"/>
+    
+      <category term="merge" scheme="http://daydayup863.github.io/categories/PostgreSQL/SQL/merge/"/>
+    
+      <category term="PostgreSQL 15" scheme="http://daydayup863.github.io/categories/PostgreSQL/SQL/merge/PostgreSQL-15/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="SQL" scheme="http://daydayup863.github.io/tags/SQL/"/>
+    
+      <category term="PostgreSQL 15" scheme="http://daydayup863.github.io/tags/PostgreSQL-15/"/>
+    
+      <category term="merge" scheme="http://daydayup863.github.io/tags/merge/"/>
+    
+  </entry>
   
   <entry>
     <title>PostgreSQL 15 preview - pg_waldump 支持表级别过滤</title>
@@ -648,35 +681,6 @@ Result
       <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
     
       <category term="memory architecture" scheme="http://daydayup863.github.io/tags/memory-architecture/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PostgreSQL双主逻辑复制</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/multi-master/logical-replication/%E5%8F%8C%E4%B8%BB%E9%80%BB%E8%BE%91%E5%A4%8D%E5%88%B6/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/multi-master/logical-replication/%E5%8F%8C%E4%B8%BB%E9%80%BB%E8%BE%91%E5%A4%8D%E5%88%B6/</id>
-    <published>2021-05-26T06:27:11.000Z</published>
-    <updated>2021-05-26T08:56:00.598Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;利用PostgreSQL逻辑复制和触发器实现PostgreSQL双主复制&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-      <category term="multi-master" scheme="http://daydayup863.github.io/categories/PostgreSQL/multi-master/"/>
-    
-      <category term="logical replication" scheme="http://daydayup863.github.io/categories/PostgreSQL/multi-master/logical-replication/"/>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-      <category term="multi-master" scheme="http://daydayup863.github.io/tags/multi-master/"/>
-    
-      <category term="logical replication" scheme="http://daydayup863.github.io/tags/logical-replication/"/>
     
   </entry>
   
