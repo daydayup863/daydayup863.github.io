@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://daydayup863.github.io/"/>
-  <updated>2022-04-21T03:52:38.635Z</updated>
+  <updated>2022-04-22T08:26:40.925Z</updated>
   <id>http://daydayup863.github.io/</id>
   
   <author>
@@ -15,6 +15,47 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PostgreSQL 15 preview - 你了解PostgreSQL GUC 参数吗?</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/PostgreSQL-15/GUC/GUC-flags/PostgreSQL_15_preview_flags_of_GUC/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/PostgreSQL-15/GUC/GUC-flags/PostgreSQL_15_preview_flags_of_GUC/</id>
+    <published>2022-04-22T08:02:58.000Z</published>
+    <updated>2022-04-22T08:26:40.925Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;开篇灵魂三问:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;你知道哪些GUC参数没有在postgresql.conf中显示吗?&lt;/li&gt;
+&lt;li&gt;你知道哪些GUC参数在show all时没有显示吗?&lt;/li&gt;
+&lt;li&gt;你知道哪些GUC参数在reset all时不会被重置吗?&lt;/li&gt;
+&lt;li&gt;你知道哪些GUC参数会显示在EXPLAIN时吗？&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;是否一脸茫然?&lt;/p&gt;
+&lt;p&gt;随着 PostgreSQL 15 的开发正在进行中，越来越多的功能被提交。今天我们将看一个新功能，关于GUC的相关标志, 一个值得拥有和了解的好东西。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+      <category term="PostgreSQL 15" scheme="http://daydayup863.github.io/categories/PostgreSQL/PostgreSQL-15/"/>
+    
+      <category term="GUC" scheme="http://daydayup863.github.io/categories/PostgreSQL/PostgreSQL-15/GUC/"/>
+    
+      <category term="GUC flags" scheme="http://daydayup863.github.io/categories/PostgreSQL/PostgreSQL-15/GUC/GUC-flags/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="PostgreSQL 15" scheme="http://daydayup863.github.io/tags/PostgreSQL-15/"/>
+    
+      <category term="GUC" scheme="http://daydayup863.github.io/tags/GUC/"/>
+    
+      <category term="GUC flags" scheme="http://daydayup863.github.io/tags/GUC-flags/"/>
+    
+  </entry>
   
   <entry>
     <title>PostgreSQL 15 preview - 支持MERGE语法</title>
@@ -656,31 +697,6 @@ Result
       <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
     
       <category term="Administration" scheme="http://daydayup863.github.io/tags/Administration/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PostgreSQL内存结构</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/memory-architecture/PostgreSQL%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/memory-architecture/PostgreSQL%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/</id>
-    <published>2021-05-28T06:10:41.000Z</published>
-    <updated>2021-08-05T12:27:33.602Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在PostgreSQL内存结构中，主要分为本地缓冲区(Local Memory Area)和共享缓冲区(hared Memory Area)两部分, 本文主要介绍这两种缓冲区的功能。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-      <category term="memory architecture" scheme="http://daydayup863.github.io/categories/PostgreSQL/memory-architecture/"/>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-      <category term="memory architecture" scheme="http://daydayup863.github.io/tags/memory-architecture/"/>
     
   </entry>
   
