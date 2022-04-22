@@ -3,14 +3,14 @@
   <entry>
     <title>PostgreSQL 15 preview - 你了解PostgreSQL GUC 参数吗?</title>
     <url>/PostgreSQL/PostgreSQL-15/GUC/GUC-flags/PostgreSQL_15_preview_flags_of_GUC/</url>
-    <content><![CDATA[<p>开篇灵魂三问:</p>
+    <content><![CDATA[<p>开篇灵魂四问:</p>
 <ol>
 <li>你知道哪些GUC参数没有在postgresql.conf中显示吗?</li>
 <li>你知道哪些GUC参数在show all时没有显示吗?</li>
 <li>你知道哪些GUC参数在reset all时不会被重置吗?</li>
 <li>你知道哪些GUC参数会显示在EXPLAIN时吗？</li>
 </ol>
-<p>是否一脸茫然?</p>
+<p>是否很熟悉的GUC参数，顷刻间也没那么熟悉了?</p>
 <p>随着 PostgreSQL 15 的开发正在进行中，越来越多的功能被提交。今天我们将看一个新功能，关于GUC的相关标志, 一个值得拥有和了解的好东西。</p>
 <a id="more"></a>
 <p>如果你看一下截至今天 PostgreSQL 有多少个设置，有 353 个（这是 PostgreSQL 15dev）:</p>

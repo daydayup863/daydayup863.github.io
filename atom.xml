@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://daydayup863.github.io/"/>
-  <updated>2022-04-22T08:26:40.925Z</updated>
+  <updated>2022-04-22T08:29:38.190Z</updated>
   <id>http://daydayup863.github.io/</id>
   
   <author>
@@ -21,18 +21,18 @@
     <link href="http://daydayup863.github.io/PostgreSQL/PostgreSQL-15/GUC/GUC-flags/PostgreSQL_15_preview_flags_of_GUC/"/>
     <id>http://daydayup863.github.io/PostgreSQL/PostgreSQL-15/GUC/GUC-flags/PostgreSQL_15_preview_flags_of_GUC/</id>
     <published>2022-04-22T08:02:58.000Z</published>
-    <updated>2022-04-22T08:26:40.925Z</updated>
+    <updated>2022-04-22T08:29:38.190Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;开篇灵魂三问:&lt;/p&gt;
+      &lt;p&gt;开篇灵魂四问:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;你知道哪些GUC参数没有在postgresql.conf中显示吗?&lt;/li&gt;
 &lt;li&gt;你知道哪些GUC参数在show all时没有显示吗?&lt;/li&gt;
 &lt;li&gt;你知道哪些GUC参数在reset all时不会被重置吗?&lt;/li&gt;
 &lt;li&gt;你知道哪些GUC参数会显示在EXPLAIN时吗？&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;是否一脸茫然?&lt;/p&gt;
+&lt;p&gt;是否很熟悉的GUC参数，顷刻间也没那么熟悉了?&lt;/p&gt;
 &lt;p&gt;随着 PostgreSQL 15 的开发正在进行中，越来越多的功能被提交。今天我们将看一个新功能，关于GUC的相关标志, 一个值得拥有和了解的好东西。&lt;/p&gt;
     
     </summary>
