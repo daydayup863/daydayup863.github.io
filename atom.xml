@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://daydayup863.github.io/"/>
-  <updated>2022-04-26T10:16:37.927Z</updated>
+  <updated>2022-05-12T08:26:57.341Z</updated>
   <id>http://daydayup863.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PostgreSQL 15 release note</title>
+    <link href="http://daydayup863.github.io/PostgreSQL-15/release-note/PostgreSQL_15_preview_release_note/"/>
+    <id>http://daydayup863.github.io/PostgreSQL-15/release-note/PostgreSQL_15_preview_release_note/</id>
+    <published>2022-05-12T07:41:46.000Z</published>
+    <updated>2022-05-12T08:26:57.341Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;PostgreSQL最近几天应该就会出第一个beta版本了，　今天看到git上已经有了提交, 就先尝一下鲜吧，之后可能还会有变更，不过应该也不会有太大的变更了。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL 15" scheme="http://daydayup863.github.io/categories/PostgreSQL-15/"/>
+    
+      <category term="release note" scheme="http://daydayup863.github.io/categories/PostgreSQL-15/release-note/"/>
+    
+    
+      <category term="release note" scheme="http://daydayup863.github.io/tags/release-note/"/>
+    
+      <category term="PostgreSQL 15" scheme="http://daydayup863.github.io/tags/PostgreSQL-15/"/>
+    
+  </entry>
   
   <entry>
     <title>Debezium from PostgreSQL to Kafka</title>
@@ -669,31 +694,6 @@ Result
       <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
     
       <category term="数据类型" scheme="http://daydayup863.github.io/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>pg_bulkload的安装使用</title>
-    <link href="http://daydayup863.github.io/pg-bulkload/PostgreSQL/PostgreSQL_bulkload/"/>
-    <id>http://daydayup863.github.io/pg-bulkload/PostgreSQL/PostgreSQL_bulkload/</id>
-    <published>2021-08-11T08:39:51.000Z</published>
-    <updated>2021-08-11T09:02:26.287Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;下载&quot;&gt;&lt;a href=&quot;#下载&quot; class=&quot;headerlink&quot; title=&quot;下载&quot;&gt;&lt;/a&gt;下载&lt;/h1&gt;&lt;figure class=&quot;highlight pgsql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs pgsql&quot;&gt;git clone https://github.com/ossc-db/pg_bulkload.git&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-      <category term="pg_bulkload" scheme="http://daydayup863.github.io/categories/pg-bulkload/"/>
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/pg-bulkload/PostgreSQL/"/>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-      <category term="pg_bulkload" scheme="http://daydayup863.github.io/tags/pg-bulkload/"/>
     
   </entry>
   
