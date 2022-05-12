@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://daydayup863.github.io/"/>
-  <updated>2022-05-12T08:26:57.341Z</updated>
+  <updated>2022-05-12T09:58:28.454Z</updated>
   <id>http://daydayup863.github.io/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>日志中打印pgbouncer中client &lt;-&gt; server &lt;-&gt; remote server的对应关系</title>
+    <link href="http://daydayup863.github.io/pgbouncer/server/client/Pgbouncer_log_client_server_remote_map/"/>
+    <id>http://daydayup863.github.io/pgbouncer/server/client/Pgbouncer_log_client_server_remote_map/</id>
+    <published>2022-05-12T09:34:48.000Z</published>
+    <updated>2022-05-12T09:58:28.454Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;如下流程是应用通过pgbouncer连接PostgreSQL的链路，可以看到中间有三个网络层，想要对应PostgreSQL连接到应用连接并不是很容易，尤其连接断开后，查询日志更难。&lt;/p&gt;
+&lt;p&gt;app -&amp;gt; pgbouncer client -&amp;gt; pgbouncer server -&amp;gt; remote PostgreSQL&lt;/p&gt;
+&lt;p&gt;实时连接中可以通过client中link指向server中ptr地址完成对应关系.&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="pgbouncer" scheme="http://daydayup863.github.io/categories/pgbouncer/"/>
+    
+      <category term="server" scheme="http://daydayup863.github.io/categories/pgbouncer/server/"/>
+    
+      <category term="client" scheme="http://daydayup863.github.io/categories/pgbouncer/server/client/"/>
+    
+    
+      <category term="pgbouncer" scheme="http://daydayup863.github.io/tags/pgbouncer/"/>
+    
+      <category term="server" scheme="http://daydayup863.github.io/tags/server/"/>
+    
+      <category term="client" scheme="http://daydayup863.github.io/tags/client/"/>
+    
+  </entry>
   
   <entry>
     <title>PostgreSQL 15 release note</title>
@@ -665,35 +696,6 @@ Result
     
     
       <category term="leader way" scheme="http://daydayup863.github.io/tags/leader-way/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>转 - 老何的1001夜-选择数据类型的重要性</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/PostgreSQL_important_datetype/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/PostgreSQL_important_datetype/</id>
-    <published>2021-08-16T03:00:06.000Z</published>
-    <updated>2022-02-22T07:35:38.683Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;varchar-vs-timestamp&quot;&gt;&lt;a href=&quot;#varchar-vs-timestamp&quot; class=&quot;headerlink&quot; title=&quot;varchar vs. timestamp&quot;&gt;&lt;/a&gt;varchar vs. timestamp&lt;/h1&gt;&lt;p&gt;时间戳字段是类似这样的形式的：&lt;br&gt;‘2013-04-07 12:33:20.000+08’&lt;/p&gt;
-&lt;p&gt;根据iso标准，要求时间戳是精确到毫秒的，所以在秒之后有三位小数，表示毫秒，并且后缀时区（+08部分）。我们存储时间戳有很多办法，最粗糙的是字串存储，像上面那样（注意有单引号），这样一个带时区的时间戳要26个字节。而很多数据库系统里面，会用浮点数或者整数保存时间戳，通常是这样的：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;4字节整数保存一个无时区无毫秒精度的时间戳，相当于19个字节的字串部分
-8字节整数或者浮点数保存一个有时区有毫秒精度的是见戳，相当于26个字节的时间戳字串
-&lt;/code&gt;&lt;/pre&gt;
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-      <category term="数据类型" scheme="http://daydayup863.github.io/categories/PostgreSQL/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"/>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-      <category term="数据类型" scheme="http://daydayup863.github.io/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"/>
     
   </entry>
   
