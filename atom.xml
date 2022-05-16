@@ -52,11 +52,11 @@
     <link href="http://daydayup863.github.io/PostgreSQL-15/release-note/PostgreSQL_15_preview_release_note/"/>
     <id>http://daydayup863.github.io/PostgreSQL-15/release-note/PostgreSQL_15_preview_release_note/</id>
     <published>2022-05-12T07:41:46.000Z</published>
-    <updated>2022-05-16T02:45:21.662Z</updated>
+    <updated>2022-05-16T02:49:11.728Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;PostgreSQL最近几天应该就会出第一个beta版本了，　今天看到git上已经有了提交, 就先尝一下鲜吧，之后可能还会有变更，不过应该也不会有太大的变更了。&lt;/p&gt;
+      &lt;p&gt;PostgreSQL最近几天应该就会出第一个beta版本了，　今天看到git上已经有了提交, 就先尝一下鲜吧，之后可能还会有变更，不过应该也不会有太大的变更了, 以下为译文.&lt;/p&gt;
     
     </summary>
     
