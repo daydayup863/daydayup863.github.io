@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://daydayup863.github.io/"/>
-  <updated>2022-05-12T09:58:28.454Z</updated>
+  <updated>2022-05-17T09:47:45.947Z</updated>
   <id>http://daydayup863.github.io/</id>
   
   <author>
@@ -15,6 +15,40 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>在PostgreSQL自定义函数中引用其它lib库中的函数</title>
+    <link href="http://daydayup863.github.io/PostgreSQL/library/CREATE-EXTENSION/%E8%87%AA%E5%AE%9A%E4%B9%89EXTENSION/PostgreSQL_self_define_extesion_reference_other_library/"/>
+    <id>http://daydayup863.github.io/PostgreSQL/library/CREATE-EXTENSION/%E8%87%AA%E5%AE%9A%E4%B9%89EXTENSION/PostgreSQL_self_define_extesion_reference_other_library/</id>
+    <published>2022-05-17T09:24:41.000Z</published>
+    <updated>2022-05-17T09:47:45.947Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天看到pgfans上有人提了一个如下问题.&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&quot;/images/create_extension_question.png&quot; alt=&quot;pgfans上的人提的问题&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
+    
+      <category term="library" scheme="http://daydayup863.github.io/categories/PostgreSQL/library/"/>
+    
+      <category term="CREATE EXTENSION" scheme="http://daydayup863.github.io/categories/PostgreSQL/library/CREATE-EXTENSION/"/>
+    
+      <category term="自定义EXTENSION" scheme="http://daydayup863.github.io/categories/PostgreSQL/library/CREATE-EXTENSION/%E8%87%AA%E5%AE%9A%E4%B9%89EXTENSION/"/>
+    
+    
+      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
+    
+      <category term="library" scheme="http://daydayup863.github.io/tags/library/"/>
+    
+      <category term="CREATE EXTENSION" scheme="http://daydayup863.github.io/tags/CREATE-EXTENSION/"/>
+    
+      <category term="自定义EXTENSION" scheme="http://daydayup863.github.io/tags/%E8%87%AA%E5%AE%9A%E4%B9%89EXTENSION/"/>
+    
+  </entry>
   
   <entry>
     <title>日志中打印pgbouncer中client &lt;-&gt; server &lt;-&gt; remote server的对应关系</title>
@@ -670,32 +704,6 @@ Negative values produced undesirable results.
       <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
     
       <category term="release note" scheme="http://daydayup863.github.io/tags/release-note/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>转 - 老何的1001夜-如何成为优秀的领导</title>
-    <link href="http://daydayup863.github.io/leader-way/leader_way/"/>
-    <id>http://daydayup863.github.io/leader-way/leader_way/</id>
-    <published>2021-08-16T03:01:29.000Z</published>
-    <updated>2022-02-22T07:36:02.771Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;“Leader lead the way” — Anonymous&lt;/p&gt;
-&lt;h1 id=&quot;要素&quot;&gt;&lt;a href=&quot;#要素&quot; class=&quot;headerlink&quot; title=&quot;要素&quot;&gt;&lt;/a&gt;要素&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;Help
-Target
-Check
-Result
-&lt;/code&gt;&lt;/pre&gt;
-    
-    </summary>
-    
-    
-      <category term="leader way" scheme="http://daydayup863.github.io/categories/leader-way/"/>
-    
-    
-      <category term="leader way" scheme="http://daydayup863.github.io/tags/leader-way/"/>
     
   </entry>
   
