@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://daydayup863.github.io/"/>
-  <updated>2022-05-20T12:51:45.642Z</updated>
+  <updated>2022-06-21T07:01:47.880Z</updated>
   <id>http://daydayup863.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>利用pg_stat_statement记录最后操作时间</title>
+    <link href="http://daydayup863.github.io/pg-stat-statement/pg-stat-last-operation/%E8%AE%B0%E5%BD%95%E6%93%8D%E4%BD%9C%E6%97%B6%E9%97%B4/PostgreSQL_%E5%88%A9%E7%94%A8pg_stat_statement%E8%AE%B0%E5%BD%95%E6%9C%80%E5%90%8E%E6%93%8D%E4%BD%9C%E6%97%B6%E9%97%B4/"/>
+    <id>http://daydayup863.github.io/pg-stat-statement/pg-stat-last-operation/%E8%AE%B0%E5%BD%95%E6%93%8D%E4%BD%9C%E6%97%B6%E9%97%B4/PostgreSQL_%E5%88%A9%E7%94%A8pg_stat_statement%E8%AE%B0%E5%BD%95%E6%9C%80%E5%90%8E%E6%93%8D%E4%BD%9C%E6%97%B6%E9%97%B4/</id>
+    <published>2022-06-21T06:25:07.000Z</published>
+    <updated>2022-06-21T07:01:47.880Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近总是看到有人需要看记录ddl相关的最后一次操作时间，于是突发奇想，没准利用pg_stat_statement，增加一个记录时间的字段没准也可满足需求。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="pg_stat_statement" scheme="http://daydayup863.github.io/categories/pg-stat-statement/"/>
+    
+      <category term="pg_stat_last_operation" scheme="http://daydayup863.github.io/categories/pg-stat-statement/pg-stat-last-operation/"/>
+    
+      <category term="记录操作时间" scheme="http://daydayup863.github.io/categories/pg-stat-statement/pg-stat-last-operation/%E8%AE%B0%E5%BD%95%E6%93%8D%E4%BD%9C%E6%97%B6%E9%97%B4/"/>
+    
+    
+      <category term="pg_stat_statement" scheme="http://daydayup863.github.io/tags/pg-stat-statement/"/>
+    
+      <category term="pg_stat_last_operation" scheme="http://daydayup863.github.io/tags/pg-stat-last-operation/"/>
+    
+      <category term="记录操作时间" scheme="http://daydayup863.github.io/tags/%E8%AE%B0%E5%BD%95%E6%93%8D%E4%BD%9C%E6%97%B6%E9%97%B4/"/>
+    
+  </entry>
   
   <entry>
     <title>Pgbouncer 源码安装</title>
@@ -576,33 +605,6 @@
       <category term="fdw" scheme="http://daydayup863.github.io/tags/fdw/"/>
     
       <category term="foreign data wapper" scheme="http://daydayup863.github.io/tags/foreign-data-wapper/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PostgreSQL迁移工具</title>
-    <link href="http://daydayup863.github.io/PostgreSQL/%E8%BF%81%E7%A7%BB%E5%B7%A5%E5%85%B7/qianyigongju/"/>
-    <id>http://daydayup863.github.io/PostgreSQL/%E8%BF%81%E7%A7%BB%E5%B7%A5%E5%85%B7/qianyigongju/</id>
-    <published>2022-02-21T08:25:15.000Z</published>
-    <updated>2022-02-21T08:33:56.403Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;记录各种常见的迁移到PostgreSQL的迁移工具&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/categories/PostgreSQL/"/>
-    
-      <category term="迁移工具" scheme="http://daydayup863.github.io/categories/PostgreSQL/%E8%BF%81%E7%A7%BB%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="PostgreSQL" scheme="http://daydayup863.github.io/tags/PostgreSQL/"/>
-    
-      <category term="迁移工具" scheme="http://daydayup863.github.io/tags/%E8%BF%81%E7%A7%BB%E5%B7%A5%E5%85%B7/"/>
-    
-      <category term="ora2pg" scheme="http://daydayup863.github.io/tags/ora2pg/"/>
     
   </entry>
   
